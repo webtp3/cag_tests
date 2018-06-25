@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-06-22T09:33:45Z" product-name="cag_tests">
+		<header/>
+		<body>
+			<trans-unit id="tx_cagtests_domain_model_feuser">
+				<source>Fe User</source>
+			</trans-unit>
+			<trans-unit id="fe_users.tx_extbase_type.Tx_CagTests_FeUser">
+				<source>Basic functional Tests FeUser</source>
+			</trans-unit>
+			<trans-unit id="tx_cagtests_domain_model_fegroup">
+				<source>Fe Group</source>
+			</trans-unit>
+			<trans-unit id="fe_groups.tx_extbase_type.Tx_CagTests_FeGroup">
+				<source>Basic functional Tests FeGroup</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

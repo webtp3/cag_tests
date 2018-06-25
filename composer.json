@@ -1,0 +1,25 @@
+{
+  "name": "cag/cag_tests",
+  "type": "typo3-cms-extension",
+  "version": "0.0.0",
+  "description": "Connecta AG :: Basic Testing and Samples",
+  "license": "GPL-2.0+",
+  "authors": [
+    {
+      "name": "Jochen Rieger",
+      "email": "j.rieger@connecta.ag"
+    },
+    {
+      "name": "Thomas Ruta",
+      "email": "email@thomasruta.de"
+    }
+  ],
+  "require": {
+    "typo3/cms-core": ">= 7.6 < 8.9"
+  },
+  "autoload": {
+    "psr-4": {
+      "CAG\\CagTests\\": "Classes/"
+    }
+  }
+}
