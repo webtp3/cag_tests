@@ -92,7 +92,7 @@ Execute all functional tests
 TYPO3 >=8.7
 ```bash
  php vendor/phpunit/phpunit/phpunit --configuration web/typo3conf/ext/cag_tests/Tests/Build/FunctionalTests.xml --teamcity
- ``` 
+``` 
 ###  Acceptance Testing 
 (codeception & chromedriver)
 
@@ -104,12 +104,12 @@ Since the very early version of TYPO3 v8, the core ships with Acceptance tests b
 As Fetch the TYPO3 sources and installed composer dependencies and start the chromedriver and the PHP HTTP server:
 
 ```bash
-
 mkdir -p typo3temp/var/tests 
 ./bin/chromedriver --url-base=/wd/hub >/dev/null 2>&1 &
 php -S 0.0.0.0:8000 >/dev/null 2>&1 &
 sleep 3;
 ```
+
 ```bash
 typo3DatabaseName='c1_cag_tests' typo3DatabaseHost='localhost' typo3DatabaseUsername='username' typo3DatabasePassword='pw' \
  vendor/codeception/codeception/codecept run Acceptance -c web/typo3conf/ext/cag_tests/Tests/Build/AcceptanceTests.yml
