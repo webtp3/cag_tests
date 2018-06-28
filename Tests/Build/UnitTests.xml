@@ -14,10 +14,10 @@
 		 verbose="false">
 
 	<testsuites>
-		<testsuite name="EXT:cag_tests">
+
+		<testsuite name="cag Unit Tests">
 			<directory>../Unit/</directory>
 		</testsuite>
-
 	</testsuites>
 
 </phpunit>

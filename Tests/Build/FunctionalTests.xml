@@ -15,8 +15,10 @@
 		verbose="false"
 >
 	<testsuites>
-		<testsuite name="News tests">
+		<testsuite name="cag core functional tests">
 			<directory>../Functional/</directory>
 		</testsuite>
+
+
 	</testsuites>
 </phpunit>
