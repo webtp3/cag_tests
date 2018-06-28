@@ -54,50 +54,65 @@ Vorgesehen sind die Tests auf einer Entwicklungsumgebung -> require-dev
 
 [Tests-Erweiterung](https://bitbucket.org/web-tp3/cag_tests/) herunterladen.
 
+Setup
+https://getcomposer.org/ should be available on the system already, see its documentation for installation details. For functional tests, a database connection and credentials should be at hand.
 
 
 ## Enthaltene Funktionalitäten
 ### PHPUnit Testing
 
+TYPO3 >=8.7
+```bash
+ php vendor/phpunit/phpunit/phpunit --configuration web/typo3conf/ext/cag_tests/Tests/Build/UnitTests.xml --teamcity
+```
+for Deprecated Units
+```bash
+ php vendor/phpunit/phpunit/phpunit --configuration web/typo3conf/ext/cag_tests/Tests/Build/UnitTestsDeprecated.xml --teamcity
+
+ ``` 
 
 ###  Functional Testing 
 (phpunit & testing-framework)
 
+####Difference between unit and functional tests
+Since TYPO3 6.2, additionally to unit tests, you can also write functional tests for TYPO3.
+
+Unit tests should test only one small piece of code, and should not modify the environment (files, database). However with functional tests you can test the complete functionality.
+
+With TYPO3 CMS version 6.2 the functional test execution and its required setup was streamlined. See Blueprints/StandaloneUnitTests for more details.
+
+
 https://wiki.typo3.org/Functional_testing
 
-Setup
-https://getcomposer.org/ should be available on the system already, see its documentation for installation details. For functional tests, a database connection and credentials should be at hand.
 
 shell script:
->  git clone --single-branch --branch master git://git.typo3.org/Packages/TYPO3.CMS.git
->  cd TYPO3.CMS 
->  composer install
 
 Execute all functional tests
 
-
 TYPO3 >=8.7
-> typo3DatabaseName="yourDatabase" typo3DatabaseUsername="yourUser" typo3DatabasePassword="yourPassword" typo3DatabaseHost="localhost" \  bin/phpunit -c vendor/typo3/testing-framework/Resources/Core/Build/FunctionalTests.xml
-  
+```bash
+ php vendor/phpunit/phpunit/phpunit --configuration web/typo3conf/ext/cag_tests/Tests/Build/FunctionalTests.xml --teamcity
+ ``` 
 ###  Acceptance Testing 
 (codeception & chromedriver)
 
 https://wiki.typo3.org/Acceptance_testing
 
-Acceptance Testing since TYPO3 v8
+####Acceptance Testing since TYPO3 v8
 Since the very early version of TYPO3 v8, the core ships with Acceptance tests based on Codeception, which are executed with chromedriver as headless Chrome browser.
 
-Fetch the TYPO3 sources, install composer dependencies and start the chromedriver and the PHP HTTP server:
+As Fetch the TYPO3 sources and installed composer dependencies and start the chromedriver and the PHP HTTP server:
 
->git clone git://git.typo3.org/Packages/TYPO3.CMS.git
-cd TYPO3.CMS/
-composer install
+```bash
+
 mkdir -p typo3temp/var/tests 
 ./bin/chromedriver --url-base=/wd/hub >/dev/null 2>&1 &
 php -S 0.0.0.0:8000 >/dev/null 2>&1 &
 sleep 3;
-
-
-typo3DatabaseName='c1_cag_tests' typo3DatabaseHost='localhost' typo3DatabaseUsername='username' typo3DatabasePassword='pw' vendor/codeception/codeception/codecept run Acceptance -c web/typo3conf/ext/cag_tests/Tests/Build/AcceptanceTests.yml
+```
+```bash
+typo3DatabaseName='c1_cag_tests' typo3DatabaseHost='localhost' typo3DatabaseUsername='username' typo3DatabasePassword='pw' \
+ vendor/codeception/codeception/codecept run Acceptance -c web/typo3conf/ext/cag_tests/Tests/Build/AcceptanceTests.yml
 ``` 
+
 **TODO:** Beispiel Tests für eigene Extensions!
