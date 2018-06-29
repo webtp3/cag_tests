@@ -92,7 +92,8 @@ Execute all functional tests
 TYPO3 >=8.7
 ```bash
  php vendor/phpunit/phpunit/phpunit --configuration web/typo3conf/ext/cag_tests/Tests/Build/FunctionalTests.xml --teamcity
-``` 
+```
+
 ###  Acceptance Testing 
 (codeception & chromedriver)
 
