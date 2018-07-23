@@ -1,7 +1,7 @@
 actor: Tester
 paths:
-  tests: ../../../../../web/typo3/sysext/core/Tests
-  log: ../../../../../web/typo3temp/var/tests/AcceptanceReportsInstallPgsql
+  tests: ../../../../../typo3/sysext/core/Tests
+  log: ../../../../../typo3temp/var/tests/AcceptanceReportsInstallMysql
   data: Configuration/Acceptance/Data
   support: Configuration/Acceptance/Support
   envs: Configuration/Acceptance/Envs
@@ -12,4 +12,4 @@ extensions:
   enabled:
     - Codeception\Extension\RunFailed
     - Codeception\Extension\Recorder
-    - TYPO3\TestingFramework\Core\Acceptance\AcceptanceInstallPgsqlCoreEnvironment
+    - TYPO3\TestingFramework\Core\Acceptance\AcceptanceInstallMysqlCoreEnvironment

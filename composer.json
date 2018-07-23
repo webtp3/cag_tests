@@ -1,8 +1,6 @@
 {
   "name": "web-tp3/cag_tests",
   "type": "typo3-cms-extension",
-  "version": "8.x-dev",
-  "stability": "dev",
   "description": "Connecta AG :: Basic Testing and Samples",
   "license": "GPL-2.0+",
   "authors": [
@@ -16,7 +14,7 @@
     }
   ],
   "require": {
-    "typo3/cms-core": "*"
+    "typo3/cms-core": "^8.7"
   },
   "autoload": {
     "psr-4": {
