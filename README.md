@@ -27,10 +27,10 @@ erfordert folgende Pakete im composer.json und ggf. auch seitens des Servers ins
  		"typo3/cms": "dev-TYPO3_8-7",
  		"helhum/typo3-console": "^5",
  		"helhum/dotenv-connector": "^2",
- 		"helhum/config-loader": "^0.8",
+ 		"helhum/config-loader": "*",
  		"georgringer/news":"*"
  
- },
+}
  	
 "require-dev": {
 
@@ -46,7 +46,7 @@ erfordert folgende Pakete im composer.json und ggf. auch seitens des Servers ins
  		"ext-soap": "*",
  		"phpunit/php-invoker":"^1.1",
  		"nimut/testing-framework": "^3.0@dev"
- },
+}
 ```
 
 Vorgesehen sind die Tests auf einer Entwicklungsumgebung -> require-dev
