@@ -1,5 +1,5 @@
 <?php
-namespace TYPO3\CMS\Backend\Tests\Unit\Form\FormDataGroup;
+namespace Cag\CagTests\Tests\Backend\Unit\Form\FormDataGroup;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -24,7 +24,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 /**
  * Test case
  */
-class TcaDatabaseRecordTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class TcaDatabaseRecordTest extends \Cag\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * @var TcaDatabaseRecord

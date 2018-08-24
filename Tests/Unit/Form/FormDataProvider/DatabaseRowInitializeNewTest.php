@@ -1,5 +1,5 @@
 <?php
-namespace TYPO3\CMS\Backend\Tests\Unit\Form\FormDataProvider;
+namespace Cag\CagTests\Tests\Backend\Unit\Form\FormDataProvider;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -19,7 +19,7 @@ use TYPO3\CMS\Backend\Form\FormDataProvider\DatabaseRowInitializeNew;
 /**
  * Test case
  */
-class DatabaseRowInitializeNewTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class DatabaseRowInitializeNewTest extends \Cag\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * @var DatabaseRowInitializeNew

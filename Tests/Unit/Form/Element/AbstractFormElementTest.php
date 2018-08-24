@@ -1,5 +1,5 @@
 <?php
-namespace TYPO3\CMS\Backend\Tests\Unit\Form;
+namespace Cag\CagTests\Tests\Backend\Unit\Form;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -19,7 +19,7 @@ use TYPO3\CMS\Backend\Form\Element\AbstractFormElement;
 /**
  * Test case
  */
-class AbstractFormElementTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class AbstractFormElementTest extends \Cag\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * @return array
@@ -275,7 +275,7 @@ class AbstractFormElementTest extends \TYPO3\TestingFramework\Core\Unit\UnitTest
      */
     public function formatValueWithGivenConfiguration($config, $itemValue, $expectedResult)
     {
-        /** @var AbstractFormElement|\PHPUnit_Framework_MockObject_MockObject|\TYPO3\TestingFramework\Core\AccessibleObjectInterface */
+        /** @var AbstractFormElement|\PHPUnit_Framework_MockObject_MockObject|\Cag\CagTests\Core\AccessibleObjectInterface */
         $subject = $this->getAccessibleMock(AbstractFormElement::class, ['render'], [], '', false);
         $timezoneBackup = date_default_timezone_get();
         date_default_timezone_set('UTC');

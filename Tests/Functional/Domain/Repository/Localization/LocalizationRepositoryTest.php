@@ -20,7 +20,7 @@ use TYPO3\CMS\Core\Core\Bootstrap;
 /**
  * Test case for TYPO3\CMS\Backend\Domain\Repository\Localization\LocalizationRepository
  */
-class LocalizationRepositoryTest extends \TYPO3\TestingFramework\Core\Functional\FunctionalTestCase
+class LocalizationRepositoryTest extends \Cag\CagTests\Core\Functional\FunctionalTestCase
 {
     /**
      * @var LocalizationRepository

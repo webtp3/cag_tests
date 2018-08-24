@@ -20,7 +20,7 @@ use TYPO3\CMS\Sv\AuthenticationService;
 /**
  * Testcase for class \TYPO3\CMS\Sv\AuthenticationService
  */
-class AuthenticationServiceTest extends \TYPO3\TestingFramework\Core\Functional\FunctionalTestCase
+class AuthenticationServiceTest extends \Cag\CagTests\Core\Functional\FunctionalTestCase
 {
     /**
      * @var AuthenticationService
@@ -31,7 +31,7 @@ class AuthenticationServiceTest extends \TYPO3\TestingFramework\Core\Functional\
     {
         $this->subject = new AuthenticationService();
         parent::setUp();
-        $this->importDataSet(ORIGINAL_ROOT . 'typo3/sysext/sv/Tests/Functional/Fixtures/be_users.xml');
+        $this->importDataSet(ORIGINAL_ROOT . 'EXT:cag_tests/Tests/Functional/Fixtures/be_users.xml');
     }
 
     /**

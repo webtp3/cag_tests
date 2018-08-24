@@ -20,7 +20,9 @@
   },
   "autoload": {
     "psr-4": {
-      "CAG\\CagTests\\": "Classes/"
+      "CAG\\CagTests\\": "Classes/",
+      "TYPO3\\CMS\\Core\\Tests\\": "compat/core/",
+      "TYPO3\\CMS\\Fluid\\Tests\\": "compat/fluid/"
     }
   },
 	"autoload-dev": {

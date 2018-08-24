@@ -1,5 +1,5 @@
 <?php
-namespace TYPO3\CMS\Sv\Tests\Unit;
+namespace Cag\CagTests\Sv\Tests\Unit;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -17,7 +17,7 @@ namespace TYPO3\CMS\Sv\Tests\Unit;
 /**
  * Testcase for class \TYPO3\CMS\Sv\AuthenticationService
  */
-class AuthenticationServiceTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class AuthenticationServiceTest extends \Cag\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * Date provider for processLoginReturnsCorrectData

@@ -1,6 +1,6 @@
 <?php
 declare(strict_types = 1);
-namespace TYPO3\CMS\Backend\Tests\Unit\Form\FormDataProvider;
+namespace Cag\CagTests\Tests\Backend\Unit\Form\FormDataProvider;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -23,7 +23,7 @@ use TYPO3\CMS\Core\Utility\ArrayUtility;
 /**
  * Test case
  */
-class EvaluateDisplayConditionsTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class EvaluateDisplayConditionsTest extends \Cag\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * @test

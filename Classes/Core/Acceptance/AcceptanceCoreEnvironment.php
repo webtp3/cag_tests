@@ -23,7 +23,7 @@ use TYPO3\CMS\Core\Core\Bootstrap;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Styleguide\TcaDataGenerator\Generator;
-use TYPO3\TestingFramework\Core\Testbase;
+use Cag\CagTests\Core\Testbase;
 
 /**
  * This codeception extension creates a full TYPO3 instance within

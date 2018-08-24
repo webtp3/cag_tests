@@ -22,7 +22,7 @@ use TYPO3\CMS\Core\Authentication\BackendUserAuthentication;
 /**
  * Test case
  */
-class FormInlineAjaxControllerTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class FormInlineAjaxControllerTest extends \Cag\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * @test

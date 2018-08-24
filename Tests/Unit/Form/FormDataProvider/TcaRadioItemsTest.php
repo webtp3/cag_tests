@@ -1,5 +1,5 @@
 <?php
-namespace TYPO3\CMS\Backend\Tests\Unit\Form\FormDataProvider;
+namespace Cag\CagTests\Tests\Backend\Unit\Form\FormDataProvider;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -26,7 +26,7 @@ use TYPO3\CMS\Lang\LanguageService;
 /**
  * Test case
  */
-class TcaRadioItemsTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class TcaRadioItemsTest extends \Cag\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * @var TcaRadioItems

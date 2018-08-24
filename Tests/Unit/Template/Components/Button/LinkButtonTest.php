@@ -1,5 +1,5 @@
 <?php
-namespace TYPO3\CMS\Backend\Tests\Template\Components\Buttons;
+namespace Cag\CagTests\Tests\Backend\Template\Components\Buttons;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -20,7 +20,7 @@ use TYPO3\CMS\Core\Imaging\Icon;
 /**
  * Test case for LinkButton
  */
-class LinkButtonTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class LinkButtonTest extends \Cag\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * Try validating an empty button

@@ -21,12 +21,12 @@ use TYPO3\CMS\Core\DataHandling\DataHandler;
 use TYPO3\CMS\Core\Http\Response;
 use TYPO3\CMS\Core\Http\ServerRequest;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\TestingFramework\Core\Functional\Framework\DataHandling\ActionService;
+use Cag\CagTests\Core\Functional\Framework\DataHandling\ActionService;
 
 /**
  * Test case for TYPO3\CMS\Backend\Controller\Page\LocalizationController
  */
-class LocalizationControllerTest extends \TYPO3\TestingFramework\Core\Functional\FunctionalTestCase
+class LocalizationControllerTest extends \Cag\CagTests\Core\Functional\FunctionalTestCase
 {
     /**
      * @var LocalizationController
@@ -34,7 +34,7 @@ class LocalizationControllerTest extends \TYPO3\TestingFramework\Core\Functional
     protected $subject;
 
     /**
-     * @var \TYPO3\TestingFramework\Core\Functional\Framework\DataHandling\ActionService
+     * @var \Cag\CagTests\Core\Functional\Framework\DataHandling\ActionService
      */
     protected $actionService;
 

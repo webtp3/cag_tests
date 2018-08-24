@@ -1,5 +1,5 @@
 <?php
-namespace TYPO3\CMS\Backend\Tests\Unit\Form\Wizard;
+namespace Cag\CagTests\Tests\Backend\Unit\Form\Wizard;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -20,7 +20,7 @@ use TYPO3\CMS\Fluid\View\StandaloneView;
 /**
  * Test case
  */
-class SuggestWizardTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class SuggestWizardTest extends \Cag\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * @test

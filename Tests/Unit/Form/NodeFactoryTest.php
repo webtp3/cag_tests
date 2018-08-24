@@ -1,5 +1,5 @@
 <?php
-namespace TYPO3\CMS\Backend\Tests\Unit\Form;
+namespace Cag\CagTests\Tests\Backend\Unit\Form;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -22,7 +22,7 @@ use TYPO3\CMS\Backend\Form\NodeResolverInterface;
 /**
  * Test case
  */
-class NodeFactoryTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class NodeFactoryTest extends \Cag\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * @test

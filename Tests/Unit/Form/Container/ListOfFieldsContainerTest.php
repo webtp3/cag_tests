@@ -1,6 +1,6 @@
 <?php
 declare(strict_types = 1);
-namespace TYPO3\CMS\Backend\Tests\Unit\Form\Container;
+namespace Cag\CagTests\Tests\Backend\Unit\Form\Container;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -19,7 +19,7 @@ use Prophecy\Argument;
 use TYPO3\CMS\Backend\Form\Container\ListOfFieldsContainer;
 use TYPO3\CMS\Backend\Form\Container\PaletteAndSingleContainer;
 use TYPO3\CMS\Backend\Form\NodeFactory;
-use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
+use Cag\CagTests\Core\Unit\UnitTestCase;
 
 /**
  * Test case

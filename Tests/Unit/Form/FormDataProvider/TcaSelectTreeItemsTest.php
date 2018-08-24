@@ -1,5 +1,5 @@
 <?php
-namespace TYPO3\CMS\Backend\Tests\Unit\Form\FormDataProvider;
+namespace Cag\CagTests\Tests\Backend\Unit\Form\FormDataProvider;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -35,7 +35,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  *
  * @see TcaSelecItemsTest
  */
-class TcaSelectTreeItemsTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class TcaSelectTreeItemsTest extends \Cag\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * @var TcaSelectTreeItems

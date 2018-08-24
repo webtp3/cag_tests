@@ -1,5 +1,5 @@
 <?php
-namespace TYPO3\CMS\Backend\Tests\Unit\Form;
+namespace Cag\CagTests\Tests\Backend\Unit\Form;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -22,7 +22,7 @@ use TYPO3\CMS\Backend\Form\FormDataGroupInterface;
 /**
  * Test case
  */
-class FormDataCompilerTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class FormDataCompilerTest extends \Cag\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * @var FormDataCompiler
