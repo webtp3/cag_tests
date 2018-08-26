@@ -1,7 +1,7 @@
 {
   "name": "web-tp3/cag_tests",
   "type": "typo3-cms-extension",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "stability": "dev",
   "description": "Connecta AG :: Basic Testing and Samples",
   "license": "GPL-2.0+",
@@ -23,9 +23,25 @@
       "CAG\\CagTests\\": "Classes/"
     }
   },
-	"autoload-dev": {
-		"psr-4": {
-			"CAG\\CagTests\\": "Tests/"
-		}
-	}
+  "autoload-dev": {
+      "psr-4": {
+          "CAG\\CagTests\\": "Tests/"
+      }
+  },
+  "scripts": {
+    "test:php:unit": [
+      "@php -v",
+      "@php vendor/phpunit/phpunit/phpunit -c vendor/typo3/testing-framework/Resources/Core/Build/UnitTests.xml"
+    ],
+    "extension-tests": [
+      "php bin/phpunit  --configuration web/typo3conf/ext/cag_tests/Tests/Build/UnitTests.xml  --teamcity --log-junit UnitTests.log",
+      "php bin/phpunit --configuration web/typo3conf/ext/cag_tests/Tests/Build/UnitTestsDeprecated.xml  --teamcity --log-junit  UnitTestsDeprecated.log",
+      "php bin/phpunit --configuration web/typo3conf/ext/cag_tests/Tests/Build/FunctionalTests.xml  --teamcity --log-junit  FunctionalTests.log"
+    ],
+    "core-tests": [
+      "php bin/phpunit --configuration web/typo3conf/ext/cag_tests/Tests/Build/UnitTests.xml  --teamcity --log-junit UnitTests.log",
+      "php bin/phpunit --configuration web/typo3conf/ext/cag_tests/Tests/Build/UnitTestsDeprecated.xml   --teamcity --log-junit  UnitTestsDeprecated.log",
+      "php bin/phpunit --configuration web/typo3conf/ext/cag_tests/Tests/Build/FunctionalTests.xml   --teamcity --log-junit  FunctionalTests.log"
+    ]
+  }
 }
