@@ -1,7 +1,7 @@
 {
   "name": "web-tp3/cag_tests",
   "type": "typo3-cms-extension",
-  "version": "1.1.1",
+  "version": "1.2.1",
   "stability": "dev",
   "description": "Connecta AG :: Basic Testing and Samples",
   "license": "GPL-2.0+",
@@ -20,9 +20,7 @@
   },
   "autoload": {
     "psr-4": {
-      "CAG\\CagTests\\": "Classes/",
-      "TYPO3\\CMS\\Core\\Tests\\": "compat/core/",
-      "TYPO3\\CMS\\Fluid\\Tests\\": "compat/fluid/"
+      "CAG\\CagTests\\": "Classes/"
     }
   },
 	"autoload-dev": {

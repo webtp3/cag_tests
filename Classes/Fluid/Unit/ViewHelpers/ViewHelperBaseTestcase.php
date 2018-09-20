@@ -1,5 +1,5 @@
 <?php
-namespace Cag\CagTests\Fluid\Unit\ViewHelpers;
+namespace CAG\CagTests\Fluid\Unit\ViewHelpers;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -25,7 +25,7 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\ViewHelperVariableContainer;
 /**
  * Base test class for testing view helpers
  */
-abstract class ViewHelperBaseTestcase extends \Cag\CagTests\Core\Unit\UnitTestCase
+abstract class ViewHelperBaseTestcase extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * @var ViewHelperVariableContainer|ObjectProphecy

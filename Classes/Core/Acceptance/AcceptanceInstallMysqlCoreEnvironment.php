@@ -19,7 +19,7 @@ use Codeception\Event\SuiteEvent;
 use Codeception\Events;
 use Codeception\Extension;
 use Doctrine\DBAL\DriverManager;
-use Cag\CagTests\Core\Testbase;
+use TYPO3\TestingFramework\Core\Testbase;
 
 /**
  * This codeception extension creates a basic TYPO3 instance within
