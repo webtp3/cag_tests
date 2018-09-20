@@ -1,5 +1,5 @@
 <?php
-namespace Cag\CagTests\Controller;
+namespace CAG\CagTests\Controller;
 
 /***
  *
@@ -32,10 +32,10 @@ class FeGroupController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     /**
      * action show
      * 
-     * @param \Cag\CagTests\Domain\Model\FeGroup $feGroup
+     * @param \CAG\CagTests\Domain\Model\FeGroup $feGroup
      * @return void
      */
-    public function showAction(\Cag\CagTests\Domain\Model\FeGroup $feGroup)
+    public function showAction(\CAG\CagTests\Domain\Model\FeGroup $feGroup)
     {
         $this->view->assign('feGroup', $feGroup);
     }
@@ -53,10 +53,10 @@ class FeGroupController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     /**
      * action create
      * 
-     * @param \Cag\CagTests\Domain\Model\FeGroup $newFeGroup
+     * @param \CAG\CagTests\Domain\Model\FeGroup $newFeGroup
      * @return void
      */
-    public function createAction(\Cag\CagTests\Domain\Model\FeGroup $newFeGroup)
+    public function createAction(\CAG\CagTests\Domain\Model\FeGroup $newFeGroup)
     {
         $this->addFlashMessage('The object was created. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/typo3cms/extensions/extension_builder/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
         $this->feGroupRepository->add($newFeGroup);
@@ -66,11 +66,11 @@ class FeGroupController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     /**
      * action edit
      * 
-     * @param \Cag\CagTests\Domain\Model\FeGroup $feGroup
+     * @param \CAG\CagTests\Domain\Model\FeGroup $feGroup
      * @ignorevalidation $feGroup
      * @return void
      */
-    public function editAction(\Cag\CagTests\Domain\Model\FeGroup $feGroup)
+    public function editAction(\CAG\CagTests\Domain\Model\FeGroup $feGroup)
     {
         $this->view->assign('feGroup', $feGroup);
     }
@@ -78,10 +78,10 @@ class FeGroupController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     /**
      * action update
      * 
-     * @param \Cag\CagTests\Domain\Model\FeGroup $feGroup
+     * @param \CAG\CagTests\Domain\Model\FeGroup $feGroup
      * @return void
      */
-    public function updateAction(\Cag\CagTests\Domain\Model\FeGroup $feGroup)
+    public function updateAction(\CAG\CagTests\Domain\Model\FeGroup $feGroup)
     {
         $this->addFlashMessage('The object was updated. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/typo3cms/extensions/extension_builder/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
         $this->feGroupRepository->update($feGroup);
@@ -91,10 +91,10 @@ class FeGroupController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     /**
      * action delete
      * 
-     * @param \Cag\CagTests\Domain\Model\FeGroup $feGroup
+     * @param \CAG\CagTests\Domain\Model\FeGroup $feGroup
      * @return void
      */
-    public function deleteAction(\Cag\CagTests\Domain\Model\FeGroup $feGroup)
+    public function deleteAction(\CAG\CagTests\Domain\Model\FeGroup $feGroup)
     {
         $this->addFlashMessage('The object was deleted. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/typo3cms/extensions/extension_builder/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
         $this->feGroupRepository->remove($feGroup);

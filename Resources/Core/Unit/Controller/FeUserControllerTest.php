@@ -1,5 +1,5 @@
 <?php
-namespace Cag\CagTests\Tests\Unit\Controller;
+namespace CAG\CagTests\Tests\Unit\Controller;
 
 /**
  * Test case.
@@ -12,14 +12,14 @@ use Nimut\TestingFramework\TestCase\UnitTestCase;
 class FeUserControllerTest extends UnitTestCase
 {
     /**
-     * @var \Cag\CagTests\Controller\FeUserController
+     * @var \CAG\CagTests\Controller\FeUserController
      */
     protected $subject = null;
 
     protected function setUp()
     {
         parent::setUp();
-        $this->subject = $this->getMockBuilder(\Cag\CagTests\Controller\FeUserController::class)
+        $this->subject = $this->getMockBuilder(\CAG\CagTests\Controller\FeUserController::class)
             ->setMethods(['redirect', 'forward', 'addFlashMessage'])
             ->disableOriginalConstructor()
             ->getMock();

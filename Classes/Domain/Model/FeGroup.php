@@ -1,5 +1,5 @@
 <?php
-namespace Cag\CagTests\Domain\Model;
+namespace CAG\CagTests\Domain\Model;
 
 /***
  *

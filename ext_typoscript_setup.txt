@@ -5,24 +5,24 @@ config.tx_extbase {
 
       TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
         subclasses {
-          Tx_CagTests_FeUser = Cag\CagTests\Domain\Model\FeUser
+          Tx_CagTests_FeUser = CAG\CagTests\Domain\Model\FeUser
           
         }
       }
       TYPO3\CMS\Extbase\Domain\Model\FrontendUserGroup {
         subclasses {
-          Tx_CagTests_FeGroup = Cag\CagTests\Domain\Model\FeGroup
+          Tx_CagTests_FeGroup = CAG\CagTests\Domain\Model\FeGroup
           
         }
       }
-      Cag\CagTests\Domain\Model\FeUser {
+      CAG\CagTests\Domain\Model\FeUser {
         mapping {
           tableName = fe_users
           recordType = Tx_CagTests_FeUser
         }
       }
 
-      Cag\CagTests\Domain\Model\FeGroup {
+      CAG\CagTests\Domain\Model\FeGroup {
         mapping {
           tableName = fe_groups
           recordType = Tx_CagTests_FeGroup

@@ -12,4 +12,4 @@ extensions:
   enabled:
     - Codeception\Extension\RunFailed
     - Codeception\Extension\Recorder
-    - Cag\CagTests\Core\Acceptance\AcceptanceInstallPgsqlCoreEnvironment
+    - CAG\CagTests\Core\Acceptance\AcceptanceInstallPgsqlCoreEnvironment

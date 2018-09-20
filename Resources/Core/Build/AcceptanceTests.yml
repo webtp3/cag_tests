@@ -13,7 +13,7 @@ extensions:
   enabled:
     - Codeception\Extension\RunFailed
     - Codeception\Extension\Recorder
-    - Cag\CagTests\Core\Acceptance\AcceptanceCoreEnvironment
+    - CAG\CagTests\Core\Acceptance\AcceptanceCoreEnvironment
 groups:
   AcceptanceTests-Job-*: Configuration/Acceptance/AcceptanceTests-Job-*
 

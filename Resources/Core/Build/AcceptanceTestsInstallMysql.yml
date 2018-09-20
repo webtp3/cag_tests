@@ -12,4 +12,4 @@ extensions:
   enabled:
     - Codeception\Extension\RunFailed
     - Codeception\Extension\Recorder
-    - Cag\CagTests\Core\Acceptance\AcceptanceInstallMysqlCoreEnvironment
+    - CAG\CagTests\Core\Acceptance\AcceptanceInstallMysqlCoreEnvironment

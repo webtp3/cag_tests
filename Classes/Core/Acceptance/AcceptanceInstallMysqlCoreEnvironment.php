@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-namespace Cag\CagTests\Core\Acceptance;
+namespace CAG\CagTests\Core\Acceptance;
 
 /*
  * This file is part of the TYPO3 CMS project.

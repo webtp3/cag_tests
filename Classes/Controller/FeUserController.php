@@ -1,5 +1,5 @@
 <?php
-namespace Cag\CagTests\Controller;
+namespace CAG\CagTests\Controller;
 
 /***
  *
@@ -33,10 +33,10 @@ class FeUserController extends FrontendUserAuthentication
     /**
      * action show
      * 
-     * @param \Cag\CagTests\Domain\Model\FeUser $feUser
+     * @param \CAG\CagTests\Domain\Model\FeUser $feUser
      * @return void
      */
-    public function showAction(\Cag\CagTests\Domain\Model\FeUser $feUser)
+    public function showAction(\CAG\CagTests\Domain\Model\FeUser $feUser)
     {
         $this->view->assign('feUser', $feUser);
     }
@@ -54,10 +54,10 @@ class FeUserController extends FrontendUserAuthentication
     /**
      * action create
      * 
-     * @param \Cag\CagTests\Domain\Model\FeUser $newFeUser
+     * @param \CAG\CagTests\Domain\Model\FeUser $newFeUser
      * @return void
      */
-    public function createAction(\Cag\CagTests\Domain\Model\FeUser $newFeUser)
+    public function createAction(\CAG\CagTests\Domain\Model\FeUser $newFeUser)
     {
         $this->addFlashMessage('The object was created. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/typo3cms/extensions/extension_builder/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
         $this->feUserRepository->add($newFeUser);
@@ -67,11 +67,11 @@ class FeUserController extends FrontendUserAuthentication
     /**
      * action edit
      * 
-     * @param \Cag\CagTests\Domain\Model\FeUser $feUser
+     * @param \CAG\CagTests\Domain\Model\FeUser $feUser
      * @ignorevalidation $feUser
      * @return void
      */
-    public function editAction(\Cag\CagTests\Domain\Model\FeUser $feUser)
+    public function editAction(\CAG\CagTests\Domain\Model\FeUser $feUser)
     {
         $this->view->assign('feUser', $feUser);
     }
@@ -79,10 +79,10 @@ class FeUserController extends FrontendUserAuthentication
     /**
      * action update
      * 
-     * @param \Cag\CagTests\Domain\Model\FeUser $feUser
+     * @param \CAG\CagTests\Domain\Model\FeUser $feUser
      * @return void
      */
-    public function updateAction(\Cag\CagTests\Domain\Model\FeUser $feUser)
+    public function updateAction(\CAG\CagTests\Domain\Model\FeUser $feUser)
     {
         $this->addFlashMessage('The object was updated. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/typo3cms/extensions/extension_builder/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
         $this->feUserRepository->update($feUser);
@@ -92,10 +92,10 @@ class FeUserController extends FrontendUserAuthentication
     /**
      * action delete
      * 
-     * @param \Cag\CagTests\Domain\Model\FeUser $feUser
+     * @param \CAG\CagTests\Domain\Model\FeUser $feUser
      * @return void
      */
-    public function deleteAction(\Cag\CagTests\Domain\Model\FeUser $feUser)
+    public function deleteAction(\CAG\CagTests\Domain\Model\FeUser $feUser)
     {
         $this->addFlashMessage('The object was deleted. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/typo3cms/extensions/extension_builder/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
         $this->feUserRepository->remove($feUser);
