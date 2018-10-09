@@ -91,7 +91,7 @@ Execute all functional tests
 
 TYPO3 >=8.7
 ```bash
- php vendor/phpunit/phpunit/phpunit --configuration web/typo3conf/ext/cag_tests/Tests/Build/FunctionalTests.xml --teamcity
+ php bin/phpunit --configuration ../web/typo3conf/ext/cag_tests/Tests/Build/FunctionalTests.xml --teamcity
 ```
 
 ###  Acceptance Testing 
@@ -115,5 +115,32 @@ sleep 3;
 typo3DatabaseName='c1_cag_tests' typo3DatabaseHost='localhost' typo3DatabaseUsername='username' typo3DatabasePassword='pw' \
  vendor/codeception/codeception/codecept run Acceptance -c web/typo3conf/ext/cag_tests/Tests/Build/AcceptanceTests.yml
 ``` 
+
+
+clean after Tests
+DELETE FROM `be_users` WHERE `uid`='3333';
+DELETE FROM `be_users` WHERE `uid`='4444';
+DELETE FROM `be_groups` WHERE `uid`='444';
+
+DELETE FROM `sys_category` WHERE `uid`='1111';
+DELETE FROM `sys_category` WHERE `uid`='2222';
+DELETE FROM `sys_category` WHERE `uid`='3333';
+DELETE FROM `sys_category` WHERE `uid`='4444';
+DELETE FROM `sys_category` WHERE `uid`='5555';
+DELETE FROM `sys_category` WHERE `uid`='6666';
+DELETE FROM `sys_category` WHERE `uid`='7777';
+DELETE FROM `sys_category` WHERE `uid`='8888';
+DELETE FROM `sys_category` WHERE `uid`='9999';
+DELETE FROM `sys_category` WHERE `uid`='10000';
+DELETE FROM `sys_category` WHERE `uid`='11111';
+DELETE FROM `sys_category` WHERE `uid`='12222';
+DELETE FROM `sys_category` WHERE `uid`='13333';
+DELETE FROM `sys_category` WHERE `uid`='14444';
+DELETE FROM `sys_category` WHERE `uid`='15555';
+DELETE FROM `tx_extensionmanager_domain_model_extension` WHERE `uid`='111';
+DELETE FROM `tx_extensionmanager_domain_model_extension` WHERE `uid`='222';
+
+DELETE FROM `be_sessions` WHERE `ses_id`='886526ce72b86870739cc41991144ec1';
+DELETE FROM `be_sessions` WHERE `ses_id`='ff83dfd81e20b34c27d3e97771a4525a';
 
 **TODO:** Beispiel Tests für eigene Extensions!

@@ -23,7 +23,7 @@ use TYPO3\CMS\Core\Core\Bootstrap;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Styleguide\TcaDataGenerator\Generator;
-use TYPO3\TestingFramework\Core\Testbase;
+use CAG\CagTests\Core\Testbase;
 
 /**
  * This codeception extension creates a full TYPO3 instance within
@@ -133,12 +133,12 @@ class AcceptanceCoreEnvironment extends Extension
      * @var array
      */
     protected $xmlDatabaseFixtures = [
-        'EXT:cag_tests/Tests/Acceptance/Fixtures/be_users.xml',
-        'EXT:cag_tests/Tests/Acceptance/Fixtures/be_sessions.xml',
-        'EXT:cag_tests/Tests/Acceptance/Fixtures/be_groups.xml',
-        'EXT:cag_tests/Tests/Acceptance/Fixtures/sys_category.xml',
-        'EXT:cag_tests/Tests/Acceptance/Fixtures/tx_extensionmanager_domain_model_extension.xml',
-        'EXT:cag_tests/Tests/Acceptance/Fixtures/tx_extensionmanager_domain_model_repository.xml',
+        'PACKAGE:Packages/cag_tests/Resources/Core/Acceptance/Fixtures/be_users.xml',
+        'PACKAGE:Packages/cag_tests/Resources/Core/Acceptance/Fixtures/be_sessions.xml',
+        'PACKAGE:Packages/cag_tests/Resources/Core/Acceptance/Fixtures/be_groups.xml',
+        'PACKAGE:Packages/cag_tests/Resources/Core/Acceptance/Fixtures/sys_category.xml',
+        'PACKAGE:Packages/cag_tests/Resources/Core/Acceptance/Fixtures/tx_extensionmanager_domain_model_extension.xml',
+        'PACKAGE:Packages/cag_tests/Resources/Core/Acceptance/Fixtures/tx_extensionmanager_domain_model_repository.xml',
     ];
 
     /**

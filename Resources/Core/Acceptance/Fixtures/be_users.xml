@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <dataset>
 	<be_users>
-		<uid>3</uid>
+		<uid>3333</uid>
 		<pid>0</pid>
 		<tstamp>1366642540</tstamp>
 		<username>admin</username>
@@ -23,7 +23,7 @@
 		<workspace_preview>1</workspace_preview>
 	</be_users>
 	<be_users>
-		<uid>4</uid>
+		<uid>4444</uid>
 		<pid>0</pid>
 		<tstamp>1452944912</tstamp>
 		<username>editor</username>
@@ -44,6 +44,6 @@
 		<workspace_id>0</workspace_id>
 		<workspace_preview>1</workspace_preview>
 		<db_mountpoints>1</db_mountpoints>
-		<usergroup>4</usergroup>
+		<usergroup>444</usergroup>
 	</be_users>
 </dataset>

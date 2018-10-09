@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <dataset>
     <tx_extensionmanager_domain_model_extension>
-        <uid>1</uid>
+        <uid>111</uid>
         <pid>0</pid>
         <extension_key>superext</extension_key>
         <repository>1</repository>
@@ -26,7 +26,7 @@
         <lastreviewedversion>0</lastreviewedversion>
     </tx_extensionmanager_domain_model_extension>
     <tx_extensionmanager_domain_model_extension>
-        <uid>2</uid>
+        <uid>222</uid>
         <pid>0</pid>
         <extension_key>neededext</extension_key>
         <repository>1</repository>
