@@ -23,7 +23,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 /**
  * Test case
  */
-class ImageInfoTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class ImageInfoTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
 
     /**

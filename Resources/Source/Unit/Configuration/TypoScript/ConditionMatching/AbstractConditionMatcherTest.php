@@ -21,7 +21,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 /**
  * Test cases
  */
-class AbstractConditionMatcherTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class AbstractConditionMatcherTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * @var \TYPO3\CMS\Core\Core\ApplicationContext

@@ -16,7 +16,7 @@ namespace TYPO3\CMS\Core\Tests\Unit\Error;
  */
 
 use TYPO3\CMS\Core\Error\AbstractExceptionHandler;
-use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
+use CAG\CagTests\Core\Unit\UnitTestCase;
 
 /**
  * Testcase for the AbstractExceptionHandlerTest class

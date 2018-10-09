@@ -21,7 +21,7 @@ use TYPO3\CMS\Core\Registry;
 /**
  * Test case
  */
-class RegistryTest extends \TYPO3\TestingFramework\Core\Functional\FunctionalTestCase
+class RegistryTest extends \CAG\CagTests\Core\Functional\FunctionalTestCase
 {
 
     /**

@@ -17,7 +17,7 @@ namespace TYPO3\CMS\Core\Tests\Unit\Log;
 /**
  * Test case
  */
-class LogLevelTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class LogLevelTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * @test

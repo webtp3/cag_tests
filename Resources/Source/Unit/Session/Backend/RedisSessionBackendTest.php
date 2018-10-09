@@ -16,7 +16,7 @@ namespace TYPO3\CMS\Core\Tests\Unit\Session\Backend;
  */
 
 use TYPO3\CMS\Core\Session\Backend\RedisSessionBackend;
-use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
+use CAG\CagTests\Core\Unit\UnitTestCase;
 
 /**
  * Test case

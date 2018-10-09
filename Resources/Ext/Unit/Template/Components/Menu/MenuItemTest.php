@@ -19,7 +19,7 @@ use TYPO3\CMS\Backend\Template\Components\Menu\MenuItem;
 /**
  * Test case for MenuItem
  */
-class MenuItemTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class MenuItemTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * Try a blank menu Item

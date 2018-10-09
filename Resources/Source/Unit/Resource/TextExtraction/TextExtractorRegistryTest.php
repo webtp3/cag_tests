@@ -20,7 +20,7 @@ use TYPO3\CMS\Core\Resource\TextExtraction\TextExtractorRegistry;
 /**
  * Test cases for TextExtractorRegistry
  */
-class TextExtractorRegistryTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class TextExtractorRegistryTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * Initialize a TextExtractorRegistry and mock createTextExtractorInstance()

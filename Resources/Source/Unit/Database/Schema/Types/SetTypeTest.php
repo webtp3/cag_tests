@@ -24,7 +24,7 @@ use TYPO3\CMS\Core\Database\Schema\Types\SetType;
 /**
  * Tests for SetType
  */
-class SetTypeTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class SetTypeTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * Set up the test subject

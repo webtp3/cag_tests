@@ -19,7 +19,7 @@ use TYPO3\CMS\Backend\Template\Components\Buttons\FullyRenderedButton;
 /**
  * Test case for FullyRenderedButton
  */
-class FullyRenderedButtonTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class FullyRenderedButtonTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * Try to valide an empty button

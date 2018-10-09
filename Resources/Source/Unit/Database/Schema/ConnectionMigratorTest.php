@@ -30,7 +30,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 /**
  * Tests for ConnectionMigrator
  */
-class ConnectionMigratorTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class ConnectionMigratorTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * @var \Doctrine\DBAL\Platforms\AbstractPlatform|\Prophecy\Prophecy\ObjectProphecy
@@ -38,7 +38,7 @@ class ConnectionMigratorTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestC
     protected $platform;
 
     /**
-     * @var \PHPUnit_Framework_MockObject_MockObject|\TYPO3\TestingFramework\Core\AccessibleObjectInterface
+     * @var \PHPUnit_Framework_MockObject_MockObject|\CAG\CagTests\Core\AccessibleObjectInterface
      */
     protected $subject;
 

@@ -17,7 +17,7 @@ namespace TYPO3\CMS\Core\Tests\Unit\Log\Processor;
 /**
  * Test case
  */
-class AbstractMemoryTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class AbstractMemoryTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * @test

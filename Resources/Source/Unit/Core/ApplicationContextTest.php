@@ -19,7 +19,7 @@ use TYPO3\CMS\Core\Core\ApplicationContext;
 /**
  * Testcase for the ApplicationContext class
  */
-class ApplicationContextTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class ApplicationContextTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * Data provider with allowed contexts.

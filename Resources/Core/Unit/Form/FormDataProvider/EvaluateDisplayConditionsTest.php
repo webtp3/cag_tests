@@ -23,7 +23,7 @@ use TYPO3\CMS\Core\Utility\ArrayUtility;
 /**
  * Test case
  */
-class EvaluateDisplayConditionsTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class EvaluateDisplayConditionsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * @test

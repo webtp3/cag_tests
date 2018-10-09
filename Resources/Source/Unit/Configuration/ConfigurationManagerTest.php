@@ -17,7 +17,7 @@ namespace TYPO3\CMS\Core\Tests\Unit\Configuration;
 /**
  * Test case
  */
-class ConfigurationManagerTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class ConfigurationManagerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * @var \TYPO3\CMS\Core\Configuration\ConfigurationManager|\PHPUnit_Framework_MockObject_MockObject
@@ -371,7 +371,7 @@ class ConfigurationManagerTest extends \TYPO3\TestingFramework\Core\Unit\UnitTes
         if (function_exists('posix_getegid') && posix_getegid() === 0) {
             $this->markTestSkipped('Test skipped if run on linux as root');
         }
-        /** @var $subject \TYPO3\CMS\Core\Configuration\ConfigurationManager|\PHPUnit_Framework_MockObject_MockObject|\TYPO3\TestingFramework\Core\AccessibleObjectInterface */
+        /** @var $subject \TYPO3\CMS\Core\Configuration\ConfigurationManager|\PHPUnit_Framework_MockObject_MockObject|\CAG\CagTests\Core\AccessibleObjectInterface */
         $subject = $this->getAccessibleMock(\TYPO3\CMS\Core\Configuration\ConfigurationManager::class, ['dummy']);
 
         $file = 'typo3temp/var/tests/' . $this->getUniqueId('test_');
@@ -395,7 +395,7 @@ class ConfigurationManagerTest extends \TYPO3\TestingFramework\Core\Unit\UnitTes
      */
     public function canWriteConfigurationReturnsTrueIfDirectoryAndFilesAreWritable()
     {
-        /** @var $subject \TYPO3\CMS\Core\Configuration\ConfigurationManager|\PHPUnit_Framework_MockObject_MockObject|\TYPO3\TestingFramework\Core\AccessibleObjectInterface */
+        /** @var $subject \TYPO3\CMS\Core\Configuration\ConfigurationManager|\PHPUnit_Framework_MockObject_MockObject|\CAG\CagTests\Core\AccessibleObjectInterface */
         $subject = $this->getAccessibleMock(\TYPO3\CMS\Core\Configuration\ConfigurationManager::class, ['dummy']);
 
         $directory = 'typo3temp/var/tests/' . $this->getUniqueId('test_');
@@ -461,7 +461,7 @@ class ConfigurationManagerTest extends \TYPO3\TestingFramework\Core\Unit\UnitTes
     {
         $this->expectException(\RuntimeException::class);
 
-        /** @var $subject \TYPO3\CMS\Core\Configuration\ConfigurationManager|\PHPUnit_Framework_MockObject_MockObject|\TYPO3\TestingFramework\Core\AccessibleObjectInterface */
+        /** @var $subject \TYPO3\CMS\Core\Configuration\ConfigurationManager|\PHPUnit_Framework_MockObject_MockObject|\CAG\CagTests\Core\AccessibleObjectInterface */
         $subject = $this->getAccessibleMock(\TYPO3\CMS\Core\Configuration\ConfigurationManager::class, ['dummy']);
 
         $file = 'typo3temp/var/tests/' . $this->getUniqueId('test_');
@@ -478,7 +478,7 @@ class ConfigurationManagerTest extends \TYPO3\TestingFramework\Core\Unit\UnitTes
      */
     public function createLocalConfigurationFromFactoryConfigurationWritesContentFromFactoryFile()
     {
-        /** @var $subject \TYPO3\CMS\Core\Configuration\ConfigurationManager|\PHPUnit_Framework_MockObject_MockObject|\TYPO3\TestingFramework\Core\AccessibleObjectInterface */
+        /** @var $subject \TYPO3\CMS\Core\Configuration\ConfigurationManager|\PHPUnit_Framework_MockObject_MockObject|\CAG\CagTests\Core\AccessibleObjectInterface */
         $subject = $this->getAccessibleMock(\TYPO3\CMS\Core\Configuration\ConfigurationManager::class, ['writeLocalConfiguration']);
         $subject->_set('localConfigurationFile', 'typo3temp/var/tests/' . $this->getUniqueId('dummy_'));
 
@@ -510,7 +510,7 @@ class ConfigurationManagerTest extends \TYPO3\TestingFramework\Core\Unit\UnitTes
      */
     public function createLocalConfigurationFromFactoryConfigurationMergesConfigurationWithAdditionalFactoryFile()
     {
-        /** @var $subject \TYPO3\CMS\Core\Configuration\ConfigurationManager|\PHPUnit_Framework_MockObject_MockObject|\TYPO3\TestingFramework\Core\AccessibleObjectInterface */
+        /** @var $subject \TYPO3\CMS\Core\Configuration\ConfigurationManager|\PHPUnit_Framework_MockObject_MockObject|\CAG\CagTests\Core\AccessibleObjectInterface */
         $subject = $this->getAccessibleMock(\TYPO3\CMS\Core\Configuration\ConfigurationManager::class, ['writeLocalConfiguration']);
         $subject->_set('localConfigurationFile', 'typo3temp/var/tests/' . $this->getUniqueId('dummy_'));
 
@@ -553,7 +553,7 @@ class ConfigurationManagerTest extends \TYPO3\TestingFramework\Core\Unit\UnitTes
      */
     public function isValidLocalConfigurationPathAcceptsWhitelistedPath()
     {
-        /** @var $subject \TYPO3\CMS\Core\Configuration\ConfigurationManager|\PHPUnit_Framework_MockObject_MockObject|\TYPO3\TestingFramework\Core\AccessibleObjectInterface */
+        /** @var $subject \TYPO3\CMS\Core\Configuration\ConfigurationManager|\PHPUnit_Framework_MockObject_MockObject|\CAG\CagTests\Core\AccessibleObjectInterface */
         $subject = $this->getAccessibleMock(\TYPO3\CMS\Core\Configuration\ConfigurationManager::class, ['dummy']);
         $subject->_set('whiteListedLocalConfigurationPaths', ['foo/bar']);
         $this->assertTrue($subject->_call('isValidLocalConfigurationPath', 'foo/bar/baz'));
@@ -564,7 +564,7 @@ class ConfigurationManagerTest extends \TYPO3\TestingFramework\Core\Unit\UnitTes
      */
     public function isValidLocalConfigurationPathDeniesNotWhitelistedPath()
     {
-        /** @var $subject \TYPO3\CMS\Core\Configuration\ConfigurationManager|\PHPUnit_Framework_MockObject_MockObject|\TYPO3\TestingFramework\Core\AccessibleObjectInterface */
+        /** @var $subject \TYPO3\CMS\Core\Configuration\ConfigurationManager|\PHPUnit_Framework_MockObject_MockObject|\CAG\CagTests\Core\AccessibleObjectInterface */
         $subject = $this->getAccessibleMock(\TYPO3\CMS\Core\Configuration\ConfigurationManager::class, ['dummy']);
         $subject->_set('whiteListedLocalConfigurationPaths', ['foo/bar']);
         $this->assertFalse($subject->_call('isValidLocalConfigurationPath', 'bar/baz'));

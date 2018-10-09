@@ -17,12 +17,12 @@ namespace TYPO3\CMS\Core\Tests\Functional\DataHandling;
 use TYPO3\CMS\Core\Core\Bootstrap;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\TestingFramework\Core\Functional\Framework\Constraint\RequestSection\DoesNotHaveRecordConstraint;
-use TYPO3\TestingFramework\Core\Functional\Framework\Constraint\RequestSection\HasRecordConstraint;
-use TYPO3\TestingFramework\Core\Functional\Framework\Constraint\RequestSection\StructureDoesNotHaveRecordConstraint;
-use TYPO3\TestingFramework\Core\Functional\Framework\Constraint\RequestSection\StructureHasRecordConstraint;
-use TYPO3\TestingFramework\Core\Functional\Framework\DataHandling\ActionService;
-use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
+use CAG\CagTests\Core\Functional\Framework\Constraint\RequestSection\DoesNotHaveRecordConstraint;
+use CAG\CagTests\Core\Functional\Framework\Constraint\RequestSection\HasRecordConstraint;
+use CAG\CagTests\Core\Functional\Framework\Constraint\RequestSection\StructureDoesNotHaveRecordConstraint;
+use CAG\CagTests\Core\Functional\Framework\Constraint\RequestSection\StructureHasRecordConstraint;
+use CAG\CagTests\Core\Functional\Framework\DataHandling\ActionService;
+use CAG\CagTests\Core\Functional\FunctionalTestCase;
 
 /**
  * Functional test for the DataHandler

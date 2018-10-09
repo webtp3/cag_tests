@@ -21,7 +21,7 @@ use TYPO3\CMS\Core\Utility\RootlineUtility;
 /**
  * Test case for TYPO3\CMS\Backend\Controller\Page\LocalizationController
  */
-class BackendUtilityTest extends \TYPO3\TestingFramework\Core\Functional\FunctionalTestCase
+class BackendUtilityTest extends \CAG\CagTests\Core\Functional\FunctionalTestCase
 {
     /**
      * Sets up this test case.

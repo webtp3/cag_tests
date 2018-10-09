@@ -18,7 +18,7 @@ namespace TYPO3\CMS\Core\Tests\Functional\Error;
 /**
  * Testcase for class \TYPO3\CMS\Core\Error\ErrorHandler
  */
-class ErrorHandlerTest extends \TYPO3\TestingFramework\Core\Functional\FunctionalTestCase
+class ErrorHandlerTest extends \CAG\CagTests\Core\Functional\FunctionalTestCase
 {
     /**
      * @var array

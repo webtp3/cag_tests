@@ -19,7 +19,7 @@ use TYPO3\CMS\Core\Tests\Unit\Cache\Backend\Fixtures\ConcreteBackendFixture;
 /**
  * Test case
  */
-class AbstractBackendTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class AbstractBackendTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * @test

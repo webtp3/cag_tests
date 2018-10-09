@@ -17,7 +17,7 @@ namespace TYPO3\CMS\Core\Tests\Unit\Resource\Rendering;
 /**
  * Class VideoTagRendererTest
  */
-class VideoTagRendererTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class VideoTagRendererTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * @test

@@ -15,12 +15,12 @@ namespace TYPO3\CMS\Core\Tests\Functional\Database;
  */
 use TYPO3\CMS\Core\Core\Bootstrap;
 use TYPO3\CMS\Core\Database\DatabaseConnection;
-use TYPO3\TestingFramework\Core\AccessibleObjectInterface;
+use CAG\CagTests\Core\AccessibleObjectInterface;
 
 /**
  * Test case for \TYPO3\CMS\Core\Database\DatabaseConnection
  */
-class DatabaseConnectionTest extends \TYPO3\TestingFramework\Core\Functional\FunctionalTestCase
+class DatabaseConnectionTest extends \CAG\CagTests\Core\Functional\FunctionalTestCase
 {
     /**
      * @var DatabaseConnection

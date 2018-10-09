@@ -19,7 +19,7 @@ use TYPO3\CMS\Backend\Form\FormDataProvider\DatabaseEffectivePid;
 /**
  * Test case
  */
-class DatabaseEffectivePidTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class DatabaseEffectivePidTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * @var DatabaseEffectivePid

@@ -19,7 +19,7 @@ use TYPO3\CMS\Core\Cache\Backend\WincacheBackend;
 /**
  * Testcase for the WinCache cache backend
  */
-class WincacheBackendTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class WincacheBackendTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * Sets up this testcase
@@ -263,7 +263,7 @@ class WincacheBackendTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
      * Sets up the WinCache backend used for testing
      *
      * @param bool $accessible TRUE if backend should be encapsulated in accessible proxy otherwise FALSE.
-     * @return \TYPO3\TestingFramework\Core\AccessibleObjectInterface|WincacheBackend
+     * @return \CAG\CagTests\Core\AccessibleObjectInterface|WincacheBackend
      */
     protected function setUpBackend($accessible = false)
     {

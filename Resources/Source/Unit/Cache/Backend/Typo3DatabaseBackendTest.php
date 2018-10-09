@@ -26,7 +26,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 /**
  * Test case
  */
-class Typo3DatabaseBackendTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class Typo3DatabaseBackendTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * @test

@@ -23,7 +23,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 /**
  * Test case
  */
-class TcaTextTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class TcaTextTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * @test

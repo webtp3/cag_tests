@@ -21,7 +21,7 @@ use TYPO3\CMS\Core\Resource\Processing\TaskInterface;
 /**
  * Testcase for \TYPO3\CMS\Core\Resource\Processing\LocalPreviewHelper
  */
-class LocalPreviewHelperTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class LocalPreviewHelperTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * @test

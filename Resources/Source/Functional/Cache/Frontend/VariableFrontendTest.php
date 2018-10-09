@@ -20,7 +20,7 @@ use TYPO3\CMS\Core\Cache\Frontend\VariableFrontend;
 /**
  * Test case
  */
-class VariableFrontendTest extends \TYPO3\TestingFramework\Core\Functional\FunctionalTestCase
+class VariableFrontendTest extends \CAG\CagTests\Core\Functional\FunctionalTestCase
 {
     public function insertSerializedArrayIntoLobAndRetrieveItDataProvider()
     {

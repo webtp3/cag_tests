@@ -22,7 +22,7 @@ use Doctrine\DBAL\Platforms\PostgreSqlPlatform;
 use Doctrine\DBAL\Platforms\SqlitePlatform;
 use Doctrine\DBAL\Platforms\SQLServerPlatform;
 use TYPO3\CMS\Core\Database\Platform\PlatformInformation;
-use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
+use CAG\CagTests\Core\Unit\UnitTestCase;
 
 /**
  * Test case

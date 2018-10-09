@@ -19,10 +19,10 @@ use TYPO3\CMS\Core\TypoScript\Parser\TypoScriptParser;
 /**
  * Test case for \TYPO3\CMS\Core\TypoScript\Parser\TypoScriptParser
  */
-class TypoScriptParserTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class TypoScriptParserTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
-     * @var \TYPO3\CMS\Core\TypoScript\Parser\TypoScriptParser|\TYPO3\TestingFramework\Core\AccessibleObjectInterface
+     * @var \TYPO3\CMS\Core\TypoScript\Parser\TypoScriptParser|\CAG\CagTests\Core\AccessibleObjectInterface
      */
     protected $typoScriptParser = null;
 

@@ -23,7 +23,7 @@ use TYPO3\CMS\Core\Log\Writer\DatabaseWriter;
 /**
  * Test case
  */
-class DatabaseWriterTest extends \TYPO3\TestingFramework\Core\Functional\FunctionalTestCase
+class DatabaseWriterTest extends \CAG\CagTests\Core\Functional\FunctionalTestCase
 {
     /**
      * @test

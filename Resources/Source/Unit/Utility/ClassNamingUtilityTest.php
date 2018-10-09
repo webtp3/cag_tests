@@ -17,7 +17,7 @@ namespace TYPO3\CMS\Core\Tests\Unit\Utility;
 /**
  * Testcase for class \TYPO3\CMS\Core\Utility\ClassNamingUtility
  */
-class ClassNamingUtilityTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class ClassNamingUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * DataProvider for translateModelNameToRepositoryName

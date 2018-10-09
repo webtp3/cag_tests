@@ -22,7 +22,7 @@ use TYPO3\CMS\Lang\LanguageService;
 /**
  * Test case
  */
-class TcaRecordTitleTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class TcaRecordTitleTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * @var TcaRecordTitle

@@ -17,7 +17,7 @@ namespace TYPO3\CMS\Core\Tests\Unit\Error;
 /**
  * testcase for the DebugExceptionHandler class.
  */
-class DebugExceptionHandlerTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class DebugExceptionHandlerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * @var \TYPO3\CMS\Core\Error\DebugExceptionHandler|\PHPUnit_Framework_MockObject_MockObject

@@ -23,7 +23,7 @@ use TYPO3\CMS\Core\Database\Schema\Parser\Parser;
 /**
  * Tests for CreateColumnDefinitionItem
  */
-class ColumnDefinitionItemTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class ColumnDefinitionItemTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * @test

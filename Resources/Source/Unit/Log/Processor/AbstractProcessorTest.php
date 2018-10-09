@@ -20,7 +20,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 /**
  * Test case
  */
-class AbstractProcessorTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class AbstractProcessorTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * @test

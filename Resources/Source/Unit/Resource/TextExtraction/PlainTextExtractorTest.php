@@ -20,7 +20,7 @@ use TYPO3\CMS\Core\Resource\TextExtraction\PlainTextExtractor;
 /**
  * Class PlainTextExtractorTest
  */
-class PlainTextExtractorTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class PlainTextExtractorTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * @test

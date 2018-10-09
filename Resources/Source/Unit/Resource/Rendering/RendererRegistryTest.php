@@ -17,7 +17,7 @@ namespace TYPO3\CMS\Core\Tests\Unit\Resource\Rendering;
 /**
  * Test cases for RendererRegistry
  */
-class RendererRegistryTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class RendererRegistryTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * Initialize a RendererRegistry and mock createRendererInstance()

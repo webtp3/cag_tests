@@ -22,7 +22,7 @@ use TYPO3\CMS\Backend\Form\NodeResolverInterface;
 /**
  * Test case
  */
-class NodeFactoryTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class NodeFactoryTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * @test

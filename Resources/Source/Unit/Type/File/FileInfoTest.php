@@ -17,7 +17,7 @@ namespace TYPO3\CMS\Core\Tests\Unit\Type\File;
 /**
  * Test case
  */
-class FileInfoTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class FileInfoTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * @test

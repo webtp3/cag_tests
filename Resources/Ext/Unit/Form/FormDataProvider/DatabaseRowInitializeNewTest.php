@@ -19,7 +19,7 @@ use TYPO3\CMS\Backend\Form\FormDataProvider\DatabaseRowInitializeNew;
 /**
  * Test case
  */
-class DatabaseRowInitializeNewTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class DatabaseRowInitializeNewTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * @var DatabaseRowInitializeNew

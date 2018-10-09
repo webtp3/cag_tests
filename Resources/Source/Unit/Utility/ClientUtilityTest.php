@@ -17,7 +17,7 @@ namespace TYPO3\CMS\Core\Tests\Unit\Utility;
 /**
  * Testcase for the \TYPO3\CMS\Core\Utility\ClientUtility class.
  */
-class ClientUtilityTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class ClientUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     //////////////////////////////////////////////////////////
     // Utility Functions

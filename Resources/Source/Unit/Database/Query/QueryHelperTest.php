@@ -22,7 +22,7 @@ use TYPO3\CMS\Core\Database\Query\QueryHelper;
 /**
  * Query helper test
  */
-class QueryHelperTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class QueryHelperTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * Test cases for stripping of leading logical operators in where constraints.

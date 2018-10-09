@@ -19,7 +19,7 @@ use TYPO3\CMS\Core\Registry;
 /**
  * Test case
  */
-class RegistryTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class RegistryTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * @test

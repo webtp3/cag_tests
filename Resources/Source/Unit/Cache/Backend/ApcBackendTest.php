@@ -24,7 +24,7 @@ use TYPO3\CMS\Core\Cache\Backend\ApcBackend;
  *
  * This file is a backport from FLOW3
  */
-class ApcBackendTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class ApcBackendTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * Sets up this testcase
@@ -301,7 +301,7 @@ class ApcBackendTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
      * Sets up the APC backend used for testing
      *
      * @param bool $accessible TRUE if backend should be encapsulated in accessible proxy otherwise FALSE.
-     * @return \TYPO3\TestingFramework\Core\AccessibleObjectInterface|ApcBackend
+     * @return \CAG\CagTests\Core\AccessibleObjectInterface|ApcBackend
      */
     protected function setUpBackend($accessible = false)
     {

@@ -18,7 +18,7 @@ use TYPO3\CMS\Backend\Form\Element\InputHiddenElement;
 /**
  * Tests for InputHiddenElement Form
  */
-class InputHiddenElementTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class InputHiddenElementTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * @test

@@ -19,7 +19,7 @@ use TYPO3\CMS\Core\Utility\ArrayUtility;
 /**
  * Test case
  */
-class ArrayUtilityTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     ///////////////////////
     // Tests concerning filterByValueRecursive

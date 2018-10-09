@@ -17,7 +17,7 @@ namespace TYPO3\CMS\Core\Tests\Functional\IO;
 
 use TYPO3\CMS\Core\IO\PharStreamWrapper;
 use TYPO3\CMS\Core\IO\PharStreamWrapperException;
-use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
+use CAG\CagTests\Core\Functional\FunctionalTestCase;
 
 class PharStreamWrapperTest extends FunctionalTestCase
 {

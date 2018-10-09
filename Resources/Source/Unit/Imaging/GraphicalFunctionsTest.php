@@ -17,7 +17,7 @@ namespace TYPO3\CMS\Core\Tests\Unit\Imaging;
 /**
  * Testcase for \TYPO3\CMS\Core\Imaging\GraphicalFunctions
  */
-class GraphicalFunctionsTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class GraphicalFunctionsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * @var \TYPO3\CMS\Core\Imaging\GraphicalFunctions

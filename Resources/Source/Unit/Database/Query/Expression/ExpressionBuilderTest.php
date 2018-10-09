@@ -23,7 +23,7 @@ use TYPO3\CMS\Core\Database\Query\Expression\CompositeExpression;
 use TYPO3\CMS\Core\Database\Query\Expression\ExpressionBuilder;
 use TYPO3\CMS\Core\Tests\Unit\Database\Mocks\MockPlatform;
 
-class ExpressionBuilderTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class ExpressionBuilderTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * @var Connection

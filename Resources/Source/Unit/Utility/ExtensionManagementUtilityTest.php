@@ -29,7 +29,7 @@ use TYPO3\CMS\Frontend\Utility\EidUtility;
 /**
  * Test case
  */
-class ExtensionManagementUtilityTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class ExtensionManagementUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * @var array A backup of registered singleton instances

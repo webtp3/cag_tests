@@ -23,7 +23,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 /**
  * Test case
  */
-class OnTheFlyTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class OnTheFlyTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * @var OnTheFly

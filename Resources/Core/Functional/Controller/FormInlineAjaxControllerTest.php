@@ -19,7 +19,7 @@ use TYPO3\CMS\Core\Core\Bootstrap;
 use TYPO3\CMS\Core\Http\Response;
 use TYPO3\CMS\Core\Http\ServerRequest;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
+use CAG\CagTests\Core\Functional\FunctionalTestCase;
 
 /**
  * Test case for TYPO3\CMS\Backend\Controller\Page\LocalizationController

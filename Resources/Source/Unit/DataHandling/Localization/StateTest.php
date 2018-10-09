@@ -16,7 +16,7 @@ namespace TYPO3\CMS\Core\Tests\Unit\DataHandler\Localization;
  */
 
 use TYPO3\CMS\Core\DataHandling\Localization\State;
-use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
+use CAG\CagTests\Core\Unit\UnitTestCase;
 
 /**
  * Test case

@@ -24,7 +24,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 /**
  * Test case
  */
-class TcaPreparationTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class TcaPreparationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     public function prepareQuotingOfTableNamesAndColumnNamesDataProvider()
     {

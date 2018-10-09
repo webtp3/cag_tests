@@ -25,7 +25,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 /**
  * Test case
  */
-class ResourceStorageTest extends \TYPO3\TestingFramework\Core\Functional\FunctionalTestCase
+class ResourceStorageTest extends \CAG\CagTests\Core\Functional\FunctionalTestCase
 {
     protected function tearDown()
     {

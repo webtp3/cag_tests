@@ -34,12 +34,12 @@ use TYPO3\CMS\Core\Tests\Unit\Utility\Fixtures\ReplacementClassFixture;
 use TYPO3\CMS\Core\Tests\Unit\Utility\Fixtures\TwoParametersConstructorFixture;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\TestingFramework\Core\FileStreamWrapper;
+use CAG\CagTests\Core\FileStreamWrapper;
 
 /**
  * Testcase for class \TYPO3\CMS\Core\Utility\GeneralUtility
  */
-class GeneralUtilityTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     const NO_FIX_PERMISSIONS_ON_WINDOWS = 'fixPermissions() not available on Windows (method does nothing)';
     /**

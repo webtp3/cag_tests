@@ -19,7 +19,7 @@ use TYPO3\CMS\Backend\Form\FormDataProvider\TcaColumnsOverrides;
 /**
  * Test case
  */
-class TcaColumnsOverridesTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class TcaColumnsOverridesTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * @var TcaColumnsOverrides

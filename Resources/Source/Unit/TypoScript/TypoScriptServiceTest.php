@@ -19,7 +19,7 @@ use TYPO3\CMS\Core\TypoScript\TypoScriptService;
 /**
  * Test case
  */
-class TypoScriptServiceTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class TypoScriptServiceTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * data provider for convertTypoScriptArrayToPlainArray

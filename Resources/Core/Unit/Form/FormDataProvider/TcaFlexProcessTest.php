@@ -25,7 +25,7 @@ use TYPO3\CMS\Lang\LanguageService;
 /**
  * Test case
  */
-class TcaFlexProcessTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class TcaFlexProcessTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * @var BackendUserAuthentication|ObjectProphecy

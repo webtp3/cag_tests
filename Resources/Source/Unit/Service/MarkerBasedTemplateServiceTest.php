@@ -24,7 +24,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 /**
  * Unit test for marker utility
  */
-class MarkerBasedTemplateServiceTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class MarkerBasedTemplateServiceTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * @var MarkerBasedTemplateService

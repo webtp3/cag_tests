@@ -19,7 +19,7 @@ use TYPO3\CMS\Backend\Form\FormDataProvider\ParentPageTca;
 /**
  * Test case
  */
-class ParentPageTcaTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class ParentPageTcaTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * @var ParentPageTca

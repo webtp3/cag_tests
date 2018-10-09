@@ -23,7 +23,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 /**
  * Tests related to DataHandler::getUnique()
  */
-class GetUniqueTest extends \TYPO3\TestingFramework\Core\Functional\FunctionalTestCase
+class GetUniqueTest extends \CAG\CagTests\Core\Functional\FunctionalTestCase
 {
     protected function setUp()
     {

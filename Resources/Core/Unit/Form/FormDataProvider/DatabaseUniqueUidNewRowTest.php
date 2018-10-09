@@ -19,7 +19,7 @@ use TYPO3\CMS\Backend\Form\FormDataProvider\DatabaseUniqueUidNewRow;
 /**
  * Test case
  */
-class DatabaseUniqueUidNewRowTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class DatabaseUniqueUidNewRowTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * @var DatabaseUniqueUidNewRow

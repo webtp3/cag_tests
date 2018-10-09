@@ -17,7 +17,7 @@ namespace TYPO3\CMS\Core\Tests\Unit\Imaging\ImageManipulation;
 
 use TYPO3\CMS\Core\Imaging\ImageManipulation\CropVariant;
 use TYPO3\CMS\Core\Imaging\ImageManipulation\InvalidConfigurationException;
-use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
+use CAG\CagTests\Core\Unit\UnitTestCase;
 
 class CropVariantTest extends UnitTestCase
 {

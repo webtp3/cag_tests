@@ -19,7 +19,7 @@ use TYPO3\CMS\Backend\Module\ModuleLoader;
 /**
  * Test case
  */
-class ModuleLoaderTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class ModuleLoaderTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     protected function setUp()
     {

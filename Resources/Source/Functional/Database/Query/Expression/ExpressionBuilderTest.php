@@ -16,7 +16,7 @@ namespace TYPO3\CMS\Core\Tests\Functional\Database\Query\Expression;
  */
 
 use TYPO3\CMS\Core\Database\ConnectionPool;
-use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
+use CAG\CagTests\Core\Functional\FunctionalTestCase;
 
 /**
  * Test case

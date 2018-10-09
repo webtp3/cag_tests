@@ -20,7 +20,7 @@ use TYPO3\CMS\Core\Registry;
 /**
  * Testcase
  */
-class FormProtectionFactoryTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class FormProtectionFactoryTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     protected function tearDown()
     {

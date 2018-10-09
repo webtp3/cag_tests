@@ -17,7 +17,7 @@ namespace TYPO3\CMS\Core\Tests\Unit\Resource\Index;
 /**
  * Class ExtractorRegistryTest
  */
-class ExtractorRegistryTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class ExtractorRegistryTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * @test

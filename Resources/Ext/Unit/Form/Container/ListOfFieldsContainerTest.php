@@ -19,7 +19,7 @@ use Prophecy\Argument;
 use TYPO3\CMS\Backend\Form\Container\ListOfFieldsContainer;
 use TYPO3\CMS\Backend\Form\Container\PaletteAndSingleContainer;
 use TYPO3\CMS\Backend\Form\NodeFactory;
-use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
+use CAG\CagTests\Core\Unit\UnitTestCase;
 
 /**
  * Test case

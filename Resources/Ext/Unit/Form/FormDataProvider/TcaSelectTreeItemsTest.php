@@ -35,7 +35,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  *
  * @see TcaSelecItemsTest
  */
-class TcaSelectTreeItemsTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class TcaSelectTreeItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * @var TcaSelectTreeItems

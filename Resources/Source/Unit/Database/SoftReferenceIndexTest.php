@@ -16,7 +16,7 @@ namespace TYPO3\CMS\Core\Tests\Unit\Database;
  */
 
 use TYPO3\CMS\Core\Database\SoftReferenceIndex;
-use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
+use CAG\CagTests\Core\Unit\UnitTestCase;
 
 /**
  * Test case

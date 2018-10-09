@@ -20,7 +20,7 @@ use TYPO3\CMS\Core\Configuration\Richtext;
 /**
  * Test case
  */
-class RichtextTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
+class RichtextTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
      * @test
