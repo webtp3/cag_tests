@@ -1,0 +1,25 @@
+<phpunit
+		backupGlobals="false"
+		backupStaticAttributes="false"
+		bootstrap="FunctionalTestsBootstrap.php"
+		colors="true"
+		convertErrorsToExceptions="true"
+		convertWarningsToExceptions="true"
+		forceCoversAnnotation="false"
+		processIsolation="true"
+		stopOnError="false"
+		stopOnFailure="false"
+		stopOnIncomplete="false"
+		stopOnSkipped="false"
+		strict="false"
+		verbose="false"
+>
+	<testsuites>
+
+
+		<testsuite name="cag_hessenfilm_func_tests">
+			<directory>../../../../../web/typo3conf/ext/filmcomission/Tests/Functional/</directory>
+			<directory>../../../../../web/typo3conf/ext/locationupdate/Tests/Functional/</directory>
+		</testsuite>
+	</testsuites>
+</phpunit>
