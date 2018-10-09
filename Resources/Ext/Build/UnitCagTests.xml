@@ -17,8 +17,7 @@
 
 
 		<testsuite name="cag_ext_unit_tests">
-			<directory>../../../../../web/typo3conf/ext/filmcomission/Tests/Unit/</directory>
-			<directory>../../../../../web/typo3conf/ext/locationupdate/Tests/Unit/</directory>
+			<directory>../../../../../web/typo3conf/ext/cag*/Tests/Unit/</directory>
 		</testsuite>
 
 	</testsuites>
