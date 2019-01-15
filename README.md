@@ -113,9 +113,8 @@ sleep 3;
 
 ```bash
 typo3DatabaseName='c1_cag_tests' typo3DatabaseHost='localhost' typo3DatabaseUsername='username' typo3DatabasePassword='pw' \
- vendor/codeception/codeception/codecept run Acceptance -c web/typo3conf/ext/cag_tests/Tests/Build/AcceptanceTests.yml
+ vendor/codeception/codeception/codecept run Acceptance -c web/typo3conf/ext/cag_tests/Resources/Core/Build/AcceptanceTests.yml
 ``` 
-
 
 clean after Tests
 DELETE FROM `be_users` WHERE `uid`='3333';

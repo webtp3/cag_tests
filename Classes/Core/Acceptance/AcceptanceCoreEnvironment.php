@@ -184,16 +184,20 @@ class AcceptanceCoreEnvironment extends Extension
         $testbase->createLastRunTextfile($instancePath);
         $testbase->setUpInstanceCoreLinks($instancePath);
         // ext:styleguide is always loaded
-        $testExtensionsToLoad = array_merge(
-            [ 'typo3conf/ext/styleguide' ],
-            $this->testExtensionsToLoad
-        );
-        $testbase->linkTestExtensionsToInstance($instancePath, $testExtensionsToLoad);
-        $testbase->linkPathsInTestInstance($instancePath, $this->pathsToLinkInTestInstance);
+//        $testExtensionsToLoad = array_merge(
+//            [ 'typo3conf/ext/styleguide' ],
+//            $this->testExtensionsToLoad
+//        );
+       // $testbase->linkTestExtensionsToInstance($instancePath, $testExtensionsToLoad);
+       // $testbase->linkPathsInTestInstance($instancePath, $this->pathsToLinkInTestInstance);
         $localConfiguration['DB'] = $testbase->getOriginalDatabaseSettingsFromEnvironmentOrLocalConfiguration();
         $originalDatabaseName = $localConfiguration['DB']['Connections']['Default']['dbname'];
         // Append the unique identifier to the base database name to end up with a single database per test case
-        $localConfiguration['DB']['Connections']['Default']['dbname'] = $originalDatabaseName . '_at';
+        /*
+         * removed db instance for tests
+         * . '_at'
+         */
+        $localConfiguration['DB']['Connections']['Default']['dbname'] = $originalDatabaseName ;
         $testbase->testDatabaseNameIsNotTooLong($originalDatabaseName, $localConfiguration);
         // Set some hard coded base settings for the instance. Those could be overruled by
         // $this->configurationToUseInTestInstance if needed again.
@@ -205,7 +209,7 @@ class AcceptanceCoreEnvironment extends Extension
         $localConfiguration['SYS']['isInitialDatabaseImportDone'] = true;
         $localConfiguration['SYS']['displayErrors'] = false;
         $localConfiguration['SYS']['debugExceptionHandler'] = '';
-        $localConfiguration['SYS']['trustedHostsPattern'] = 'localhost:8000';
+        $localConfiguration['SYS']['trustedHostsPattern'] = '.*';
         $localConfiguration['SYS']['encryptionKey'] = 'iAmInvalid';
         // @todo: This sql_mode should be enabled as soon as styleguide and dataHandler can cope with it
         //$localConfiguration['SYS']['setDBinit'] = 'SET SESSION sql_mode = \'STRICT_ALL_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_VALUE_ON_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,ONLY_FULL_GROUP_BY\';';
@@ -234,7 +238,7 @@ class AcceptanceCoreEnvironment extends Extension
             'scheduler',
             'tstemplate',
         ];
-        $testbase->setUpPackageStates($instancePath, $defaultCoreExtensionsToLoad, $this->coreExtensionsToLoad, $testExtensionsToLoad);
+      //  $testbase->setUpPackageStates($instancePath, $defaultCoreExtensionsToLoad, $this->coreExtensionsToLoad, $testExtensionsToLoad);
         $testbase->setUpBasicTypo3Bootstrap($instancePath);
         $testbase->setUpTestDatabase($localConfiguration['DB']['Connections']['Default']['dbname'], $originalDatabaseName);
         $testbase->loadExtensionTables();
@@ -258,8 +262,8 @@ class AcceptanceCoreEnvironment extends Extension
         $GLOBALS['BE_USER']->workspace = 0;
         Bootstrap::getInstance()->initializeLanguageObject();
 
-        $styleguideGenerator = new Generator();
-        $styleguideGenerator->create();
+    //    $styleguideGenerator = new Generator();
+      //  $styleguideGenerator->create();
 
         // @todo: Find out why that is needed to execute the first test successfully
         $this->cleanupTypo3Environment();

@@ -6,7 +6,7 @@ modules:
     - Asserts
   config:
     WebDriver:
-      url: http://localhost:8000/typo3temp/var/tests/acceptance
+      url: http://connecta.localdev.tp3.de:8000/web/typo3temp/var/tests/acceptance
       browser: chrome
       port: 9515
       capabilities:
@@ -18,4 +18,5 @@ modules:
         # You can simply do that by scrolling to it.
         elementScrollBehavior: 1
         chromeOptions:
-          args: ["--headless", "--no-sandbox", "window-size=1280x1024", "--proxy-server='direct://'", "--proxy-bypass-list=*", "--disable-gpu"]
+          #"--headless", removed
+          args: [ "--no-sandbox", "window-size=1280x1024", "--proxy-server='direct://'", "--proxy-bypass-list=*", "--disable-gpu"]

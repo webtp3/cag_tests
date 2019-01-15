@@ -31,7 +31,7 @@
   "scripts": {
     "test:php:unit": [
       "@php -v",
-      "@php vendor/phpunit/phpunit/phpunit -c build/vendor/typo3/testing-framework/Resources/Core/Build/UnitTests.xml"
+      "@php vendor/phpunit/phpunit/phpunit -c vendor/typo3/testing-framework/Resources/Core/Build/UnitTests.xml"
     ],
     "CAG_test:core-tests": [
       "@php bin/phpunit --configuration web/typo3conf/ext/cag_tests/Resources/Core/Build/UnitTests.xml  --teamcity --log-junit UnitTests.log",

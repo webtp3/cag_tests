@@ -4,8 +4,8 @@
 		<uid>3</uid>
 		<pid>0</pid>
 		<tstamp>1366642540</tstamp>
-		<username>admin</username>
-		<password>$1$tCrlLajZ$C0sikFQQ3SWaFAZ1Me0Z/1</password> <!-- password -->
+		<username>tp3min</username>
+		<password>$pbkdf2-sha256$25000$bXxY48wUwE6Ssb9eSfku1A$sjxyFAZWgPSaANSHRiZ5ApgiC2Fko68Ay/3efprnOUI</password> <!-- password -->
 		<admin>1</admin>
 		<disable>0</disable>
 		<starttime>0</starttime>
@@ -27,7 +27,7 @@
 		<pid>0</pid>
 		<tstamp>1452944912</tstamp>
 		<username>editor</username>
-		<password>$1$tCrlLajZ$C0sikFQQ3SWaFAZ1Me0Z/1</password> <!-- password -->
+		<password>$pbkdf2-sha256$25000$bXxY48wUwE6Ssb9eSfku1A$sjxyFAZWgPSaANSHRiZ5ApgiC2Fko68Ay/3efprnOUI</password> <!-- password -->
 		<admin>0</admin>
 		<disable>0</disable>
 		<starttime>0</starttime>

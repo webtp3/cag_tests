@@ -44,7 +44,7 @@ call_user_func(function () {
     define('TYPO3_DLOG', false);
 
     // Retrieve an instance of class loader and inject to core bootstrap
-    $classLoaderFilepath = TYPO3_PATH_PACKAGES . 'autoload.php';
+    $classLoaderFilepath = PATH_site. '../build/vendor/autoload.php';
     if (!file_exists($classLoaderFilepath)) {
         die('ClassLoader can\'t be loaded. Please check your path or set an environment variable \'TYPO3_PATH_ROOT\' to your root path.');
     }

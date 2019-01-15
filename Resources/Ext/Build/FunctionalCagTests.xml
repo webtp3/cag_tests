@@ -18,8 +18,7 @@
 
 
 		<testsuite name="cag_hessenfilm_func_tests">
-			<directory>../../../../../web/typo3conf/ext/filmcomission/Tests/Functional/</directory>
-			<directory>../../../../../web/typo3conf/ext/locationupdate/Tests/Functional/</directory>
+			<directory>../../../../../web/typo3conf/ext/cag*/Tests/Functional/</directory>
 		</testsuite>
 	</testsuites>
 </phpunit>
