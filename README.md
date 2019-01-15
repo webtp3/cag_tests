@@ -16,6 +16,10 @@ rm -rf .git .gitignore
 composer install
 git init
 ```
+##2 Resources 
+Resources/Core => Core Tests
+
+Resources/Ext => Extension Tests + Vorlagen für eigene Acceptance Tests
 
 
 ## Einbinden der cag_tests Extension
@@ -63,12 +67,12 @@ https://getcomposer.org/ should be available on the system already, see its docu
 
 TYPO3 >=8.7
 ```bash
- php vendor/phpunit/phpunit/phpunit --configuration web/typo3conf/ext/cag_tests/Tests/Build/UnitTests.xml --teamcity
+ php vendor/phpunit/phpunit/phpunit --configuration web/typo3conf/ext/cag_tests/Resources/Core/Build/UnitTests.xml --teamcity
 ```
 
 for Deprecated Units
 ```bash
- php vendor/phpunit/phpunit/phpunit --configuration web/typo3conf/ext/cag_tests/Tests/Build/UnitTestsDeprecated.xml --teamcity
+ php vendor/phpunit/phpunit/phpunit --configuration web/typo3conf/ext/cag_tests/Resources/Core/Build/UnitTestsDeprecated.xml --teamcity
 ``` 
 
 ###  Functional Testing 
@@ -91,7 +95,7 @@ Execute all functional tests
 
 TYPO3 >=8.7
 ```bash
- php bin/phpunit --configuration ../web/typo3conf/ext/cag_tests/Tests/Build/FunctionalTests.xml --teamcity
+ php bin/phpunit --configuration ../web/typo3conf/ext/cag_tests/Resources/Core/Build/FunctionalTests.xml --teamcity
 ```
 
 ###  Acceptance Testing 
@@ -111,9 +115,11 @@ php -S 0.0.0.0:8000 >/dev/null 2>&1 &
 sleep 3;
 ```
 
+
+
 ```bash
 typo3DatabaseName='c1_cag_tests' typo3DatabaseHost='localhost' typo3DatabaseUsername='username' typo3DatabasePassword='pw' \
- vendor/codeception/codeception/codecept run Acceptance -c web/typo3conf/ext/cag_tests/Resources/Core/Build/AcceptanceTests.yml
+ bin/codecept run Acceptance -c web/typo3conf/ext/cag_tests/Resources/Core/Build/AcceptanceTests.yml
 ``` 
 
 clean after Tests
@@ -143,3 +149,4 @@ DELETE FROM `be_sessions` WHERE `ses_id`='886526ce72b86870739cc41991144ec1';
 DELETE FROM `be_sessions` WHERE `ses_id`='ff83dfd81e20b34c27d3e97771a4525a';
 
 **TODO:** Beispiel Tests für eigene Extensions!
+in cag_wurmloch
