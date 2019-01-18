@@ -30,7 +30,7 @@ class BackendUtilityTest extends \CAG\CagTests\Core\Functional\FunctionalTestCas
     {
         parent::setUp();
 
-        $this->importDataSet('PACKAGE:typo3/testing-framework/Resources/Core/Functional/Fixtures/pages.xml');
+        $this->importDataSet('PACKAGE:tests/Functional/Fixtures/pages.xml');
         $this->importDataSet(ORIGINAL_ROOT . 'typo3/sysext/backend/Tests/Functional/Utility/Fixtures/sys_domain.xml');
     }
 

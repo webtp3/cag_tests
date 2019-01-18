@@ -196,7 +196,7 @@ abstract class FunctionalTestCase extends BaseTestCase
      *
      * @var string
      */
-    protected $backendUserFixture = 'PACKAGE:typo3/testing-framework/Resources/Core/Functional/Fixtures/be_users.xml';
+    protected $backendUserFixture = 'PACKAGE:tests/Functional/Fixtures/be_users.xml';
 
     /**
      * Set up creates a test instance and database.
@@ -321,6 +321,7 @@ abstract class FunctionalTestCase extends BaseTestCase
             ->where($queryBuilder->expr()->eq('uid', $queryBuilder->createNamedParameter($userUid, \PDO::PARAM_INT)))
             ->execute()
             ->fetch();
+
 
         /** @var $backendUser BackendUserAuthentication */
         $backendUser = GeneralUtility::makeInstance(BackendUserAuthentication::class);
@@ -724,7 +725,7 @@ abstract class FunctionalTestCase extends BaseTestCase
             'requestUrl' => 'http://localhost/?id=' . $pageId . '&L=' . $languageId . $additionalParameter,
         ];
 
-        $template = new \Text_Template(TYPO3_PATH_PACKAGES . 'typo3/testing-framework/Resources/Core/Functional/Fixtures/Frontend/request.tpl');
+        $template = new \Text_Template(TYPO3_PATH_PACKAGES . 'tests/Functional/Fixtures/Frontend/request.tpl');
         $template->setVar(
             [
                 'arguments' => var_export($arguments, true),

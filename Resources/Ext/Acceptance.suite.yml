@@ -6,7 +6,7 @@ modules:
     - Asserts
   config:
     WebDriver:
-      url: http://connecta.localdev.tp3.de/
+      url: http://localhost:8000/
       browser: chrome
       port: 9515
       capabilities:

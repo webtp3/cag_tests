@@ -40,7 +40,7 @@ class ResourceStorageTest extends \CAG\CagTests\Core\Functional\FunctionalTestCa
      */
     public function getNestedProcessingFolderTest()
     {
-        $this->importDataSet('PACKAGE:typo3/testing-framework/Resources/Core/Functional/Fixtures/sys_file_storage.xml');
+        $this->importDataSet('PACKAGE:tests/Functional/Fixtures/sys_file_storage.xml');
         $this->setUpBackendUserFromFixture(1);
         $subject = (new StorageRepository())->findByUid(1);
         $subject->setEvaluatePermissions(false);
@@ -76,7 +76,7 @@ class ResourceStorageTest extends \CAG\CagTests\Core\Functional\FunctionalTestCa
      */
     public function isWithinFileMountBoundariesRespectsReadOnlyFileMounts($targetDirectory, $fileMountFolder, $isFileMountReadOnly, $checkWriteAccess, $expectedResult)
     {
-        $this->importDataSet('PACKAGE:typo3/testing-framework/Resources/Core/Functional/Fixtures/sys_file_storage.xml');
+        $this->importDataSet('PACKAGE:tests/Functional/Fixtures/sys_file_storage.xml');
         $fileName = 'bar.txt';
         $this->setUpBackendUserFromFixture(1);
         GeneralUtility::mkdir_deep(PATH_site . 'fileadmin/_processed_');
@@ -152,7 +152,7 @@ class ResourceStorageTest extends \CAG\CagTests\Core\Functional\FunctionalTestCa
      */
     public function getProcessingRootFolderTest()
     {
-        $this->importDataSet('PACKAGE:typo3/testing-framework/Resources/Core/Functional/Fixtures/sys_file_storage.xml');
+        $this->importDataSet('PACKAGE:tests/Functional/Fixtures/sys_file_storage.xml');
         $this->setUpBackendUserFromFixture(1);
 
         $subject = (new StorageRepository())->findByUid(1);
@@ -167,7 +167,7 @@ class ResourceStorageTest extends \CAG\CagTests\Core\Functional\FunctionalTestCa
     public function getRoleReturnsDefaultForRegularFolders()
     {
         $folderIdentifier = $this->getUniqueId();
-        $this->importDataSet('PACKAGE:typo3/testing-framework/Resources/Core/Functional/Fixtures/sys_file_storage.xml');
+        $this->importDataSet('PACKAGE:tests/Functional/Fixtures/sys_file_storage.xml');
         $this->setUpBackendUserFromFixture(1);
 
         $subject = (new StorageRepository())->findByUid(1);
@@ -183,7 +183,7 @@ class ResourceStorageTest extends \CAG\CagTests\Core\Functional\FunctionalTestCa
      */
     public function replaceFileFailsIfLocalFileDoesNotExist()
     {
-        $this->importDataSet('PACKAGE:typo3/testing-framework/Resources/Core/Functional/Fixtures/sys_file_storage.xml');
+        $this->importDataSet('PACKAGE:tests/Functional/Fixtures/sys_file_storage.xml');
         $this->setUpBackendUserFromFixture(1);
         $subject = (new StorageRepository())->findByUid(1);
 
@@ -202,7 +202,7 @@ class ResourceStorageTest extends \CAG\CagTests\Core\Functional\FunctionalTestCa
      */
     public function createFolderThrowsExceptionIfParentFolderDoesNotExist()
     {
-        $this->importDataSet('PACKAGE:typo3/testing-framework/Resources/Core/Functional/Fixtures/sys_file_storage.xml');
+        $this->importDataSet('PACKAGE:tests/Functional/Fixtures/sys_file_storage.xml');
         $this->setUpBackendUserFromFixture(1);
         $subject = (new StorageRepository())->findByUid(1);
 
@@ -216,7 +216,7 @@ class ResourceStorageTest extends \CAG\CagTests\Core\Functional\FunctionalTestCa
      */
     public function deleteFileMovesFileToRecyclerFolderIfAvailable()
     {
-        $this->importDataSet('PACKAGE:typo3/testing-framework/Resources/Core/Functional/Fixtures/sys_file_storage.xml');
+        $this->importDataSet('PACKAGE:tests/Functional/Fixtures/sys_file_storage.xml');
         $this->setUpBackendUserFromFixture(1);
         $subject = (new StorageRepository())->findByUid(1);
 
@@ -237,7 +237,7 @@ class ResourceStorageTest extends \CAG\CagTests\Core\Functional\FunctionalTestCa
      */
     public function deleteFileUnlinksFileIfNoRecyclerFolderAvailable()
     {
-        $this->importDataSet('PACKAGE:typo3/testing-framework/Resources/Core/Functional/Fixtures/sys_file_storage.xml');
+        $this->importDataSet('PACKAGE:tests/Functional/Fixtures/sys_file_storage.xml');
         $this->setUpBackendUserFromFixture(1);
         $subject = (new StorageRepository())->findByUid(1);
 
