@@ -19,7 +19,7 @@ git init
 ##2 Resources 
 Resources/Core => Core Tests
 
-Resources/Ext => Extension Tests + Vorlagen für eigene Acceptance Tests
+Resources/Ext => Extension Tests + Vorlagen für eigene Acceptance Tests (BackendLoginPrototype.php)
 
 
 ## Einbinden der cag_tests Extension
@@ -63,6 +63,16 @@ https://getcomposer.org/ should be available on the system already, see its docu
 
 
 ## Enthaltene Funktionalitäten
+
+cag_tests Framework Wrapper 
+- 1000 Unit Tests 
+- 50 Functional Tests 
+- 25 Acceptance Tests 
+
+ mit 2 gundlegenden Funktionalitäten Resources/Core & Resources/Ext Tests. Start configs sind jeweils im Ordner Build zu finden, wie weiteres wie z.B. FunctionalHelhumTests.xml
+ Sowie vorkonfigurierte standartisierte Parameter "Fixtures". 
+ 
+ Weitere Tests wie  
 ### PHPUnit Testing
 
 TYPO3 >=8.7
@@ -91,11 +101,13 @@ https://wiki.typo3.org/Functional_testing
 
 shell script:
 
-Execute all functional tests
+Execute all  functional tests
 
 TYPO3 >=8.7
 ```bash
  php bin/phpunit --configuration ../web/typo3conf/ext/cag_tests/Resources/Core/Build/FunctionalTests.xml --teamcity
+ php bin/phpunit --configuration ../web/typo3conf/ext/cag_tests/Resources/Ext/Build/FunctionalTests.xml --teamcity
+
 ```
 
 ###  Acceptance Testing 
@@ -108,19 +120,25 @@ Since the very early version of TYPO3 v8, the core ships with Acceptance tests b
 
 As Fetch the TYPO3 sources and installed composer dependencies and start the chromedriver and the PHP HTTP server:
 
+
 ```bash
-mkdir -p web/typo3temp/var/tests 
+mkdir -p ../web/typo3temp/var/tests 
 ./bin/chromedriver --url-base=/wd/hub > /dev/null 2>&1 &
 php -S 0.0.0.0:8000 >/devclass_name: AcceptanceTester /null 2>&1 &
 sleep 3;
 ```
 
-
-
 ```bash
 typo3DatabaseName='c1_cag_tests' typo3DatabaseHost='localhost' typo3DatabaseUsername='username' typo3DatabasePassword='pw' \
  bin/codecept run Acceptance -c web/typo3conf/ext/cag_tests/Resources/Core/Build/AcceptanceTests.yml
 ``` 
+
+oder mit z.B. PHPStorm natürlich. 
+Man kann Codeception zusammen mit Chrome/Firefow auch für eine kleine Vorführung nutzen, indem man chrome nicht headdless, sondern geöffnet starten lässt. Das kann auch zur Fehlersuche hilfreich sein...
+(config in Acceptance.suite.yml)
+
+####don't use Windows - works but...)
+
 
 clean after Tests
 DELETE FROM `be_users` WHERE `uid`='3333';

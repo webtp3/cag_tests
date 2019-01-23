@@ -19,7 +19,7 @@ use CAG\CagTests\Core\Acceptance\Support\Helper\Topbar;
 /**
  * Various backend login related tests
  */
-class BackendLoginCest
+class BackendLoginPrototype
 {
     /**
      * Login as a cag user, check visible modules and getenv('HOST_TITLE') and logout again

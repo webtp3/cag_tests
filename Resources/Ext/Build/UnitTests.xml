@@ -20,7 +20,7 @@
 			<directory>../../../../../web/typo3conf/ext/*/Tests/Unit/</directory>
 		</testsuite>
 		<testsuite name="cag_console_core_tests">
-			<directory>../../../../../Build/vendor/helhum/typo3-console/Tests/Console/Unit/*/</directory>
+			<directory>../../../../../../private/Build/vendor/helhum/typo3-console/Tests/Console/Unit/*/</directory>
 		</testsuite>
 	</testsuites>
 

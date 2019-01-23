@@ -571,7 +571,7 @@ class Testbase
         $_SERVER['PWD'] = $instancePath;
         $_SERVER['argv'][0] = 'index.php';
 
-        $classLoader = require rtrim(realpath($instancePath . '/typo3'), '\\/') . '/../../build/vendor/autoload.php';
+        $classLoader = require rtrim(realpath($instancePath . '/typo3'), '\\/') . '/../../private/Build/vendor/autoload.php';
         Bootstrap::getInstance()
             ->initializeClassLoader($classLoader)
             ->setRequestType(TYPO3_REQUESTTYPE_BE | TYPO3_REQUESTTYPE_CLI)
