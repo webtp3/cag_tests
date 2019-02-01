@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Service;
 
 /*
@@ -51,67 +52,67 @@ class DependencyOrderingServiceTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [ // $expectedOrderedItems
                     1 => [],
                     2 => [],
-                ]
+                ],
             ],
             'ordered' => [
                 [ // $items
                     1 => [],
                     2 => [
-                        'precedes' => [ 1 ]
+                        'precedes' => [ 1 ],
                     ],
                 ],
                 'precedes',
                 'after',
                 [ // $expectedOrderedItems
                     2 => [
-                        'precedes' => [ 1 ]
+                        'precedes' => [ 1 ],
                     ],
                     1 => [],
-                ]
+                ],
             ],
             'mixed' => [
                 [ // $items
                     1 => [],
                     2 => [
-                        'before' => [ 1 ]
+                        'before' => [ 1 ],
                     ],
                     3 => [
-                        'otherProperty' => true
-                    ]
+                        'otherProperty' => true,
+                    ],
                 ],
                 'before',
                 'after',
                 [ // $expectedOrderedItems
                     2 => [
-                        'before' => [ 1 ]
+                        'before' => [ 1 ],
                     ],
                     1 => [],
                     3 => [
-                        'otherProperty' => true
+                        'otherProperty' => true,
                     ],
-                ]
+                ],
             ],
             'reference to non-existing' => [
                 [ // $items
                     2 => [
                         'before' => [ 1 ],
-                        'depends' => [ 3 ]
+                        'depends' => [ 3 ],
                     ],
                     3 => [
-                        'otherProperty' => true
-                    ]
+                        'otherProperty' => true,
+                    ],
                 ],
                 'before',
                 'depends',
                 [ // $expectedOrderedItems
                     3 => [
-                        'otherProperty' => true
+                        'otherProperty' => true,
                     ],
                     2 => [
                         'before' => [ 1 ],
-                        'depends' => [ 3 ]
+                        'depends' => [ 3 ],
                     ],
-                ]
+                ],
             ],
             'multiple dependencies' => [
                 [ // $items
@@ -181,36 +182,36 @@ class DependencyOrderingServiceTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [ // $dependencies
                     1 => [
                         'before' => [],
-                        'after' => [ 2 ]
+                        'after' => [ 2 ],
                     ],
                 ],
                 [ // $expectedDependencies
                     1 => [
                         'before' => [],
-                        'after' => [ 2 ]
+                        'after' => [ 2 ],
                     ],
                     2 => [
                         'before' => [],
                         'after' => [],
-                    ]
-                ]
+                    ],
+                ],
             ],
             'missing before' => [
                 [ // $dependencies
                     1 => [
-                        'after' => [ 2 ]
+                        'after' => [ 2 ],
                     ],
                 ],
                 [ // $expectedDependencies
                     1 => [
                         'before' => [],
-                        'after' => [ 2 ]
+                        'after' => [ 2 ],
                     ],
                     2 => [
                         'before' => [],
                         'after' => [],
-                    ]
-                ]
+                    ],
+                ],
             ],
         ];
     }
@@ -237,25 +238,25 @@ class DependencyOrderingServiceTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [ // dependencies
                     1 => [
                         'before' => [],
-                        'after' => [ 2 ]
+                        'after' => [ 2 ],
                     ],
                 ],
                 [ // graph
                     1 => [
                         1 => false,
-                        2 => true
+                        2 => true,
                     ],
                     2 => [
                         1 => false,
-                        2 => false
+                        2 => false,
                     ],
-                ]
+                ],
             ],
             'graph2' => [
                 [ // dependencies
                     1 => [
                         'before' => [ 3 ],
-                        'after' => [ 2 ]
+                        'after' => [ 2 ],
                     ],
                 ],
                 [ // graph
@@ -274,22 +275,22 @@ class DependencyOrderingServiceTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         2 => false,
                         3 => false,
                     ],
-                ]
+                ],
             ],
             'graph3' => [
                 [ // dependencies
                     3 => [
                         'before' => [],
-                        'after' => []
+                        'after' => [],
                     ],
                     1 => [
                         'before' => [ 3 ],
-                        'after' => [ 2 ]
+                        'after' => [ 2 ],
                     ],
                     2 => [
                         'before' => [ 3 ],
-                        'after' => []
-                    ]
+                        'after' => [],
+                    ],
                 ],
                 [ // graph
                     1 => [
@@ -307,18 +308,18 @@ class DependencyOrderingServiceTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         2 => true,
                         3 => false,
                     ],
-                ]
+                ],
             ],
             'cyclic graph' => [
                 [ // dependencies
                     1 => [
                         'before' => [ 2 ],
-                        'after' => []
+                        'after' => [],
                     ],
                     2 => [
                         'before' => [ 1 ],
-                        'after' => []
-                    ]
+                        'after' => [],
+                    ],
                 ],
                 [ // graph
                     1 => [
@@ -329,29 +330,29 @@ class DependencyOrderingServiceTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         1 => true,
                         2 => false,
                     ],
-                ]
+                ],
             ],
             'TYPO3 Flow Packages' => [
                 [ // dependencies
                     'TYPO3.Flow' => [
                         'before' => [],
-                        'after' => ['Symfony.Component.Yaml', 'Doctrine.Common', 'Doctrine.DBAL', 'Doctrine.ORM']
+                        'after' => ['Symfony.Component.Yaml', 'Doctrine.Common', 'Doctrine.DBAL', 'Doctrine.ORM'],
                     ],
                     'Doctrine.ORM' => [
                         'before' => [],
-                        'after' => ['Doctrine.Common', 'Doctrine.DBAL']
+                        'after' => ['Doctrine.Common', 'Doctrine.DBAL'],
                     ],
                     'Doctrine.Common' => [
                         'before' => [],
-                        'after' => []
+                        'after' => [],
                     ],
                     'Doctrine.DBAL' => [
                         'before' => [],
-                        'after' => ['Doctrine.Common']
+                        'after' => ['Doctrine.Common'],
                     ],
                     'Symfony.Component.Yaml' => [
                         'before' => [],
-                        'after' => []
+                        'after' => [],
                     ],
                 ],
                 [ // graph
@@ -400,7 +401,7 @@ class DependencyOrderingServiceTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     ],
                     'openid' => [
                         'before' => [],
-                        'after' => ['core', 'setup']
+                        'after' => ['core', 'setup'],
                     ],
                     'scheduler' => [
                         'before' => [],
@@ -461,11 +462,11 @@ class DependencyOrderingServiceTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     ],
                     'B' => [
                         'before' => [],
-                        'after' => []
+                        'after' => [],
                     ],
                     'C' => [
                         'before' => [],
-                        'after' => ['E']
+                        'after' => ['E'],
                     ],
                     'D' => [
                         'before' => [],
@@ -536,7 +537,7 @@ class DependencyOrderingServiceTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     'A' => [
                         'before' => [],
                         'after' => [],
-                        'after-resilient' => ['B'] // package suggestion
+                        'after-resilient' => ['B'], // package suggestion
                     ],
                     'B' => [
                         'before' => [],
@@ -544,7 +545,7 @@ class DependencyOrderingServiceTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     ],
                     'C' => [
                         'before' => [],
-                        'after' => ['A']
+                        'after' => ['A'],
                     ],
                 ],
                 [ // graph
@@ -574,11 +575,11 @@ class DependencyOrderingServiceTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     ],
                     'B' => [
                         'before' => [],
-                        'after' => ['A']
+                        'after' => ['A'],
                     ],
                     'C' => [
                         'before' => [],
-                        'after' => ['A']
+                        'after' => ['A'],
                     ],
                 ],
                 [ // graph
@@ -624,16 +625,16 @@ class DependencyOrderingServiceTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [ // $graph
                     1 => [
                         1 => false,
-                        2 => true
+                        2 => true,
                     ],
                     2 => [
                         1 => false,
-                        2 => false
+                        2 => false,
                     ],
                 ],
                 [ // $expectedList
-                    2, 1
-                ]
+                    2, 1,
+                ],
             ],
             'list2' => [
                 [ // $graph
@@ -654,8 +655,8 @@ class DependencyOrderingServiceTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     ],
                 ],
                 [ // $expectedList
-                    2, 1, 3
-                ]
+                    2, 1, 3,
+                ],
             ],
         ];
     }
@@ -691,30 +692,30 @@ class DependencyOrderingServiceTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     'A' => ['A' => false, 'B' => false, 'C' => false, 'Z' => true],
                     'B' => ['A' => false, 'B' => false, 'C' => false, 'Z' => false],
                     'C' => ['A' => false, 'B' => false, 'C' => false, 'Z' => false],
-                    'Z' => ['A' => false, 'B' => false, 'C' => false, 'Z' => false]
+                    'Z' => ['A' => false, 'B' => false, 'C' => false, 'Z' => false],
                 ],
                 'A', 'Z',
-                ['A', 'Z']
+                ['A', 'Z'],
             ],
             'No path' => [
                 [
                     'A' => ['A' => false, 'B' => true, 'C' => false, 'Z' => false],
                     'B' => ['A' => false, 'B' => false, 'C' => false, 'Z' => false],
                     'C' => ['A' => false, 'B' => true, 'C' => false, 'Z' => false],
-                    'Z' => ['A' => false, 'B' => true, 'C' => false, 'Z' => false]
+                    'Z' => ['A' => false, 'B' => true, 'C' => false, 'Z' => false],
                 ],
                 'A', 'C',
-                []
+                [],
             ],
             'Longer path' => [
                 [
                     'A' => ['A' => false, 'B' => true, 'C' => true, 'Z' => true],
                     'B' => ['A' => false, 'B' => false, 'C' => false, 'Z' => false],
                     'C' => ['A' => false, 'B' => false, 'C' => false, 'Z' => true],
-                    'Z' => ['A' => false, 'B' => false, 'C' => false, 'Z' => false]
+                    'Z' => ['A' => false, 'B' => false, 'C' => false, 'Z' => false],
                 ],
                 'A', 'Z',
-                ['A', 'C', 'Z']
+                ['A', 'C', 'Z'],
             ],
         ];
     }

@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 namespace CAG\News\Tests\Unit\Functional\ViewHelpers;
 
 /**
@@ -16,11 +16,9 @@ use TYPO3\CMS\Core\Database\DatabaseConnection;
 
 /**
  * Class SimplePrevNextViewHelperTest
- *
  */
 class SimplePrevNextViewHelperTest extends FunctionalTestCase
 {
-
     /** @var \PHPUnit_Framework_MockObject_MockObject|AccessibleMockObjectInterface|\GeorgRinger\News\ViewHelpers\SimplePrevNextViewHelper */
     protected $mockedViewHelper;
 
@@ -52,7 +50,7 @@ class SimplePrevNextViewHelperTest extends FunctionalTestCase
 
         $exp = [
             'prev' => $this->getRow(102),
-            'next' => $this->getRow(104)
+            'next' => $this->getRow(104),
         ];
         $this->assertEquals($exp, $actual);
     }
@@ -67,7 +65,7 @@ class SimplePrevNextViewHelperTest extends FunctionalTestCase
         $actual = $this->mockedViewHelper->_call('getNeighbours', $this->news, '', 'datetime');
 
         $exp = [
-            'next' => $this->getRow(102)
+            'next' => $this->getRow(102),
         ];
         $this->assertEquals($exp, $actual);
     }
@@ -80,7 +78,7 @@ class SimplePrevNextViewHelperTest extends FunctionalTestCase
         $this->setDate(1396640035);
         $actual = $this->mockedViewHelper->_call('getNeighbours', $this->news, '', 'datetime');
         $exp = [
-            'prev' => $this->getRow(105)
+            'prev' => $this->getRow(105),
         ];
         $this->assertEquals($exp, $actual);
     }

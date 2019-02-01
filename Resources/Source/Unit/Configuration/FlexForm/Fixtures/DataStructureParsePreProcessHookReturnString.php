@@ -35,6 +35,7 @@ class DataStructureParsePreProcessHookReturnString
                 </T3DataStructure>
             ';
         }
+
         return '';
     }
 }

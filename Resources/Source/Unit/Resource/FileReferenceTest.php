@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Resource;
 
 /*
@@ -80,7 +81,7 @@ class FileReferenceTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     'alternative' => '',
                     'file_only_property' => 'fileOnlyPropertyValue',
                 ],
-            ]
+            ],
         ];
     }
 

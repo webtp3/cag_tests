@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Utility;
 
 /*
@@ -85,7 +86,7 @@ class ExtensionManagementUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCas
                 ->method('isPackageActive')
                 ->will($this->returnValueMap([
                     [null, false],
-                    [$packageKey, true]
+                    [$packageKey, true],
                 ]));
         $packageManager->expects($this->any())
                 ->method('getPackage')
@@ -94,12 +95,14 @@ class ExtensionManagementUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCas
         $packageManager->expects($this->any())
                 ->method('getActivePackages')
                 ->will($this->returnValue([$packageKey => $package]));
+
         return $packageManager;
     }
 
     ///////////////////////////////
     // Tests concerning isLoaded
     ///////////////////////////////
+
     /**
      * @test
      */
@@ -122,6 +125,7 @@ class ExtensionManagementUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCas
     ///////////////////////////////
     // Tests concerning extPath
     ///////////////////////////////
+
     /**
      * @test
      */
@@ -174,6 +178,7 @@ class ExtensionManagementUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCas
     //////////////////////
     // Utility functions
     //////////////////////
+
     /**
      * Generates a basic TCA for a given table.
      *
@@ -186,19 +191,20 @@ class ExtensionManagementUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCas
         $tca[$table] = [];
         $tca[$table]['columns'] = [
             'fieldA' => [],
-            'fieldC' => []
+            'fieldC' => [],
         ];
         $tca[$table]['types'] = [
             'typeA' => ['showitem' => 'fieldA, fieldB, fieldC;labelC, --palette--;;paletteC, fieldC1, fieldD, fieldD1'],
             'typeB' => ['showitem' => 'fieldA, fieldB, fieldC;labelC, --palette--;;paletteC, fieldC1, fieldD, fieldD1'],
-            'typeC' => ['showitem' => 'fieldC;;paletteD']
+            'typeC' => ['showitem' => 'fieldC;;paletteD'],
         ];
         $tca[$table]['palettes'] = [
             'paletteA' => ['showitem' => 'fieldX, fieldX1, fieldY'],
             'paletteB' => ['showitem' => 'fieldX, fieldX1, fieldY'],
             'paletteC' => ['showitem' => 'fieldX, fieldX1, fieldY'],
-            'paletteD' => ['showitem' => 'fieldX, fieldX1, fieldY']
+            'paletteD' => ['showitem' => 'fieldX, fieldX1, fieldY'],
         ];
+
         return $tca;
     }
 
@@ -212,19 +218,19 @@ class ExtensionManagementUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCas
         return [
             'Without underscores' => [
                 'testkey',
-                'tx_testkey'
+                'tx_testkey',
             ],
             'With underscores' => [
                 'this_is_a_test_extension',
-                'tx_thisisatestextension'
+                'tx_thisisatestextension',
             ],
             'With user prefix and without underscores' => [
                 'user_testkey',
-                'user_testkey'
+                'user_testkey',
             ],
             'With user prefix and with underscores' => [
                 'user_test_key',
-                'user_testkey'
+                'user_testkey',
             ],
         ];
     }
@@ -243,6 +249,7 @@ class ExtensionManagementUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCas
     /////////////////////////////////////////////
     // Tests concerning getExtensionKeyByPrefix
     /////////////////////////////////////////////
+
     /**
      * @test
      * @see ExtensionManagementUtility::getExtensionKeyByPrefix
@@ -314,6 +321,7 @@ class ExtensionManagementUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCas
     //////////////////////////////////////
     // Tests concerning addToAllTCAtypes
     //////////////////////////////////////
+
     /**
      * Tests whether fields can be add to all TCA types and duplicate fields are considered.
      *
@@ -515,17 +523,17 @@ class ExtensionManagementUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCas
             'Simple' => [
                 'field_b, field_d, field_c',
                 'field_a, field_b, field_c',
-                'field_d'
+                'field_d',
             ],
             'with linebreaks' => [
                 'field_b, --linebreak--, field_d, --linebreak--, field_c',
                 'field_a, field_b, field_c',
-                '--linebreak--, field_d, --linebreak--'
+                '--linebreak--, field_d, --linebreak--',
             ],
             'with linebreaks in list and insertion list' => [
                 'field_b, --linebreak--, field_d, --linebreak--, field_c',
                 'field_a, field_b, --linebreak--, field_c',
-                '--linebreak--, field_d, --linebreak--'
+                '--linebreak--, field_d, --linebreak--',
             ],
         ];
     }
@@ -1105,6 +1113,7 @@ class ExtensionManagementUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCas
     /////////////////////////////////////////
     // Tests concerning addTcaSelectItem
     /////////////////////////////////////////
+
     /**
      * @test
      */
@@ -1189,8 +1198,8 @@ class ExtensionManagementUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCas
                     0 => ['firstElement'],
                     1 => ['matchMe'],
                     2 => ['thirdElement'],
-                    3 => ['insertedElement']
-                ]
+                    3 => ['insertedElement'],
+                ],
             ],
             'replace element' => [
                 'matchMe',
@@ -1198,8 +1207,8 @@ class ExtensionManagementUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCas
                 [
                     0 => ['firstElement'],
                     1 => ['insertedElement'],
-                    2 => ['thirdElement']
-                ]
+                    2 => ['thirdElement'],
+                ],
             ],
             'add element after' => [
                 'matchMe',
@@ -1208,8 +1217,8 @@ class ExtensionManagementUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCas
                     0 => ['firstElement'],
                     1 => ['matchMe'],
                     2 => ['insertedElement'],
-                    3 => ['thirdElement']
-                ]
+                    3 => ['thirdElement'],
+                ],
             ],
             'add element before' => [
                 'matchMe',
@@ -1218,8 +1227,8 @@ class ExtensionManagementUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCas
                     0 => ['firstElement'],
                     1 => ['insertedElement'],
                     2 => ['matchMe'],
-                    3 => ['thirdElement']
-                ]
+                    3 => ['thirdElement'],
+                ],
             ],
             'add at end if relative position was not found' => [
                 'notExistingItem',
@@ -1228,9 +1237,9 @@ class ExtensionManagementUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCas
                     0 => ['firstElement'],
                     1 => ['matchMe'],
                     2 => ['thirdElement'],
-                    3 => ['insertedElement']
-                ]
-            ]
+                    3 => ['insertedElement'],
+                ],
+            ],
         ];
     }
 
@@ -1251,12 +1260,12 @@ class ExtensionManagementUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCas
                             'items' => [
                                 '0' => ['firstElement'],
                                 '1' => ['matchMe'],
-                                2 => ['thirdElement']
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                2 => ['thirdElement'],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
         ExtensionManagementUtility::addTcaSelectItem('testTable', 'testField', ['insertedElement'], $relativeToField, $relativePosition);
         $this->assertEquals($expectedResultArray, $GLOBALS['TCA']['testTable']['columns']['testField']['config']['items']);
@@ -1265,6 +1274,7 @@ class ExtensionManagementUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCas
     /////////////////////////////////////////
     // Tests concerning loadExtLocalconf
     /////////////////////////////////////////
+
     /**
      * @test
      */
@@ -1304,6 +1314,7 @@ class ExtensionManagementUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCas
     /////////////////////////////////////////
     // Tests concerning loadSingleExtLocalconfFiles
     /////////////////////////////////////////
+
     /**
      * @test
      */
@@ -1334,42 +1345,42 @@ class ExtensionManagementUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCas
             'can add new main module if none exists' => [
                 'top',
                 '',
-                'newModule'
+                'newModule',
             ],
             'can add new sub module if no position specified' => [
                 '',
                 'some,modules',
-                'some,modules,newModule'
+                'some,modules,newModule',
             ],
             'can add new sub module to top of module' => [
                 'top',
                 'some,modules',
-                'newModule,some,modules'
+                'newModule,some,modules',
             ],
             'can add new sub module if bottom of module' => [
                 'bottom',
                 'some,modules',
-                'some,modules,newModule'
+                'some,modules,newModule',
             ],
             'can add new sub module before specified sub module' => [
                 'before:modules',
                 'some,modules',
-                'some,newModule,modules'
+                'some,newModule,modules',
             ],
             'can add new sub module after specified sub module' => [
                 'after:some',
                 'some,modules',
-                'some,newModule,modules'
+                'some,newModule,modules',
             ],
             'can add new sub module at the bottom if specified sub module to add before does not exist' => [
                 'before:modules',
                 'some,otherModules',
-                'some,otherModules,newModule'
+                'some,otherModules,newModule',
             ],
             'can add new sub module at the bottom if specified sub module to add after does not exist' => [
                 'after:some',
                 'someOther,modules',
-                'someOther,modules,newModule'
+                'someOther,modules,newModule',
             ],
         ];
     }
@@ -1398,6 +1409,7 @@ class ExtensionManagementUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCas
     /////////////////////////////////////////
     // Tests concerning createExtLocalconfCacheEntry
     /////////////////////////////////////////
+
     /**
      * @test
      */
@@ -1473,6 +1485,7 @@ class ExtensionManagementUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCas
     /////////////////////////////////////////
     // Tests concerning getExtLocalconfCacheIdentifier
     /////////////////////////////////////////
+
     /**
      * @test
      */
@@ -1627,6 +1640,7 @@ class ExtensionManagementUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCas
     /////////////////////////////////////////
     // Tests concerning loadExtTables
     /////////////////////////////////////////
+
     /**
      * @test
      */
@@ -1669,6 +1683,7 @@ class ExtensionManagementUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCas
     /////////////////////////////////////////
     // Tests concerning createExtTablesCacheEntry
     /////////////////////////////////////////
+
     /**
      * @test
      */
@@ -1681,8 +1696,8 @@ class ExtensionManagementUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCas
         file_put_contents($extTablesLocation, "<?php\n\n$uniqueStringInTables\n\n?>");
         $GLOBALS['TYPO3_LOADED_EXT'] = [
             $extensionName => [
-                'ext_tables.php' => $extTablesLocation
-            ]
+                'ext_tables.php' => $extTablesLocation,
+            ],
         ];
         $mockCache = $this->getMockBuilder(PhpFrontend::class)
             ->setMethods(['getIdentifier', 'set', 'get', 'getByTag', 'has', 'remove', 'flush', 'flushByTag', 'requireOnce'])
@@ -1749,6 +1764,7 @@ class ExtensionManagementUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCas
     /////////////////////////////////////////
     // Tests concerning getExtTablesCacheIdentifier
     /////////////////////////////////////////
+
     /**
      * @test
      */
@@ -1764,6 +1780,7 @@ class ExtensionManagementUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCas
     /////////////////////////////////////////
     // Tests concerning removeCacheFiles
     /////////////////////////////////////////
+
     /**
      * @test
      */
@@ -1781,6 +1798,7 @@ class ExtensionManagementUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCas
     /////////////////////////////////////////
     // Tests concerning getExtensionVersion
     /////////////////////////////////////////
+
     /**
      * Data provider for negative getExtensionVersion() tests.
      *
@@ -1792,7 +1810,7 @@ class ExtensionManagementUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCas
             [''],
             [0],
             [new \stdClass()],
-            [true]
+            [true],
         ];
     }
 
@@ -1847,6 +1865,7 @@ class ExtensionManagementUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCas
     /////////////////////////////////////////
     // Tests concerning loadExtension
     /////////////////////////////////////////
+
     /**
      * @test
      */
@@ -1864,6 +1883,7 @@ class ExtensionManagementUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCas
     /////////////////////////////////////////
     // Tests concerning unloadExtension
     /////////////////////////////////////////
+
     /**
      * @test
      */
@@ -1908,6 +1928,7 @@ class ExtensionManagementUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCas
     /////////////////////////////////////////
     // Tests concerning makeCategorizable
     /////////////////////////////////////////
+
     /**
      * @test
      */
@@ -1955,8 +1976,8 @@ class ExtensionManagementUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCas
             [
                 'label',
                 $extKey,
-                'EXT:' . $extKey . '/foo.gif'
-            ]
+                'EXT:' . $extKey . '/foo.gif',
+            ],
         ];
         $GLOBALS['TCA']['tt_content']['columns']['list_type']['config']['items'] = [];
         ExtensionManagementUtility::addPlugin(['label', $extKey], 'list_type', $extKey);
@@ -1976,8 +1997,8 @@ class ExtensionManagementUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCas
             [
                 'label',
                 $extKey,
-                'EXT:' . $extKey . '/foo.gif'
-            ]
+                'EXT:' . $extKey . '/foo.gif',
+            ],
         ];
         $GLOBALS['TCA']['tt_content']['columns']['list_type']['config']['items'] = [];
         ExtensionManagementUtility::addPlugin(['label', $extKey]);

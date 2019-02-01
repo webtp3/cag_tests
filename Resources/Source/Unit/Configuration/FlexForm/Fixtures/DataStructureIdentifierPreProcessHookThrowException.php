@@ -27,8 +27,8 @@ class DataStructureIdentifierPreProcessHookThrowException
      * @param string $tableName
      * @param string $fieldName
      * @param array $row
-     * @return array
      * @throws \RuntimeException
+     * @return array
      */
     public function getDataStructureIdentifierPreProcess(
         array $fieldTca,

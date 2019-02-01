@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace CAG\CagTests\Core\Functional\Framework\Frontend;
 
 /*
@@ -31,7 +32,7 @@ class Renderer implements \TYPO3\CMS\Core\SingletonInterface
 
     /**
      * @param string $content
-     * @param NULL|array $configuration
+     * @param null|array $configuration
      * @return void
      */
     public function parseValues($content, array $configuration = null)
@@ -90,7 +91,7 @@ class Renderer implements \TYPO3\CMS\Core\SingletonInterface
 
     /**
      * @param array $section
-     * @param NULL|string $as
+     * @param null|string $as
      */
     public function addSection(array $section, $as = null)
     {
@@ -103,12 +104,13 @@ class Renderer implements \TYPO3\CMS\Core\SingletonInterface
 
     /**
      * @param string $content
-     * @param NULL|array $configuration
+     * @param null|array $configuration
      * @return string
      */
     public function renderSections($content, array $configuration = null)
     {
         $content = json_encode($this->sections);
+
         return $content;
     }
 
@@ -130,8 +132,7 @@ class Renderer implements \TYPO3\CMS\Core\SingletonInterface
     {
         $renderedValues = [];
 
-        foreach ($values as $propertyName => $propertyInstruction)
-        {
+        foreach ($values as $propertyName => $propertyInstruction) {
             $plainPropertyName = rtrim($propertyName, '.');
             if (!empty($propertyInstruction['children.'])) {
                 $renderedValues[$plainPropertyName] = $this->stdWrapValues(

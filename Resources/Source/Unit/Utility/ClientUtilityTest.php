@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Utility;
 
 /*
@@ -22,6 +23,7 @@ class ClientUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     //////////////////////////////////////////////////////////
     // Utility Functions
     //////////////////////////////////////////////////////////
+
     /**
      * Compares array of UA strings with expected result array of browser/version pair
      *
@@ -36,7 +38,7 @@ class ClientUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             $expected[] = $expectedMembers;
             $actual[] = [
                 'browser' => $infoArray['browser'],
-                'version' => array_shift(explode('.', $infoArray['version']))
+                'version' => array_shift(explode('.', $infoArray['version'])),
             ];
         }
         $this->assertSame($expected, $actual);
@@ -45,6 +47,7 @@ class ClientUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     //////////////////////////////////////////////////////////
     // Tests concerning getBrowserInfo
     //////////////////////////////////////////////////////////
+
     /**
      * @test
      */
@@ -71,11 +74,11 @@ class ClientUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'Mozilla/4.0 (compatible;MSIE 6.0;Windows 98;Q312461)',
             'Mozilla/4.0 (Compatible; Windows NT 5.1; MSIE 6.0) (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322; .NET CLR 2.0.50727)',
             'Mozilla/4.0 (compatible; U; MSIE 6.0; Windows NT 5.1)',
-            'Mozilla/4.0 (compatible; MSIE 6,0; Windows NT 5,1; SV1; Alexa Toolbar)'
+            'Mozilla/4.0 (compatible; MSIE 6,0; Windows NT 5,1; SV1; Alexa Toolbar)',
         ];
         $expectedMembers = [
             'browser' => 'msie',
-            'version' => '6'
+            'version' => '6',
         ];
         $this->analyzeUserAgentStrings($browserStrings, $expectedMembers);
     }
@@ -111,7 +114,7 @@ class ClientUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         ];
         $expectedMembers = [
             'browser' => 'msie',
-            'version' => '7'
+            'version' => '7',
         ];
         $this->analyzeUserAgentStrings($browserStrings, $expectedMembers);
     }
@@ -142,11 +145,11 @@ class ClientUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; InfoPath.3; .NET CLR 4.0.20506)',
             'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729)',
             'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; MRA 5.5 (build 02842); SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; InfoPath.2)',
-            'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.0; Trident/4.0; Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1) ; SLCC1; .NET CLR 2.0.50727; .NET CLR 1.1.4322; .NET CLR 3.5.30729; .NET CLR 3.0.30729)'
+            'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.0; Trident/4.0; Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1) ; SLCC1; .NET CLR 2.0.50727; .NET CLR 1.1.4322; .NET CLR 3.5.30729; .NET CLR 3.0.30729)',
         ];
         $expectedMembers = [
             'browser' => 'msie',
-            'version' => '8'
+            'version' => '8',
         ];
         $this->analyzeUserAgentStrings($browserStrings, $expectedMembers);
     }
@@ -161,7 +164,7 @@ class ClientUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         ];
         $expectedMembers = [
             'browser' => 'msie',
-            'version' => '9'
+            'version' => '9',
         ];
         $this->analyzeUserAgentStrings($browserStrings, $expectedMembers);
     }
@@ -176,7 +179,7 @@ class ClientUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         ];
         $expectedMembers = [
             'browser' => 'msie',
-            'version' => '10'
+            'version' => '10',
         ];
         $this->analyzeUserAgentStrings($browserStrings, $expectedMembers);
     }
@@ -192,7 +195,7 @@ class ClientUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         ];
         $expectedMembers = [
             'browser' => 'msie',
-            'version' => '11'
+            'version' => '11',
         ];
         $this->analyzeUserAgentStrings($browserStrings, $expectedMembers);
     }
@@ -357,18 +360,20 @@ class ClientUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     {
         $agents = [
             'defaultBrowser' => [
-                'agent' => 'Mozilla/5.0 (Linux; U; Android 2.3; en-US; sdk Build/GRH55) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1'
+                'agent' => 'Mozilla/5.0 (Linux; U; Android 2.3; en-US; sdk Build/GRH55) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1',
             ],
             'operaMini' => [
-                'agent' => 'Opera/9.80 (Android; Opera Mini/6.0.24556/24.816; U; en) Presto/2.5.25 Version/10.54'
-            ]
+                'agent' => 'Opera/9.80 (Android; Opera Mini/6.0.24556/24.816; U; en) Presto/2.5.25 Version/10.54',
+            ],
         ];
+
         return $agents;
     }
 
     /**
      * @test
      * @dataProvider androidUserAgentsProvider
+     * @param mixed $userAgentString
      */
     public function getBrowserInfoReturnsCorrectSystemValueForUserAgentStringOfAndroid($userAgentString)
     {

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Acceptance\Backend\Extensionmanager;
 
 /*
@@ -14,8 +15,8 @@ namespace TYPO3\CMS\Core\Tests\Acceptance\Backend\Extensionmanager;
  * The TYPO3 project - inspiring people to share!
  */
 
-use Facebook\WebDriver\WebDriverKeys;
 use CAG\CagTests\Core\Acceptance\Step\Backend\Admin;
+use Facebook\WebDriver\WebDriverKeys;
 
 /**
  * Tests for the "Get Extensions view" of the extension manager

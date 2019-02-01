@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Backend\Tests\Unit\Form\FormDataProvider;
 
 /*
@@ -121,7 +122,7 @@ class DatabaseSystemLanguageRowsTest extends \CAG\CagTests\Core\Unit\UnitTestCas
                     'SHARED.' => [
                         'defaultLanguageLabel' => 'foo',
                     ],
-                ]
+                ],
             ],
         ];
 
@@ -180,7 +181,7 @@ class DatabaseSystemLanguageRowsTest extends \CAG\CagTests\Core\Unit\UnitTestCas
                     'SHARED.' => [
                         'defaultLanguageFlag' => 'uk',
                     ],
-                ]
+                ],
             ],
         ];
 

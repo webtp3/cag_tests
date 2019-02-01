@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Backend\Tests\Unit\Form\FormDataProvider;
 
 /*
@@ -385,7 +386,7 @@ class DatabaseRecordTypeValueTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'size' => 1,
                             'maxitems' => 1,
                             'minitems' => 0,
-                            'allowed' => 'sys_file'
+                            'allowed' => 'sys_file',
                         ],
                     ],
                 ],

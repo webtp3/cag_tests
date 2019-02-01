@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\TypoScript\Parser;
 
 /*
@@ -47,7 +48,7 @@ class TypoScriptParserTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'prependString',
                 'abc',
                 '!',
-                '!abc'
+                '!abc',
             ],
             'prependString with empty string' => [
                 'prependString',
@@ -223,6 +224,10 @@ class TypoScriptParserTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider executeValueModifierDataProvider
+     * @param mixed $modifierName
+     * @param mixed $currentValue
+     * @param mixed $modifierArgument
+     * @param mixed $expected
      */
     public function executeValueModifierReturnsModifiedResult($modifierName, $currentValue, $modifierArgument, $expected)
     {
@@ -254,6 +259,9 @@ class TypoScriptParserTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider executeValueModifierInvalidDataProvider
+     * @param mixed $modifierName
+     * @param mixed $currentValue
+     * @param mixed $modifierArgument
      */
     public function executeValueModifierThrowsException($modifierName, $currentValue, $modifierArgument)
     {
@@ -299,6 +307,7 @@ class TypoScriptParserTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider doubleSlashCommentsDataProvider
+     * @param mixed $typoScript
      */
     public function doubleSlashCommentsAreValid($typoScript)
     {
@@ -316,13 +325,13 @@ class TypoScriptParserTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 '
                 foo = bar
                 <INCLUDE_TYPOSCRIPT: source="FILE:dev.ts" condition="applicationContext = /^NotMatched/">
-                '
+                ',
             ],
             'TS code after not matching include' => [
                 '
                 <INCLUDE_TYPOSCRIPT: source="FILE:dev.ts" condition="applicationContext = /^NotMatched/">
                 foo = bar
-                '
+                ',
             ],
         ];
     }
@@ -330,6 +339,7 @@ class TypoScriptParserTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider includeFileDataProvider
+     * @param mixed $typoScript
      */
     public function includeFilesWithConditions($typoScript)
     {
@@ -353,6 +363,7 @@ class TypoScriptParserTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider singleSlashCommentsDataProvider
+     * @param mixed $typoScript
      */
     public function singleSlashHeadedCommentsAreDeprecated($typoScript)
     {
@@ -383,13 +394,13 @@ class TypoScriptParserTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'key = value',
                 [
                     'key' => 'value',
-                ]
+                ],
             ],
             'simple assignment with escaped dot at the beginning' => [
                 '\\.key = value',
                 [
                     '.key' => 'value',
-                ]
+                ],
             ],
             'simple assignment with protected escaped dot at the beginning' => [
                 '\\\\.key = value',
@@ -397,7 +408,7 @@ class TypoScriptParserTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     '\\.' => [
                         'key' => 'value',
                     ],
-                ]
+                ],
             ],
             'nested assignment' => [
                 'lib.key = value',
@@ -438,10 +449,10 @@ class TypoScriptParserTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [
                     'firstkey.' => [
                         'secondkey.thirdkey.' => [
-                            'setting' => 'value'
-                        ]
-                    ]
-                ]
+                            'setting' => 'value',
+                        ],
+                    ],
+                ],
             ],
             'nested structured assignment' => [
                 'lib {' . LF .
@@ -612,7 +623,7 @@ class TypoScriptParserTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         'test.' => [
                             'test' => '1',
                         ],
-                    ]
+                    ],
                 ],
             ],
             'simple assignment operator with tab character before "="' => [
@@ -670,7 +681,7 @@ class TypoScriptParserTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         'test.' => [
                             'test' => '1',
                         ],
-                    ]
+                    ],
                 ],
             ],
             'simple assignment operator character as value "=" with whitespaces' => [
@@ -752,44 +763,44 @@ class TypoScriptParserTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'key with colon' => [
                 'some:key = is valid',
                 [
-                    'some:key' => 'is valid'
-                ]
+                    'some:key' => 'is valid',
+                ],
             ],
             'special operator' => [
                 'some := addToList(a)',
                 [
-                    'some' => 'a'
-                ]
+                    'some' => 'a',
+                ],
             ],
             'special operator with white-spaces' => [
                 'some := addToList (a)',
                 [
-                    'some' => 'a'
-                ]
+                    'some' => 'a',
+                ],
             ],
             'special operator with tabs' => [
                 'some :=	addToList	(a)',
                 [
-                    'some' => 'a'
-                ]
+                    'some' => 'a',
+                ],
             ],
             'special operator with white-spaces and tabs in value' => [
                 'some := addToList( a, b,	c )',
                 [
-                    'some' => 'a, b,	c'
-                ]
+                    'some' => 'a, b,	c',
+                ],
             ],
             'special operator and colon, no spaces' => [
                 'some:key:=addToList(a)',
                 [
-                    'some:key' => 'a'
-                ]
+                    'some:key' => 'a',
+                ],
             ],
             'key with all special symbols' => [
                 'someSpecial\\_:-\\.Chars = is valid',
                 [
-                    'someSpecial\\_:-.Chars' => 'is valid'
-                ]
+                    'someSpecial\\_:-.Chars' => 'is valid',
+                ],
             ],
         ];
     }
@@ -819,6 +830,9 @@ class TypoScriptParserTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider parseNextKeySegmentReturnsCorrectNextKeySegmentDataProvider
+     * @param mixed $key
+     * @param mixed $expectedKeySegment
+     * @param mixed $expectedRemainingKey
      */
     public function parseNextKeySegmentReturnsCorrectNextKeySegment($key, $expectedKeySegment, $expectedRemainingKey)
     {
@@ -836,54 +850,54 @@ class TypoScriptParserTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'key without separator' => [
                 'testkey',
                 'testkey',
-                ''
+                '',
             ],
             'key with normal separator' => [
                 'test.key',
                 'test',
-                'key'
+                'key',
             ],
             'key with multiple normal separators' => [
                 'test.key.subkey',
                 'test',
-                'key.subkey'
+                'key.subkey',
             ],
             'key with separator and escape character' => [
                 'te\\st.test',
                 'te\\st',
-                'test'
+                'test',
             ],
             'key with escaped separators' => [
                 'test\\.key\\.subkey',
                 'test.key.subkey',
-                ''
+                '',
             ],
             'key with escaped and unescaped separator 1' => [
                 'test.test\\.key',
                 'test',
-                'test\\.key'
+                'test\\.key',
             ],
             'key with escaped and unescaped separator 2' => [
                 'test\\.test.key\\.key2',
                 'test.test',
-                'key\\.key2'
+                'key\\.key2',
             ],
             'key with escaped escape character' => [
                 'test\\\\.key',
                 'test\\',
-                'key'
+                'key',
             ],
             'key with escaped separator and additional escape character' => [
                 'test\\\\\\.key',
                 'test\\\\',
-                'key'
+                'key',
             ],
 
             'multiple escape characters within the key are preserved' => [
                 'te\\\\st\\\\.key',
                 'te\\\\st\\',
-                'key'
-            ]
+                'key',
+            ],
         ];
     }
 }

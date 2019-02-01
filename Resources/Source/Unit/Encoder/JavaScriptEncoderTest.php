@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Encoder;
 
 /*
@@ -39,40 +40,40 @@ class JavaScriptEncoderTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         return [
             'Immune characters are returned as is' => [
                 '._,',
-                '._,'
+                '._,',
             ],
             'Alphanumerical characters are returned as is' => [
                 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789',
-                'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+                'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789',
             ],
             'Angel brackets and ampersand are encoded' => [
                 '<>&',
-                '\\x3C\\x3E\\x26'
+                '\\x3C\\x3E\\x26',
             ],
             'Quotes and slashes are encoded' => [
                 '"\'\\/',
-                '\\x22\\x27\\x5C\\x2F'
+                '\\x22\\x27\\x5C\\x2F',
             ],
             'Empty string stays empty' => [
                 '',
-                ''
+                '',
             ],
             'Exclamation mark and space are properly encoded' => [
                 'Hello World!',
-                'Hello\\x20World\\x21'
+                'Hello\\x20World\\x21',
             ],
             'Whitespaces are properly encoded' => [
                 TAB . LF . CR . ' ',
-                '\\x09\\x0A\\x0D\\x20'
+                '\\x09\\x0A\\x0D\\x20',
             ],
             'Null byte is properly encoded' => [
                 chr(0),
-                '\\x00'
+                '\\x00',
             ],
             'Umlauts are properly encoded' => [
                 'ÜüÖöÄä',
-                '\\xDC\\xFC\\xD6\\xF6\\xC4\\xE4'
-            ]
+                '\\xDC\\xFC\\xD6\\xF6\\xC4\\xE4',
+            ],
         ];
     }
 

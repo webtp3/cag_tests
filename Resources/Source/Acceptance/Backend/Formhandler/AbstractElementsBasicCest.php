@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Acceptance\Backend\Formhandler;
 
 /*
@@ -14,10 +15,10 @@ namespace TYPO3\CMS\Core\Tests\Acceptance\Backend\Formhandler;
  * The TYPO3 project - inspiring people to share!
  */
 
+use CAG\CagTests\Core\Acceptance\Step\Backend\Admin;
 use Facebook\WebDriver\Remote\RemoteWebDriver;
 use Facebook\WebDriver\Remote\RemoteWebElement;
 use Facebook\WebDriver\WebDriverKeys;
-use CAG\CagTests\Core\Acceptance\Step\Backend\Admin;
 
 /**
  * Abstract class for "elements_basic" tests of styleguide
@@ -101,6 +102,7 @@ abstract class AbstractElementsBasicCest
     protected function getHiddenField(RemoteWebElement $formSection, RemoteWebElement $inputField)
     {
         $hiddenFieldXPath = './/*/input[@name="' . $inputField->getAttribute('data-formengine-input-name') . '"]';
+
         return $formSection->findElement(\WebDriverBy::xpath($hiddenFieldXPath));
     }
 
@@ -114,6 +116,7 @@ abstract class AbstractElementsBasicCest
     protected function getFormSectionByFieldLabel(Admin $I, string $fieldLabel)
     {
         $I->comment('Get context for field "' . $fieldLabel . '"');
+
         return $I->executeInSelenium(
             function (RemoteWebDriver $webDriver) use ($fieldLabel) {
                 return $webDriver->findElement(

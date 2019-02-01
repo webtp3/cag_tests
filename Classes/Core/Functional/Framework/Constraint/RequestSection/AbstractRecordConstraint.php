@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace CAG\CagTests\Core\Functional\Framework\Constraint\RequestSection;
 
 /*
@@ -49,24 +50,28 @@ abstract class AbstractRecordConstraint extends \PHPUnit\Framework\Constraint\Co
     public function setTable($table)
     {
         $this->table = $table;
+
         return $this;
     }
 
     public function setField($field)
     {
         $this->field = $field;
+
         return $this;
     }
 
     public function setValues(...$values)
     {
         $this->values = $values;
+
         return $this;
     }
 
     public function setStrict($strict)
     {
         $this->strict = (bool)$strict;
+
         return $this;
     }
 
@@ -85,10 +90,11 @@ abstract class AbstractRecordConstraint extends \PHPUnit\Framework\Constraint\Co
                 $currentSuccess = $this->matchesSection($item);
                 $success = ($success === null ? $currentSuccess : $success || $currentSuccess);
             }
+
             return !empty($success);
-        } else {
-            return $this->matchesSection($other);
         }
+
+        return $this->matchesSection($other);
     }
 
     /**
@@ -170,6 +176,7 @@ abstract class AbstractRecordConstraint extends \PHPUnit\Framework\Constraint\Co
         foreach ($this->sectionFailures as $sectionIdentifier => $sectionFailure) {
             $failureDescription .= '* Section "' . $sectionIdentifier . '": ' . $sectionFailure . LF;
         }
+
         return $failureDescription;
     }
 }

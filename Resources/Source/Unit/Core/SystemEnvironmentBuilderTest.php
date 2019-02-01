@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Core;
 
 /*
@@ -46,6 +47,7 @@ class SystemEnvironmentBuilderTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             $data[] = [$fileName . '.' . $extension];
             $data[] = [$fileName . '.' . $extension . '.txt'];
         }
+
         return $data;
     }
 
@@ -157,7 +159,7 @@ class SystemEnvironmentBuilderTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'EXEC_TIME' => ['EXEC_TIME'],
             'ACCESS_TIME' => ['ACCESS_TIME'],
             'SIM_EXEC_TIME' => ['SIM_EXEC_TIME'],
-            'SIM_ACCESS_TIME' => ['SIM_ACCESS_TIME']
+            'SIM_ACCESS_TIME' => ['SIM_ACCESS_TIME'],
         ];
     }
 

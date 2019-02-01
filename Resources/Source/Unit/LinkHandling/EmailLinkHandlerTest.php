@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\LinkHandling;
 
 /*
@@ -18,7 +19,6 @@ use TYPO3\CMS\Core\LinkHandling\EmailLinkHandler;
 
 class EmailLinkHandlerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
-
     /**
      * Data to resolve strings to arrays and vice versa, external, mail, page
      *
@@ -29,21 +29,21 @@ class EmailLinkHandlerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         return [
             'email with protocol' => [
                 [
-                    'email' => 'mailto:one@love.com'
+                    'email' => 'mailto:one@love.com',
                 ],
                 [
-                    'email' => 'one@love.com'
+                    'email' => 'one@love.com',
                 ],
-                'mailto:one@love.com'
+                'mailto:one@love.com',
             ],
             'email with protocol 2' => [
                 [
-                    'email' => 'mailto:info@typo3.org'
+                    'email' => 'mailto:info@typo3.org',
                 ],
                 [
-                    'email' => 'info@typo3.org'
+                    'email' => 'info@typo3.org',
                 ],
-                'mailto:info@typo3.org'
+                'mailto:info@typo3.org',
             ],
         ];
     }

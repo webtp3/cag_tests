@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Cache\Fixtures;
 
 /*
@@ -15,8 +16,8 @@ namespace TYPO3\CMS\Core\Tests\Unit\Cache\Fixtures;
 */
 
 /**
-* Frontend for cache manager test getCacheCreatesCacheInstanceWithFallbackToDefaultFrontend
-*/
+ * Frontend for cache manager test getCacheCreatesCacheInstanceWithFallbackToDefaultFrontend
+ */
 class FrontendDefaultFixture extends FrontendFixture
 {
     public function __construct()

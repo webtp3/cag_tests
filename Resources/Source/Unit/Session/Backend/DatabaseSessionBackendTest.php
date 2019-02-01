@@ -15,8 +15,8 @@ namespace TYPO3\CMS\Core\Tests\Unit\Session\Backend;
  * The TYPO3 project - inspiring people to share!
  */
 
-use TYPO3\CMS\Core\Session\Backend\DatabaseSessionBackend;
 use CAG\CagTests\Core\Unit\UnitTestCase;
+use TYPO3\CMS\Core\Session\Backend\DatabaseSessionBackend;
 
 /**
  * Test case

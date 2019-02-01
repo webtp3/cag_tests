@@ -15,11 +15,11 @@ namespace TYPO3\CMS\Backend\Tests\Unit\Form\Container;
  * The TYPO3 project - inspiring people to share!
  */
 
+use CAG\CagTests\Core\Unit\UnitTestCase;
 use Prophecy\Argument;
 use TYPO3\CMS\Backend\Form\Container\ListOfFieldsContainer;
 use TYPO3\CMS\Backend\Form\Container\PaletteAndSingleContainer;
 use TYPO3\CMS\Backend\Form\NodeFactory;
-use CAG\CagTests\Core\Unit\UnitTestCase;
 
 /**
  * Test case
@@ -115,7 +115,7 @@ class ListOfFieldsContainerTest extends UnitTestCase
                     ],
                     'anotherPalette' => [
                         'showitem' => 'bField;bLabel, cField',
-                    ]
+                    ],
                 ],
             ],
             'fieldListToRender' => 'aField, bField',

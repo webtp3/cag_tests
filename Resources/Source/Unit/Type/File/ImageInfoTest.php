@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Type\File;
 
 /*
@@ -25,7 +25,6 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class ImageInfoTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
-
     /**
      * @test
      */
@@ -77,6 +76,9 @@ class ImageInfoTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider canDetectImageSizesDataProvider
+     * @param mixed $file
+     * @param mixed $width
+     * @param mixed $height
      */
     public function canDetectImageSizes($file, $width, $height)
     {

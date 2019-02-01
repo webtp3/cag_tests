@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Backend\Tests\Template\Components;
 
 /*
@@ -84,7 +85,7 @@ class MenuTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 
         $result = $menuRegistry->getMenus();
         $expected = [
-            'Foo' => $menu2
+            'Foo' => $menu2,
         ];
 
         $this->assertEquals($expected, $result);

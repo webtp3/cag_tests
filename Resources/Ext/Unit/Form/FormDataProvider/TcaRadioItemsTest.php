@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Backend\Tests\Unit\Form\FormDataProvider;
 
 /*
@@ -265,7 +266,7 @@ class TcaRadioItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'itemsProcFunc.' => [
                                 'itemParamKey' => 'itemParamValue',
                             ],
-                        ]
+                        ],
                     ],
                 ],
             ],
@@ -334,7 +335,7 @@ class TcaRadioItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'itemsProcFunc.' => [
                                 'itemParamKey' => 'itemParamValue',
                             ],
-                        ]
+                        ],
                     ],
                 ],
             ],
@@ -405,7 +406,7 @@ class TcaRadioItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'altLabels.' => [
                                 0 => 'labelOverride',
                             ],
-                        ]
+                        ],
                     ],
                 ],
             ],

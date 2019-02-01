@@ -15,8 +15,8 @@ namespace TYPO3\CMS\Core\Tests\Unit\Error;
  * The TYPO3 project - inspiring people to share!
  */
 
-use TYPO3\CMS\Core\Error\AbstractExceptionHandler;
 use CAG\CagTests\Core\Unit\UnitTestCase;
+use TYPO3\CMS\Core\Error\AbstractExceptionHandler;
 
 /**
  * Testcase for the AbstractExceptionHandlerTest class
@@ -33,11 +33,11 @@ class AbstractExceptionHandlerTest extends UnitTestCase
         return [
             'url with valid token' => [
                 'http://localhost/typo3/index.php?M=foo&moduleToken=5f1f7d447f22886e8ea206693b0d530ccd6b2b36',
-                'http://localhost/typo3/index.php?M=foo&moduleToken=--AnonymizedToken--'
+                'http://localhost/typo3/index.php?M=foo&moduleToken=--AnonymizedToken--',
             ],
             'url with valid token in the middle' => [
                 'http://localhost/typo3/index.php?M=foo&moduleToken=5f1f7d447f22886e8ea206693b0d530ccd6b2b36&param=asdf',
-                'http://localhost/typo3/index.php?M=foo&moduleToken=--AnonymizedToken--&param=asdf'
+                'http://localhost/typo3/index.php?M=foo&moduleToken=--AnonymizedToken--&param=asdf',
             ],
             'url with invalid token' => [
                 'http://localhost/typo3/index.php?M=foo&moduleToken=5f1f7d447f22886e8/e',

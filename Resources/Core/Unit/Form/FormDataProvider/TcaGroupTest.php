@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Backend\Tests\Unit\Form\FormDataProvider;
 
 /*
@@ -209,7 +210,7 @@ class TcaGroupTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $expected['databaseRow']['aField'] = [
             [
                 'folder' => '1:/aFolder/anotherFolder/',
-            ]
+            ],
         ];
         $expected['processedTca']['columns']['aField']['config']['clipboardElements'] = [];
         $this->assertSame($expected, $this->subject->addData($input));
@@ -276,7 +277,7 @@ class TcaGroupTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'uid' => null,
                 'title' => '',
                 'row' => null,
-            ]
+            ],
         ];
         $expected['processedTca']['columns']['aField']['config']['clipboardElements'] = [];
 

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace OliverHader\IrreTutorial\Controller;
 
 /*
@@ -99,6 +100,7 @@ abstract class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\Acti
         foreach ($this->request->getArguments() as $argumentName => $argumentValue) {
             $arguments[] = $argumentName . '=' . $argumentValue;
         }
+
         return $this->request->getControllerActionName() . '(' . implode(', ', $arguments) . ')';
     }
 

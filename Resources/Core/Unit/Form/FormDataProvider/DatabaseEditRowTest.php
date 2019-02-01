@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Backend\Tests\Unit\Form\FormDataProvider;
 
 /*
@@ -53,7 +54,7 @@ class DatabaseEditRowTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         ];
         $resultRow = [
             'uid' => 10,
-            'pid' => 123
+            'pid' => 123,
         ];
         $this->subject->expects($this->once())->method('getDatabaseRow')->willReturn($resultRow);
 
@@ -146,13 +147,13 @@ class DatabaseEditRowTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $virtualRow = [
             'uid' => 10,
             'pid' => 123,
-            'title' => 'Title of the virtual record'
+            'title' => 'Title of the virtual record',
         ];
         $input = [
             'tableName' => 'virtual_table',
             'command' => 'edit',
             'vanillaUid' => 10,
-            'databaseRow' => $virtualRow
+            'databaseRow' => $virtualRow,
         ];
         $resultRow = $virtualRow;
         $this->subject->expects($this->never())->method('getDatabaseRow');

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Backend\Tests\Unit\Form\FormDataProvider;
 
 /*
@@ -137,7 +138,7 @@ class DatabaseUserPermissionCheckTest extends \CAG\CagTests\Core\Unit\UnitTestCa
             'vanillaUid' => 123,
             'databaseRow' => [
                 'uid' => 123,
-                'pid' => 321
+                'pid' => 321,
             ],
         ];
         $this->beUserProphecy->isAdmin()->willReturn(false);
@@ -346,7 +347,7 @@ class DatabaseUserPermissionCheckTest extends \CAG\CagTests\Core\Unit\UnitTestCa
         $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['typo3/alt_doc.php']['makeEditForm_accessCheck'] = [
             'unitTest' => function () {
                 return false;
-            }
+            },
         ];
 
         $this->expectException(AccessDeniedHookException::class);
@@ -377,7 +378,7 @@ class DatabaseUserPermissionCheckTest extends \CAG\CagTests\Core\Unit\UnitTestCa
         $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['typo3/alt_doc.php']['makeEditForm_accessCheck'] = [
             'unitTest' => function () {
                 return true;
-            }
+            },
         ];
 
         $result = $this->subject->addData($input);

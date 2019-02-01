@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Utility;
 
 /*
@@ -22,6 +23,7 @@ class MathUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     //////////////////////////////////
     // Tests concerning forceIntegerInRange
     //////////////////////////////////
+
     /**
      * Data provider for forceIntegerInRangeForcesIntegerIntoBoundaries
      *
@@ -34,13 +36,15 @@ class MathUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'normalValue' => [30, 30],
             'veryHighValue' => [2000000000, PHP_INT_MAX],
             'zeroValue' => [0, 0],
-            'anotherNormalValue' => [12309, 12309]
+            'anotherNormalValue' => [12309, 12309],
         ];
     }
 
     /**
      * @test
      * @dataProvider forceIntegerInRangeForcesIntegerIntoDefaultBoundariesDataProvider
+     * @param mixed $expected
+     * @param mixed $value
      */
     public function forceIntegerInRangeForcesIntegerIntoDefaultBoundaries($expected, $value)
     {
@@ -58,6 +62,7 @@ class MathUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     //////////////////////////////////
     // Tests concerning convertToPositiveInteger
     //////////////////////////////////
+
     /**
      * @test
      */
@@ -77,6 +82,7 @@ class MathUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     ///////////////////////////////
     // Tests concerning canBeInterpretedAsInteger
     ///////////////////////////////
+
     /**
      * Data provider for canBeInterpretedAsIntegerReturnsTrue
      *
@@ -91,13 +97,14 @@ class MathUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'int as string' => ['32425'],
             'negative int as string' => ['-32425'],
             'zero' => [0],
-            'zero as string' => ['0']
+            'zero as string' => ['0'],
         ];
     }
 
     /**
      * @test
      * @dataProvider functionCanBeInterpretedAsIntegerValidDataProvider
+     * @param mixed $int
      */
     public function canBeInterpretedAsIntegerReturnsTrue($int)
     {
@@ -117,6 +124,7 @@ class MathUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $objectWithNonNumericalStringRepresentation->setString('foo');
         $objectWithEmptyStringRepresentation = new \TYPO3\CMS\Core\Tests\Unit\Utility\Fixtures\MathUtilityTestClassWithStringRepresentationFixture();
         $objectWithEmptyStringRepresentation->setString('');
+
         return [
             'int as string with leading zero' => ['01234'],
             'positive int as string with plus modifier' => ['+1234'],
@@ -140,13 +148,14 @@ class MathUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'object without string representation' => [new \stdClass()],
             'object with numerical string representation' => [$objectWithNumericalStringRepresentation],
             'object without numerical string representation' => [$objectWithNonNumericalStringRepresentation],
-            'object with empty string representation' => [$objectWithEmptyStringRepresentation]
+            'object with empty string representation' => [$objectWithEmptyStringRepresentation],
         ];
     }
 
     /**
      * @test
      * @dataProvider functionCanBeInterpretedAsIntegerInvalidDataProvider
+     * @param mixed $int
      */
     public function canBeInterpretedAsIntegerReturnsFalse($int)
     {
@@ -156,6 +165,7 @@ class MathUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     ///////////////////////////////
     // Tests concerning canBeInterpretedAsFloat
     ///////////////////////////////
+
     /**
      * Data provider for canBeInterpretedAsFloatReturnsTrue
      *
@@ -177,12 +187,14 @@ class MathUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'float as string trailing zero' => ['10.0'],
             'float as string trailing zeros' => ['10.00'],
         ];
+
         return array_merge($intTestcases, $floatTestcases);
     }
 
     /**
      * @test
      * @dataProvider functionCanBeInterpretedAsFloatValidDataProvider
+     * @param mixed $val
      */
     public function canBeInterpretedAsFloatReturnsTrue($val)
     {
@@ -202,6 +214,7 @@ class MathUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $objectWithNonNumericalStringRepresentation->setString('foo');
         $objectWithEmptyStringRepresentation = new \TYPO3\CMS\Core\Tests\Unit\Utility\Fixtures\MathUtilityTestClassWithStringRepresentationFixture();
         $objectWithEmptyStringRepresentation->setString('');
+
         return [
             // 'int as string with leading zero' => array('01234'),
             // 'positive int as string with plus modifier' => array('+1234'),
@@ -221,13 +234,14 @@ class MathUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'object without string representation' => [new \stdClass()],
             'object with numerical string representation' => [$objectWithNumericalStringRepresentation],
             'object without numerical string representation' => [$objectWithNonNumericalStringRepresentation],
-            'object with empty string representation' => [$objectWithEmptyStringRepresentation]
+            'object with empty string representation' => [$objectWithEmptyStringRepresentation],
         ];
     }
 
     /**
      * @test
      * @dataProvider functionCanBeInterpretedAsFloatInvalidDataProvider
+     * @param mixed $int
      */
     public function canBeInterpretedAsFloatReturnsFalse($int)
     {
@@ -237,6 +251,7 @@ class MathUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     //////////////////////////////////
     // Tests concerning calculateWithPriorityToAdditionAndSubtraction
     //////////////////////////////////
+
     /**
      * Data provider for calculateWithPriorityToAdditionAndSubtraction
      *
@@ -257,13 +272,15 @@ class MathUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'three operads with modulus' => [4, '5 % 2 + 3'],
             'four operands' => [3, '2 + 6 / 2 - 2'],
             'division by zero when dividing' => ['ERROR: dividing by zero', '2 / 0'],
-            'division by zero with modulus' => ['ERROR: dividing by zero', '2 % 0']
+            'division by zero with modulus' => ['ERROR: dividing by zero', '2 % 0'],
         ];
     }
 
     /**
      * @test
      * @dataProvider calculateWithPriorityToAdditionAndSubtractionDataProvider
+     * @param mixed $expected
+     * @param mixed $expression
      */
     public function calculateWithPriorityToAdditionAndSubtractionCorrectlyCalculatesExpression($expected, $expression)
     {
@@ -273,6 +290,7 @@ class MathUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     //////////////////////////////////
     // Tests concerning calcParenthesis
     //////////////////////////////////
+
     /**
      * Data provider for calcParenthesis
      *
@@ -285,13 +303,15 @@ class MathUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'ends with parenthesis' => [6, '2 * (6 - 3)'],
             'multiple parentheses' => [-6, '(3 - 6) * (4 - 2)'],
             'nested parentheses' => [22, '2 * (3 + 2 + (3 * 2))'],
-            'parenthesis with division' => [15, '5 / 2 * (3 * 2)']
+            'parenthesis with division' => [15, '5 / 2 * (3 * 2)'],
         ];
     }
 
     /**
      * @test
      * @dataProvider calculateWithParenthesesDataProvider
+     * @param mixed $expected
+     * @param mixed $expression
      */
     public function calculateWithParenthesesCorrectlyCalculatesExpression($expected, $expression)
     {
@@ -301,6 +321,7 @@ class MathUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     //////////////////////////////////
     // Tests concerning isIntegerInRange
     //////////////////////////////////
+
     /**
      * @test
      */
@@ -345,13 +366,14 @@ class MathUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'array' => [[]],
             'object' => [new \stdClass()],
             'boolean FALSE' => [false],
-            'NULL' => [null]
+            'NULL' => [null],
         ];
     }
 
     /**
      * @test
      * @dataProvider isIntegerInRangeRejectsOtherDataTypesDataProvider
+     * @param mixed $inputValue
      */
     public function isIntegerInRangeRejectsOtherDataTypes($inputValue)
     {

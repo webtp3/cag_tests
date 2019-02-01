@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Core;
 
 /*
@@ -86,7 +87,7 @@ class ClassLoadingInformationGeneratorTest extends \CAG\CagTests\Core\Unit\UnitT
                 ],
                 Fixtures\test_extension\Resources\PHP\AnotherTestFile::class => [
                     'bar' => 'bar',
-                ]
+                ],
             ],
         ];
         $packageMock = $this->createPackageMock([]);
@@ -112,7 +113,7 @@ class ClassLoadingInformationGeneratorTest extends \CAG\CagTests\Core\Unit\UnitT
                 ],
                 Fixtures\test_extension\Resources\PHP\AnotherTestFile::class => [
                     'bar' => 'bar',
-                ]
+                ],
             ],
         ];
         $packageMock = $this->createPackageMock([
@@ -399,6 +400,7 @@ class ClassLoadingInformationGeneratorTest extends \CAG\CagTests\Core\Unit\UnitT
 
     /**
      * @param array Array which should be returned as composer manifest
+     * @param mixed $packageManifest
      * @return PackageInterface
      */
     protected function createPackageMock($packageManifest)

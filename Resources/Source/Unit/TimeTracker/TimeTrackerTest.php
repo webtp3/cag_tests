@@ -15,8 +15,8 @@ namespace TYPO3\CMS\Core\Tests\Unit\TimeTracker;
  * The TYPO3 project - inspiring people to share!
  */
 
-use TYPO3\CMS\Core\TimeTracker\TimeTracker;
 use CAG\CagTests\Core\Unit\UnitTestCase;
+use TYPO3\CMS\Core\TimeTracker\TimeTracker;
 
 /**
  * Class TimeTrackerTest

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Imaging;
 
 /*
@@ -95,8 +96,8 @@ class IconFactoryTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'provider' => FontawesomeIconProvider::class,
             'options' => [
                 'name' => 'times',
-                'additionalClasses' => 'fa-fw'
-            ]
+                'additionalClasses' => 'fa-fw',
+            ],
         ]);
     }
 
@@ -110,7 +111,7 @@ class IconFactoryTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         return [
             ['size ' . Icon::SIZE_SMALL => ['input' => Icon::SIZE_SMALL, 'expected' => Icon::SIZE_SMALL]],
             ['size ' . Icon::SIZE_DEFAULT => ['input' => Icon::SIZE_DEFAULT, 'expected' => Icon::SIZE_DEFAULT]],
-            ['size ' . Icon::SIZE_LARGE => ['input' => Icon::SIZE_LARGE, 'expected' => Icon::SIZE_LARGE]]
+            ['size ' . Icon::SIZE_LARGE => ['input' => Icon::SIZE_LARGE, 'expected' => Icon::SIZE_LARGE]],
         ];
     }
 
@@ -139,6 +140,7 @@ class IconFactoryTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider differentSizesDataProvider
+     * @param mixed $size
      */
     public function getIconByIdentifierAndSizeReturnsIconWithCorrectMarkupIfRegisteredIconIdentifierIsUsed($size)
     {
@@ -151,6 +153,7 @@ class IconFactoryTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider differentSizesDataProvider
+     * @param mixed $size
      */
     public function getIconByIdentifierAndSizeAndWithOverlayReturnsIconWithCorrectOverlayMarkupIfRegisteredIconIdentifierIsUsed($size)
     {
@@ -171,8 +174,8 @@ class IconFactoryTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'provider' => FontawesomeIconProvider::class,
             'options' => [
                 'name' => 'times-circle',
-                'additionalClasses' => 'fa-fw'
-            ]
+                'additionalClasses' => 'fa-fw',
+            ],
         ]);
         $this->assertContains(
             '<span class="t3js-icon icon icon-size-default icon-state-default icon-default-not-found" data-identifier="default-not-found">',
@@ -183,6 +186,7 @@ class IconFactoryTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider differentSizesDataProvider
+     * @param mixed $size
      */
     public function getIconByIdentifierAndSizeReturnsNotFoundIconWithCorrectMarkupIfUnregisteredIdentifierIsUsed($size)
     {
@@ -192,8 +196,8 @@ class IconFactoryTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'provider' => FontawesomeIconProvider::class,
             'options' => [
                 'name' => 'times-circle',
-                'additionalClasses' => 'fa-fw'
-            ]
+                'additionalClasses' => 'fa-fw',
+            ],
         ]);
         $this->assertContains(
             '<span class="t3js-icon icon icon-size-' . $size['expected'] . ' icon-state-default icon-default-not-found" data-identifier="default-not-found">',
@@ -211,8 +215,8 @@ class IconFactoryTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'options' => [
                 'name' => 'times-circle',
                 'additionalClasses' => 'fa-fw',
-                'spinning' => true
-            ]
+                'spinning' => true,
+            ],
         ]);
         $this->assertContains(
             '<span class="t3js-icon icon icon-size-default icon-state-default icon-' . $this->registeredSpinningIconIdentifier . ' icon-spin" data-identifier="spinning-icon">',
@@ -317,6 +321,7 @@ class IconFactoryTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     //////////////////////////////////////////////
     // Tests concerning getIconForResource
     //////////////////////////////////////////////
+
     /**
      * Tests the returns of no file
      *
@@ -561,6 +566,7 @@ class IconFactoryTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             ->getMock();
         $mockedFile->expects($this->atMost(1))->method('getExtension')->will($this->returnValue($extension));
         $mockedFile->expects($this->atLeastOnce())->method('getMimeType')->will($this->returnValue($mimeType));
+
         return $mockedFile;
     }
 
@@ -578,6 +584,7 @@ class IconFactoryTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         ));
         $mockedStorage->expects($this->any())->method('checkFolderActionPermission')->will($this->returnValue(true));
         $mockedStorage->expects($this->any())->method('isBrowsable')->will($this->returnValue(true));
+
         return new \TYPO3\CMS\Core\Resource\Folder($mockedStorage, $identifier, $identifier);
     }
 }

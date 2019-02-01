@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Backend\Tests\Unit\Utility\Fixtures;
 
 /*
@@ -24,6 +25,8 @@ class ProcessedValueForSelectWithMMRelationFixture extends \TYPO3\CMS\Backend\Ut
      *
      * @param string $table
      * @param array $row
+     * @param mixed $prep
+     * @param mixed $forceResult
      *
      * @return string
      */

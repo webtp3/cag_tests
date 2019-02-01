@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 // Prepend label for copied sys_category records
 $GLOBALS['TCA']['sys_category']['ctrl']['prependAtCopy'] = 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.prependAtCopy';

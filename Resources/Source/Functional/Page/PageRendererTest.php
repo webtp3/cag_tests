@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Functional\Page;
 
 /*
@@ -136,10 +137,10 @@ class PageRendererTest extends \CAG\CagTests\Core\Functional\FunctionalTestCase
         $subject->addInlineLanguageLabel('myKey', 'myValue');
         $subject->addInlineLanguageLabelArray([
             'myKeyArray1' => 'myValueArray1',
-            'myKeyArray2' => 'myValueArray2'
+            'myKeyArray2' => 'myValueArray2',
         ]);
         $subject->addInlineLanguageLabelArray([
-            'myKeyArray3' => 'myValueArray3'
+            'myKeyArray3' => 'myValueArray3',
         ]);
         $expectedInlineLabelReturnValue = 'TYPO3.lang = {"myKey":"myValue","myKeyArray1":"myValueArray1","myKeyArray2":"myValueArray2","myKeyArray3":"myValueArray3"';
 
@@ -151,10 +152,10 @@ class PageRendererTest extends \CAG\CagTests\Core\Functional\FunctionalTestCase
         $subject->addInlineSetting('myApp', 'myKey', 'myValue');
         $subject->addInlineSettingArray('myApp', [
             'myKey1' => 'myValue1',
-            'myKey2' => 'myValue2'
+            'myKey2' => 'myValue2',
         ]);
         $subject->addInlineSettingArray('myApp', [
-            'myKey3' => 'myValue3'
+            'myKey3' => 'myValue3',
         ]);
         $expectedInlineSettingsReturnValue = 'TYPO3.settings = {"myApp":{"myKey":"myValue","myKey1":"myValue1","myKey2":"myValue2","myKey3":"myValue3"}';
 
@@ -240,22 +241,22 @@ class PageRendererTest extends \CAG\CagTests\Core\Functional\FunctionalTestCase
             'google with version number' => [
                 '1.6.3',
                 'google',
-                '#<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.js" type="text/javascript"></script>#'
+                '#<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.js" type="text/javascript"></script>#',
             ],
             'msn with version number' => [
                 '1.6.3',
                 'msn',
-                '#<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.3.js" type="text/javascript"></script>#'
+                '#<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.3.js" type="text/javascript"></script>#',
             ],
             'jquery with version number' => [
                 '1.6.3',
                 'jquery',
-                '#<script src="https://code.jquery.com/jquery-1.6.3.js" type="text/javascript"></script>#'
+                '#<script src="https://code.jquery.com/jquery-1.6.3.js" type="text/javascript"></script>#',
             ],
             'jquery with custom URL' => [
                 '1.6.3',
                 'https://my.cool.cdn/foo/jquery.js',
-                '#<script src="https://my.cool.cdn/foo/jquery.js" type="text/javascript"></script>#'
+                '#<script src="https://my.cool.cdn/foo/jquery.js" type="text/javascript"></script>#',
             ],
         ];
     }
@@ -263,6 +264,9 @@ class PageRendererTest extends \CAG\CagTests\Core\Functional\FunctionalTestCase
     /**
      * @dataProvider loadJqueryFromSourceDataProvider
      * @test
+     * @param mixed $version
+     * @param mixed $source
+     * @param mixed $regex
      */
     public function isJqueryLoadedFromSourceUncompressedIfDebugModeIsEnabled($version, $source, $regex)
     {

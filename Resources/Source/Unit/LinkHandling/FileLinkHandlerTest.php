@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\LinkHandling;
 
 /*
@@ -22,7 +23,6 @@ use TYPO3\CMS\Core\Utility\MathUtility;
 
 class FileLinkHandlerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
-
     /**
      * testing folders
      */
@@ -39,21 +39,21 @@ class FileLinkHandlerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         return [
             'file without FAL - cool style' => [
                 [
-                    'identifier' => 'fileadmin/deep/down.jpg'
+                    'identifier' => 'fileadmin/deep/down.jpg',
                 ],
                 [
-                    'file' => 'fileadmin/deep/down.jpg'
+                    'file' => 'fileadmin/deep/down.jpg',
                 ],
-                't3://file?identifier=fileadmin%2Fdeep%2Fdown.jpg'
+                't3://file?identifier=fileadmin%2Fdeep%2Fdown.jpg',
             ],
             'file with FAL uid - cool style' => [
                 [
-                    'uid' => 23
+                    'uid' => 23,
                 ],
                 [
-                    'file' => 23
+                    'file' => 23,
                 ],
-                't3://file?uid=23'
+                't3://file?uid=23',
             ],
         ];
     }

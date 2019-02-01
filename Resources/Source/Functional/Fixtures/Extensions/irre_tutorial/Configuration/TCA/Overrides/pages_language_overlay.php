@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns(
     'pages_language_overlay',
     [
@@ -20,7 +21,7 @@
                 'behaviour' => [
                     'localizationMode' => 'select',
                 ],
-            ]
+            ],
         ],
     ]
 );

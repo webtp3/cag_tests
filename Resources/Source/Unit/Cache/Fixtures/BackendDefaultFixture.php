@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Cache\Fixtures;
 
 /*
@@ -15,8 +16,8 @@ namespace TYPO3\CMS\Core\Tests\Unit\Cache\Fixtures;
 */
 
 /**
-* Backend for cache manager test getCacheCreatesCacheInstanceWithFallbackToDefaultBackend
-*/
+ * Backend for cache manager test getCacheCreatesCacheInstanceWithFallbackToDefaultBackend
+ */
 class BackendDefaultFixture extends BackendFixture
 {
     public function __construct()

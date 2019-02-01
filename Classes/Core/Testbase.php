@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace CAG\CagTests\Core;
 
 /*
@@ -155,8 +156,8 @@ class Testbase
      * Creates directories, recursively if required.
      *
      * @param string $directory Absolute path to directories to create
-     * @return void
      * @throws Exception
+     * @return void
      */
     public function createDirectory($directory)
     {
@@ -181,10 +182,9 @@ class Testbase
     {
         if (@file_get_contents($instancePath . '/last_run.txt') <= (time() - 300)) {
             return false;
-        } else {
-            // Test instance exists and is pretty young -> re-use
-            return true;
         }
+        // Test instance exists and is pretty young -> re-use
+        return true;
     }
 
     /**
@@ -192,8 +192,8 @@ class Testbase
      * This may happen if a functional test before threw a fatal or is too old
      *
      * @param string $instancePath Absolute path to test instance
-     * @return void
      * @throws Exception
+     * @return void
      */
     public function removeOldInstanceIfExists($instancePath)
     {
@@ -368,7 +368,7 @@ class Testbase
                 'DB' => [
                     'Connections' => [
                         'Default' => [
-                            'driver' => 'mysqli'
+                            'driver' => 'mysqli',
                         ],
                     ],
                 ],
@@ -407,6 +407,7 @@ class Testbase
                 1397406356
             );
         }
+
         return $originalConfigurationArray['DB'];
     }
 
@@ -489,14 +490,14 @@ class Testbase
         // Register default list of extensions and set active
         foreach ($defaultCoreExtensionsToLoad as $extensionName) {
             $packageStates['packages'][$extensionName] = [
-                'packagePath' => 'typo3/sysext/' . $extensionName . '/'
+                'packagePath' => 'typo3/sysext/' . $extensionName . '/',
             ];
         }
 
         // Register additional core extensions and set active
         foreach ($additionalCoreExtensionsToLoad as $extensionName) {
             $packageStates['packages'][$extensionName] = [
-                'packagePath' => 'typo3/sysext/' . $extensionName . '/'
+                'packagePath' => 'typo3/sysext/' . $extensionName . '/',
             ];
         }
 
@@ -504,7 +505,7 @@ class Testbase
         foreach ($testExtensionPaths as $extensionPath) {
             $extensionName = basename($extensionPath);
             $packageStates['packages'][$extensionName] = [
-                'packagePath' => 'typo3conf/ext/' . $extensionName . '/'
+                'packagePath' => 'typo3conf/ext/' . $extensionName . '/',
             ];
         }
 
@@ -650,10 +651,10 @@ class Testbase
      * Imports a data set represented as XML into the test database,
      *
      * @param string $path Absolute path to the XML file containing the data set to load
-     * @return void
      * @throws \Doctrine\DBAL\DBALException
      * @throws \InvalidArgumentException
      * @throws \RuntimeException
+     * @return void
      */
     public function importXmlDatabaseFixture($path)
     {
@@ -810,6 +811,7 @@ class Testbase
         } else {
             $webRoot = getcwd();
         }
+
         return rtrim(strtr($webRoot, '\\', '/'), '/') . '/';
     }
 
@@ -829,8 +831,9 @@ class Testbase
         if (strpos($path, 'EXT:') === 0) {
             $path = GeneralUtility::getFileAbsFileName($path);
         } elseif (strpos($path, 'PACKAGE:') === 0) {
-            $path = $this->getPackagesPath() . str_replace('PACKAGE:', '',$path);
+            $path = $this->getPackagesPath() . str_replace('PACKAGE:', '', $path);
         }
+
         return $path;
     }
 
@@ -850,8 +853,10 @@ class Testbase
             if ($res === false) {
                 return false;
             }
+
             return true;
         }
+
         return false;
     }
 }

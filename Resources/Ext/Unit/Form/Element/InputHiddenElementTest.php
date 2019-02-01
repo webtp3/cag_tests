@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace typo3\sysext\backend\Tests\Unit\Form\Element;
 
 /*
@@ -28,8 +29,8 @@ class InputHiddenElementTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $data = [
                 'parameterArray' => [
                 'itemFormElName' => 'foo',
-                'itemFormElValue' => 'bar'
-            ]
+                'itemFormElValue' => 'bar',
+            ],
         ];
         $subject = $this->getAccessibleMock(InputHiddenElement::class, ['dummy'], [], '', false);
         $subject->_set('data', $data);

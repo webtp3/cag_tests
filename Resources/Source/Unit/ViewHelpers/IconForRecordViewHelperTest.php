@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\ViewHelpers;
 
 /*
@@ -14,6 +15,7 @@ namespace TYPO3\CMS\Core\Tests\Unit\ViewHelpers;
  * The TYPO3 project - inspiring people to share!
  */
 
+use CAG\CagTests\Fluid\Unit\ViewHelpers\ViewHelperBaseTestcase;
 use Prophecy\Argument;
 use Prophecy\Prophecy\ObjectProphecy;
 use TYPO3\CMS\Core\Imaging\Icon;
@@ -21,7 +23,6 @@ use TYPO3\CMS\Core\Imaging\IconFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\ViewHelpers\IconForRecordViewHelper;
 use TYPO3\CMS\Core\ViewHelpers\IconViewHelper;
-use CAG\CagTests\Fluid\Unit\ViewHelpers\ViewHelperBaseTestcase;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 
 /**
@@ -66,7 +67,7 @@ class IconForRecordViewHelperTest extends ViewHelperBaseTestcase
             'table' => 'tt_content',
             'row' => $row,
             'size' => Icon::SIZE_LARGE,
-            'alternativeMarkupIdentifier' => 'inline'
+            'alternativeMarkupIdentifier' => 'inline',
         ];
         $iconForRecordViewHelper = new IconForRecordViewHelper();
         $iconForRecordViewHelper->setRenderingContext($renderingContextProphecy->reveal());

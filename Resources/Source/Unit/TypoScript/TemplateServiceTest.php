@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\TypoScript;
 
 /*
@@ -119,7 +120,7 @@ class TemplateServiceTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         'core',
                     'Tests/Unit/TypoScript/Fixtures/ext_typoscript_setup.txt'
                     ),
-                'ext_typoscript_constants.txt' => ''
+                'ext_typoscript_constants.txt' => '',
             ],
         ];
 

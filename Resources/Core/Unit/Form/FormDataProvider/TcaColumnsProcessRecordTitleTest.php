@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Backend\Tests\Unit\Form\FormDataProvider;
 
 /*
@@ -40,10 +41,10 @@ class TcaColumnsProcessRecordTitleTest extends \CAG\CagTests\Core\Unit\UnitTestC
             'columnsToProcess' => [],
             'processedTca' => [
                 'ctrl' => [
-                    'label' => 'uid'
+                    'label' => 'uid',
                 ],
                 'columns' => [],
-            ]
+            ],
         ];
 
         $expected = $input;
@@ -64,7 +65,7 @@ class TcaColumnsProcessRecordTitleTest extends \CAG\CagTests\Core\Unit\UnitTestC
                     'label_alt' => 'aField,anotherField',
                 ],
                 'columns' => [],
-            ]
+            ],
         ];
 
         $expected = $input;

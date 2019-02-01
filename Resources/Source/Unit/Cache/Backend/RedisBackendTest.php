@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Cache\Backend;
 
 /*
@@ -13,8 +14,8 @@ namespace TYPO3\CMS\Core\Tests\Unit\Cache\Backend;
  *
  * The TYPO3 project - inspiring people to share!
  */
-use TYPO3\CMS\Core\Cache\Exception\InvalidDataException;
 use CAG\CagTests\Core\Unit\UnitTestCase;
+use TYPO3\CMS\Core\Cache\Exception\InvalidDataException;
 
 /**
  * Testcase for the cache to redis backend
@@ -519,7 +520,7 @@ class RedisBackendTest extends UnitTestCase
     public function setSavesCompressedDataWithEnabledCompression()
     {
         $this->setUpBackend([
-            'compression' => true
+            'compression' => true,
         ]);
         $this->setUpRedis();
         $identifier = $this->getUniqueId('identifier');
@@ -540,7 +541,7 @@ class RedisBackendTest extends UnitTestCase
     {
         $this->setUpBackend([
             'compression' => true,
-            'compressionLevel' => 0
+            'compressionLevel' => 0,
         ]);
         $this->setUpRedis();
         $identifier = $this->getUniqueId('identifier');
@@ -600,7 +601,7 @@ class RedisBackendTest extends UnitTestCase
     public function getReturnsPreviouslyCompressedSetEntry()
     {
         $this->setUpBackend([
-            'compression' => true
+            'compression' => true,
         ]);
         $data = 'data';
         $identifier = $this->getUniqueId('identifier');
@@ -799,7 +800,7 @@ class RedisBackendTest extends UnitTestCase
         $actualResult = [
             $this->backend->has($identifier . 'A'),
             $this->backend->has($identifier . 'B'),
-            $this->backend->has($identifier . 'C')
+            $this->backend->has($identifier . 'C'),
         ];
         $this->assertSame($expectedResult, $actualResult);
     }
@@ -821,7 +822,7 @@ class RedisBackendTest extends UnitTestCase
             $this->backend->has($identifier . 'A'),
             $this->backend->has($identifier . 'B'),
             $this->backend->has($identifier . 'C'),
-            $this->backend->has($identifier . 'D')
+            $this->backend->has($identifier . 'D'),
         ];
         $this->assertSame($expectedResult, $actualResult);
     }
@@ -955,7 +956,7 @@ class RedisBackendTest extends UnitTestCase
         }
         $actualResult = [
             $resultA,
-            $resultB
+            $resultB,
         ];
         $this->assertSame($expectedResult, $actualResult);
     }
@@ -974,11 +975,11 @@ class RedisBackendTest extends UnitTestCase
         $this->backend->collectGarbage();
         $expectedResult = [
             [],
-            [$identifier . 'B']
+            [$identifier . 'B'],
         ];
         $actualResult = [
             $this->redis->sMembers('tagIdents:tag1'),
-            $this->redis->sMembers('tagIdents:tag2')
+            $this->redis->sMembers('tagIdents:tag2'),
         ];
         $this->assertSame($expectedResult, $actualResult);
     }

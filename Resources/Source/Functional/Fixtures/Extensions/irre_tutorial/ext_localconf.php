@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 defined('TYPO3_MODE') or die();
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
@@ -6,9 +7,9 @@ defined('TYPO3_MODE') or die();
     'Irre',
     [
         'Queue' => 'index',
-        'Content' => 'list, show, new, create, edit, update, delete'
+        'Content' => 'list, show, new, create, edit, update, delete',
     ],
     [
-        'Content' => 'create, update, delete'
+        'Content' => 'create, update, delete',
     ]
 );

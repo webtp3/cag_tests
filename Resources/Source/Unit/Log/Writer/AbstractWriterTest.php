@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Log\Writer;
 
 /*
@@ -29,7 +30,7 @@ class AbstractWriterTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $this->expectExceptionCode(1321696152);
 
         $invalidConfiguration = [
-            'foo' => 'bar'
+            'foo' => 'bar',
         ];
         $this->getMockForAbstractClass(\TYPO3\CMS\Core\Log\Writer\AbstractWriter::class, [$invalidConfiguration]);
     }

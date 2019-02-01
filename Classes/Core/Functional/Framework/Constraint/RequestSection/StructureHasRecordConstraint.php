@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace CAG\CagTests\Core\Functional\Framework\Constraint\RequestSection;
 
 /*
@@ -34,6 +35,7 @@ class StructureHasRecordConstraint extends AbstractStructureRecordConstraint
         foreach ($structures as $path => $structure) {
             if (empty($structure) || !is_array($structure)) {
                 $this->sectionFailures[$responseSection->getIdentifier()] = 'No records found in "' . $path . '"';
+
                 return false;
             }
 
@@ -59,7 +61,7 @@ class StructureHasRecordConstraint extends AbstractStructureRecordConstraint
         $failureMessage = '';
 
         if (empty($structures)) {
-            $failureMessage .= 'Could not assert all values for "' . $this->recordIdentifier . '.' . $this->recordField . '.' . $this->table . '.' . $this->field .'"' . LF;
+            $failureMessage .= 'Could not assert all values for "' . $this->recordIdentifier . '.' . $this->recordField . '.' . $this->table . '.' . $this->field . '"' . LF;
         }
 
         if (!empty($nonMatchingVariants)) {
@@ -77,6 +79,7 @@ class StructureHasRecordConstraint extends AbstractStructureRecordConstraint
         }
 
         $this->sectionFailures[$responseSection->getIdentifier()] = $failureMessage;
+
         return false;
     }
 

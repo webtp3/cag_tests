@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Backend\Tests\Unit\Form\FormDataProvider;
 
 /*
@@ -40,7 +41,7 @@ class InitializeProcessedTcaTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'tableName' => 'aTable',
         ];
         $expected = [
-            'columns' => []
+            'columns' => [],
         ];
         $GLOBALS['TCA'][$input['tableName']] = $expected;
         $result = $this->subject->addData($input);

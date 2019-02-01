@@ -15,10 +15,10 @@ namespace TYPO3\CMS\Core\Tests\Functional\Session\Backend;
  * The TYPO3 project - inspiring people to share!
  */
 
+use CAG\CagTests\Core\Functional\FunctionalTestCase;
 use TYPO3\CMS\Core\Session\Backend\DatabaseSessionBackend;
 use TYPO3\CMS\Core\Session\Backend\Exception\SessionNotCreatedException;
 use TYPO3\CMS\Core\Session\Backend\Exception\SessionNotFoundException;
-use CAG\CagTests\Core\Functional\FunctionalTestCase;
 
 /**
  * Test case
@@ -110,7 +110,7 @@ class DatabaseSessionBackendTest extends FunctionalTestCase
 
         $updateData = [
             'ses_data' => serialize(['foo' => 'baz', 'idontwantto' => 'set the world on fire']),
-            'ses_tstamp' => $GLOBALS['EXEC_TIME']
+            'ses_tstamp' => $GLOBALS['EXEC_TIME'],
         ];
         $expectedMergedData = array_merge($this->testSessionRecord, $updateData);
         $this->subject->update('randomSessionId', $updateData);

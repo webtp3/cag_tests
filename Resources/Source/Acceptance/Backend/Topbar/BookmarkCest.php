@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Acceptance\Backend\Topbar;
 
 /*
@@ -14,10 +15,10 @@ namespace TYPO3\CMS\Core\Tests\Acceptance\Backend\Topbar;
  * The TYPO3 project - inspiring people to share!
  */
 
-use Codeception\Scenario;
 use CAG\CagTests\Core\Acceptance\Step\Backend\Admin;
 use CAG\CagTests\Core\Acceptance\Support\Helper\ModalDialog;
 use CAG\CagTests\Core\Acceptance\Support\Helper\Topbar;
+use Codeception\Scenario;
 
 /**
  * Test for the "Bookmark" functionality
@@ -58,6 +59,7 @@ class BookmarkCest
     {
         $this->clickBookmarkDropdownToggleInTopbar($I);
         $I->cantSeeElement(self::$topBarModuleSelector . ' .shortcut');
+
         return $I;
     }
 

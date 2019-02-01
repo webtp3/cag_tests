@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Cache\Fixtures;
 
 /*
@@ -15,8 +16,8 @@ namespace TYPO3\CMS\Core\Tests\Unit\Cache\Fixtures;
 */
 
 /**
-* Fixture implementing frontend
-*/
+ * Fixture implementing frontend
+ */
 class FrontendInitializeObjectFixture extends FrontendFixture
 {
     public function initializeObject()

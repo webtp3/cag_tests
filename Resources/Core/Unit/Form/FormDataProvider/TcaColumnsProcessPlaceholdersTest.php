@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Backend\Tests\Unit\Form\FormDataProvider;
 
 /*
@@ -43,11 +44,11 @@ class TcaColumnsProcessPlaceholdersTest extends \CAG\CagTests\Core\Unit\UnitTest
                     'aField' => [
                         'config' => [
                             'type' => 'input',
-                            'placeholder' => '__row|anotherField'
+                            'placeholder' => '__row|anotherField',
                         ],
                     ],
                 ],
-            ]
+            ],
         ];
 
         $expected = $input;
@@ -67,11 +68,11 @@ class TcaColumnsProcessPlaceholdersTest extends \CAG\CagTests\Core\Unit\UnitTest
                     'aField' => [
                         'config' => [
                             'type' => 'input',
-                            'placeholder' => '__row|uid_local|metadata|title'
+                            'placeholder' => '__row|uid_local|metadata|title',
                         ],
                     ],
                 ],
-            ]
+            ],
         ];
 
         $expected = $input;
@@ -91,11 +92,11 @@ class TcaColumnsProcessPlaceholdersTest extends \CAG\CagTests\Core\Unit\UnitTest
                     'aField' => [
                         'config' => [
                             'type' => 'input',
-                            'placeholder' => 'A simple placeholder'
+                            'placeholder' => 'A simple placeholder',
                         ],
                     ],
                 ],
-            ]
+            ],
         ];
 
         $expected = $input;

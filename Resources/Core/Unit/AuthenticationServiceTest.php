@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Sv\Tests\Unit;
 
 /*
@@ -39,7 +40,7 @@ class AuthenticationServiceTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     'uname' => 'admin',
                     'uident' => 'password',
                     'uident_text' => 'password',
-                ]
+                ],
             ],
             'Frontend login with securityLevel "normal"' => [
                 'normal',
@@ -53,7 +54,7 @@ class AuthenticationServiceTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     'uname' => 'admin',
                     'uident' => 'password',
                     'uident_text' => 'password',
-                ]
+                ],
             ],
         ];
     }
@@ -61,6 +62,9 @@ class AuthenticationServiceTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider processLoginDataProvider
+     * @param mixed $passwordSubmissionStrategy
+     * @param mixed $loginData
+     * @param mixed $expectedProcessedData
      */
     public function processLoginReturnsCorrectData($passwordSubmissionStrategy, $loginData, $expectedProcessedData)
     {

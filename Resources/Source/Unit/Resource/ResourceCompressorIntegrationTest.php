@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Resource;
 
 /*
@@ -23,7 +23,6 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class ResourceCompressorIntegrationTest extends BaseTestCase
 {
-
     /**
      * @var TestableResourceCompressor
      */

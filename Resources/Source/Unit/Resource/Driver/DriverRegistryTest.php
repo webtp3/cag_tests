@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Resource\Driver;
 
 /*
@@ -97,8 +98,8 @@ class DriverRegistryTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $shortName = $this->getUniqueId();
         $GLOBALS['TYPO3_CONF_VARS']['SYS']['fal']['registeredDrivers'] = [
             $shortName => [
-                'class' => $className
-            ]
+                'class' => $className,
+            ],
         ];
         $this->initializeSubject();
         $this->assertEquals($className, $this->subject->getDriverClass($shortName));
@@ -113,8 +114,8 @@ class DriverRegistryTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $shortName = $this->getUniqueId();
         $GLOBALS['TYPO3_CONF_VARS']['SYS']['fal']['registeredDrivers'] = [
             $shortName => [
-                'class' => $className
-            ]
+                'class' => $className,
+            ],
         ];
         $this->initializeSubject();
         $this->assertTrue($this->subject->driverExists($shortName));

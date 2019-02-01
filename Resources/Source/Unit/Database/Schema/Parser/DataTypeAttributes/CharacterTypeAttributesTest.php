@@ -1,6 +1,5 @@
 <?php
 declare(strict_types = 1);
-
 namespace TYPO3\CMS\Core\Tests\Unit\Database\Schema\Parser\DataTypeAttributes;
 
 /*
@@ -24,7 +23,6 @@ use TYPO3\CMS\Core\Tests\Unit\Database\Schema\Parser\AbstractDataTypeBaseTestCas
  */
 class CharacterTypeAttributesTest extends AbstractDataTypeBaseTestCase
 {
-
     /**
      * Data provider for canParseCharacterDataTypeAttributes()
      *

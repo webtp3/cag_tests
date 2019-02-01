@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Utility;
 
 /*
@@ -48,6 +49,7 @@ class RootlineUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
      * 		UTILITY FUNCTIONS
      *
      */
+
     /**
      * Tests that $subsetCandidate is completely part of $superset
      * and keys match.
@@ -66,6 +68,7 @@ class RootlineUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
      * 		>TEST CASES
      *
      */
+
     /**
      * @test
      */
@@ -175,7 +178,7 @@ class RootlineUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     public function columnHasRelationToResolveDetectsGroupFieldAsLocal()
     {
         $this->assertFalse($this->subject->_call('columnHasRelationToResolve', [
-            'type' => 'group'
+            'type' => 'group',
         ]));
     }
 
@@ -187,8 +190,8 @@ class RootlineUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $this->assertTrue($this->subject->_call('columnHasRelationToResolve', [
             'config' => [
                 'type' => 'group',
-                'MM' => 'tx_xyz'
-            ]
+                'MM' => 'tx_xyz',
+            ],
         ]));
     }
 
@@ -199,8 +202,8 @@ class RootlineUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     {
         $this->assertFalse($this->subject->_call('columnHasRelationToResolve', [
             'config' => [
-                'type' => 'inline'
-            ]
+                'type' => 'inline',
+            ],
         ]));
     }
 
@@ -212,8 +215,8 @@ class RootlineUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $this->assertTrue($this->subject->_call('columnHasRelationToResolve', [
             'config' => [
                 'type' => 'inline',
-                'foreign_field' => 'xyz'
-            ]
+                'foreign_field' => 'xyz',
+            ],
         ]));
     }
 
@@ -225,8 +228,8 @@ class RootlineUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $this->assertTrue($this->subject->_call('columnHasRelationToResolve', [
             'config' => [
                 'type' => 'inline',
-                'MM' => 'xyz'
-            ]
+                'MM' => 'xyz',
+            ],
         ]));
     }
 
@@ -237,8 +240,8 @@ class RootlineUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     {
         $this->assertFalse($this->subject->_call('columnHasRelationToResolve', [
             'config' => [
-                'type' => 'select'
-            ]
+                'type' => 'select',
+            ],
         ]));
     }
 
@@ -250,8 +253,8 @@ class RootlineUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $this->assertTrue($this->subject->_call('columnHasRelationToResolve', [
             'config' => [
                 'type' => 'select',
-                'MM' => 'xyz'
-            ]
+                'MM' => 'xyz',
+            ],
         ]));
     }
 

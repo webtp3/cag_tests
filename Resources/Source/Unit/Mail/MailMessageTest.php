@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Mail;
 
 /*
@@ -37,12 +38,12 @@ class MailMessageTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         return [
             'string with ascii email address' => [
                 'john.doe@example.com',
-                'john.doe@example.com'
+                'john.doe@example.com',
             ],
             'string with utf8 email address' => [
                 'john.doe@☺example.com',
-                'john.doe@xn--example-tc7d.com'
-            ]
+                'john.doe@xn--example-tc7d.com',
+            ],
         ];
     }
 
@@ -69,14 +70,14 @@ class MailMessageTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'john.doe@example.com',
                 [
                     'john.doe@example.com' => null,
-                ]
+                ],
             ],
             'string with utf8 email address' => [
                 'john.doe@☺example.com',
                 [
                     'john.doe@xn--example-tc7d.com' => null,
-                ]
-            ]
+                ],
+            ],
         ];
     }
 
@@ -102,19 +103,19 @@ class MailMessageTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'string with ascii email address' => [
                 'john.doe@example.com',
                 [
-                    'john.doe@example.com' => null
-                ]
+                    'john.doe@example.com' => null,
+                ],
             ],
             'string with utf8 email address' => [
                 'john.doe@☺example.com',
                 [
-                    'john.doe@xn--example-tc7d.com' => null
-                ]
+                    'john.doe@xn--example-tc7d.com' => null,
+                ],
             ],
             'array with ascii email addresses' => [
                 [
                     'john.doe@example.com' => 'John Doe',
-                    'jane.doe@example.com'
+                    'jane.doe@example.com',
                 ],
                 [
                     'john.doe@example.com' => 'John Doe',

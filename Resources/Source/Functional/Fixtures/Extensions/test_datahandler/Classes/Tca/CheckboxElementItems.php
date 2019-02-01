@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\TestDatahandler\Classes\Tca;
 
 /**
@@ -7,6 +8,7 @@ namespace TYPO3\TestDatahandler\Classes\Tca;
 class CheckboxElementItems
 {
     /**
+     * @param mixed $params
      * @return array
      */
     public function getItems($params)

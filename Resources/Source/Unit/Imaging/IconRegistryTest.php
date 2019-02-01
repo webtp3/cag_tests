@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Imaging;
 
 /*
@@ -77,7 +78,7 @@ class IconRegistryTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $this->assertFalse($this->subject->isRegistered($unregisterdIcon));
         $this->subject->registerIcon($unregisterdIcon, FontawesomeIconProvider::class, [
             'name' => 'pencil',
-            'additionalClasses' => 'fa-fw'
+            'additionalClasses' => 'fa-fw',
         ]);
         $this->assertTrue($this->subject->isRegistered($unregisterdIcon));
     }

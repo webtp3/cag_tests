@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Backend\Tests\Unit\Form\FormDataProvider;
 
 /*
@@ -101,7 +102,7 @@ class TcaFlexProcessTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                                     'config' => [
                                                         'type' => 'input',
                                                     ],
-                                                ]
+                                                ],
                                             ],
                                         ],
                                     ],
@@ -165,7 +166,7 @@ class TcaFlexProcessTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                                     'config' => [
                                                         'type' => 'input',
                                                     ],
-                                                ]
+                                                ],
                                             ],
                                         ],
                                     ],
@@ -244,7 +245,7 @@ class TcaFlexProcessTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                                     'config' => [
                                                         'type' => 'input',
                                                     ],
-                                                ]
+                                                ],
                                             ],
                                         ],
                                     ],
@@ -323,7 +324,7 @@ class TcaFlexProcessTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                                     'config' => [
                                                         'type' => 'input',
                                                     ],
-                                                ]
+                                                ],
                                             ],
                                         ],
                                     ],
@@ -402,7 +403,7 @@ class TcaFlexProcessTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                                     'config' => [
                                                         'type' => 'input',
                                                     ],
-                                                ]
+                                                ],
                                             ],
                                         ],
                                     ],
@@ -482,7 +483,7 @@ class TcaFlexProcessTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                                     'config' => [
                                                         'type' => 'input',
                                                     ],
-                                                ]
+                                                ],
                                             ],
                                         ],
                                     ],
@@ -545,7 +546,7 @@ class TcaFlexProcessTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                                     'config' => [
                                                         'type' => 'input',
                                                     ],
-                                                ]
+                                                ],
                                             ],
                                         ],
                                     ],
@@ -616,7 +617,7 @@ class TcaFlexProcessTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                                     'config' => [
                                                         'type' => 'input',
                                                     ],
-                                                ]
+                                                ],
                                             ],
                                         ],
                                     ],
@@ -686,7 +687,7 @@ class TcaFlexProcessTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                                     'config' => [
                                                         'type' => 'input',
                                                     ],
-                                                ]
+                                                ],
                                             ],
                                         ],
                                     ],
@@ -1095,9 +1096,9 @@ class TcaFlexProcessTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 
         // Data structure of given containers is copied over to "children" referencing the existing container name
         $expected['processedTca']['columns']['aField']['config']['ds']['sheets']['sDEF']['ROOT']['el']['section_1']['children']['1']
-            =  $expected['processedTca']['columns']['aField']['config']['ds']['sheets']['sDEF']['ROOT']['el']['section_1']['el']['container_1'];
+            = $expected['processedTca']['columns']['aField']['config']['ds']['sheets']['sDEF']['ROOT']['el']['section_1']['el']['container_1'];
         $expected['processedTca']['columns']['aField']['config']['ds']['sheets']['sDEF']['ROOT']['el']['section_1']['children']['2']
-            =  $expected['processedTca']['columns']['aField']['config']['ds']['sheets']['sDEF']['ROOT']['el']['section_1']['el']['container_1'];
+            = $expected['processedTca']['columns']['aField']['config']['ds']['sheets']['sDEF']['ROOT']['el']['section_1']['el']['container_1'];
 
         $this->assertEquals($expected, (new TcaFlexProcess())->addData($input));
     }
@@ -1395,6 +1396,7 @@ class TcaFlexProcessTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             if ($result['flexParentDatabaseRow'] === $input['databaseRow']) {
                 return true;
             }
+
             return false;
         }))->shouldBeCalled()->willReturnArgument(0);
 
@@ -1453,6 +1455,7 @@ class TcaFlexProcessTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             if ($result['flexParentDatabaseRow'] === $input['databaseRow']) {
                 return true;
             }
+
             return false;
         }))->shouldBeCalled()->willReturnArgument(0);
 
@@ -1525,6 +1528,7 @@ class TcaFlexProcessTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             if ($result['pageTsConfig']['flexHack.'] === $input['pageTsConfig']['TCEFORM.']['aTable.']['aField.']) {
                 return true;
             }
+
             return false;
         }))->shouldBeCalled()->willReturnArgument(0);
 

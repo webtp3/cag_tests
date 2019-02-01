@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Log;
 
 /*
@@ -142,7 +143,7 @@ class LoggerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             ['warning'],
             ['notice'],
             ['info'],
-            ['debug']
+            ['debug'],
         ];
     }
 

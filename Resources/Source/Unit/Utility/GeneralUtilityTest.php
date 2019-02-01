@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Utility;
 
 /*
@@ -15,6 +15,7 @@ namespace TYPO3\CMS\Core\Tests\Unit\Utility;
  * The TYPO3 project - inspiring people to share!
  */
 
+use CAG\CagTests\Core\FileStreamWrapper;
 use org\bovigo\vfs\vfsStream;
 use org\bovigo\vfs\vfsStreamDirectory;
 use org\bovigo\vfs\vfsStreamWrapper;
@@ -34,7 +35,6 @@ use TYPO3\CMS\Core\Tests\Unit\Utility\Fixtures\ReplacementClassFixture;
 use TYPO3\CMS\Core\Tests\Unit\Utility\Fixtures\TwoParametersConstructorFixture;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use CAG\CagTests\Core\FileStreamWrapper;
 
 /**
  * Testcase for class \TYPO3\CMS\Core\Utility\GeneralUtility
@@ -89,6 +89,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             $isConnected = true;
             fclose($connected);
         }
+
         return $isConnected;
     }
 
@@ -104,15 +105,21 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $root = vfsStream::setup();
         $path = $root->url() . '/typo3temp/var/tests/' . $this->getUniqueId($prefix);
         GeneralUtility::mkdir_deep($path);
+
         return $path;
     }
 
     ///////////////////////////
     // Tests concerning _GP
     ///////////////////////////
+
     /**
      * @test
      * @dataProvider gpDataProvider
+     * @param mixed $key
+     * @param mixed $get
+     * @param mixed $post
+     * @param mixed $expected
      */
     public function canRetrieveValueWithGP($key, $get, $post, $expected)
     {
@@ -139,17 +146,21 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'cake',
                 ['cake' => ['is a' => 'l\\ie']],
                 [],
-                ['is a' => 'l\\ie']
-            ]
+                ['is a' => 'l\\ie'],
+            ],
         ];
     }
 
     ///////////////////////////
     // Tests concerning _GPmerged
     ///////////////////////////
+
     /**
      * @test
      * @dataProvider gpMergedDataProvider
+     * @param mixed $get
+     * @param mixed $post
+     * @param mixed $expected
      */
     public function gpMergedWillMergeArraysFromGetAndPost($get, $post, $expected)
     {
@@ -169,18 +180,20 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $postPartData = ['cake' => ['b' => 'lie']];
         $getPartData = ['cake' => ['a' => 'is a']];
         $getPartDataModified = ['cake' => ['a' => 'is not a']];
+
         return [
             'Key doesn\' exist' => [['foo'], ['bar'], []],
             'No POST data' => [$fullDataArray, [], $fullDataArray['cake']],
             'No GET data' => [[], $fullDataArray, $fullDataArray['cake']],
             'POST and GET are merged' => [$getPartData, $postPartData, $fullDataArray['cake']],
-            'POST is preferred over GET' => [$getPartDataModified, $fullDataArray, $fullDataArray['cake']]
+            'POST is preferred over GET' => [$getPartDataModified, $fullDataArray, $fullDataArray['cake']],
         ];
     }
 
     ///////////////////////////////
     // Tests concerning _GET / _POST
     ///////////////////////////////
+
     /**
      * Data provider for canRetrieveGlobalInputsThroughGet
      * and canRetrieveGlobalInputsThroughPost
@@ -193,13 +206,16 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'Requested input data doesn\'t exist' => ['cake', [], null],
             'No key will return entire input data' => [null, ['cake' => 'l\\ie'], ['cake' => 'l\\ie']],
             'Can retrieve specific input' => ['cake', ['cake' => 'l\\ie', 'foo'], 'l\\ie'],
-            'Can retrieve nested input data' => ['cake', ['cake' => ['is a' => 'l\\ie']], ['is a' => 'l\\ie']]
+            'Can retrieve nested input data' => ['cake', ['cake' => ['is a' => 'l\\ie']], ['is a' => 'l\\ie']],
         ];
     }
 
     /**
      * @test
      * @dataProvider getAndPostDataProvider
+     * @param mixed $key
+     * @param mixed $get
+     * @param mixed $expected
      */
     public function canRetrieveGlobalInputsThroughGet($key, $get, $expected)
     {
@@ -210,6 +226,9 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider getAndPostDataProvider
+     * @param mixed $key
+     * @param mixed $post
+     * @param mixed $expected
      */
     public function canRetrieveGlobalInputsThroughPost($key, $post, $expected)
     {
@@ -220,9 +239,14 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     ///////////////////////////////
     // Tests concerning _GETset
     ///////////////////////////////
+
     /**
      * @test
      * @dataProvider getSetDataProvider
+     * @param mixed $input
+     * @param mixed $key
+     * @param mixed $expected
+     * @param mixed $getPreset
      */
     public function canSetNewGetInputValues($input, $key, $expected, $getPreset = [])
     {
@@ -249,14 +273,15 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'Target key pointing to sublevels and array input data' => [
                 ['a' => 'lie'],
                 'cake|is',
-                ['cake' => ['is' => ['a' => 'lie']]]
-            ]
+                ['cake' => ['is' => ['a' => 'lie']]],
+            ],
         ];
     }
 
     ///////////////////////////
     // Tests concerning cmpIPv4
     ///////////////////////////
+
     /**
      * Data provider for cmpIPv4ReturnsTrueForMatchingAddress
      *
@@ -274,7 +299,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             '/30 subnet' => ['10.10.3.1', '10.10.3.3/30'],
             'host with wildcard in list with IPv4/IPv6 addresses' => [
                 '192.168.1.1',
-                '127.0.0.1, 1234:5678::/126, 192.168.*'
+                '127.0.0.1, 1234:5678::/126, 192.168.*',
             ],
             'host in list with IPv4/IPv6 addresses' => ['192.168.1.1', '::1, 1234:5678::/126, 192.168.1.1'],
         ];
@@ -283,6 +308,8 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider cmpIPv4DataProviderMatching
+     * @param mixed $ip
+     * @param mixed $list
      */
     public function cmpIPv4ReturnsTrueForMatchingAddress($ip, $list)
     {
@@ -302,13 +329,15 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'single host with /32 subnet mask' => ['127.0.0.1', '127.0.0.2/32'],
             '/31 subnet' => ['127.0.0.1', '127.0.0.2/31'],
             'list with IPv4/IPv6 addresses' => ['127.0.0.1', '10.0.2.3, 192.168.1.1, ::1'],
-            'list with only IPv6 addresses' => ['10.20.30.40', '::1, 1234:5678::/127']
+            'list with only IPv6 addresses' => ['10.20.30.40', '::1, 1234:5678::/127'],
         ];
     }
 
     /**
      * @test
      * @dataProvider cmpIPv4DataProviderNotMatching
+     * @param mixed $ip
+     * @param mixed $list
      */
     public function cmpIPv4ReturnsFalseForNotMatchingAddress($ip, $list)
     {
@@ -318,6 +347,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     ///////////////////////////
     // Tests concerning cmpIPv6
     ///////////////////////////
+
     /**
      * Data provider for cmpIPv6ReturnsTrueForMatchingAddress
      *
@@ -335,13 +365,15 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             '/16 subnet' => ['1234::1', '1234:5678::/16'],
             '/126 subnet' => ['1234:5678::3', '1234:5678::/126'],
             '/126 subnet with host-bits in list set' => ['1234:5678::3', '1234:5678::2/126'],
-            'list with IPv4/IPv6 addresses' => ['1234:5678::3', '::1, 127.0.0.1, 1234:5678::/126, 192.168.1.1']
+            'list with IPv4/IPv6 addresses' => ['1234:5678::3', '::1, 127.0.0.1, 1234:5678::/126, 192.168.1.1'],
         ];
     }
 
     /**
      * @test
      * @dataProvider cmpIPv6DataProviderMatching
+     * @param mixed $ip
+     * @param mixed $list
      */
     public function cmpIPv6ReturnsTrueForMatchingAddress($ip, $list)
     {
@@ -363,13 +395,15 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'host against different /17 subnet' => ['1234::1', '1234:f678::/17'],
             'host against different /127 subnet' => ['1234:5678::3', '1234:5678::/127'],
             'host against IPv4 address list' => ['1234:5678::3', '127.0.0.1, 192.168.1.1'],
-            'host against mixed list with IPv6 host in different subnet' => ['1234:5678::3', '::1, 1234:5678::/127']
+            'host against mixed list with IPv6 host in different subnet' => ['1234:5678::3', '::1, 1234:5678::/127'],
         ];
     }
 
     /**
      * @test
      * @dataProvider cmpIPv6DataProviderNotMatching
+     * @param mixed $ip
+     * @param mixed $list
      */
     public function cmpIPv6ReturnsFalseForNotMatchingAddress($ip, $list)
     {
@@ -379,6 +413,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     ///////////////////////////////
     // Tests concerning IPv6Hex2Bin
     ///////////////////////////////
+
     /**
      * Data provider for IPv6Hex2BinCorrect
      *
@@ -391,7 +426,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'empty 2, already normalized' => ['0000:0000:0000:0000:0000:0000:0000:0000', str_pad('', 16, "\x00")],
             'already normalized' => [
                 '0102:0304:0000:0000:0000:0000:0506:0078',
-                "\x01\x02\x03\x04" . str_pad('', 8, "\x00") . "\x05\x06\x00\x78"
+                "\x01\x02\x03\x04" . str_pad('', 8, "\x00") . "\x05\x06\x00\x78",
             ],
             'expansion in middle 1' => ['1::2', "\x00\x01" . str_pad('', 12, "\x00") . "\x00\x02"],
             'expansion in middle 2' => ['beef::fefa', "\xbe\xef" . str_pad('', 12, "\x00") . "\xfe\xfa"],
@@ -401,6 +436,8 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider IPv6Hex2BinDataProviderCorrect
+     * @param mixed $hex
+     * @param mixed $binary
      */
     public function IPv6Hex2BinCorrectlyConvertsAddresses($hex, $binary)
     {
@@ -410,6 +447,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     ///////////////////////////////
     // Tests concerning IPv6Bin2Hex
     ///////////////////////////////
+
     /**
      * Data provider for IPv6Bin2HexCorrect
      *
@@ -430,6 +468,8 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider IPv6Bin2HexDataProviderCorrect
+     * @param mixed $binary
+     * @param mixed $hex
      */
     public function IPv6Bin2HexCorrectlyConvertsAddresses($binary, $hex)
     {
@@ -439,6 +479,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     ////////////////////////////////////////////////
     // Tests concerning normalizeIPv6 / compressIPv6
     ////////////////////////////////////////////////
+
     /**
      * Data provider for normalizeIPv6ReturnsCorrectlyNormalizedFormat
      *
@@ -452,13 +493,15 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'expansion in middle 1' => ['1::2', '0001:0000:0000:0000:0000:0000:0000:0002'],
             'expansion in middle 2' => ['1:2::3', '0001:0002:0000:0000:0000:0000:0000:0003'],
             'expansion in middle 3' => ['1::2:3', '0001:0000:0000:0000:0000:0000:0002:0003'],
-            'expansion in middle 4' => ['1:2::3:4:5', '0001:0002:0000:0000:0000:0003:0004:0005']
+            'expansion in middle 4' => ['1:2::3:4:5', '0001:0002:0000:0000:0000:0003:0004:0005'],
         ];
     }
 
     /**
      * @test
      * @dataProvider normalizeCompressIPv6DataProviderCorrect
+     * @param mixed $compressed
+     * @param mixed $normalized
      */
     public function normalizeIPv6CorrectlyNormalizesAddresses($compressed, $normalized)
     {
@@ -468,6 +511,8 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider normalizeCompressIPv6DataProviderCorrect
+     * @param mixed $compressed
+     * @param mixed $normalized
      */
     public function compressIPv6CorrectlyCompressesAdresses($compressed, $normalized)
     {
@@ -488,6 +533,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     ///////////////////////////////
     // Tests concerning validIP
     ///////////////////////////////
+
     /**
      * Data provider for checkValidIpReturnsTrueForValidIp
      *
@@ -499,13 +545,14 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             '0.0.0.0' => ['0.0.0.0'],
             'private IPv4 class C' => ['192.168.0.1'],
             'private IPv4 class A' => ['10.0.13.1'],
-            'private IPv6' => ['fe80::daa2:5eff:fe8b:7dfb']
+            'private IPv6' => ['fe80::daa2:5eff:fe8b:7dfb'],
         ];
     }
 
     /**
      * @test
      * @dataProvider validIpDataProvider
+     * @param mixed $ip
      */
     public function validIpReturnsTrueForValidIp($ip)
     {
@@ -526,13 +573,14 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'string empty' => [''],
             'string NULL' => ['NULL'],
             'out of bounds IPv4' => ['300.300.300.300'],
-            'dotted decimal notation with only two dots' => ['127.0.1']
+            'dotted decimal notation with only two dots' => ['127.0.1'],
         ];
     }
 
     /**
      * @test
      * @dataProvider invalidIpDataProvider
+     * @param mixed $ip
      */
     public function validIpReturnsFalseForInvalidIp($ip)
     {
@@ -542,6 +590,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     ///////////////////////////////
     // Tests concerning cmpFQDN
     ///////////////////////////////
+
     /**
      * Data provider for cmpFqdnReturnsTrue
      *
@@ -559,13 +608,15 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'aaa.bbb.ccc.ddd.eee, wildcard last' => ['aaa.bbb.ccc.ddd.eee', 'aaa.bbb.ccc.*'],
             'aaa.bbb.ccc.ddd.eee, wildcard middle' => ['aaa.bbb.ccc.ddd.eee', 'aaa.*.eee'],
             'list-matches, 1' => ['aaa.bbb.ccc.ddd.eee', 'xxx, yyy, zzz, aaa.*.eee'],
-            'list-matches, 2' => ['aaa.bbb.ccc.ddd.eee', '127:0:0:1,,aaa.*.eee,::1']
+            'list-matches, 2' => ['aaa.bbb.ccc.ddd.eee', '127:0:0:1,,aaa.*.eee,::1'],
         ];
     }
 
     /**
      * @test
      * @dataProvider cmpFqdnValidDataProvider
+     * @param mixed $baseHost
+     * @param mixed $list
      */
     public function cmpFqdnReturnsTrue($baseHost, $list)
     {
@@ -582,18 +633,20 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         return [
             'num-parts of hostname to check can only be less or equal than hostname, 1' => [
                 'aaa.bbb.ccc.ddd.eee',
-                'aaa.bbb.ccc.ddd.eee.fff'
+                'aaa.bbb.ccc.ddd.eee.fff',
             ],
             'num-parts of hostname to check can only be less or equal than hostname, 2' => [
                 'aaa.bbb.ccc.ddd.eee',
-                'aaa.*.bbb.ccc.ddd.eee'
-            ]
+                'aaa.*.bbb.ccc.ddd.eee',
+            ],
         ];
     }
 
     /**
      * @test
      * @dataProvider cmpFqdnInvalidDataProvider
+     * @param mixed $baseHost
+     * @param mixed $list
      */
     public function cmpFqdnReturnsFalse($baseHost, $list)
     {
@@ -603,6 +656,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     ///////////////////////////////
     // Tests concerning inList
     ///////////////////////////////
+
     /**
      * @test
      * @param string $haystack
@@ -624,7 +678,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'Element as second element of four items' => ['one,findme,three,four'],
             'Element at beginning of list' => ['findme,one,two'],
             'Element at end of list' => ['one,two,findme'],
-            'One item list' => ['findme']
+            'One item list' => ['findme'],
         ];
     }
 
@@ -648,13 +702,14 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         return [
             'Four item list' => ['one,two,three,four'],
             'One item list' => ['one'],
-            'Empty list' => ['']
+            'Empty list' => [''],
         ];
     }
 
     ///////////////////////////////
     // Tests concerning rmFromList
     ///////////////////////////////
+
     /**
      * @test
      * @param string $initialList
@@ -690,7 +745,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'List contains removeme multiple times nothing else 4x' => ['removeme,removeme,removeme,removeme', ''],
             'List contains removeme multiple times nothing else 5x' => [
                 'removeme,removeme,removeme,removeme,removeme',
-                ''
+                '',
             ],
         ];
     }
@@ -698,6 +753,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     ///////////////////////////////
     // Tests concerning expandList
     ///////////////////////////////
+
     /**
      * @test
      * @param string $list
@@ -725,7 +781,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'Multiple small range expands' => ['1,3-5,7-10,12', '1,3,4,5,7,8,9,10,12'],
             'One item list' => ['1-5', '1,2,3,4,5'],
             'Nothing to expand' => ['1,2,3,4', '1,2,3,4'],
-            'Empty list' => ['', '']
+            'Empty list' => ['', ''],
         ];
     }
 
@@ -741,6 +797,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     ///////////////////////////////
     // Tests concerning uniqueList
     ///////////////////////////////
+
     /**
      * @test
      * @param string $initialList
@@ -764,13 +821,14 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'List with two consecutive duplicates' => ['one,two,two,three,three', 'one,two,three'],
             'List with non-consecutive duplicates' => ['one,two,three,two,three', 'one,two,three'],
             'One item list' => ['one', 'one'],
-            'Empty list' => ['', '']
+            'Empty list' => ['', ''],
         ];
     }
 
     ///////////////////////////////
     // Tests concerning isFirstPartOfStr
     ///////////////////////////////
+
     /**
      * Data provider for isFirstPartOfStrReturnsTrueForMatchingFirstParts
      *
@@ -783,13 +841,15 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'match whole string' => ['hello', 'hello'],
             'integer is part of string with same number' => ['24', 24],
             'string is part of integer with same number' => [24, '24'],
-            'integer is part of string starting with same number' => ['24 beer please', 24]
+            'integer is part of string starting with same number' => ['24 beer please', 24],
         ];
     }
 
     /**
      * @test
      * @dataProvider isFirstPartOfStrReturnsTrueForMatchingFirstPartDataProvider
+     * @param mixed $string
+     * @param mixed $part
      */
     public function isFirstPartOfStrReturnsTrueForMatchingFirstPart($string, $part)
     {
@@ -819,13 +879,15 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'empty string is not part of false' => [false, ''],
             'empty string is not part of zero integer' => [0, ''],
             'zero integer is not part of NULL' => [null, 0],
-            'zero integer is not part of empty string' => ['', 0]
+            'zero integer is not part of empty string' => ['', 0],
         ];
     }
 
     /**
      * @test
      * @dataProvider isFirstPartOfStrReturnsFalseForNotMatchingFirstPartDataProvider
+     * @param mixed $string
+     * @param mixed $part
      */
     public function isFirstPartOfStrReturnsFalseForNotMatchingFirstPart($string, $part)
     {
@@ -835,9 +897,14 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     ///////////////////////////////
     // Tests concerning formatSize
     ///////////////////////////////
+
     /**
      * @test
      * @dataProvider formatSizeDataProvider
+     * @param mixed $size
+     * @param mixed $labels
+     * @param mixed $base
+     * @param mixed $expected
      */
     public function formatSizeTranslatesBytesToHigherOrderRepresentation($size, $labels, $base, $expected)
     {
@@ -884,13 +951,14 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'Label for gigabytes can be exchanged (decimal unit)' => [1000000000, '||| Foo', 1000, '1.00 Foo'],
             'IEC Base is ignored' => [1024, 'iec', 1000, '1.00 Ki'],
             'SI Base is ignored' => [1000, 'si', 1024, '1.00 k'],
-            'Use binary base for unexpected base' => [2048, '| Bar||', 512, '2.00 Bar']
+            'Use binary base for unexpected base' => [2048, '| Bar||', 512, '2.00 Bar'],
         ];
     }
 
     ///////////////////////////////
     // Tests concerning splitCalc
     ///////////////////////////////
+
     /**
      * Data provider for splitCalc
      *
@@ -901,22 +969,24 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         return [
             'empty string returns empty array' => [
                 [],
-                ''
+                '',
             ],
             'number without operator returns array with plus and number' => [
                 [['+', 42]],
-                '42'
+                '42',
             ],
             'two numbers with asterisk return first number with plus and second number with asterisk' => [
                 [['+', 42], ['*', 31]],
-                '42 * 31'
-            ]
+                '42 * 31',
+            ],
         ];
     }
 
     /**
      * @test
      * @dataProvider splitCalcDataProvider
+     * @param mixed $expected
+     * @param mixed $expression
      */
     public function splitCalcCorrectlySplitsExpression($expected, $expression)
     {
@@ -926,6 +996,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     ///////////////////////////////
     // Tests concerning htmlspecialchars_decode
     ///////////////////////////////
+
     /**
      * @test
      */
@@ -940,9 +1011,12 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     ///////////////////////////////
     // Tests concerning deHSCentities
     ///////////////////////////////
+
     /**
      * @test
      * @dataProvider deHSCentitiesReturnsDecodedStringDataProvider
+     * @param mixed $input
+     * @param mixed $expected
      */
     public function deHSCentitiesReturnsDecodedString($input, $expected)
     {
@@ -961,16 +1035,20 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'Double encoded &' => ['&amp;amp;', '&amp;'],
             'Double encoded numeric entity' => ['&amp;#1234;', '&#1234;'],
             'Double encoded hexadecimal entity' => ['&amp;#x1b;', '&#x1b;'],
-            'Single encoded entities are not touched' => ['&amp; &#1234; &#x1b;', '&amp; &#1234; &#x1b;']
+            'Single encoded entities are not touched' => ['&amp; &#1234; &#x1b;', '&amp; &#1234; &#x1b;'],
         ];
     }
 
     //////////////////////////////////
     // Tests concerning slashJS
     //////////////////////////////////
+
     /**
      * @test
      * @dataProvider slashJsDataProvider
+     * @param mixed $input
+     * @param mixed $extended
+     * @param mixed $expected
      */
     public function slashJsEscapesSingleQuotesAndSlashes($input, $extended, $expected)
     {
@@ -991,19 +1069,20 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'String with single quotes and backslashes - just escape single quotes' => [
                 'The \\\'cake\\\' is a lie',
                 false,
-                'The \\\\\'cake\\\\\' is a lie'
+                'The \\\\\'cake\\\\\' is a lie',
             ],
             'String with single quotes and backslashes - escape both' => [
                 'The \\\'cake\\\' is a lie',
                 true,
-                'The \\\\\\\'cake\\\\\\\' is a lie'
-            ]
+                'The \\\\\\\'cake\\\\\\\' is a lie',
+            ],
         ];
     }
 
     //////////////////////////////////
     // Tests concerning rawUrlEncodeJS
     //////////////////////////////////
+
     /**
      * @test
      */
@@ -1017,6 +1096,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     //////////////////////////////////
     // Tests concerning rawUrlEncodeJS
     //////////////////////////////////
+
     /**
      * @test
      */
@@ -1030,6 +1110,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     //////////////////////////////////
     // Tests concerning strtoupper / strtolower
     //////////////////////////////////
+
     /**
      * Data provider for strtoupper and strtolower
      *
@@ -1040,13 +1121,15 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         return [
             'Empty string' => ['', ''],
             'String containing only latin characters' => ['the cake is a lie.', 'THE CAKE IS A LIE.'],
-            'String with umlauts and accent characters' => ['the càkê is ä lie.', 'THE CàKê IS ä LIE.']
+            'String with umlauts and accent characters' => ['the càkê is ä lie.', 'THE CàKê IS ä LIE.'],
         ];
     }
 
     /**
      * @test
      * @dataProvider strtouppperDataProvider
+     * @param mixed $input
+     * @param mixed $expected
      */
     public function strtoupperConvertsOnlyLatinCharacters($input, $expected)
     {
@@ -1056,6 +1139,8 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider strtouppperDataProvider
+     * @param mixed $expected
+     * @param mixed $input
      */
     public function strtolowerConvertsOnlyLatinCharacters($expected, $input)
     {
@@ -1065,6 +1150,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     //////////////////////////////////
     // Tests concerning validEmail
     //////////////////////////////////
+
     /**
      * Data provider for valid validEmail's
      *
@@ -1084,13 +1170,14 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'hash in local part' => ['foo#bar@example.com'],
             'dot in local part' => ['firstname.lastname@employee.2something.com'],
             'dash as local part' => ['-@foo.com'],
-            'umlauts in domain part' => ['foo@äöüfoo.com']
+            'umlauts in domain part' => ['foo@äöüfoo.com'],
         ];
     }
 
     /**
      * @test
      * @dataProvider validEmailValidDataProvider
+     * @param mixed $address
      */
     public function validEmailReturnsTrueForValidMailAddress($address)
     {
@@ -1139,6 +1226,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider validEmailInvalidDataProvider
+     * @param mixed $address
      */
     public function validEmailReturnsFalseForInvalidMailAddress($address)
     {
@@ -1148,6 +1236,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     //////////////////////////////////
     // Tests concerning intExplode
     //////////////////////////////////
+
     /**
      * @test
      */
@@ -1162,6 +1251,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     //////////////////////////////////
     // Tests concerning implodeArrayForUrl / explodeUrl2Array
     //////////////////////////////////
+
     /**
      * Data provider for implodeArrayForUrlBuildsValidParameterString and
      * explodeUrl2ArrayTransformsParameterStringToArray
@@ -1171,17 +1261,21 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     public function implodeArrayForUrlDataProvider()
     {
         $valueArray = ['one' => '√', 'two' => 2];
+
         return [
             'Empty input' => ['foo', [], ''],
             'String parameters' => ['foo', $valueArray, '&foo[one]=%E2%88%9A&foo[two]=2'],
             'Nested array parameters' => ['foo', [$valueArray], '&foo[0][one]=%E2%88%9A&foo[0][two]=2'],
-            'Keep blank parameters' => ['foo', ['one' => '√', ''], '&foo[one]=%E2%88%9A&foo[0]=']
+            'Keep blank parameters' => ['foo', ['one' => '√', ''], '&foo[one]=%E2%88%9A&foo[0]='],
         ];
     }
 
     /**
      * @test
      * @dataProvider implodeArrayForUrlDataProvider
+     * @param mixed $name
+     * @param mixed $input
+     * @param mixed $expected
      */
     public function implodeArrayForUrlBuildsValidParameterString($name, $input, $expected)
     {
@@ -1211,6 +1305,9 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider implodeArrayForUrlDataProvider
+     * @param mixed $name
+     * @param mixed $array
+     * @param mixed $input
      */
     public function explodeUrl2ArrayTransformsParameterStringToNestedArray($name, $array, $input)
     {
@@ -1221,6 +1318,8 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider explodeUrl2ArrayDataProvider
+     * @param mixed $input
+     * @param mixed $expected
      */
     public function explodeUrl2ArrayTransformsParameterStringToFlatArray($input, $expected)
     {
@@ -1237,13 +1336,14 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         return [
             'Empty string' => ['', []],
             'Simple parameter string' => ['&one=%E2%88%9A&two=2', ['one' => '√', 'two' => 2]],
-            'Nested parameter string' => ['&foo[one]=%E2%88%9A&two=2', ['foo[one]' => '√', 'two' => 2]]
+            'Nested parameter string' => ['&foo[one]=%E2%88%9A&two=2', ['foo[one]' => '√', 'two' => 2]],
         ];
     }
 
     //////////////////////////////////
     // Tests concerning compileSelectedGetVarsFromArray
     //////////////////////////////////
+
     /**
      * @test
      */
@@ -1283,61 +1383,61 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 ':',
                 'my:words:here',
                 0,
-                ['my:words:here']
+                ['my:words:here'],
             ],
             'limit 1 should return unexploded string' => [
                 ':',
                 'my:words:here',
                 1,
-                ['my:words:here']
+                ['my:words:here'],
             ],
             'limit 2 should return two pieces' => [
                 ':',
                 'my:words:here',
                 2,
-                ['my:words', 'here']
+                ['my:words', 'here'],
             ],
             'limit 3 should return unexploded string' => [
                 ':',
                 'my:words:here',
                 3,
-                ['my', 'words', 'here']
+                ['my', 'words', 'here'],
             ],
             'limit 0 should return unexploded string if no delimiter is contained' => [
                 ':',
                 'mywordshere',
                 0,
-                ['mywordshere']
+                ['mywordshere'],
             ],
             'limit 1 should return unexploded string if no delimiter is contained' => [
                 ':',
                 'mywordshere',
                 1,
-                ['mywordshere']
+                ['mywordshere'],
             ],
             'limit 2 should return unexploded string if no delimiter is contained' => [
                 ':',
                 'mywordshere',
                 2,
-                ['mywordshere']
+                ['mywordshere'],
             ],
             'limit 3 should return unexploded string if no delimiter is contained' => [
                 ':',
                 'mywordshere',
                 3,
-                ['mywordshere']
+                ['mywordshere'],
             ],
             'multi character delimiter is handled properly with limit 2' => [
                 '[]',
                 'a[b][c][d]',
                 2,
-                ['a[b][c', 'd]']
+                ['a[b][c', 'd]'],
             ],
             'multi character delimiter is handled properly with limit 3' => [
                 '[]',
                 'a[b][c][d]',
                 3,
-                ['a[b', 'c', 'd]']
+                ['a[b', 'c', 'd]'],
             ],
         ];
     }
@@ -1345,6 +1445,10 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider revExplodeDataProvider
+     * @param mixed $delimiter
+     * @param mixed $testString
+     * @param mixed $count
+     * @param mixed $expectedArray
      */
     public function revExplodeCorrectlyExplodesStringForGivenPartsCount($delimiter, $testString, $count, $expectedArray)
     {
@@ -1366,6 +1470,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     //////////////////////////////////
     // Tests concerning trimExplode
     //////////////////////////////////
+
     /**
      * @test
      * @dataProvider trimExplodeReturnsCorrectResultDataProvider
@@ -1391,210 +1496,210 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 ' a , b , c ,d ,,  e,f,',
                 false,
                 0,
-                ['a', 'b', 'c', 'd', '', 'e', 'f', '']
+                ['a', 'b', 'c', 'd', '', 'e', 'f', ''],
             ],
             'removes newline' => [
                 ',',
                 ' a , b , ' . LF . ' ,d ,,  e,f,',
                 true,
                 0,
-                ['a', 'b', 'd', 'e', 'f']
+                ['a', 'b', 'd', 'e', 'f'],
             ],
             'removes empty elements' => [
                 ',',
                 'a , b , c , ,d ,, ,e,f,',
                 true,
                 0,
-                ['a', 'b', 'c', 'd', 'e', 'f']
+                ['a', 'b', 'c', 'd', 'e', 'f'],
             ],
             'keeps remaining results with empty items after reaching limit with positive parameter' => [
                 ',',
                 ' a , b , c , , d,, ,e ',
                 false,
                 3,
-                ['a', 'b', 'c , , d,, ,e']
+                ['a', 'b', 'c , , d,, ,e'],
             ],
             'keeps remaining results without empty items after reaching limit with positive parameter' => [
                 ',',
                 ' a , b , c , , d,, ,e ',
                 true,
                 3,
-                ['a', 'b', 'c , d,e']
+                ['a', 'b', 'c , d,e'],
             ],
             'keeps remaining results with empty items after reaching limit with negative parameter' => [
                 ',',
                 ' a , b , c , d, ,e, f , , ',
                 false,
                 -3,
-                ['a', 'b', 'c', 'd', '', 'e']
+                ['a', 'b', 'c', 'd', '', 'e'],
             ],
             'keeps remaining results without empty items after reaching limit with negative parameter' => [
                 ',',
                 ' a , b , c , d, ,e, f , , ',
                 true,
                 -3,
-                ['a', 'b', 'c']
+                ['a', 'b', 'c'],
             ],
             'returns exact results without reaching limit with positive parameter' => [
                 ',',
                 ' a , b , , c , , , ',
                 true,
                 4,
-                ['a', 'b', 'c']
+                ['a', 'b', 'c'],
             ],
             'keeps zero as string' => [
                 ',',
                 'a , b , c , ,d ,, ,e,f, 0 ,',
                 true,
                 0,
-                ['a', 'b', 'c', 'd', 'e', 'f', '0']
+                ['a', 'b', 'c', 'd', 'e', 'f', '0'],
             ],
             'keeps whitespace inside elements' => [
                 ',',
                 'a , b , c , ,d ,, ,e,f, g h ,',
                 true,
                 0,
-                ['a', 'b', 'c', 'd', 'e', 'f', 'g h']
+                ['a', 'b', 'c', 'd', 'e', 'f', 'g h'],
             ],
             'can use internal regex delimiter as explode delimiter' => [
                 '/',
                 'a / b / c / /d // /e/f/ g h /',
                 true,
                 0,
-                ['a', 'b', 'c', 'd', 'e', 'f', 'g h']
+                ['a', 'b', 'c', 'd', 'e', 'f', 'g h'],
             ],
             'can use whitespaces as delimiter' => [
                 ' ',
                 '* * * * *',
                 true,
                 0,
-                ['*', '*', '*', '*', '*']
+                ['*', '*', '*', '*', '*'],
             ],
             'can use words as delimiter' => [
                 'All',
                 'HelloAllTogether',
                 true,
                 0,
-                ['Hello', 'Together']
+                ['Hello', 'Together'],
             ],
             'can use word with appended and prepended spaces as delimiter' => [
                 ' all   ',
                 'Hello all   together',
                 true,
                 0,
-                ['Hello', 'together']
+                ['Hello', 'together'],
             ],
             'can use word with appended and prepended spaces as delimiter and do not remove empty' => [
                 ' all   ',
                 'Hello all   together     all      there all       all   are  all    none',
                 false,
                 0,
-                ['Hello', 'together', 'there', '', 'are', 'none']
+                ['Hello', 'together', 'there', '', 'are', 'none'],
             ],
             'can use word with appended and prepended spaces as delimiter, do not remove empty and limit' => [
                 ' all   ',
                 'Hello all   together     all      there all       all   are  all    none',
                 false,
                 5,
-                ['Hello', 'together', 'there', '', 'are  all    none']
+                ['Hello', 'together', 'there', '', 'are  all    none'],
             ],
             'can use word with appended and prepended spaces as delimiter, do not remove empty, limit and multiple delimiter in last' => [
                 ' all   ',
                 'Hello all   together     all      there all       all   are  all    none',
                 false,
                 4,
-                ['Hello', 'together', 'there', 'all   are  all    none']
+                ['Hello', 'together', 'there', 'all   are  all    none'],
             ],
             'can use word with appended and prepended spaces as delimiter, remove empty and limit' => [
                 ' all   ',
                 'Hello all   together     all      there all       all   are  all    none',
                 true,
                 4,
-                ['Hello', 'together', 'there', 'are  all    none']
+                ['Hello', 'together', 'there', 'are  all    none'],
             ],
             'can use word with appended and prepended spaces as delimiter, remove empty and limit and multiple delimiter in last' => [
                 ' all   ',
                 'Hello all   together     all      there all       all   are  all    none',
                 true,
                 5,
-                ['Hello', 'together', 'there', 'are', 'none']
+                ['Hello', 'together', 'there', 'are', 'none'],
             ],
             'can use words as delimiter and do not remove empty' => [
                 'all  there',
                 'Helloall  theretogether  all  there    all  there   are   all  there     none',
                 false,
                 0,
-                ['Hello', 'together', '', 'are', 'none']
+                ['Hello', 'together', '', 'are', 'none'],
             ],
             'can use words as delimiter, do not remove empty and limit' => [
                 'all  there',
                 'Helloall  theretogether  all  there    all  there    are   all  there     none',
                 false,
                 4,
-                ['Hello', 'together', '', 'are   all  there     none']
+                ['Hello', 'together', '', 'are   all  there     none'],
             ],
             'can use words as delimiter, do not remove empty, limit and multiple delimiter in last' => [
                 'all  there',
                 'Helloall  theretogether  all  there    all  there    are   all  there     none',
                 false,
                 3,
-                ['Hello', 'together', 'all  there    are   all  there     none']
+                ['Hello', 'together', 'all  there    are   all  there     none'],
             ],
             'can use words as delimiter, remove empty' => [
                 'all  there',
                 'Helloall  theretogether  all  there    all  there    are   all  there     none',
                 true,
                 0,
-                ['Hello', 'together', 'are', 'none']
+                ['Hello', 'together', 'are', 'none'],
             ],
             'can use words as delimiter, remove empty and limit' => [
                 'all  there',
                 'Helloall  theretogether  all  there    all  there    are   all  there     none',
                 true,
                 3,
-                ['Hello', 'together', 'are   all  there     none']
+                ['Hello', 'together', 'are   all  there     none'],
             ],
             'can use words as delimiter, remove empty and limit and multiple delimiter in last' => [
                 'all  there',
                 'Helloall  theretogether  all  there    all  there    are   all  there     none',
                 true,
                 4,
-                ['Hello', 'together', 'are', 'none']
+                ['Hello', 'together', 'are', 'none'],
             ],
             'can use new line as delimiter' => [
                 LF,
                 "Hello\nall\ntogether",
                 true,
                 0,
-                ['Hello', 'all', 'together']
+                ['Hello', 'all', 'together'],
             ],
             'works with whitespace separator' => [
                 "\t",
                 " a  b \t c  \t  \t    d  \t  e     \t u j   \t s",
                 false,
                 0,
-                ['a  b', 'c', '', 'd', 'e', 'u j', 's']
+                ['a  b', 'c', '', 'd', 'e', 'u j', 's'],
             ],
             'works with whitespace separator and limit' => [
                 "\t",
                 " a  b \t c  \t  \t    d  \t  e     \t u j   \t s",
                 false,
                 4,
-                ['a  b', 'c', '', "d  \t  e     \t u j   \t s"]
+                ['a  b', 'c', '', "d  \t  e     \t u j   \t s"],
             ],
             'works with whitespace separator and remove empty' => [
                 "\t",
                 " a  b \t c  \t  \t    d  \t  e     \t u j   \t s",
                 true,
                 0,
-                ['a  b', 'c', 'd', 'e', 'u j', 's']
+                ['a  b', 'c', 'd', 'e', 'u j', 's'],
             ],
             'works with whitespace separator remove empty and limit' => [
                 "\t",
                 " a  b \t c  \t  \t    d  \t  e     \t u j   \t s",
                 true,
                 3,
-                ['a  b', 'c', "d  \t  e     \t u j   \t s"]
+                ['a  b', 'c', "d  \t  e     \t u j   \t s"],
             ],
         ];
     }
@@ -1602,6 +1707,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     //////////////////////////////////
     // Tests concerning getBytesFromSizeMeasurement
     //////////////////////////////////
+
     /**
      * Data provider for getBytesFromSizeMeasurement
      *
@@ -1612,13 +1718,15 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         return [
             '100 kilo Bytes' => ['102400', '100k'],
             '100 mega Bytes' => ['104857600', '100m'],
-            '100 giga Bytes' => ['107374182400', '100g']
+            '100 giga Bytes' => ['107374182400', '100g'],
         ];
     }
 
     /**
      * @test
      * @dataProvider getBytesFromSizeMeasurementDataProvider
+     * @param mixed $expected
+     * @param mixed $byteString
      */
     public function getBytesFromSizeMeasurementCalculatesCorrectByteValue($expected, $byteString)
     {
@@ -1628,6 +1736,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     //////////////////////////////////
     // Tests concerning getIndpEnv
     //////////////////////////////////
+
     /**
      * @test
      */
@@ -1680,13 +1789,15 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'ipv6 without port' => ['[2001:DB8::1]', '[2001:DB8::1]', ''],
             'ipv6 with port' => ['[2001:DB8::1]:81', '[2001:DB8::1]', '81'],
             'hostname without port' => ['lolli.did.this', 'lolli.did.this', ''],
-            'hostname with port' => ['lolli.did.this:42', 'lolli.did.this', '42']
+            'hostname with port' => ['lolli.did.this:42', 'lolli.did.this', '42'],
         ];
     }
 
     /**
      * @test
      * @dataProvider hostnameAndPortDataProvider
+     * @param mixed $httpHost
+     * @param mixed $expectedIp
      */
     public function getIndpEnvTypo3HostOnlyParsesHostnamesAndIpAdresses($httpHost, $expectedIp)
     {
@@ -1714,11 +1825,11 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'other hostname without port matching' => ['helmut.did.this', '.*\.did\.this'],
             'two different hostnames without port matching 1st host' => [
                 'helmut.is.secure',
-                '(helmut\.is\.secure|lolli\.is\.secure)'
+                '(helmut\.is\.secure|lolli\.is\.secure)',
             ],
             'two different hostnames without port matching 2nd host' => [
                 'lolli.is.secure',
-                '(helmut\.is\.secure|lolli\.is\.secure)'
+                '(helmut\.is\.secure|lolli\.is\.secure)',
             ],
             'hostname with port matching' => ['lolli.did.this:42', '.*\.did\.this:42'],
             'hostnames are case insensitive 1' => ['lolli.DID.this:42', '.*\.did.this:42'],
@@ -1736,19 +1847,19 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'hostname with port, but port not allowed' => ['lolli.did.this:42', 'helmut\.did\.this'],
             'two different hostnames in pattern but host header starts with different value #1' => [
                 'sub.helmut.is.secure',
-                '(helmut\.is\.secure|lolli\.is\.secure)'
+                '(helmut\.is\.secure|lolli\.is\.secure)',
             ],
             'two different hostnames in pattern but host header starts with different value #2' => [
                 'sub.lolli.is.secure',
-                '(helmut\.is\.secure|lolli\.is\.secure)'
+                '(helmut\.is\.secure|lolli\.is\.secure)',
             ],
             'two different hostnames in pattern but host header ends with different value #1' => [
                 'helmut.is.secure.tld',
-                '(helmut\.is\.secure|lolli\.is\.secure)'
+                '(helmut\.is\.secure|lolli\.is\.secure)',
             ],
             'two different hostnames in pattern but host header ends with different value #2' => [
                 'lolli.is.secure.tld',
-                '(helmut\.is\.secure|lolli\.is\.secure)'
+                '(helmut\.is\.secure|lolli\.is\.secure)',
             ],
         ];
     }
@@ -1926,6 +2037,9 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider hostnameAndPortDataProvider
+     * @param mixed $httpHost
+     * @param mixed $dummy
+     * @param mixed $expectedPort
      */
     public function getIndpEnvTypo3PortParsesHostnamesAndIpAdresses($httpHost, $dummy, $expectedPort)
     {
@@ -1936,6 +2050,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     //////////////////////////////////
     // Tests concerning underscoredToUpperCamelCase
     //////////////////////////////////
+
     /**
      * Data provider for underscoredToUpperCamelCase
      *
@@ -1945,13 +2060,15 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     {
         return [
             'single word' => ['Blogexample', 'blogexample'],
-            'multiple words' => ['BlogExample', 'blog_example']
+            'multiple words' => ['BlogExample', 'blog_example'],
         ];
     }
 
     /**
      * @test
      * @dataProvider underscoredToUpperCamelCaseDataProvider
+     * @param mixed $expected
+     * @param mixed $inputString
      */
     public function underscoredToUpperCamelCase($expected, $inputString)
     {
@@ -1961,6 +2078,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     //////////////////////////////////
     // Tests concerning underscoredToLowerCamelCase
     //////////////////////////////////
+
     /**
      * Data provider for underscoredToLowerCamelCase
      *
@@ -1970,13 +2088,15 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     {
         return [
             'single word' => ['minimalvalue', 'minimalvalue'],
-            'multiple words' => ['minimalValue', 'minimal_value']
+            'multiple words' => ['minimalValue', 'minimal_value'],
         ];
     }
 
     /**
      * @test
      * @dataProvider underscoredToLowerCamelCaseDataProvider
+     * @param mixed $expected
+     * @param mixed $inputString
      */
     public function underscoredToLowerCamelCase($expected, $inputString)
     {
@@ -1986,6 +2106,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     //////////////////////////////////
     // Tests concerning camelCaseToLowerCaseUnderscored
     //////////////////////////////////
+
     /**
      * Data provider for camelCaseToLowerCaseUnderscored
      *
@@ -1997,13 +2118,15 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'single word' => ['blogexample', 'blogexample'],
             'single word starting upper case' => ['blogexample', 'Blogexample'],
             'two words starting lower case' => ['minimal_value', 'minimalValue'],
-            'two words starting upper case' => ['blog_example', 'BlogExample']
+            'two words starting upper case' => ['blog_example', 'BlogExample'],
         ];
     }
 
     /**
      * @test
      * @dataProvider camelCaseToLowerCaseUnderscoredDataProvider
+     * @param mixed $expected
+     * @param mixed $inputString
      */
     public function camelCaseToLowerCaseUnderscored($expected, $inputString)
     {
@@ -2013,6 +2136,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     //////////////////////////////////
     // Tests concerning lcFirst
     //////////////////////////////////
+
     /**
      * Data provider for lcFirst
      *
@@ -2023,13 +2147,15 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         return [
             'single word' => ['blogexample', 'blogexample'],
             'single Word starting upper case' => ['blogexample', 'Blogexample'],
-            'two words' => ['blogExample', 'BlogExample']
+            'two words' => ['blogExample', 'BlogExample'],
         ];
     }
 
     /**
      * @test
      * @dataProvider lcfirstDataProvider
+     * @param mixed $expected
+     * @param mixed $inputString
      */
     public function lcFirst($expected, $inputString)
     {
@@ -2039,6 +2165,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     //////////////////////////////////
     // Tests concerning isValidUrl
     //////////////////////////////////
+
     /**
      * Data provider for valid isValidUrl's
      *
@@ -2072,6 +2199,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider validUrlValidResourceDataProvider
+     * @param mixed $url
      */
     public function validURLReturnsTrueForValidResource($url)
     {
@@ -2107,6 +2235,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider isValidUrlInvalidRessourceDataProvider
+     * @param mixed $url
      */
     public function validURLReturnsFalseForInvalidRessoure($url)
     {
@@ -2116,6 +2245,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     //////////////////////////////////
     // Tests concerning isOnCurrentHost
     //////////////////////////////////
+
     /**
      * @test
      */
@@ -2138,13 +2268,14 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'localhost IP' => ['127.0.0.1'],
             'relative path' => ['./relpath/file.txt'],
             'absolute path' => ['/abspath/file.txt?arg=value'],
-            'differnt host' => [GeneralUtility::getIndpEnv('TYPO3_REQUEST_HOST') . '.example.org']
+            'differnt host' => [GeneralUtility::getIndpEnv('TYPO3_REQUEST_HOST') . '.example.org'],
         ];
     }
 
     ////////////////////////////////////////
     // Tests concerning sanitizeLocalUrl
     ////////////////////////////////////////
+
     /**
      * Data provider for valid sanitizeLocalUrl paths
      *
@@ -2268,6 +2399,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider sanitizeLocalUrlInvalidDataProvider
+     * @param mixed $url
      */
     public function sanitizeLocalUrlDeniesPlainInvalidUrls($url)
     {
@@ -2277,6 +2409,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider sanitizeLocalUrlInvalidDataProvider
+     * @param mixed $url
      */
     public function sanitizeLocalUrlDeniesEncodedInvalidUrls($url)
     {
@@ -2383,6 +2516,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     //////////////////////////////////////
     // Tests concerning removeDotsFromTS
     //////////////////////////////////////
+
     /**
      * @test
      */
@@ -2391,20 +2525,20 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $typoScript = [
             'propertyA.' => [
                 'keyA.' => [
-                    'valueA' => 1
+                    'valueA' => 1,
                 ],
-                'keyB' => 2
+                'keyB' => 2,
             ],
-            'propertyB' => 3
+            'propertyB' => 3,
         ];
         $expectedResult = [
             'propertyA' => [
                 'keyA' => [
-                    'valueA' => 1
+                    'valueA' => 1,
                 ],
-                'keyB' => 2
+                'keyB' => 2,
             ],
-            'propertyB' => 3
+            'propertyB' => 3,
         ];
         $this->assertEquals($expectedResult, GeneralUtility::removeDotsFromTS($typoScript));
     }
@@ -2418,20 +2552,20 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'propertyA.' => [
                 'keyA' => 'getsOverridden',
                 'keyA.' => [
-                    'valueA' => 1
+                    'valueA' => 1,
                 ],
-                'keyB' => 2
+                'keyB' => 2,
             ],
-            'propertyB' => 3
+            'propertyB' => 3,
         ];
         $expectedResult = [
             'propertyA' => [
                 'keyA' => [
-                    'valueA' => 1
+                    'valueA' => 1,
                 ],
-                'keyB' => 2
+                'keyB' => 2,
             ],
-            'propertyB' => 3
+            'propertyB' => 3,
         ];
         $this->assertEquals($expectedResult, GeneralUtility::removeDotsFromTS($typoScript));
     }
@@ -2444,19 +2578,19 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $typoScript = [
             'propertyA.' => [
                 'keyA.' => [
-                    'valueA' => 1
+                    'valueA' => 1,
                 ],
                 'keyA' => 'willOverride',
-                'keyB' => 2
+                'keyB' => 2,
             ],
-            'propertyB' => 3
+            'propertyB' => 3,
         ];
         $expectedResult = [
             'propertyA' => [
                 'keyA' => 'willOverride',
-                'keyB' => 2
+                'keyB' => 2,
             ],
-            'propertyB' => 3
+            'propertyB' => 3,
         ];
         $this->assertEquals($expectedResult, GeneralUtility::removeDotsFromTS($typoScript));
     }
@@ -2464,6 +2598,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     //////////////////////////////////////
     // Tests concerning get_dirs
     //////////////////////////////////////
+
     /**
      * @test
      */
@@ -2488,6 +2623,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     //////////////////////////////////
     // Tests concerning hmac
     //////////////////////////////////
+
     /**
      * @test
      */
@@ -2521,6 +2657,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     //////////////////////////////////
     // Tests concerning quoteJSvalue
     //////////////////////////////////
+
     /**
      * Data provider for quoteJSvalueTest.
      *
@@ -2531,44 +2668,44 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         return [
             'Immune characters are returned as is' => [
                 '._,',
-                '._,'
+                '._,',
             ],
             'Alphanumerical characters are returned as is' => [
                 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789',
-                'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+                'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789',
             ],
             'Angle brackets and ampersand are encoded' => [
                 '<>&',
-                '\\u003C\\u003E\\u0026'
+                '\\u003C\\u003E\\u0026',
             ],
             'Quotes and backslashes are encoded' => [
                 '"\'\\',
-                '\\u0022\\u0027\\u005C'
+                '\\u0022\\u0027\\u005C',
             ],
             'Forward slashes are escaped' => [
                 '</script>',
-                '\\u003C\\/script\\u003E'
+                '\\u003C\\/script\\u003E',
             ],
             'Empty string stays empty' => [
                 '',
-                ''
+                '',
             ],
             'Exclamation mark and space are properly encoded' => [
                 'Hello World!',
-                'Hello\\u0020World\\u0021'
+                'Hello\\u0020World\\u0021',
             ],
             'Whitespaces are properly encoded' => [
                 TAB . LF . CR . ' ',
-                '\\u0009\\u000A\\u000D\\u0020'
+                '\\u0009\\u000A\\u000D\\u0020',
             ],
             'Null byte is properly encoded' => [
                 chr(0),
-                '\\u0000'
+                '\\u0000',
             ],
             'Umlauts are properly encoded' => [
                 'ÜüÖöÄä',
-                '\\u00dc\\u00fc\\u00d6\\u00f6\\u00c4\\u00e4'
-            ]
+                '\\u00dc\\u00fc\\u00d6\\u00f6\\u00c4\\u00e4',
+            ],
         ];
     }
 
@@ -2586,6 +2723,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     ///////////////////////////////
     // Tests concerning _GETset()
     ///////////////////////////////
+
     /**
      * @test
      */
@@ -2678,8 +2816,8 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $this->assertEquals(
             [
                 'parentKey' => [
-                    'childKey' => ['key1' => 'value1', 'key2' => 'value2']
-                ]
+                    'childKey' => ['key1' => 'value1', 'key2' => 'value2'],
+                ],
             ],
             $GLOBALS['HTTP_GET_VARS']
         );
@@ -2688,6 +2826,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     ///////////////////////////
     // Tests concerning minifyJavaScript
     ///////////////////////////
+
     /**
      * @test
      */
@@ -2803,6 +2942,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     ///////////////////////////////
     // Tests concerning fixPermissions
     ///////////////////////////////
+
     /**
      * @test
      */
@@ -3058,6 +3198,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     ///////////////////////////////
     // Tests concerning mkdir
     ///////////////////////////////
+
     /**
      * @test
      */
@@ -3131,6 +3272,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     ///////////////////////////////
     // Helper function for filesystem ownership tests
     ///////////////////////////////
+
     /**
      * Check if test on filesystem group ownership can be done in this environment
      * If so, return second group of webserver user
@@ -3142,18 +3284,22 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     {
         if (TYPO3_OS === 'WIN') {
             $this->markTestSkipped(self::NO_FIX_PERMISSIONS_ON_WINDOWS);
+
             return false;
         }
         if (!function_exists('posix_getegid')) {
             $this->markTestSkipped('Function posix_getegid() not available, ' . $methodName . '() tests skipped');
+
             return false;
         }
         if (posix_getegid() === -1) {
             $this->markTestSkipped('Function posix_getegid() returns -1, ' . $methodName . '() tests skipped');
+
             return false;
         }
         if (!function_exists('posix_getgroups')) {
             $this->markTestSkipped('Function posix_getgroups() not available, ' . $methodName . '() tests skipped');
+
             return false;
         }
         $groups = posix_getgroups();
@@ -3161,15 +3307,18 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             $this->markTestSkipped(
                 $methodName . '() test cannot be done when the web server user is only member of 1 group.'
             );
+
             return false;
         }
         $secondaryGroups = array_diff($groups, [posix_getegid()]);
+
         return array_shift($secondaryGroups);
     }
 
     ///////////////////////////////
     // Tests concerning mkdir_deep
     ///////////////////////////////
+
     /**
      * @test
      */
@@ -3207,6 +3356,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider mkdirDeepCreatesDirectoryWithAndWithoutDoubleSlashesDataProvider
+     * @param mixed $directoryToCreate
      */
     public function mkdirDeepCreatesDirectoryWithDoubleSlashes($directoryToCreate)
     {
@@ -3582,23 +3732,24 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     {
         return [
             'no space' => [
-                'setup.typoscript,txt,js,css'
+                'setup.typoscript,txt,js,css',
             ],
             'spaces' => [
-                'setup.typoscript, txt, js, css'
+                'setup.typoscript, txt, js, css',
             ],
             'mixed' => [
-                'setup.typoscript , txt,js, css'
+                'setup.typoscript , txt,js, css',
             ],
             'wild' => [
-                'setup.typoscript,  txt,     js  ,         css'
-            ]
+                'setup.typoscript,  txt,     js  ,         css',
+            ],
         ];
     }
 
     /**
      * @dataProvider fileExtensionDataProvider
      * @test
+     * @param mixed $fileExtensions
      */
     public function getFilesInDirByExtensionFindsFiles($fileExtensions)
     {
@@ -3661,7 +3812,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'test.js',
                 'testA.txt',
                 'testB.txt',
-                'testC.txt'
+                'testC.txt',
             ]
         );
     }
@@ -3727,6 +3878,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     ///////////////////////////////
     // Tests concerning unQuoteFilenames
     ///////////////////////////////
+
     /**
      * Data provider for ImageMagick shell commands
      *
@@ -3739,27 +3891,27 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             [
                 '',
                 [],
-                []
+                [],
             ],
             [
                 'aa bb "cc" "dd"',
                 ['aa', 'bb', '"cc"', '"dd"'],
-                ['aa', 'bb', 'cc', 'dd']
+                ['aa', 'bb', 'cc', 'dd'],
             ],
             [
                 'aa bb "cc dd"',
                 ['aa', 'bb', '"cc dd"'],
-                ['aa', 'bb', 'cc dd']
+                ['aa', 'bb', 'cc dd'],
             ],
             [
                 '\'aa bb\' "cc dd"',
                 ['\'aa bb\'', '"cc dd"'],
-                ['aa bb', 'cc dd']
+                ['aa bb', 'cc dd'],
             ],
             [
                 '\'aa bb\' cc "dd"',
                 ['\'aa bb\'', 'cc', '"dd"'],
-                ['aa bb', 'cc', 'dd']
+                ['aa bb', 'cc', 'dd'],
             ],
             // Now test against some real world examples
             [
@@ -3773,7 +3925,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     '170x136!',
                     '-negate',
                     '"C:/Users/Someuser.Domain/Documents/Htdocs/typo3temp/var/transient/61401f5c16c63d58e1d92e8a2449f2fe_maskNT.gif[0]"',
-                    '"C:/Users/Someuser.Domain/Documents/Htdocs/typo3temp/var/transient/61401f5c16c63d58e1d92e8a2449f2fe_maskNT.gif"'
+                    '"C:/Users/Someuser.Domain/Documents/Htdocs/typo3temp/var/transient/61401f5c16c63d58e1d92e8a2449f2fe_maskNT.gif"',
                 ],
                 [
                     '/opt/local/bin/gm.exe',
@@ -3784,8 +3936,8 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     '170x136!',
                     '-negate',
                     'C:/Users/Someuser.Domain/Documents/Htdocs/typo3temp/var/transient/61401f5c16c63d58e1d92e8a2449f2fe_maskNT.gif[0]',
-                    'C:/Users/Someuser.Domain/Documents/Htdocs/typo3temp/var/transient/61401f5c16c63d58e1d92e8a2449f2fe_maskNT.gif'
-                ]
+                    'C:/Users/Someuser.Domain/Documents/Htdocs/typo3temp/var/transient/61401f5c16c63d58e1d92e8a2449f2fe_maskNT.gif',
+                ],
             ],
             [
                 'C:/opt/local/bin/gm.exe convert +profile \'*\' -geometry 170x136!  -negate "C:/Program Files/Apache2/htdocs/typo3temp/var/transient/61401f5c16c63d58e1d92e8a2449f2fe_maskNT.gif[0]" "C:/Program Files/Apache2/htdocs/typo3temp/var/transient/61401f5c16c63d58e1d92e8a2449f2fe_maskNT.gif"',
@@ -3798,7 +3950,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     '170x136!',
                     '-negate',
                     '"C:/Program Files/Apache2/htdocs/typo3temp/var/transient/61401f5c16c63d58e1d92e8a2449f2fe_maskNT.gif[0]"',
-                    '"C:/Program Files/Apache2/htdocs/typo3temp/var/transient/61401f5c16c63d58e1d92e8a2449f2fe_maskNT.gif"'
+                    '"C:/Program Files/Apache2/htdocs/typo3temp/var/transient/61401f5c16c63d58e1d92e8a2449f2fe_maskNT.gif"',
                 ],
                 [
                     'C:/opt/local/bin/gm.exe',
@@ -3809,8 +3961,8 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     '170x136!',
                     '-negate',
                     'C:/Program Files/Apache2/htdocs/typo3temp/var/transient/61401f5c16c63d58e1d92e8a2449f2fe_maskNT.gif[0]',
-                    'C:/Program Files/Apache2/htdocs/typo3temp/var/transient/61401f5c16c63d58e1d92e8a2449f2fe_maskNT.gif'
-                ]
+                    'C:/Program Files/Apache2/htdocs/typo3temp/var/transient/61401f5c16c63d58e1d92e8a2449f2fe_maskNT.gif',
+                ],
             ],
             [
                 '/usr/bin/gm convert +profile \'*\' -geometry 170x136!  -negate "/Shared Items/Data/Projects/typo3temp/var/transient/61401f5c16c63d58e1d92e8a2449f2fe_maskNT.gif[0]" "/Shared Items/Data/Projects/typo3temp/var/transient/61401f5c16c63d58e1d92e8a2449f2fe_maskNT.gif"',
@@ -3823,7 +3975,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     '170x136!',
                     '-negate',
                     '"/Shared Items/Data/Projects/typo3temp/var/transient/61401f5c16c63d58e1d92e8a2449f2fe_maskNT.gif[0]"',
-                    '"/Shared Items/Data/Projects/typo3temp/var/transient/61401f5c16c63d58e1d92e8a2449f2fe_maskNT.gif"'
+                    '"/Shared Items/Data/Projects/typo3temp/var/transient/61401f5c16c63d58e1d92e8a2449f2fe_maskNT.gif"',
                 ],
                 [
                     '/usr/bin/gm',
@@ -3834,8 +3986,8 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     '170x136!',
                     '-negate',
                     '/Shared Items/Data/Projects/typo3temp/var/transient/61401f5c16c63d58e1d92e8a2449f2fe_maskNT.gif[0]',
-                    '/Shared Items/Data/Projects/typo3temp/var/transient/61401f5c16c63d58e1d92e8a2449f2fe_maskNT.gif'
-                ]
+                    '/Shared Items/Data/Projects/typo3temp/var/transient/61401f5c16c63d58e1d92e8a2449f2fe_maskNT.gif',
+                ],
             ],
             [
                 '/usr/bin/gm convert +profile \'*\' -geometry 170x136!  -negate "/Network/Servers/server01.internal/Projects/typo3temp/var/transient/61401f5c16c63d58e1d92e8a2449f2fe_maskNT.gif[0]" "/Network/Servers/server01.internal/Projects/typo3temp/var/transient/61401f5c16c63d58e1d92e8a2449f2fe_maskNT.gif"',
@@ -3848,7 +4000,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     '170x136!',
                     '-negate',
                     '"/Network/Servers/server01.internal/Projects/typo3temp/var/transient/61401f5c16c63d58e1d92e8a2449f2fe_maskNT.gif[0]"',
-                    '"/Network/Servers/server01.internal/Projects/typo3temp/var/transient/61401f5c16c63d58e1d92e8a2449f2fe_maskNT.gif"'
+                    '"/Network/Servers/server01.internal/Projects/typo3temp/var/transient/61401f5c16c63d58e1d92e8a2449f2fe_maskNT.gif"',
                 ],
                 [
                     '/usr/bin/gm',
@@ -3859,8 +4011,8 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     '170x136!',
                     '-negate',
                     '/Network/Servers/server01.internal/Projects/typo3temp/var/transient/61401f5c16c63d58e1d92e8a2449f2fe_maskNT.gif[0]',
-                    '/Network/Servers/server01.internal/Projects/typo3temp/var/transient/61401f5c16c63d58e1d92e8a2449f2fe_maskNT.gif'
-                ]
+                    '/Network/Servers/server01.internal/Projects/typo3temp/var/transient/61401f5c16c63d58e1d92e8a2449f2fe_maskNT.gif',
+                ],
             ],
             [
                 '/usr/bin/gm convert +profile \'*\' -geometry 170x136!  -negate \'/Network/Servers/server01.internal/Projects/typo3temp/var/transient/61401f5c16c63d58e1d92e8a2449f2fe_maskNT.gif[0]\' \'/Network/Servers/server01.internal/Projects/typo3temp/var/transient/61401f5c16c63d58e1d92e8a2449f2fe_maskNT.gif\'',
@@ -3873,7 +4025,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     '170x136!',
                     '-negate',
                     '\'/Network/Servers/server01.internal/Projects/typo3temp/var/transient/61401f5c16c63d58e1d92e8a2449f2fe_maskNT.gif[0]\'',
-                    '\'/Network/Servers/server01.internal/Projects/typo3temp/var/transient/61401f5c16c63d58e1d92e8a2449f2fe_maskNT.gif\''
+                    '\'/Network/Servers/server01.internal/Projects/typo3temp/var/transient/61401f5c16c63d58e1d92e8a2449f2fe_maskNT.gif\'',
                 ],
                 [
                     '/usr/bin/gm',
@@ -3884,9 +4036,9 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     '170x136!',
                     '-negate',
                     '/Network/Servers/server01.internal/Projects/typo3temp/var/transient/61401f5c16c63d58e1d92e8a2449f2fe_maskNT.gif[0]',
-                    '/Network/Servers/server01.internal/Projects/typo3temp/var/transient/61401f5c16c63d58e1d92e8a2449f2fe_maskNT.gif'
-                ]
-            ]
+                    '/Network/Servers/server01.internal/Projects/typo3temp/var/transient/61401f5c16c63d58e1d92e8a2449f2fe_maskNT.gif',
+                ],
+            ],
         ];
     }
 
@@ -3895,6 +4047,9 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
      *
      * @dataProvider imageMagickCommandsDataProvider
      * @test
+     * @param mixed $source
+     * @param mixed $expectedQuoted
+     * @param mixed $expectedUnquoted
      */
     public function explodeAndUnquoteImageMagickCommands($source, $expectedQuoted, $expectedUnquoted)
     {
@@ -3911,6 +4066,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     ///////////////////////////////
     // Tests concerning split_fileref
     ///////////////////////////////
+
     /**
      * @test
      */
@@ -3949,6 +4105,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /////////////////////////////
     // Tests concerning dirname
     /////////////////////////////
+
     /**
      * @see dirnameWithDataProvider
      * @return array<array>
@@ -3962,7 +4119,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'relative path with one part and file' => ['dir1/script.php', 'dir1'],
             'relative one-character path with one part and file' => ['d/script.php', 'd'],
             'absolute zero-part path with file' => ['/script.php', ''],
-            'empty string' => ['', '']
+            'empty string' => ['', ''],
         ];
     }
 
@@ -3980,6 +4137,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /////////////////////////////////////
     // Tests concerning resolveBackPath
     /////////////////////////////////////
+
     /**
      * @see resolveBackPathWithDataProvider
      * @return array<array>
@@ -4011,12 +4169,12 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'distributed ../ without trailing /' => ['dir1/../dir2/dir3/..', 'dir2'],
             'multiple distributed and consecutive ../ together' => [
                 'dir1/dir2/dir3/dir4/../../dir5/dir6/dir7/../dir8/',
-                'dir1/dir2/dir5/dir6/dir8/'
+                'dir1/dir2/dir5/dir6/dir8/',
             ],
             'dirname with leading ..' => ['dir1/..dir2/dir3/', 'dir1/..dir2/dir3/'],
             'dirname with trailing ..' => ['dir1/dir2../dir3/', 'dir1/dir2../dir3/'],
             'more times upwards than downwards in directory' => ['dir1/../../', '../'],
-            'more times upwards than downwards in path' => ['dir1/../../script.php', '../script.php']
+            'more times upwards than downwards in path' => ['dir1/../../script.php', '../script.php'],
         ];
     }
 
@@ -4034,6 +4192,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /////////////////////////////////////////////////////////////////////////////////////
     // Tests concerning makeInstance, setSingletonInstance, addInstance, purgeInstances
     /////////////////////////////////////////////////////////////////////////////////////
+
     /**
      * @test
      */
@@ -4382,38 +4541,38 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         return [
             'typo3/sysext/core/Resources/Public/Icons/Extension.png' => [
                 'typo3/sysext/core/Resources/Public/Icons/Extension.png',
-                PATH_site . 'typo3/sysext/core/Resources/Public/Icons/Extension.png'
+                PATH_site . 'typo3/sysext/core/Resources/Public/Icons/Extension.png',
             ],
             'sysext/core/Resources/Public/Icons/Extension.png' => [
                 'sysext/core/Resources/Public/Icons/Extension.png',
-                PATH_site . 'sysext/core/Resources/Public/Icons/Extension.png'
+                PATH_site . 'sysext/core/Resources/Public/Icons/Extension.png',
             ],
             './typo3/sysext/core/Resources/Public/Icons/Extension.png' => [
                 './typo3/sysext/core/Resources/Public/Icons/Extension.png',
-                PATH_site . './typo3/sysext/core/Resources/Public/Icons/Extension.png'
+                PATH_site . './typo3/sysext/core/Resources/Public/Icons/Extension.png',
             ],
             'fileadmin/foo.txt' => ['fileadmin/foo.txt', PATH_site . 'fileadmin/foo.txt'],
             './fileadmin/foo.txt' => ['./fileadmin/foo.txt', PATH_site . './fileadmin/foo.txt'],
             '../sysext/core/Resources/Public/Icons/Extension.png' => [
                 '../sysext/core/Resources/Public/Icons/Extension.png',
-                ''
+                '',
             ],
             '../fileadmin/foo.txt' => ['../fileadmin/foo.txt', ''],
             'PATH_site . ../sysext/core/Resources/Public/Icons/Extension.png' => [
                 PATH_site .
                 '../sysext/core/Resources/Public/Icons/Extension.png',
-                ''
+                '',
             ],
             'PATH_site . fileadmin/foo.txt' => [PATH_site . 'fileadmin/foo.txt', PATH_site . 'fileadmin/foo.txt'],
             'PATH_site . typo3/sysext/core/Resources/Public/Icons/Extension.png' => [
                 PATH_site .
                 'typo3/sysext/core/Resources/Public/Icons/Extension.png',
-                PATH_site . 'typo3/sysext/core/Resources/Public/Icons/Extension.png'
+                PATH_site . 'typo3/sysext/core/Resources/Public/Icons/Extension.png',
             ],
             'EXT:foo/Resources/Public/Icons/Extension.png' => [
                 'EXT:foo/Resources/Public/Icons/Extension.png',
-                PATH_site . 'typo3/sysext/foo/Resources/Public/Icons/Extension.png'
-            ]
+                PATH_site . 'typo3/sysext/foo/Resources/Public/Icons/Extension.png',
+            ],
         ];
     }
 
@@ -4425,7 +4584,6 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
      */
     public function getFileAbsFileNameReturnsCorrectValues($path, $expected)
     {
-
         // build the dummy package "foo" for use in ExtensionManagementUtility::extPath('foo');
         $package = $this->getMockBuilder(Package::class)
             ->disableOriginalConstructor()
@@ -4504,7 +4662,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     {
         $data = [
             'normal ascii path' => ['fileadmin/templates/myfile..xml'],
-            'special character' => ['fileadmin/templates/Ссылка (fce).xml']
+            'special character' => ['fileadmin/templates/Ссылка (fce).xml'],
         ];
 
         return $data;
@@ -4515,6 +4673,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
      *
      * @dataProvider validPathStrDataProvider
      * @test
+     * @param mixed $path
      */
     public function validPathStrWorksWithUnicodeFileNames($path)
     {
@@ -4607,6 +4766,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /////////////////////////////////////////////////////////////////////////////////////
     // Tests concerning sysLog
     /////////////////////////////////////////////////////////////////////////////////////
+
     /**
      * @test
      */
@@ -4655,6 +4815,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider callUserFunctionInvalidParameterDataprovider
+     * @param mixed $functionName
      */
     public function callUserFunctionWillReturnFalseForInvalidParameters($functionName)
     {
@@ -4694,7 +4855,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'Class doesn\'t exists' => ['t3lib_divTest21345->user_calledUserFunction', 1294585866],
             'No method name' => ['t3lib_divTest', 1294585867],
             'No class name' => ['->user_calledUserFunction', 1294585866],
-            'No function name' => ['', 1294585867]
+            'No function name' => ['', 1294585867],
         ];
     }
 
@@ -4790,6 +4951,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $inputData = ['foo' => 'bar'];
         $closure = function ($parameters, $reference) use ($inputData) {
             $reference->assertEquals($inputData, $parameters, 'Passed data doesn\'t match expected output');
+
             return 'Worked fine';
         };
         $this->assertEquals('Worked fine', GeneralUtility::callUserFunction($closure, $inputData, $this));
@@ -4836,7 +4998,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     public function xml2ArrayConvertsEmptyArraysToElementWithoutContent()
     {
         $input = [
-            'el' => []
+            'el' => [],
         ];
 
         $output = GeneralUtility::array2xml($input);
@@ -4863,7 +5025,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             <value index="vDEF">egon</value>
                         </field>
                     </data>
-                </T3FlexForms>'
+                </T3FlexForms>',
             ],
             'inputWithPrecedingWhitespaces' => [
                 '
@@ -4874,7 +5036,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             <value index="vDEF">egon</value>
                         </field>
                     </data>
-                </T3FlexForms>'
+                </T3FlexForms>',
             ],
             'inputWithTrailingWhitespaces' => [
                 '<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
@@ -4885,7 +5047,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         </field>
                     </data>
                 </T3FlexForms>
-                '
+                ',
             ],
             'inputWithPrecedingAndTrailingWhitespaces' => [
                 '
@@ -4897,7 +5059,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         </field>
                     </data>
                 </T3FlexForms>
-                '
+                ',
             ],
         ];
     }
@@ -4913,7 +5075,7 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'data' => [
                 'settings.persistenceIdentifier' => [
                     'vDEF' => 'egon',
-                ]
+                ],
             ],
         ];
         $this->assertSame($expected, GeneralUtility::xml2array($input));
@@ -4942,40 +5104,40 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         return [
             'empty string' => [
                 '',
-                ''
+                '',
             ],
             'null value' => [
                 null,
-                ''
+                '',
             ],
             'string with ascii chars' => [
                 'example',
-                'example'
+                'example',
             ],
             'domain (1) with utf8 chars' => [
                 'dömäin.example',
-                'xn--dmin-moa0i.example'
+                'xn--dmin-moa0i.example',
             ],
             'domain (2) with utf8 chars' => [
                 'äaaa.example',
-                'xn--aaa-pla.example'
+                'xn--aaa-pla.example',
             ],
             'domain (3) with utf8 chars' => [
                 'déjà.vu.example',
-                'xn--dj-kia8a.vu.example'
+                'xn--dj-kia8a.vu.example',
             ],
             'domain (4) with utf8 chars' => [
                 'foo.âbcdéf.example',
-                'foo.xn--bcdf-9na9b.example'
+                'foo.xn--bcdf-9na9b.example',
             ],
             'domain with utf8 char (german umlaut)' => [
                 'exömple.com',
-                'xn--exmple-xxa.com'
+                'xn--exmple-xxa.com',
             ],
             'email with utf8 char (german umlaut)' => [
                 'joe.doe@dömäin.de',
-                'joe.doe@xn--dmin-moa0i.de'
-            ]
+                'joe.doe@xn--dmin-moa0i.de',
+            ],
         ];
     }
 
@@ -4984,22 +5146,22 @@ class GeneralUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         return [
             'one-line, single header' => [
                 ['Content-Security-Policy:default-src \'self\'; img-src https://*; child-src \'none\';'],
-                ['Content-Security-Policy' => 'default-src \'self\'; img-src https://*; child-src \'none\';']
+                ['Content-Security-Policy' => 'default-src \'self\'; img-src https://*; child-src \'none\';'],
             ],
             'one-line, multiple headers' => [
                 [
                     'Content-Security-Policy:default-src \'self\'; img-src https://*; child-src \'none\';',
-                    'Content-Security-Policy-Report-Only:default-src https:; report-uri /csp-violation-report-endpoint/'
+                    'Content-Security-Policy-Report-Only:default-src https:; report-uri /csp-violation-report-endpoint/',
                 ],
                 [
                     'Content-Security-Policy' => 'default-src \'self\'; img-src https://*; child-src \'none\';',
-                    'Content-Security-Policy-Report-Only' => 'default-src https:; report-uri /csp-violation-report-endpoint/'
-                ]
+                    'Content-Security-Policy-Report-Only' => 'default-src https:; report-uri /csp-violation-report-endpoint/',
+                ],
             ],
             'multi-line headers' => [
                 ['Content-Type' => 'multipart/form-data; boundary=something', 'Content-Language' => 'de-DE, en-CA'],
                 ['Content-Type' => 'multipart/form-data; boundary=something', 'Content-Language' => 'de-DE, en-CA'],
-            ]
+            ],
         ];
     }
 

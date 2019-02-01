@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Backend\Tests\Unit\Form;
 
 /*
@@ -21,7 +22,6 @@ use TYPO3\CMS\Backend\Form\InlineStackProcessor;
  */
 class InlineStackProcessorTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
-
     /**
      * @return array
      */
@@ -35,7 +35,7 @@ class InlineStackProcessorTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         'table' => 'childTable',
                     ],
                 ],
-                []
+                [],
             ],
             'simple 1-level table-uid structure' => [
                 'data-pageId-childTable-childUid',
@@ -45,7 +45,7 @@ class InlineStackProcessorTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         'uid' => 'childUid',
                     ],
                 ],
-                []
+                [],
             ],
             'simple 1-level table-uid-field structure' => [
                 'data-pageId-childTable-childUid-childField',
@@ -249,6 +249,7 @@ class InlineStackProcessorTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @dataProvider structureStringIsParsedDataProvider
      * @test
+     * @param mixed $string
      */
     public function initializeByParsingDomObjectIdStringParsesStructureString($string, array $expectedInlineStructure, array $_)
     {
@@ -262,11 +263,12 @@ class InlineStackProcessorTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @dataProvider structureStringIsParsedDataProvider
      * @test
+     * @param mixed $string
      */
     public function getCurrentStructureFormPrefixReturnsExceptedStringAfterInitializationByStructureString($string, array $_, array $expectedFormName)
     {
         /** @var InlineStackProcessor|\PHPUnit_Framework_MockObject_MockObject|\CAG\CagTests\Core\AccessibleObjectInterface $subject */
-        $subject = new InlineStackProcessor;
+        $subject = new InlineStackProcessor();
         $subject->initializeByParsingDomObjectIdString($string);
         $this->assertEquals($expectedFormName['form'], $subject->getCurrentStructureFormPrefix());
     }
@@ -274,11 +276,12 @@ class InlineStackProcessorTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @dataProvider structureStringIsParsedDataProvider
      * @test
+     * @param mixed $string
      */
     public function getCurrentStructureDomObjectIdPrefixReturnsExceptedStringAfterInitializationByStructureString($string, array $_, array $expectedFormName)
     {
         /** @var InlineStackProcessor|\PHPUnit_Framework_MockObject_MockObject|\CAG\CagTests\Core\AccessibleObjectInterface $subject */
-        $subject = new InlineStackProcessor;
+        $subject = new InlineStackProcessor();
         $subject->initializeByParsingDomObjectIdString($string);
         $this->assertEquals($expectedFormName['object'], $subject->getCurrentStructureDomObjectIdPrefix('pageId'));
     }

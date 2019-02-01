@@ -15,6 +15,7 @@ namespace  CAG\CagTests\Core\Acceptance;
  * The TYPO3 project - inspiring people to share!
  */
 
+use CAG\CagTests\Core\Testbase;
 use Codeception\Event\SuiteEvent;
 use Codeception\Events;
 use Codeception\Extension;
@@ -23,7 +24,6 @@ use TYPO3\CMS\Core\Core\Bootstrap;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Styleguide\TcaDataGenerator\Generator;
-use CAG\CagTests\Core\Testbase;
 
 /**
  * This codeception extension creates a full TYPO3 instance within
@@ -146,7 +146,7 @@ class AcceptanceCoreEnvironment extends Extension
      */
     public static $events = [
         Events::SUITE_BEFORE => 'bootstrapTypo3Environment',
-        Events::TEST_AFTER => 'cleanupTypo3Environment'
+        Events::TEST_AFTER => 'cleanupTypo3Environment',
     ];
 
     /**
@@ -188,8 +188,8 @@ class AcceptanceCoreEnvironment extends Extension
 //            [ 'typo3conf/ext/styleguide' ],
 //            $this->testExtensionsToLoad
 //        );
-       // $testbase->linkTestExtensionsToInstance($instancePath, $testExtensionsToLoad);
-       // $testbase->linkPathsInTestInstance($instancePath, $this->pathsToLinkInTestInstance);
+        // $testbase->linkTestExtensionsToInstance($instancePath, $testExtensionsToLoad);
+        // $testbase->linkPathsInTestInstance($instancePath, $this->pathsToLinkInTestInstance);
         $localConfiguration['DB'] = $testbase->getOriginalDatabaseSettingsFromEnvironmentOrLocalConfiguration();
         $originalDatabaseName = $localConfiguration['DB']['Connections']['Default']['dbname'];
         // Append the unique identifier to the base database name to end up with a single database per test case
@@ -197,7 +197,7 @@ class AcceptanceCoreEnvironment extends Extension
          * removed db instance for tests
          * . '_at'
          */
-        $localConfiguration['DB']['Connections']['Default']['dbname'] = $originalDatabaseName ;
+        $localConfiguration['DB']['Connections']['Default']['dbname'] = $originalDatabaseName;
         $testbase->testDatabaseNameIsNotTooLong($originalDatabaseName, $localConfiguration);
         // Set some hard coded base settings for the instance. Those could be overruled by
         // $this->configurationToUseInTestInstance if needed again.
@@ -238,7 +238,7 @@ class AcceptanceCoreEnvironment extends Extension
             'scheduler',
             'tstemplate',
         ];
-      //  $testbase->setUpPackageStates($instancePath, $defaultCoreExtensionsToLoad, $this->coreExtensionsToLoad, $testExtensionsToLoad);
+        //  $testbase->setUpPackageStates($instancePath, $defaultCoreExtensionsToLoad, $this->coreExtensionsToLoad, $testExtensionsToLoad);
         $testbase->setUpBasicTypo3Bootstrap($instancePath);
         $testbase->setUpTestDatabase($localConfiguration['DB']['Connections']['Default']['dbname'], $originalDatabaseName);
         $testbase->loadExtensionTables();
@@ -262,8 +262,8 @@ class AcceptanceCoreEnvironment extends Extension
         $GLOBALS['BE_USER']->workspace = 0;
         Bootstrap::getInstance()->initializeLanguageObject();
 
-    //    $styleguideGenerator = new Generator();
-      //  $styleguideGenerator->create();
+        //    $styleguideGenerator = new Generator();
+        //  $styleguideGenerator->create();
 
         // @todo: Find out why that is needed to execute the first test successfully
         $this->cleanupTypo3Environment();
@@ -295,9 +295,10 @@ class AcceptanceCoreEnvironment extends Extension
         $password = getenv('typo3InstallToolPassword');
         if (!empty($password)) {
             $saltFactory = \TYPO3\CMS\Saltedpasswords\Salt\SaltFactory::getSaltingInstance(null, 'BE');
+
             return $saltFactory->getHashedPassword($password);
-        } else {
-            return '$P$notnotnotnotnotnot.validvalidva';
         }
+
+        return '$P$notnotnotnotnotnot.validvalidva';
     }
 }

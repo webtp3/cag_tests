@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 defined('TYPO3_MODE') or die();
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_testdatahandler_element');
@@ -38,7 +39,7 @@ defined('TYPO3_MODE') or die();
             'config' => [
                 'type' => 'radio',
                 'items' => [
-                    ['predefined label', 'predefined value']
+                    ['predefined label', 'predefined value'],
                 ],
                 'itemsProcFunc' => 'TYPO3\TestDatahandler\Classes\Tca\RadioElementItems->getItems',
                 'default' => '',
@@ -50,7 +51,7 @@ defined('TYPO3_MODE') or die();
              'config' => [
                  'type' => 'check',
                  'items' => [
-                     ['predefined label', 'predefined value']
+                     ['predefined label', 'predefined value'],
                  ],
                  'itemsProcFunc' => 'TYPO3\TestDatahandler\Classes\Tca\CheckboxElementItems->getItems',
                  'default' => '',

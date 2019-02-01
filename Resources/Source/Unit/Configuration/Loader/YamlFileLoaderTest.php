@@ -39,9 +39,9 @@ betterthanbefore: 1
         $expected = [
             'options' => [
                 'option1',
-                'option2'
+                'option2',
             ],
-            'betterthanbefore' => 1
+            'betterthanbefore' => 1,
         ];
 
         // Accessible mock to $subject since getFileContents calls GeneralUtility methods
@@ -79,9 +79,9 @@ betterthanbefore: 2
             'options' => [
                 'optionBefore',
                 'option1',
-                'option2'
+                'option2',
             ],
-            'betterthanbefore' => 1
+            'betterthanbefore' => 1,
         ];
 
         // Accessible mock to $subject since getFileContents calls GeneralUtility methods
@@ -111,13 +111,13 @@ betterthanbefore: %firstset.myinitialversion%
 
         $expected = [
             'firstset' => [
-                'myinitialversion' => 13
+                'myinitialversion' => 13,
             ],
             'options' => [
                 'option1',
-                'option2'
+                'option2',
             ],
-            'betterthanbefore' => 13
+            'betterthanbefore' => 13,
         ];
 
         // Accessible mock to $subject since getFileContents calls GeneralUtility methods
@@ -136,43 +136,43 @@ betterthanbefore: %firstset.myinitialversion%
         return [
             'regular string' => [
                 'berta13',
-                false
+                false,
             ],
             'regular array' => [
                 ['berta13'],
-                false
+                false,
             ],
             'regular float' => [
                 13.131313,
-                false
+                false,
             ],
             'regular int' => [
                 13,
-                false
+                false,
             ],
             'invalid placeholder with only % at the beginning' => [
                 '%cool',
-                false
+                false,
             ],
             'invalid placeholder with only % at the end' => [
                 'cool%',
-                false
+                false,
             ],
             'invalid placeholder with two % but not at the end' => [
                 '%cool%again',
-                false
+                false,
             ],
             'invalid placeholder with two % but not at the beginning nor end' => [
                 'did%you%know',
-                false
+                false,
             ],
             'valid placeholder with just numbers' => [
                 '%13%',
-                true
+                true,
             ],
             'valid placeholder' => [
                 '%foo%baracks%',
-                true
+                true,
             ],
         ];
     }

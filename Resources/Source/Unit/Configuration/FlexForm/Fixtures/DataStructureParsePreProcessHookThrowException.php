@@ -24,8 +24,8 @@ class DataStructureParsePreProcessHookThrowException
      * Just throw an exception
      *
      * @param array $identifier
-     * @return string
      * @throws \RuntimeException
+     * @return string
      */
     public function parseDataStructureByIdentifierPreProcess(array $identifier): string
     {

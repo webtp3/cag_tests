@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Backend\Tests\Unit\Form\FormDataProvider;
 
 /*
@@ -142,11 +143,11 @@ class TcaSelectTreeItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 
         $this->mockDatabaseConnection();
 
-        /** @var  DatabaseTreeDataProvider|ObjectProphecy $treeDataProviderProphecy */
+        /** @var DatabaseTreeDataProvider|ObjectProphecy $treeDataProviderProphecy */
         $treeDataProviderProphecy = $this->prophesize(DatabaseTreeDataProvider::class);
         GeneralUtility::addInstance(DatabaseTreeDataProvider::class, $treeDataProviderProphecy->reveal());
 
-        /** @var  TableConfigurationTree|ObjectProphecy $treeDataProviderProphecy */
+        /** @var TableConfigurationTree|ObjectProphecy $treeDataProviderProphecy */
         $tableConfigurationTreeProphecy = $this->prophesize(TableConfigurationTree::class);
         GeneralUtility::addInstance(TableConfigurationTree::class, $tableConfigurationTreeProphecy->reveal());
         $tableConfigurationTreeProphecy->setDataProvider(Argument::cetera())->shouldBeCalled();
@@ -156,7 +157,7 @@ class TcaSelectTreeItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $input = [
             'tableName' => 'aTable',
             'databaseRow' => [
-                'aField' => '1'
+                'aField' => '1',
             ],
             'processedTca' => [
                 'columns' => [
@@ -165,11 +166,11 @@ class TcaSelectTreeItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'type' => 'select',
                             'renderType' => 'selectTree',
                             'treeConfig' => [
-                                'childrenField' => 'childrenField'
+                                'childrenField' => 'childrenField',
                             ],
                             'foreign_table' => 'foreignTable',
                             'items' => [],
-                            'maxitems' => 1
+                            'maxitems' => 1,
                         ],
                     ],
                 ],
@@ -203,7 +204,7 @@ class TcaSelectTreeItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $treeDataProviderProphecy = $this->prophesize(DatabaseTreeDataProvider::class);
         GeneralUtility::addInstance(DatabaseTreeDataProvider::class, $treeDataProviderProphecy->reveal());
 
-        /** @var  TableConfigurationTree|ObjectProphecy $treeDataProviderProphecy */
+        /** @var TableConfigurationTree|ObjectProphecy $treeDataProviderProphecy */
         $tableConfigurationTreeProphecy = $this->prophesize(TableConfigurationTree::class);
         GeneralUtility::addInstance(TableConfigurationTree::class, $tableConfigurationTreeProphecy->reveal());
         $tableConfigurationTreeProphecy->render()->willReturn([]);
@@ -213,7 +214,7 @@ class TcaSelectTreeItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $input = [
             'tableName' => 'aTable',
             'databaseRow' => [
-                'aField' => '1'
+                'aField' => '1',
             ],
             'processedTca' => [
                 'columns' => [
@@ -222,11 +223,11 @@ class TcaSelectTreeItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'type' => 'select',
                             'renderType' => 'selectTree',
                             'treeConfig' => [
-                                'childrenField' => 'childrenField'
+                                'childrenField' => 'childrenField',
                             ],
                             'foreign_table' => 'foreignTable',
                             'items' => [],
-                            'maxitems' => 1
+                            'maxitems' => 1,
                         ],
                     ],
                 ],

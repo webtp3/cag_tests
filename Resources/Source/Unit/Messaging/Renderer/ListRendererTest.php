@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Messaging;
 
 /*
@@ -14,10 +15,10 @@ namespace TYPO3\CMS\Core\Tests\Unit\Messaging;
  * The TYPO3 project - inspiring people to share!
  */
 
+use CAG\CagTests\Core\Unit\UnitTestCase;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
 use TYPO3\CMS\Core\Messaging\Renderer\ListRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use CAG\CagTests\Core\Unit\UnitTestCase;
 
 /**
  * Test case

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\FormProtection;
 
 /*
@@ -31,6 +32,7 @@ class FormProtectionFactoryTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /////////////////////////
     // Tests concerning get
     /////////////////////////
+
     /**
      * @test
      */
@@ -50,7 +52,7 @@ class FormProtectionFactoryTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionCode(1285353026);
 
-        FormProtectionFactory::get(\TYPO3\CMS\Core\Tests\Unit\FormProtection\FormProtectionFactoryTest::class);
+        FormProtectionFactory::get(self::class);
     }
 
     /**
@@ -80,7 +82,7 @@ class FormProtectionFactoryTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $arguments = [
             \TYPO3\CMS\Core\FormProtection\BackendFormProtection::class,
             $userMock,
-            $this->createMock(Registry::class)
+            $this->createMock(Registry::class),
         ];
         $this->assertSame(
             call_user_func_array([FormProtectionFactory::class, 'get'], $arguments),
@@ -115,6 +117,7 @@ class FormProtectionFactoryTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /////////////////////////
     // Tests concerning set
     /////////////////////////
+
     /**
      * @test
      */

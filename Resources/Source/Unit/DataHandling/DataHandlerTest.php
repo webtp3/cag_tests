@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\DataHandler;
 
 /*
@@ -14,6 +15,7 @@ namespace TYPO3\CMS\Core\Tests\Unit\DataHandler;
  * The TYPO3 project - inspiring people to share!
  */
 
+use CAG\CagTests\Core\AccessibleObjectInterface;
 use Prophecy\Argument;
 use TYPO3\CMS\Core\Authentication\BackendUserAuthentication;
 use TYPO3\CMS\Core\Cache\CacheManager;
@@ -22,7 +24,6 @@ use TYPO3\CMS\Core\DataHandling\DataHandler;
 use TYPO3\CMS\Core\Tests\Unit\DataHandling\Fixtures\AllowAccessHookFixture;
 use TYPO3\CMS\Core\Tests\Unit\DataHandling\Fixtures\InvalidHookFixture;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use CAG\CagTests\Core\AccessibleObjectInterface;
 
 /**
  * Test case
@@ -68,6 +69,7 @@ class DataHandlerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     //////////////////////////////////////
     // Tests for the basic functionality
     //////////////////////////////////////
+
     /**
      * @test
      */
@@ -79,6 +81,7 @@ class DataHandlerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     //////////////////////////////////////////
     // Test concerning checkModifyAccessList
     //////////////////////////////////////////
+
     /**
      * @test
      */
@@ -154,7 +157,7 @@ class DataHandlerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             '1000,10' => '1000.10',
             '1000,0' => '1000.00',
             '600.000.000,00' => '600000000.00',
-            '60aaa00' => '6000.00'
+            '60aaa00' => '6000.00',
         ];
         foreach ($testData as $value => $expectedReturnValue) {
             $returnValue = $this->subject->checkValue_input_Eval($value, ['double2'], '');
@@ -167,10 +170,10 @@ class DataHandlerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         // Three elements: input, timezone of input, expected output (UTC)
         return [
             'timestamp is passed through, as it is UTC' => [
-                1457103519, 'Europe/Berlin', 1457103519
+                1457103519, 'Europe/Berlin', 1457103519,
             ],
             'ISO date is interpreted as local date and is output as correct timestamp' => [
-                '2017-06-07T00:10:00Z', 'Europe/Berlin', 1496787000
+                '2017-06-07T00:10:00Z', 'Europe/Berlin', 1496787000,
             ],
         ];
     }
@@ -178,6 +181,9 @@ class DataHandlerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider dataProviderDatetime
+     * @param mixed $input
+     * @param mixed $serverTimezone
+     * @param mixed $expectedOutput
      */
     public function evalCheckValueDatetime($input, $serverTimezone, $expectedOutput)
     {
@@ -202,23 +208,23 @@ class DataHandlerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         return [
             '"0" returns zero as integer' => [
                 '0',
-                0
+                0,
             ],
             '"-2000001" is interpreted correctly as -2000001 but is lower than -2000000 and set to -2000000' => [
                 '-2000001',
-                -2000000
+                -2000000,
             ],
             '"-2000000" is interpreted correctly as -2000000 and is equal to -2000000' => [
                 '-2000000',
-                -2000000
+                -2000000,
             ],
             '"2000000" is interpreted correctly as 2000000 and is equal to 2000000' => [
                 '2000000',
-                2000000
+                2000000,
             ],
             '"2000001" is interpreted correctly as 2000001 but is greater then 2000000 and set to 2000000' => [
                 '2000001',
-                2000000
+                2000000,
             ],
         ];
     }
@@ -236,8 +242,8 @@ class DataHandlerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'eval' => 'int',
             'range' => [
                 'lower' => '-2000000',
-                'upper' => '2000000'
-            ]
+                'upper' => '2000000',
+            ],
         ];
         $returnValue = $this->subject->_call('checkValueForInput', $value, $tcaFieldConf, '', 0, 0, '');
         $this->assertSame($returnValue['value'], $expectedReturnValue);
@@ -285,7 +291,7 @@ class DataHandlerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'lower' => gmmktime(0, 0, 0, 3, 1, 2018),
                 // unix timestamp: 1522540799
                 'upper' => gmmktime(23, 59, 59, 3, 31, 2018),
-            ]
+            ],
         ];
 
         // @todo Switch to UTC since otherwise DataHandler removes timezone offset
@@ -307,15 +313,15 @@ class DataHandlerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         return [
             'tca without dbType' => [
                 [
-                    'input' => []
-                ]
+                    'input' => [],
+                ],
             ],
             'tca with dbType != date/datetime' => [
                 [
                     'input' => [],
-                    'dbType' => 'foo'
-                ]
-            ]
+                    'dbType' => 'foo',
+                ],
+            ],
         ];
     }
 
@@ -333,6 +339,7 @@ class DataHandlerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     // Tests concerning checkModifyAccessList
     ///////////////////////////////////////////
     //
+
     /**
      * Tests whether a wrong interface on the 'checkModifyAccessList' hook throws an exception.
      * @test
@@ -378,6 +385,7 @@ class DataHandlerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /////////////////////////////////////
     // Tests concerning process_datamap
     /////////////////////////////////////
+
     /**
      * @test
      */
@@ -415,7 +423,7 @@ class DataHandlerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'getCacheManager',
                 'registerElementsToBeDeleted',
                 'unsetElementsToBeDeleted',
-                'resetElementsToBeDeleted'
+                'resetElementsToBeDeleted',
             ])
             ->disableOriginalConstructor()
             ->getMock();
@@ -424,9 +432,9 @@ class DataHandlerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $subject->datamap = [
             'pages' => [
                 '1' => [
-                    'header' => 'demo'
-                ]
-            ]
+                    'header' => 'demo',
+                ],
+            ],
         ];
 
         $cacheManagerMock = $this->getMockBuilder(CacheManager::class)
@@ -455,10 +463,10 @@ class DataHandlerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 1 => [
                     'version' => [
                         'action' => 'new',
-                        'label' => 'Auto-created for WS #1'
-                    ]
-                ]
-            ]
+                        'label' => 'Auto-created for WS #1',
+                    ],
+                ],
+            ],
         ]);
         $createdDataHandler->expects($this->never())->method('process_datamap');
         $createdDataHandler->expects($this->once())->method('process_cmdmap');
@@ -488,6 +496,7 @@ class DataHandlerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /////////////////////////////////////
     // Tests concerning log
     /////////////////////////////////////
+
     /**
      * @test
      */
@@ -573,174 +582,174 @@ class DataHandlerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             // String
             'string value "" vs. ""' => [
                 true,
-                '', '', 'string', false
+                '', '', 'string', false,
             ],
             'string value 0 vs. "0"' => [
                 true,
-                0, '0', 'string', false
+                0, '0', 'string', false,
             ],
             'string value 1 vs. "1"' => [
                 true,
-                1, '1', 'string', false
+                1, '1', 'string', false,
             ],
             'string value "0" vs. ""' => [
                 false,
-                '0', '', 'string', false
+                '0', '', 'string', false,
             ],
             'string value 0 vs. ""' => [
                 false,
-                0, '', 'string', false
+                0, '', 'string', false,
             ],
             'string value null vs. ""' => [
                 true,
-                null, '', 'string', false
+                null, '', 'string', false,
             ],
             // Integer
             'integer value 0 vs. 0' => [
                 true,
-                0, 0, 'int', false
+                0, 0, 'int', false,
             ],
             'integer value "0" vs. "0"' => [
                 true,
-                '0', '0', 'int', false
+                '0', '0', 'int', false,
             ],
             'integer value 0 vs. "0"' => [
                 true,
-                0, '0', 'int', false
+                0, '0', 'int', false,
             ],
             'integer value "" vs. "0"' => [
                 true,
-                '', '0', 'int', false
+                '', '0', 'int', false,
             ],
             'integer value "" vs. 0' => [
                 true,
-                '', 0, 'int', false
+                '', 0, 'int', false,
             ],
             'integer value "0" vs. 0' => [
                 true,
-                '0', 0, 'int', false
+                '0', 0, 'int', false,
             ],
             'integer value 1 vs. 1' => [
                 true,
-                1, 1, 'int', false
+                1, 1, 'int', false,
             ],
             'integer value 1 vs. "1"' => [
                 true,
-                1, '1', 'int', false
+                1, '1', 'int', false,
             ],
             'integer value "1" vs. "1"' => [
                 true,
-                '1', '1', 'int', false
+                '1', '1', 'int', false,
             ],
             'integer value "1" vs. 1' => [
                 true,
-                '1', 1, 'int', false
+                '1', 1, 'int', false,
             ],
             'integer value "0" vs. "1"' => [
                 false,
-                '0', '1', 'int', false
+                '0', '1', 'int', false,
             ],
             // String with allowed NULL values
             'string with allowed null value "" vs. ""' => [
                 true,
-                '', '', 'string', true
+                '', '', 'string', true,
             ],
             'string with allowed null value 0 vs. "0"' => [
                 true,
-                0, '0', 'string', true
+                0, '0', 'string', true,
             ],
             'string with allowed null value 1 vs. "1"' => [
                 true,
-                1, '1', 'string', true
+                1, '1', 'string', true,
             ],
             'string with allowed null value "0" vs. ""' => [
                 false,
-                '0', '', 'string', true
+                '0', '', 'string', true,
             ],
             'string with allowed null value 0 vs. ""' => [
                 false,
-                0, '', 'string', true
+                0, '', 'string', true,
             ],
             'string with allowed null value null vs. ""' => [
                 false,
-                null, '', 'string', true
+                null, '', 'string', true,
             ],
             'string with allowed null value "" vs. null' => [
                 false,
-                '', null, 'string', true
+                '', null, 'string', true,
             ],
             'string with allowed null value null vs. null' => [
                 true,
-                null, null, 'string', true
+                null, null, 'string', true,
             ],
             // Integer with allowed NULL values
             'integer with allowed null value 0 vs. 0' => [
                 true,
-                0, 0, 'int', true
+                0, 0, 'int', true,
             ],
             'integer with allowed null value "0" vs. "0"' => [
                 true,
-                '0', '0', 'int', true
+                '0', '0', 'int', true,
             ],
             'integer with allowed null value 0 vs. "0"' => [
                 true,
-                0, '0', 'int', true
+                0, '0', 'int', true,
             ],
             'integer with allowed null value "" vs. "0"' => [
                 true,
-                '', '0', 'int', true
+                '', '0', 'int', true,
             ],
             'integer with allowed null value "" vs. 0' => [
                 true,
-                '', 0, 'int', true
+                '', 0, 'int', true,
             ],
             'integer with allowed null value "0" vs. 0' => [
                 true,
-                '0', 0, 'int', true
+                '0', 0, 'int', true,
             ],
             'integer with allowed null value 1 vs. 1' => [
                 true,
-                1, 1, 'int', true
+                1, 1, 'int', true,
             ],
             'integer with allowed null value "1" vs. "1"' => [
                 true,
-                '1', '1', 'int', true
+                '1', '1', 'int', true,
             ],
             'integer with allowed null value "1" vs. 1' => [
                 true,
-                '1', 1, 'int', true
+                '1', 1, 'int', true,
             ],
             'integer with allowed null value 1 vs. "1"' => [
                 true,
-                1, '1', 'int', true
+                1, '1', 'int', true,
             ],
             'integer with allowed null value "0" vs. "1"' => [
                 false,
-                '0', '1', 'int', true
+                '0', '1', 'int', true,
             ],
             'integer with allowed null value null vs. ""' => [
                 false,
-                null, '', 'int', true
+                null, '', 'int', true,
             ],
             'integer with allowed null value "" vs. null' => [
                 false,
-                '', null, 'int', true
+                '', null, 'int', true,
             ],
             'integer with allowed null value null vs. null' => [
                 true,
-                null, null, 'int', true
+                null, null, 'int', true,
             ],
             'integer with allowed null value null vs. "0"' => [
                 false,
-                null, '0', 'int', true
+                null, '0', 'int', true,
             ],
             'integer with allowed null value null vs. 0' => [
                 false,
-                null, 0, 'int', true
+                null, 0, 'int', true,
             ],
             'integer with allowed null value "0" vs. null' => [
                 false,
-                '0', null, 'int', true
+                '0', null, 'int', true,
             ],
         ];
     }
@@ -770,9 +779,9 @@ class DataHandlerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $GLOBALS['TCA'][$table]['columns'] = [
             'dummy' => [
                 'config' => [
-                    'eval' => $eval
-                ]
-            ]
+                    'eval' => $eval,
+                ],
+            ],
         ];
 
         $this->assertEquals($expected, $subject->_call('getPlaceholderTitleForTableLabel', $table));
@@ -786,20 +795,20 @@ class DataHandlerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         return [
             [
                 0.10,
-                'double2'
+                'double2',
             ],
             [
                 0,
-                'int'
+                'int',
             ],
             [
                 '0',
-                'datetime'
+                'datetime',
             ],
             [
                 '[PLACEHOLDER, WS#1]',
-                ''
-            ]
+                '',
+            ],
         ];
     }
 
@@ -834,13 +843,13 @@ class DataHandlerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'foreign_table' => $this->getUniqueId('foreign_foo_'),
             'behaviour' => [
                 'enableCascadingDelete' => 0,
-            ]
+            ],
         ];
 
         /** @var \TYPO3\CMS\Core\Database\RelationHandler $mockRelationHandler */
         $mockRelationHandler = $this->createMock(\TYPO3\CMS\Core\Database\RelationHandler::class);
         $mockRelationHandler->itemArray = [
-            '1' => ['table' => $this->getUniqueId('bar_'), 'id' => 67]
+            '1' => ['table' => $this->getUniqueId('bar_'), 'id' => 67],
         ];
 
         /** @var DataHandler|\PHPUnit_Framework_MockObject_MockObject|AccessibleObjectInterface $mockDataHandler */
@@ -859,28 +868,28 @@ class DataHandlerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         return [
             'None item selected' => [
                 0,
-                0
+                0,
             ],
             'All items selected' => [
                 7,
-                7
+                7,
             ],
             'Item 1 and 2 are selected' => [
                 3,
-                3
+                3,
             ],
             'Value is higher than allowed (all checkboxes checked)' => [
                 15,
-                7
+                7,
             ],
             'Value is higher than allowed (some checkboxes checked)' => [
                 11,
-                3
+                3,
             ],
             'Negative value' => [
                 -5,
-                0
-            ]
+                0,
+            ],
         ];
     }
 
@@ -894,15 +903,15 @@ class DataHandlerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     public function checkValue_checkReturnsExpectedValues($value, $expectedValue)
     {
         $expectedResult = [
-            'value' => $expectedValue
+            'value' => $expectedValue,
         ];
         $result = [];
         $tcaFieldConfiguration = [
             'items' => [
                 ['Item 1', 0],
                 ['Item 2', 0],
-                ['Item 3', 0]
-            ]
+                ['Item 3', 0],
+            ],
         ];
         $this->assertSame($expectedResult, $this->subject->_call('checkValueForCheck', $result, $value, $tcaFieldConfiguration, '', 0, 0, ''));
     }
@@ -942,28 +951,28 @@ class DataHandlerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     {
         return [
             'all empty' => [
-                '', [], ''
+                '', [], '',
             ],
             'cast zero with MM table' => [
-                '', ['MM' => 'table'], 0
+                '', ['MM' => 'table'], 0,
             ],
             'cast zero with MM table with default value' => [
-                '', ['MM' => 'table', 'default' => 13], 0
+                '', ['MM' => 'table', 'default' => 13], 0,
             ],
             'cast zero with foreign field' => [
-                '', ['foreign_field' => 'table', 'default' => 13], 0
+                '', ['foreign_field' => 'table', 'default' => 13], 0,
             ],
             'cast zero with foreign field with default value' => [
-                '', ['foreign_field' => 'table'], 0
+                '', ['foreign_field' => 'table'], 0,
             ],
             'pass zero' => [
-                '0', [], '0'
+                '0', [], '0',
             ],
             'pass value' => [
-                '1', ['default' => 13], '1'
+                '1', ['default' => 13], '1',
             ],
             'use default value' => [
-                '', ['default' => 13], 13
+                '', ['default' => 13], 13,
             ],
         ];
     }

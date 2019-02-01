@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 // Show copied tt_content records in frontend request
 $GLOBALS['TCA']['tt_content']['ctrl']['hideAtCopy'] = false;
@@ -28,7 +29,7 @@ $GLOBALS['TCA']['tt_content']['ctrl']['shadowColumnsForMovePlaceholders'] = 'tx_
                     'localizationMode' => 'select',
                     'localizeChildrenAtParentLocalization' => true,
                 ],
-            ]
+            ],
         ],
         'tx_irretutorial_1ncsv_hotels' => [
             'exclude' => true,
@@ -48,7 +49,7 @@ $GLOBALS['TCA']['tt_content']['ctrl']['shadowColumnsForMovePlaceholders'] = 'tx_
                     'localizeChildrenAtParentLocalization' => true,
                 ],
                 'default' => '',
-            ]
+            ],
         ],
         'tx_irretutorial_flexform' => [
             'exclude' => true,
@@ -59,7 +60,7 @@ $GLOBALS['TCA']['tt_content']['ctrl']['shadowColumnsForMovePlaceholders'] = 'tx_
                     'default' => 'FILE:EXT:irre_tutorial/Configuration/FlexForms/tt_content_flexform.xml',
                 ],
                 'default' => '',
-            ]
+            ],
         ],
     ]
 );

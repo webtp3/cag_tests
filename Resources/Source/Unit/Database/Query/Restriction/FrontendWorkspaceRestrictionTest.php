@@ -20,8 +20,6 @@ use TYPO3\CMS\Frontend\Page\PageRepository;
 
 class FrontendWorkspaceRestrictionTest extends AbstractRestrictionTestCase
 {
-    /**
-     */
     protected function setUp()
     {
         parent::setUp();
@@ -37,7 +35,7 @@ class FrontendWorkspaceRestrictionTest extends AbstractRestrictionTestCase
                 'ctrl' => [
                     'versioningWS' => 2,
                 ],
-            ]
+            ],
         ];
 
         $pageRepository = $this->createMock(PageRepository::class);
@@ -58,7 +56,7 @@ class FrontendWorkspaceRestrictionTest extends AbstractRestrictionTestCase
                 'ctrl' => [
                     'versioningWS' => 2,
                 ],
-            ]
+            ],
         ];
 
         $pageRepository = $this->createMock(PageRepository::class);
@@ -80,7 +78,7 @@ class FrontendWorkspaceRestrictionTest extends AbstractRestrictionTestCase
                 'ctrl' => [
                     'versioningWS' => 2,
                 ],
-            ]
+            ],
         ];
 
         $pageRepository = $this->createMock(PageRepository::class);

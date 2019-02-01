@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Cache\Backend;
 
 /*
@@ -14,11 +15,11 @@ namespace TYPO3\CMS\Core\Tests\Unit\Cache\Backend;
  * The TYPO3 project - inspiring people to share!
  */
 
+use CAG\CagTests\Core\AccessibleObjectInterface;
 use TYPO3\CMS\Core\Cache\Backend\ApcuBackend;
 use TYPO3\CMS\Core\Cache\Exception;
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use CAG\CagTests\Core\AccessibleObjectInterface;
 
 /**
  * Test case for the APCu cache backend.
@@ -312,6 +313,7 @@ class ApcuBackendTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             $backend = new ApcuBackend('Testing');
         }
         $backend->setCache($cache);
+
         return $backend;
     }
 }

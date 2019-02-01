@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Locking;
 
 /*
@@ -90,7 +91,7 @@ class SimpleLockStrategyTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'not within PATH_site' => [tempnam(sys_get_temp_dir(), 'foo')],
             'directory traversal' => [PATH_site . 'typo3temp/../typo3temp/var/locks/foo'],
             'directory traversal 2' => [PATH_site . 'typo3temp/var/locks/../../var/locks/foo'],
-            'within uploads' => [PATH_site . 'uploads/TYPO3-Lock-Test']
+            'within uploads' => [PATH_site . 'uploads/TYPO3-Lock-Test'],
         ];
     }
 

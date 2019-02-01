@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Http;
 
 /*
@@ -116,11 +117,11 @@ class RequestTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     public function invalidRequestUriDataProvider()
     {
         return [
-            'true'     => [true],
-            'false'    => [false],
-            'int'      => [1],
-            'float'    => [1.1],
-            'array'    => [['http://example.com']],
+            'true' => [true],
+            'false' => [false],
+            'int' => [1],
+            'float' => [1.1],
+            'array' => [['http://example.com']],
             'stdClass' => [(object)['href' => 'http://example.com']],
         ];
     }
@@ -128,6 +129,7 @@ class RequestTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @dataProvider invalidRequestUriDataProvider
      * @test
+     * @param mixed $uri
      */
     public function constructorRaisesExceptionForInvalidUri($uri)
     {
@@ -142,18 +144,19 @@ class RequestTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     public function invalidRequestMethodDataProvider()
     {
         return [
-            'true'       => [true],
-            'false'      => [false],
-            'int'        => [1],
-            'float'      => [1.1],
-            'array'      => [['POST']],
-            'stdClass'   => [(object)['method' => 'POST']],
+            'true' => [true],
+            'false' => [false],
+            'int' => [1],
+            'float' => [1.1],
+            'array' => [['POST']],
+            'stdClass' => [(object)['method' => 'POST']],
         ];
     }
 
     /**
      * @dataProvider invalidRequestMethodDataProvider
      * @test
+     * @param mixed $method
      */
     public function constructorRaisesExceptionForInvalidMethodByType($method)
     {
@@ -178,11 +181,11 @@ class RequestTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     public function invalidRequestBodyDataProvider()
     {
         return [
-            'true'     => [true],
-            'false'    => [false],
-            'int'      => [1],
-            'float'    => [1.1],
-            'array'    => [['BODY']],
+            'true' => [true],
+            'false' => [false],
+            'int' => [1],
+            'float' => [1.1],
+            'array' => [['BODY']],
             'stdClass' => [(object)['body' => 'BODY']],
         ];
     }
@@ -190,6 +193,7 @@ class RequestTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @dataProvider invalidRequestBodyDataProvider
      * @test
+     * @param mixed $body
      */
     public function constructorRaisesExceptionForInvalidBody($body)
     {
@@ -205,17 +209,17 @@ class RequestTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     {
         $headers = [
             ['INVALID'],
-            'x-invalid-null'   => null,
-            'x-invalid-true'   => true,
-            'x-invalid-false'  => false,
-            'x-invalid-int'    => 1,
+            'x-invalid-null' => null,
+            'x-invalid-true' => true,
+            'x-invalid-false' => false,
+            'x-invalid-int' => 1,
             'x-invalid-object' => (object)['INVALID'],
-            'x-valid-string'   => 'VALID',
-            'x-valid-array'    => ['VALID'],
+            'x-valid-string' => 'VALID',
+            'x-valid-array' => ['VALID'],
         ];
         $expected = [
             'x-valid-string' => ['VALID'],
-            'x-valid-array'  => ['VALID'],
+            'x-valid-array' => ['VALID'],
         ];
         $request = new Request(null, null, 'php://memory', $headers);
         $this->assertEquals($expected, $request->getHeaders());
@@ -246,29 +250,29 @@ class RequestTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     public function requestsWithUriDataProvider()
     {
         return [
-            'absolute-uri'            => [
+            'absolute-uri' => [
                 (new Request())
                     ->withUri(new Uri('https://api.example.com/user'))
                     ->withMethod('POST'),
-                '/user'
+                '/user',
             ],
             'absolute-uri-with-query' => [
                 (new Request())
                     ->withUri(new Uri('https://api.example.com/user?foo=bar'))
                     ->withMethod('POST'),
-                '/user?foo=bar'
+                '/user?foo=bar',
             ],
-            'relative-uri'            => [
+            'relative-uri' => [
                 (new Request())
                     ->withUri(new Uri('/user'))
                     ->withMethod('GET'),
-                '/user'
+                '/user',
             ],
             'relative-uri-with-query' => [
                 (new Request())
                     ->withUri(new Uri('/user?foo=bar'))
                     ->withMethod('GET'),
-                '/user?foo=bar'
+                '/user?foo=bar',
             ],
         ];
     }
@@ -276,6 +280,8 @@ class RequestTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @dataProvider requestsWithUriDataProvider
      * @test
+     * @param mixed $request
+     * @param mixed $expected
      */
     public function getRequestTargetWhenUriIsPresent($request, $expected)
     {
@@ -288,18 +294,19 @@ class RequestTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     public function validRequestTargetsDataProvider()
     {
         return [
-            'asterisk-form'         => ['*'],
-            'authority-form'        => ['api.example.com'],
-            'absolute-form'         => ['https://api.example.com/users'],
-            'absolute-form-query'   => ['https://api.example.com/users?foo=bar'],
+            'asterisk-form' => ['*'],
+            'authority-form' => ['api.example.com'],
+            'absolute-form' => ['https://api.example.com/users'],
+            'absolute-form-query' => ['https://api.example.com/users?foo=bar'],
             'origin-form-path-only' => ['/users'],
-            'origin-form'           => ['/users?id=foo'],
+            'origin-form' => ['/users?id=foo'],
         ];
     }
 
     /**
      * @dataProvider validRequestTargetsDataProvider
      * @test
+     * @param mixed $requestTarget
      */
     public function getRequestTargetCanProvideARequestTarget($requestTarget)
     {
@@ -477,16 +484,19 @@ class RequestTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     {
         // 'name' => [$headerName, $headerValue, $expectedValue]
         return [
-            'Foo'             => ['Foo', 'bar', 'bar'],
-            'foo'             => ['foo', 'bar', 'bar'],
-            'Foo-with-array'  => ['Foo', ['bar'], 'bar'],
-            'foo-with-array'  => ['foo', ['bar'], 'bar'],
+            'Foo' => ['Foo', 'bar', 'bar'],
+            'foo' => ['foo', 'bar', 'bar'],
+            'Foo-with-array' => ['Foo', ['bar'], 'bar'],
+            'foo-with-array' => ['foo', ['bar'], 'bar'],
         ];
     }
 
     /**
      * @test
      * @dataProvider headersWithUpperAndLowerCaseValuesDataProvider
+     * @param mixed $header
+     * @param mixed $value
+     * @param mixed $expected
      */
     public function headerCanBeRetrieved($header, $value, $expected)
     {
@@ -501,17 +511,17 @@ class RequestTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     public function headersWithInjectionVectorsDataProvider()
     {
         return [
-            'name-with-cr'           => ["X-Foo\r-Bar", 'value'],
-            'name-with-lf'           => ["X-Foo\n-Bar", 'value'],
-            'name-with-crlf'         => ["X-Foo\r\n-Bar", 'value'],
-            'name-with-2crlf'        => ["X-Foo\r\n\r\n-Bar", 'value'],
-            'value-with-cr'          => ['X-Foo-Bar', "value\rinjection"],
-            'value-with-lf'          => ['X-Foo-Bar', "value\ninjection"],
-            'value-with-crlf'        => ['X-Foo-Bar', "value\r\ninjection"],
-            'value-with-2crlf'       => ['X-Foo-Bar', "value\r\n\r\ninjection"],
-            'array-value-with-cr'    => ['X-Foo-Bar', ["value\rinjection"]],
-            'array-value-with-lf'    => ['X-Foo-Bar', ["value\ninjection"]],
-            'array-value-with-crlf'  => ['X-Foo-Bar', ["value\r\ninjection"]],
+            'name-with-cr' => ["X-Foo\r-Bar", 'value'],
+            'name-with-lf' => ["X-Foo\n-Bar", 'value'],
+            'name-with-crlf' => ["X-Foo\r\n-Bar", 'value'],
+            'name-with-2crlf' => ["X-Foo\r\n\r\n-Bar", 'value'],
+            'value-with-cr' => ['X-Foo-Bar', "value\rinjection"],
+            'value-with-lf' => ['X-Foo-Bar', "value\ninjection"],
+            'value-with-crlf' => ['X-Foo-Bar', "value\r\ninjection"],
+            'value-with-2crlf' => ['X-Foo-Bar', "value\r\n\r\ninjection"],
+            'array-value-with-cr' => ['X-Foo-Bar', ["value\rinjection"]],
+            'array-value-with-lf' => ['X-Foo-Bar', ["value\ninjection"]],
+            'array-value-with-crlf' => ['X-Foo-Bar', ["value\r\ninjection"]],
             'array-value-with-2crlf' => ['X-Foo-Bar', ["value\r\n\r\ninjection"]],
         ];
     }
@@ -519,6 +529,8 @@ class RequestTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider headersWithInjectionVectorsDataProvider
+     * @param mixed $name
+     * @param mixed $value
      */
     public function constructorRaisesExceptionForHeadersWithCRLFVectors($name, $value)
     {

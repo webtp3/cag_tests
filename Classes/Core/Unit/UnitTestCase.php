@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace CAG\CagTests\Core\Unit;
 
 /*
@@ -14,9 +15,9 @@ namespace CAG\CagTests\Core\Unit;
  * The TYPO3 project - inspiring people to share!
  */
 
+use CAG\CagTests\Core\BaseTestCase;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\PathUtility;
-use CAG\CagTests\Core\BaseTestCase;
 
 /**
  * Base test case for unit tests.
@@ -25,7 +26,6 @@ use CAG\CagTests\Core\BaseTestCase;
  * to extend this class for unit test cases instead of the base test case because if,
  * at some point, specific behavior needs to be implemented for unit tests, your test cases
  * will profit from it automatically.
- *
  */
 abstract class UnitTestCase extends BaseTestCase
 {
@@ -69,7 +69,7 @@ abstract class UnitTestCase extends BaseTestCase
             $declaringClass = $property->getDeclaringClass()->getName();
             if (
                 !$property->isStatic()
-                && $declaringClass !== \CAG\CagTests\Core\Unit\UnitTestCase::class
+                && $declaringClass !== self::class
                 && $declaringClass !== \CAG\CagTests\Core\BaseTestCase::class
                 && strpos($property->getDeclaringClass()->getName(), 'PHPUnit') !== 0
             ) {

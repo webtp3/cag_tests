@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Cache\Fixtures;
 
 /*
@@ -17,8 +18,8 @@ namespace TYPO3\CMS\Core\Tests\Unit\Cache\Fixtures;
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 
 /**
-* Fixture implementing frontend
-*/
+ * Fixture implementing frontend
+ */
 class FrontendFixture implements FrontendInterface
 {
     /**

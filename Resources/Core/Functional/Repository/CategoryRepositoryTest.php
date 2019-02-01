@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 namespace GeorgRinger\News\Tests\Unit\Functional\Repository;
 
 /**
@@ -16,11 +16,10 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class CategoryRepositoryTest extends FunctionalTestCase
 {
-
     /** @var \TYPO3\CMS\Extbase\Object\ObjectManagerInterface The object manager */
     protected $objectManager;
 
-    /** @var  \GeorgRinger\News\Domain\Repository\CategoryRepository */
+    /** @var \GeorgRinger\News\Domain\Repository\CategoryRepository */
     protected $categoryRepository;
 
     protected $testExtensionsToLoad = ['typo3conf/ext/news'];

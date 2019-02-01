@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Backend\Tests\Unit\Form\FormDataProvider;
 
 /*
@@ -107,7 +108,7 @@ class DatabaseRowInitializeNewTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'columns' => [
                     'aField' => [],
                 ],
-            ]
+            ],
         ];
         $expected = [
             'aField' => 'userTsValue',
@@ -136,7 +137,7 @@ class DatabaseRowInitializeNewTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             ],
             'processedTca' => [
                 'columns' => [],
-            ]
+            ],
         ];
         $expected = [
             'pid' => 23,
@@ -166,7 +167,7 @@ class DatabaseRowInitializeNewTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'columns' => [
                     'aField' => [],
                 ],
-            ]
+            ],
         ];
         $expected = [
             'aField' => 'pageTsValue',
@@ -195,7 +196,7 @@ class DatabaseRowInitializeNewTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             ],
             'processedTca' => [
                 'columns' => [],
-            ]
+            ],
         ];
         $expected = [
             'pid' => 23,
@@ -232,7 +233,7 @@ class DatabaseRowInitializeNewTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'columns' => [
                     'aField' => [],
                 ],
-            ]
+            ],
         ];
         $expected = [
             'aField' => 'pageTsValue',
@@ -330,7 +331,7 @@ class DatabaseRowInitializeNewTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'columns' => [
                     'aField' => [],
                 ],
-            ]
+            ],
         ];
         $GLOBALS['_GET'] = [
             'defVals' => [
@@ -361,7 +362,7 @@ class DatabaseRowInitializeNewTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'columns' => [
                     'aField' => [],
                 ],
-            ]
+            ],
         ];
         $GLOBALS['_POST'] = [
             'defVals' => [
@@ -392,7 +393,7 @@ class DatabaseRowInitializeNewTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'columns' => [
                     'aField' => [],
                 ],
-            ]
+            ],
         ];
         $GLOBALS['_GET'] = [
             'defVals' => [
@@ -435,7 +436,7 @@ class DatabaseRowInitializeNewTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             ],
             'processedTca' => [
                 'columns' => [],
-            ]
+            ],
         ];
         $GLOBALS['_GET'] = [
             'defVals' => [

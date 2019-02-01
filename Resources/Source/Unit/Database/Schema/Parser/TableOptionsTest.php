@@ -1,6 +1,5 @@
 <?php
 declare(strict_types = 1);
-
 namespace TYPO3\CMS\Core\Tests\Unit\Database\Schema\Parser;
 
 /*
@@ -134,7 +133,7 @@ class TableOptionsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'TABLESPACE' => [
                 'TABLESPACE `anotherTableSpace`',
                 ['tablespace' => 'anotherTableSpace'],
-            ]
+            ],
         ];
     }
 
@@ -164,6 +163,7 @@ class TableOptionsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     protected function createSubject(string $statement): AbstractCreateStatement
     {
         $parser = new Parser($statement);
+
         return $parser->getAST();
     }
 }

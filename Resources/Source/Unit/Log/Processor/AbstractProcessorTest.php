@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Log\Processor;
 
 /*
@@ -31,7 +32,7 @@ class AbstractProcessorTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $this->expectExceptionCode(1321696151);
 
         $invalidConfiguration = [
-            'foo' => 'bar'
+            'foo' => 'bar',
         ];
         GeneralUtility::makeInstance(ProcessorFixture::class, $invalidConfiguration);
     }

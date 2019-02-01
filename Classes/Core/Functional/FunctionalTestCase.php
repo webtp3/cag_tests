@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace CAG\CagTests\Core\Functional;
 
 /*
@@ -14,6 +15,11 @@ namespace CAG\CagTests\Core\Functional;
  * The TYPO3 project - inspiring people to share!
  */
 
+use CAG\CagTests\Core\BaseTestCase;
+use CAG\CagTests\Core\Exception;
+use CAG\CagTests\Core\Functional\Framework\DataHandling\DataSet;
+use CAG\CagTests\Core\Functional\Framework\Frontend\Response;
+use CAG\CagTests\Core\Testbase;
 use Doctrine\DBAL\DBALException;
 use Doctrine\DBAL\Platforms\PostgreSqlPlatform;
 use Doctrine\DBAL\Platforms\SQLServerPlatform;
@@ -23,11 +29,6 @@ use TYPO3\CMS\Core\Cache\Backend\NullBackend;
 use TYPO3\CMS\Core\Core\Bootstrap;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use CAG\CagTests\Core\BaseTestCase;
-use CAG\CagTests\Core\Exception;
-use CAG\CagTests\Core\Functional\Framework\DataHandling\DataSet;
-use CAG\CagTests\Core\Functional\Framework\Frontend\Response;
-use CAG\CagTests\Core\Testbase;
 
 /**
  * Base test case class for functional tests, all TYPO3 CMS
@@ -203,8 +204,8 @@ abstract class FunctionalTestCase extends BaseTestCase
      *
      * This method should be called with parent::setUp() in your test cases!
      *
-     * @return void
      * @throws \Doctrine\DBAL\DBALException
+     * @return void
      */
     protected function setUp()
     {
@@ -291,6 +292,7 @@ abstract class FunctionalTestCase extends BaseTestCase
     protected function getDatabaseConnection()
     {
         GeneralUtility::logDeprecatedFunction();
+
         return $GLOBALS['TYPO3_DB'];
     }
 
@@ -306,8 +308,8 @@ abstract class FunctionalTestCase extends BaseTestCase
      * Initialize backend user
      *
      * @param int $userUid uid of the user we want to initialize. This user must exist in the fixture file
-     * @return BackendUserAuthentication
      * @throws Exception
+     * @return BackendUserAuthentication
      */
     protected function setUpBackendUserFromFixture($userUid)
     {
@@ -321,7 +323,6 @@ abstract class FunctionalTestCase extends BaseTestCase
             ->where($queryBuilder->expr()->eq('uid', $queryBuilder->createNamedParameter($userUid, \PDO::PARAM_INT)))
             ->execute()
             ->fetch();
-
 
         /** @var $backendUser BackendUserAuthentication */
         $backendUser = GeneralUtility::makeInstance(BackendUserAuthentication::class);
@@ -349,8 +350,8 @@ abstract class FunctionalTestCase extends BaseTestCase
      * Imports a data set represented as XML into the test database,
      *
      * @param string $path Absolute path to the XML file containing the data set to load
-     * @return void
      * @throws Exception
+     * @return void
      */
     protected function importDataSet($path)
     {
@@ -529,6 +530,7 @@ abstract class FunctionalTestCase extends BaseTestCase
             }
             $elements[] = "'" . $key . "' => '" . $value . "'";
         }
+
         return 'array(' . PHP_EOL . '   ' . implode(', ' . PHP_EOL . '   ', $elements) . PHP_EOL . ')' . PHP_EOL;
     }
 
@@ -730,7 +732,7 @@ abstract class FunctionalTestCase extends BaseTestCase
             [
                 'arguments' => var_export($arguments, true),
                 'originalRoot' => ORIGINAL_ROOT,
-                'vendorPath' => TYPO3_PATH_PACKAGES
+                'vendorPath' => TYPO3_PATH_PACKAGES,
             ]
         );
 
@@ -747,6 +749,7 @@ abstract class FunctionalTestCase extends BaseTestCase
         }
 
         $response = new Response($result['status'], $result['content'], $result['error']);
+
         return $response;
     }
 }

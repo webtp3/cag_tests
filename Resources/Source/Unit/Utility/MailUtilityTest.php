@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Utility;
 
 /*
@@ -111,15 +112,17 @@ class MailUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [
                     'email1@example.org',
                     'email2@example.org' => 'name',
-                    'email3@example.org' => '"last, first"'
-                ]
-            ]
+                    'email3@example.org' => '"last, first"',
+                ],
+            ],
         ];
     }
 
     /**
      * @test
      * @dataProvider parseAddressesProvider
+     * @param mixed $source
+     * @param mixed $addressList
      */
     public function parseAddressesTest($source, $addressList)
     {

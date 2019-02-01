@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Functional\Category\Collection;
 
 /*
@@ -179,7 +180,7 @@ class CategoryCollectionTest extends \CAG\CagTests\Core\Functional\FunctionalTes
             'uid' => $this->numberOfRecords + 1,
             'pid' => 0,
             'title' => $this->getUniqueId('title'),
-            'categories' => 0
+            'categories' => 0,
         ];
         // Check the number of records
         $collection->add($fakeRecord);
@@ -197,7 +198,7 @@ class CategoryCollectionTest extends \CAG\CagTests\Core\Functional\FunctionalTes
             'uid' => $this->numberOfRecords + 1,
             'pid' => 0,
             'title' => $this->getUniqueId('title'),
-            'categories' => 0
+            'categories' => 0,
         ];
         // Check the number of records
         $collection->add($fakeRecord);
@@ -222,7 +223,7 @@ class CategoryCollectionTest extends \CAG\CagTests\Core\Functional\FunctionalTes
     {
         // Remove one relation
         $fakeName = [
-            'tablenames' => $this->getUniqueId('name')
+            'tablenames' => $this->getUniqueId('name'),
         ];
         $this->getConnectionPool()
             ->getConnectionForTable('sys_category_record_mm')
@@ -235,6 +236,7 @@ class CategoryCollectionTest extends \CAG\CagTests\Core\Functional\FunctionalTes
     /********************/
     /* INTERNAL METHODS */
     /********************/
+
     /**
      * Create dummy table for testing purpose
      */
@@ -242,7 +244,7 @@ class CategoryCollectionTest extends \CAG\CagTests\Core\Functional\FunctionalTes
     {
         for ($index = 1; $index <= $this->numberOfRecords; $index++) {
             $values = [
-                'title' => $this->getUniqueId('title')
+                'title' => $this->getUniqueId('title'),
             ];
             $this->getConnectionPool()
                 ->getConnectionForTable($this->tableName)
@@ -260,7 +262,7 @@ class CategoryCollectionTest extends \CAG\CagTests\Core\Functional\FunctionalTes
                 'uid_local' => $this->categoryUid,
                 'uid_foreign' => $index,
                 'tablenames' => $this->tableName,
-                'fieldname' => 'categories'
+                'fieldname' => 'categories',
             ];
             $this->getConnectionPool()
                 ->getConnectionForTable('sys_category_record_mm')
@@ -336,7 +338,7 @@ class CategoryCollectionTest extends \CAG\CagTests\Core\Functional\FunctionalTes
             'title' => $this->getUniqueId('title'),
             'l10n_diffsource' => '',
             'description' => '',
-            'is_dummy_record' => 1
+            'is_dummy_record' => 1,
         ];
 
         $connection->insert('sys_category', $values, [ 'l10n_diffsource' => Connection::PARAM_LOB ]);
@@ -361,7 +363,7 @@ class CategoryCollectionTest extends \CAG\CagTests\Core\Functional\FunctionalTes
                 [],
                 [],
                 [
-                    'is_dummy_record' => new Column('is_dummy_record', Type::getType(Type::SMALLINT))
+                    'is_dummy_record' => new Column('is_dummy_record', Type::getType(Type::SMALLINT)),
                 ]
             );
             $connection->getSchemaManager()->alterTable($diff);

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace CAG\CagTests\Core\Functional\Framework\Frontend;
 
 /*
@@ -28,7 +29,7 @@ class Response
     protected $status;
 
     /**
-     * @var NULL|string|array
+     * @var null|string|array
      */
     protected $content;
 
@@ -63,7 +64,7 @@ class Response
     }
 
     /**
-     * @return array|NULL|string
+     * @return array|null|string
      */
     public function getContent()
     {
@@ -86,12 +87,13 @@ class Response
         if (!isset($this->responseContent)) {
             $this->responseContent = new ResponseContent($this);
         }
+
         return $this->responseContent;
     }
 
     /**
      * @param mixed $sectionIdentifiers
-     * @return NULL|array|ResponseSection[]
+     * @return null|array|ResponseSection[]
      */
     public function getResponseSections(...$sectionIdentifiers)
     {

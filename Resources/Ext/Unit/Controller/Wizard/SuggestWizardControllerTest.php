@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Backend\Tests\Unit\Controller\Wizard;
 
 /*
@@ -120,6 +121,8 @@ class SuggestWizardControllerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider isTableHiddenIsProperlyRetrievedDataProvider
+     * @param mixed $expected
+     * @param mixed $array
      */
     public function isTableHiddenIsProperlyRetrieved($expected, $array)
     {

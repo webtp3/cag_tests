@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Backend\Tests\Unit\Tree;
 
 /*
@@ -30,7 +31,7 @@ class TreeNodeCollectionTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             ['serializeClassName' => \TYPO3\CMS\Backend\Tree\TreeNode::class, 'id' => 5],
             ['serializeClassName' => \TYPO3\CMS\Backend\Tree\TreeNode::class, 'id' => 2],
             ['serializeClassName' => \TYPO3\CMS\Backend\Tree\TreeNode::class, 'id' => 150],
-            ['serializeClassName' => \TYPO3\CMS\Backend\Tree\TreeNode::class, 'id' => 67]
+            ['serializeClassName' => \TYPO3\CMS\Backend\Tree\TreeNode::class, 'id' => 67],
         ]);
         $nodeCollection->asort();
         $expected = [2, 5, 15, 25, 67, 150];

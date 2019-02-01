@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 return [
     'ctrl' => [
         'title' => 'LLL:EXT:irre_tutorial/Resources/Private/Language/locallang_db.xml:tx_irretutorial_mnasym_price',
@@ -21,7 +23,7 @@ return [
         // 'shadowColumnsForNewPlaceholders' => 'parentid',
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid,l18n_parent,l18n_diffsource,hidden,title,parentid,price'
+        'showRecordFieldList' => 'sys_language_uid,l18n_parent,l18n_diffsource,hidden,title,parentid,price',
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -34,10 +36,10 @@ return [
                 'foreign_table_where' => 'ORDER BY sys_language.title',
                 'items' => [
                     ['LLL:EXT:lang/Resources/Private/Language/locallang_general.xml:LGL.allLanguages', -1],
-                    ['LLL:EXT:lang/Resources/Private/Language/locallang_general.xml:LGL.default_value', 0]
+                    ['LLL:EXT:lang/Resources/Private/Language/locallang_general.xml:LGL.default_value', 0],
                 ],
-                'default' => 0
-            ]
+                'default' => 0,
+            ],
         ],
         'l18n_parent' => [
             'displayCond' => 'FIELD:sys_language_uid:>:0',
@@ -52,26 +54,26 @@ return [
                 'foreign_table' => 'tx_irretutorial_mnasym_price',
                 'foreign_table_where' => 'AND tx_irretutorial_mnasym_price.pid=###CURRENT_PID### AND tx_irretutorial_mnasym_price.sys_language_uid IN (-1,0)',
                 'default' => 0,
-            ]
+            ],
         ],
         'l18n_diffsource' => [
             'config' => [
                 'type' => 'passthrough',
-                'default' => ''
-            ]
+                'default' => '',
+            ],
         ],
         'hidden' => [
             'exclude' => true,
             'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xml:LGL.hidden',
             'config' => [
                 'type' => 'check',
-                'default' => 0
-            ]
+                'default' => 0,
+            ],
         ],
         'parentid' => [
             'config' => [
                 'type' => 'passthrough',
-            ]
+            ],
         ],
         'title' => [
             'exclude' => true,
@@ -81,7 +83,7 @@ return [
                 'type' => 'input',
                 'size' => 30,
                 'eval' => 'required',
-            ]
+            ],
         ],
         'price' => [
             'exclude' => true,
@@ -90,16 +92,15 @@ return [
                 'type' => 'input',
                 'size' => 30,
                 'eval' => 'double2',
-            ]
+            ],
         ],
     ],
     'types' => [
-        '0' => ['showitem' =>
-            '--div--;LLL:EXT:irre_tutorial/Resources/Private/Language/locallang_db.xml:tabs.general, title, parentid, price,' .
-            '--div--;LLL:EXT:irre_tutorial/Resources/Private/Language/locallang_db.xml:tabs.visibility, sys_language_uid, l18n_parent, l18n_diffsource, hidden, parentid'
-        ]
+        '0' => ['showitem' => '--div--;LLL:EXT:irre_tutorial/Resources/Private/Language/locallang_db.xml:tabs.general, title, parentid, price,' .
+            '--div--;LLL:EXT:irre_tutorial/Resources/Private/Language/locallang_db.xml:tabs.visibility, sys_language_uid, l18n_parent, l18n_diffsource, hidden, parentid',
+        ],
     ],
     'palettes' => [
-        '1' => ['showitem' => '']
-    ]
+        '1' => ['showitem' => ''],
+    ],
 ];

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Backend\Tests\Unit\Controller;
 
 /*
@@ -29,16 +30,16 @@ class EditDocumentControllerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $typoScript = [
             'tx_myext.' => [
                 'controller' => 'test',
-                'action' => 'run'
+                'action' => 'run',
             ],
-            'magic' => 'yes'
+            'magic' => 'yes',
         ];
         $expectedParameters = [
             'tx_myext' => [
                 'controller' => 'test',
-                'action' => 'run'
+                'action' => 'run',
             ],
-            'magic' => 'yes'
+            'magic' => 'yes',
         ];
         $result = [];
         $mock = $this->getAccessibleMock(EditDocumentController::class, ['dummy'], [], '', false);

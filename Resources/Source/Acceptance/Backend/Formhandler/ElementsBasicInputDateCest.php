@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Acceptance\Backend\Formhandler;
 
 /*
@@ -86,7 +87,7 @@ class ElementsBasicInputDateCest extends AbstractElementsBasicCest
                     'expectedValueAfterSave' => '2015-03-01T00:00:00+00:00',
                     'comment' => 'Check invalid leap year transformation',
                 ],
-            ]
+            ],
         ];
         $this->runTests($I, $dataSets);
     }
@@ -126,7 +127,7 @@ class ElementsBasicInputDateCest extends AbstractElementsBasicCest
                     'expectedValueAfterSave' => '2015-03-01T05:23:00+00:00',
                     'comment' => 'Check invalid leap year transformation',
                 ],
-            ]
+            ],
         ];
         $this->runTests($I, $dataSets);
     }

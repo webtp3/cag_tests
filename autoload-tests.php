@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 if (!getenv('TYPO3_PATH_COMPOSER_ROOT')) {
     putenv('TYPO3_PATH_COMPOSER_ROOT=' . '{$base-dir}');
     $_ENV['TYPO3_PATH_COMPOSER_ROOT'] = '{$base-dir}';

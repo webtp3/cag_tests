@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace CAG\CagTests\Fluid\Unit\ViewHelpers;
 
 /*
@@ -177,15 +178,23 @@ abstract class ViewHelperBaseTestcase extends \CAG\CagTests\Core\Unit\UnitTestCa
     protected function stubVariableContainer($formObject)
     {
         $this->viewHelperVariableContainer->exists(Argument::cetera())->willReturn(true);
-        $this->viewHelperVariableContainer->get(Argument::any(),
-            'formObjectName')->willReturn('objectName');
-        $this->viewHelperVariableContainer->get(Argument::any(),
-            'fieldNamePrefix')->willReturn('fieldPrefix');
+        $this->viewHelperVariableContainer->get(
+            Argument::any(),
+            'formObjectName'
+        )->willReturn('objectName');
+        $this->viewHelperVariableContainer->get(
+            Argument::any(),
+            'fieldNamePrefix'
+        )->willReturn('fieldPrefix');
         $this->viewHelperVariableContainer->get(Argument::any(), 'formFieldNames')->willReturn([]);
-        $this->viewHelperVariableContainer->get(Argument::any(),
-            'formObject')->willReturn($formObject);
-        $this->viewHelperVariableContainer->get(Argument::any(),
-            'renderedHiddenFields')->willReturn([]);
+        $this->viewHelperVariableContainer->get(
+            Argument::any(),
+            'formObject'
+        )->willReturn($formObject);
+        $this->viewHelperVariableContainer->get(
+            Argument::any(),
+            'renderedHiddenFields'
+        )->willReturn([]);
         $this->viewHelperVariableContainer->addOrUpdate(Argument::cetera())->willReturn(null);
     }
 }

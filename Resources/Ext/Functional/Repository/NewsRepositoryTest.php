@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 namespace CAG\News\Tests\Unit\Functional\Repository;
 
 /**
@@ -17,11 +17,10 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class NewsRepositoryTest extends FunctionalTestCase
 {
-
     /** @var \TYPO3\CMS\Extbase\Object\ObjectManagerInterface The object manager */
     protected $objectManager;
 
-    /** @var  \GeorgRinger\News\Domain\Repository\NewsRepository */
+    /** @var \GeorgRinger\News\Domain\Repository\NewsRepository */
     protected $newsRepository;
 
     protected $testExtensionsToLoad = ['typo3conf/ext/news'];
@@ -215,12 +214,12 @@ class NewsRepositoryTest extends FunctionalTestCase
             'single' => [
                 '2014' => [
                     '03' => 4,
-                    '04' => 2
-                ]
+                    '04' => 2,
+                ],
             ],
             'total' => [
-                '2014' => 6
-            ]
+                '2014' => 6,
+            ],
         ];
         $dateMenuData = $this->newsRepository->countByDate($demand);
         $this->assertEquals($expected, $dateMenuData);
@@ -257,6 +256,7 @@ class NewsRepositoryTest extends FunctionalTestCase
         foreach ($newsList as $news) {
             $idList[] = $news->getUid();
         }
+
         return implode(',', $idList);
     }
 

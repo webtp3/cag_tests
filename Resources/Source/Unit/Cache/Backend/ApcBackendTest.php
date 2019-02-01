@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Cache\Backend;
 
 /*
@@ -314,6 +315,7 @@ class ApcBackendTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             $backend = new ApcBackend('Testing');
         }
         $backend->setCache($cache);
+
         return $backend;
     }
 }

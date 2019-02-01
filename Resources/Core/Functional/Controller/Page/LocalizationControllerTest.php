@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Backend\Tests\Functional\Controller\Page;
 
 /*
@@ -14,6 +15,7 @@ namespace TYPO3\CMS\Backend\Tests\Functional\Controller\Page;
  * The TYPO3 project - inspiring people to share!
  */
 
+use CAG\CagTests\Core\Functional\Framework\DataHandling\ActionService;
 use TYPO3\CMS\Backend\Controller\Page\LocalizationController;
 use TYPO3\CMS\Core\Core\Bootstrap;
 use TYPO3\CMS\Core\Database\ConnectionPool;
@@ -21,7 +23,6 @@ use TYPO3\CMS\Core\DataHandling\DataHandler;
 use TYPO3\CMS\Core\Http\Response;
 use TYPO3\CMS\Core\Http\ServerRequest;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use CAG\CagTests\Core\Functional\Framework\DataHandling\ActionService;
 
 /**
  * Test case for TYPO3\CMS\Backend\Controller\Page\LocalizationController
@@ -400,7 +401,7 @@ class LocalizationControllerTest extends \CAG\CagTests\Core\Functional\Functiona
 
         $expectedRecordUidList = [
             ['uid' => 1],
-            ['uid' => 3]
+            ['uid' => 3],
         ];
 
         $this->assertEquals($expectedRecordUidList, $this->getReducedRecordLocalizeSummary());
@@ -417,7 +418,7 @@ class LocalizationControllerTest extends \CAG\CagTests\Core\Functional\Functiona
 
         $expectedRecordUidList = [
             ['uid' => 1],
-            ['uid' => 3]
+            ['uid' => 3],
         ];
 
         $this->assertEquals($expectedRecordUidList, $this->getReducedRecordLocalizeSummary());
@@ -431,10 +432,10 @@ class LocalizationControllerTest extends \CAG\CagTests\Core\Functional\Functiona
     protected function getReducedRecordLocalizeSummary()
     {
         $request = (new ServerRequest())->withQueryParams([
-            'pageId'         => 1, // page uid, the records are stored on
-            'colPos'         => 0, // column position, the records are to be taken from
+            'pageId' => 1, // page uid, the records are stored on
+            'colPos' => 0, // column position, the records are to be taken from
             'destLanguageId' => 1, // destination language uid
-            'languageId'     => 0  // source language uid
+            'languageId' => 0,  // source language uid
         ]);
 
         $recordLocalizeSummaryResponse = $this->subject->getRecordLocalizeSummary($request, new Response());

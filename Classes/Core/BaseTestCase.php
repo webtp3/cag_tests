@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace CAG\CagTests\Core;
 
 /*
@@ -49,14 +50,18 @@ abstract class BaseTestCase extends TestCase
      * @param bool $callOriginalClone whether to call the __clone method
      * @param bool $callAutoload whether to call any autoload function
      *
+     * @throws \InvalidArgumentException
      * @return \PHPUnit_Framework_MockObject_MockObject|\CAG\CagTests\Core\AccessibleObjectInterface
      *         a mock of $originalClassName with access methods added
-     *
-     * @throws \InvalidArgumentException
      */
     protected function getAccessibleMock(
-        $originalClassName, $methods = [], array $arguments = [], $mockClassName = '',
-        $callOriginalConstructor = true, $callOriginalClone = true, $callAutoload = true
+        $originalClassName,
+        $methods = [],
+        array $arguments = [],
+        $mockClassName = '',
+        $callOriginalConstructor = true,
+        $callOriginalClone = true,
+        $callAutoload = true
     ) {
         if ($originalClassName === '') {
             throw new \InvalidArgumentException('$originalClassName must not be empty.', 1334701880);
@@ -98,11 +103,15 @@ abstract class BaseTestCase extends TestCase
      * @throws \InvalidArgumentException
      *
      * @return \PHPUnit_Framework_MockObject_MockObject|\CAG\CagTests\Core\AccessibleObjectInterface
-     *
      */
     protected function getAccessibleMockForAbstractClass(
-        $originalClassName, array $arguments = [], $mockClassName = '',
-        $callOriginalConstructor = true, $callOriginalClone = true, $callAutoload = true, $mockedMethods = []
+        $originalClassName,
+        array $arguments = [],
+        $mockClassName = '',
+        $callOriginalConstructor = true,
+        $callOriginalClone = true,
+        $callAutoload = true,
+        $mockedMethods = []
     ) {
         if ($originalClassName === '') {
             throw new \InvalidArgumentException('$originalClassName must not be empty.', 1384268260);
@@ -241,6 +250,7 @@ abstract class BaseTestCase extends TestCase
         $reflectionObject = new \ReflectionObject($object);
         $reflectionMethod = $reflectionObject->getMethod($name);
         $reflectionMethod->setAccessible(true);
+
         return $reflectionMethod->invokeArgs($object, $arguments);
     }
 
@@ -253,9 +263,9 @@ abstract class BaseTestCase extends TestCase
      * @param object $target The instance which needs the dependency
      * @param string $name Name of the property to be injected
      * @param mixed $dependency The dependency to inject – usually an object but can also be any other type
-     * @return void
      * @throws \RuntimeException
      * @throws \InvalidArgumentException
+     * @return void
      */
     protected function inject($target, $name, $dependency)
     {
@@ -295,6 +305,7 @@ abstract class BaseTestCase extends TestCase
     protected function getUniqueId($prefix = '')
     {
         $uniqueId = uniqid(mt_rand(), true);
+
         return $prefix . str_replace('.', '', $uniqueId);
     }
 }

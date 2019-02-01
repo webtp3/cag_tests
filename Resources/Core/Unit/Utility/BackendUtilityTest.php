@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Backend\Tests\Unit\Utility;
 
 /*
@@ -40,6 +41,7 @@ class BackendUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     ///////////////////////////////////////
     // Tests concerning calcAge
     ///////////////////////////////////////
+
     /**
      * Data provider for calcAge function
      *
@@ -50,72 +52,72 @@ class BackendUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         return [
             'Single year' => [
                 'seconds' => 60 * 60 * 24 * 365,
-                'expectedLabel' => '1 year'
+                'expectedLabel' => '1 year',
             ],
             'Plural years' => [
                 'seconds' => 60 * 60 * 24 * 365 * 2,
-                'expectedLabel' => '2 yrs'
+                'expectedLabel' => '2 yrs',
             ],
             'Single negative year' => [
                 'seconds' => 60 * 60 * 24 * 365 * -1,
-                'expectedLabel' => '-1 year'
+                'expectedLabel' => '-1 year',
             ],
             'Plural negative years' => [
                 'seconds' => 60 * 60 * 24 * 365 * 2 * -1,
-                'expectedLabel' => '-2 yrs'
+                'expectedLabel' => '-2 yrs',
             ],
             'Single day' => [
                 'seconds' => 60 * 60 * 24,
-                'expectedLabel' => '1 day'
+                'expectedLabel' => '1 day',
             ],
             'Plural days' => [
                 'seconds' => 60 * 60 * 24 * 2,
-                'expectedLabel' => '2 days'
+                'expectedLabel' => '2 days',
             ],
             'Single negative day' => [
                 'seconds' => 60 * 60 * 24 * -1,
-                'expectedLabel' => '-1 day'
+                'expectedLabel' => '-1 day',
             ],
             'Plural negative days' => [
                 'seconds' => 60 * 60 * 24 * 2 * -1,
-                'expectedLabel' => '-2 days'
+                'expectedLabel' => '-2 days',
             ],
             'Single hour' => [
                 'seconds' => 60 * 60,
-                'expectedLabel' => '1 hour'
+                'expectedLabel' => '1 hour',
             ],
             'Plural hours' => [
                 'seconds' => 60 * 60 * 2,
-                'expectedLabel' => '2 hrs'
+                'expectedLabel' => '2 hrs',
             ],
             'Single negative hour' => [
                 'seconds' => 60 * 60 * -1,
-                'expectedLabel' => '-1 hour'
+                'expectedLabel' => '-1 hour',
             ],
             'Plural negative hours' => [
                 'seconds' => 60 * 60 * 2 * -1,
-                'expectedLabel' => '-2 hrs'
+                'expectedLabel' => '-2 hrs',
             ],
             'Single minute' => [
                 'seconds' => 60,
-                'expectedLabel' => '1 min'
+                'expectedLabel' => '1 min',
             ],
             'Plural minutes' => [
                 'seconds' => 60 * 2,
-                'expectedLabel' => '2 min'
+                'expectedLabel' => '2 min',
             ],
             'Single negative minute' => [
                 'seconds' => 60 * -1,
-                'expectedLabel' => '-1 min'
+                'expectedLabel' => '-1 min',
             ],
             'Plural negative minutes' => [
                 'seconds' => 60 * 2 * -1,
-                'expectedLabel' => '-2 min'
+                'expectedLabel' => '-2 min',
             ],
             'Zero seconds' => [
                 'seconds' => 0,
-                'expectedLabel' => '0 min'
-            ]
+                'expectedLabel' => '0 min',
+            ],
         ];
     }
 
@@ -134,6 +136,7 @@ class BackendUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     ///////////////////////////////////////
     // Tests concerning getProcessedValue
     ///////////////////////////////////////
+
     /**
      * @test
      * @see http://forge.typo3.org/issues/20994
@@ -324,8 +327,8 @@ class BackendUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'allowed' => '*',
                             'MM' => 'sys_category_record_mm',
                             'MM_oppositeUsage' => [],
-                        ]
-                    ]
+                        ],
+                    ],
                 ],
             ],
         ];
@@ -446,7 +449,7 @@ class BackendUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'prefix' => '',
                 'presetFields' => [],
                 'tca' => [],
-                'expectedFields' => 'uid'
+                'expectedFields' => 'uid',
             ],
             'label set' => [
                 'table' => 'test_table',
@@ -454,10 +457,10 @@ class BackendUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'presetFields' => [],
                 'tca' => [
                     'ctrl' => [
-                        'label' => 'label'
-                    ]
+                        'label' => 'label',
+                    ],
                 ],
-                'expectedFields' => 'uid,label'
+                'expectedFields' => 'uid,label',
             ],
             'label_alt set' => [
                 'table' => 'test_table',
@@ -465,10 +468,10 @@ class BackendUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'presetFields' => [],
                 'tca' => [
                     'ctrl' => [
-                        'label_alt' => 'label,label2'
-                    ]
+                        'label_alt' => 'label,label2',
+                    ],
                 ],
-                'expectedFields' => 'uid,label,label2'
+                'expectedFields' => 'uid,label,label2',
             ],
             'versioningWS set' => [
                 'table' => 'test_table',
@@ -476,10 +479,10 @@ class BackendUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'presetFields' => [],
                 'tca' => [
                     'ctrl' => [
-                        'versioningWS' => true
-                    ]
+                        'versioningWS' => true,
+                    ],
                 ],
-                'expectedFields' => 'uid,t3ver_id,t3ver_state,t3ver_wsid,t3ver_count'
+                'expectedFields' => 'uid,t3ver_id,t3ver_state,t3ver_wsid,t3ver_count',
             ],
             'selicon_field set' => [
                 'table' => 'test_table',
@@ -487,10 +490,10 @@ class BackendUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'presetFields' => [],
                 'tca' => [
                     'ctrl' => [
-                        'selicon_field' => 'field'
-                    ]
+                        'selicon_field' => 'field',
+                    ],
                 ],
-                'expectedFields' => 'uid,field'
+                'expectedFields' => 'uid,field',
             ],
             'typeicon_column set' => [
                 'table' => 'test_table',
@@ -498,10 +501,10 @@ class BackendUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'presetFields' => [],
                 'tca' => [
                     'ctrl' => [
-                        'typeicon_column' => 'field'
-                    ]
+                        'typeicon_column' => 'field',
+                    ],
                 ],
-                'expectedFields' => 'uid,field'
+                'expectedFields' => 'uid,field',
             ],
             'enablecolumns set' => [
                 'table' => 'test_table',
@@ -513,11 +516,11 @@ class BackendUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'disabled' => 'hidden',
                             'starttime' => 'start',
                             'endtime' => 'stop',
-                            'fe_group' => 'groups'
-                        ]
-                    ]
+                            'fe_group' => 'groups',
+                        ],
+                    ],
                 ],
-                'expectedFields' => 'uid,hidden,start,stop,groups'
+                'expectedFields' => 'uid,hidden,start,stop,groups',
             ],
             'label set to uid' => [
                 'table' => 'test_table',
@@ -525,11 +528,11 @@ class BackendUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'presetFields' => [],
                 'tca' => [
                     'ctrl' => [
-                        'label' => 'uid'
-                    ]
+                        'label' => 'uid',
+                    ],
                 ],
-                'expectedFields' => 'uid'
-            ]
+                'expectedFields' => 'uid',
+            ],
         ];
     }
 
@@ -543,7 +546,7 @@ class BackendUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
      * @param array $tca
      * @param string $expectedFields
      */
-    public function getCommonSelectFieldsReturnsCorrectFields($table, $prefix = '', array $presetFields, array $tca, $expectedFields = '')
+    public function getCommonSelectFieldsReturnsCorrectFields($table, $prefix, array $presetFields, array $tca, $expectedFields = '')
     {
         $GLOBALS['TCA'][$table] = $tca;
         $selectFields = BackendUtility::getCommonSelectFields($table, $prefix, $presetFields);
@@ -573,13 +576,13 @@ class BackendUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                 'items' => [
                                     ['Item 1', '0'],
                                     ['Item 2', '1'],
-                                    ['Item 3', '3']
-                                ]
-                            ]
-                        ]
-                    ]
+                                    ['Item 3', '3'],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
-                'expectedLabel' => 'Item 2'
+                'expectedLabel' => 'Item 2',
             ],
             'item set twice' => [
                 'table' => 'tt_content',
@@ -593,13 +596,13 @@ class BackendUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                     ['Item 1', '0'],
                                     ['Item 2a', '1'],
                                     ['Item 2b', '1'],
-                                    ['Item 3', '3']
-                                ]
-                            ]
-                        ]
-                    ]
+                                    ['Item 3', '3'],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
-                'expectedLabel' => 'Item 2a'
+                'expectedLabel' => 'Item 2a',
             ],
             'item not found' => [
                 'table' => 'tt_content',
@@ -612,14 +615,14 @@ class BackendUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                 'items' => [
                                     ['Item 1', '0'],
                                     ['Item 2', '1'],
-                                    ['Item 3', '2']
-                                ]
-                            ]
-                        ]
-                    ]
+                                    ['Item 3', '2'],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
-                'expectedLabel' => null
-            ]
+                'expectedLabel' => null,
+            ],
         ];
     }
 
@@ -633,7 +636,7 @@ class BackendUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
      * @param array $tca
      * @param string $expectedLabel
      */
-    public function getLabelFromItemlistReturnsCorrectFields($table, $col = '', $key = '', array $tca, $expectedLabel = '')
+    public function getLabelFromItemlistReturnsCorrectFields($table, $col, $key, array $tca, $expectedLabel = '')
     {
         $GLOBALS['TCA'][$table] = $tca;
         $label = BackendUtility::getLabelFromItemlist($table, $col, $key);
@@ -664,13 +667,13 @@ class BackendUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                 'items' => [
                                     ['Item 1', '0'],
                                     ['Item 2', '1'],
-                                    ['Item 3', '3']
-                                ]
-                            ]
-                        ]
-                    ]
+                                    ['Item 3', '3'],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
-                'expectedLabel' => ''
+                'expectedLabel' => '',
             ],
             'no tsconfig set' => [
                 'pageId' => '123',
@@ -684,14 +687,14 @@ class BackendUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                 'items' => [
                                     ['Item 1', '0'],
                                     ['Item 2', '1'],
-                                    ['Item 3', '3']
-                                ]
-                            ]
-                        ]
-                    ]
+                                    ['Item 3', '3'],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
-                'expectedLabel' => 'Item 2'
-            ]
+                'expectedLabel' => 'Item 2',
+            ],
         ];
     }
 
@@ -706,7 +709,7 @@ class BackendUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
      * @param array $tca
      * @param string $expectedLabel
      */
-    public function getLabelFromItemListMergedReturnsCorrectFields($pageId, $table, $column = '', $key = '', array $tca, $expectedLabel = '')
+    public function getLabelFromItemListMergedReturnsCorrectFields($pageId, $table, $column, $key, array $tca, $expectedLabel = '')
     {
         $GLOBALS['TCA'][$table] = $tca;
 
@@ -745,14 +748,14 @@ class BackendUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'config' => [
                                 'items' => [
                                     '0' => ['aFooLabel', 'foo'],
-                                    '1' => ['aBarLabel', 'bar']
-                                ]
-                            ]
-                        ]
-                    ]
+                                    '1' => ['aBarLabel', 'bar'],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
                 [], // page TSconfig
-                'aFooLabel, aBarLabel' // expected
+                'aFooLabel, aBarLabel', // expected
             ],
             'page TSconfig overrules TCA' => [
                 'foobar', // table
@@ -764,18 +767,18 @@ class BackendUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'config' => [
                                 'items' => [
                                     '0' => ['aFooLabel', 'foo'],
-                                    '1' => ['aBarLabel', 'bar']
-                                ]
-                            ]
-                        ]
-                    ]
+                                    '1' => ['aBarLabel', 'bar'],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
                 [ // page TSconfig
                     'addItems.' => ['add' => 'aNewLabel'],
                     'altLabels.' => ['bar' => 'aBarDiffLabel'],
                 ],
-                'aFooLabel, aBarDiffLabel, aNewLabel' // expected
-            ]
+                'aFooLabel, aBarDiffLabel, aNewLabel', // expected
+            ],
         ];
     }
 
@@ -815,11 +818,11 @@ class BackendUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         'type' => 'select',
                         'items' => [
                             '0' => ['aFooLabel', 'foo'],
-                            '1' => ['aBarLabel', 'bar']
-                        ]
-                    ]
-                ]
-            ]
+                            '1' => ['aBarLabel', 'bar'],
+                        ],
+                    ],
+                ],
+            ],
         ];
         // Stub LanguageService and let sL() return the same value that came in again
         $GLOBALS['LANG'] = $this->createMock(LanguageService::class);
@@ -843,11 +846,11 @@ class BackendUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     'config' => [
                         'type' => 'select',
                         'items' => [
-                            '0' => ['aFooLabel', 'foo']
-                        ]
-                    ]
-                ]
-            ]
+                            '0' => ['aFooLabel', 'foo'],
+                        ],
+                    ],
+                ],
+            ],
         ];
         // Stub LanguageService and let sL() return the same value that came in again
         $GLOBALS['LANG'] = $this->createMock(LanguageService::class);
@@ -893,8 +896,8 @@ class BackendUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         '1.' => ['writeAction' => '1'],
                         '0.' => ['readAction' => '0'],
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
 
         $GLOBALS['BE_USER'] = $this->createMock(BackendUserAuthentication::class);
@@ -960,19 +963,19 @@ class BackendUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 '', // table
                 [], // rec
                 '', // useFieldNameAsKey
-                null // expected
+                null, // expected
             ],
             'non-existant table' => [
                 'fooBar', // table
                 [], // rec
                 '', // useFieldNameAsKey
-                null // expected
+                null, // expected
             ],
             'Doktype=1: one simple field' => [
                 'pages',
                 [
                     'uid' => '1',
-                    'doktype' => '1'
+                    'doktype' => '1',
                 ],
                 false,
                 [
@@ -981,15 +984,15 @@ class BackendUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         'title' => null,
                         'palette' => null,
                         'spec' => [],
-                        'origString' => 'title'
-                    ]
-                ]
+                        'origString' => 'title',
+                    ],
+                ],
             ],
             'non-existant type given: Return for type 1' => [
                 'pages', // table
                 [
                     'uid' => '1',
-                    'doktype' => '999'
+                    'doktype' => '999',
                 ], // rec
                 '', // useFieldNameAsKey
                 [
@@ -998,15 +1001,15 @@ class BackendUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         'title' => null,
                         'palette' => null,
                         'spec' => [],
-                        'origString' => 'title'
-                    ]
-                ] // expected
+                        'origString' => 'title',
+                    ],
+                ], // expected
             ],
             'Doktype=1: one simple field, useFieldNameAsKey=true' => [
                 'pages',
                 [
                     'uid' => '1',
-                    'doktype' => '1'
+                    'doktype' => '1',
                 ],
                 true,
                 [
@@ -1015,15 +1018,15 @@ class BackendUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         'title' => null,
                         'palette' => null,
                         'spec' => [],
-                        'origString' => 'title'
-                    ]
-                ]
+                        'origString' => 'title',
+                    ],
+                ],
             ],
             'Empty showitem Field' => [
                 'test',
                 [
                     'uid' => '1',
-                    'fooBar' => '99'
+                    'fooBar' => '99',
                 ],
                 true,
                 [
@@ -1032,9 +1035,9 @@ class BackendUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         'title' => null,
                         'palette' => null,
                         'spec' => [],
-                        'origString' => ''
-                    ]
-                ]
+                        'origString' => '',
+                    ],
+                ],
             ],
             'RTE field within a palette' => [
                 'pages',
@@ -1049,43 +1052,43 @@ class BackendUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         'title' => 'General',
                         'palette' => null,
                         'spec' => [],
-                        'origString' => '--div--;General'
+                        'origString' => '--div--;General',
                     ],
                     1 => [
                         'field' => '--palette--',
                         'title' => 'Palette',
                         'palette' => '123',
                         'spec' => [],
-                        'origString' => '--palette--;Palette;123'
+                        'origString' => '--palette--;Palette;123',
                     ],
                     2 => [
                         'field' => 'title',
                         'title' => null,
                         'palette' => null,
                         'spec' => [],
-                        'origString' => 'title'
+                        'origString' => 'title',
                     ],
                     3 => [
                         'field' => 'text',
                         'title' => null,
                         'palette' => null,
                         'spec' => [],
-                        'origString' => 'text'
+                        'origString' => 'text',
                     ],
                     4 => [
                         'field' => 'select',
                         'title' => 'Select field',
                         'palette' => null,
                         'spec' => [],
-                        'origString' => 'select;Select field'
-                    ]
-                ]
+                        'origString' => 'select;Select field',
+                    ],
+                ],
             ],
             'RTE field with more settings within a palette' => [
                 'pages',
                 [
                     'uid' => 1,
-                    'doktype' => 2
+                    'doktype' => 2,
                 ],
                 false,
                 [
@@ -1094,24 +1097,24 @@ class BackendUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         'title' => 'General',
                         'palette' => null,
                         'spec' => [],
-                        'origString' => '--div--;General'
+                        'origString' => '--div--;General',
                     ],
                     1 => [
                         'field' => '--palette--',
                         'title' => 'RTE palette',
                         'palette' => '456',
                         'spec' => [],
-                        'origString' => '--palette--;RTE palette;456'
+                        'origString' => '--palette--;RTE palette;456',
                     ],
                     2 => [
                         'field' => 'text2',
                         'title' => null,
                         'palette' => null,
                         'spec' => [],
-                        'origString' => 'text2'
-                    ]
-                ]
-            ]
+                        'origString' => 'text2',
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -1129,32 +1132,32 @@ class BackendUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $GLOBALS['TCA'] = [
             'pages' => [
                 'ctrl' => [
-                    'type' => 'doktype'
+                    'type' => 'doktype',
                 ],
                 'columns' => [
                     'title' => [
                         'label' => 'Title test',
                         'config' => [
-                            'type' => 'input'
-                        ]
+                            'type' => 'input',
+                        ],
                     ],
                     'text' => [
                         'label' => 'RTE Text',
                         'config' => [
                             'type' => 'text',
                             'cols' => 40,
-                            'rows' => 5
+                            'rows' => 5,
                         ],
-                        'defaultExtras' => 'richtext:rte_transform[mode=ts_css]'
+                        'defaultExtras' => 'richtext:rte_transform[mode=ts_css]',
                     ],
                     'text2' => [
                         'label' => 'RTE Text 2',
                         'config' => [
                             'type' => 'text',
                             'cols' => 40,
-                            'rows' => 5
+                            'rows' => 5,
                         ],
-                        'defaultExtras' => 'richtext:rte_transform[mode=fooBar,type=RTE]'
+                        'defaultExtras' => 'richtext:rte_transform[mode=fooBar,type=RTE]',
                     ],
                     'select' => [
                         'label' => 'Select test',
@@ -1162,44 +1165,44 @@ class BackendUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'items' => [
                                 ['Please select', 0],
                                 ['Option 1', 1],
-                                ['Option 2', 2]
-                            ]
+                                ['Option 2', 2],
+                            ],
                         ],
                         'maxitems' => 1,
-                        'renderType' => 'selectSingle'
-                    ]
+                        'renderType' => 'selectSingle',
+                    ],
                 ],
                 'types' => [
                     '1' => [
-                        'showitem' => 'title'
+                        'showitem' => 'title',
                     ],
                     '2' => [
-                        'showitem' => '--div--;General,--palette--;RTE palette;456'
+                        'showitem' => '--div--;General,--palette--;RTE palette;456',
                     ],
                     '10' => [
-                        'showitem' => '--div--;General,--palette--;Palette;123,title'
+                        'showitem' => '--div--;General,--palette--;Palette;123,title',
                     ],
                     '14' => [
-                        'showitem' => '--div--;General,title'
-                    ]
+                        'showitem' => '--div--;General,title',
+                    ],
                 ],
                 'palettes' => [
                     '123' => [
-                        'showitem' => 'text,select;Select field'
+                        'showitem' => 'text,select;Select field',
                     ],
                     '456' => [
-                        'showitem' => 'text2'
-                    ]
-                ]
+                        'showitem' => 'text2',
+                    ],
+                ],
             ],
             'test' => [
                 'ctrl' => [
-                    'type' => 'fooBar'
+                    'type' => 'fooBar',
                 ],
                 'types' => [
-                    '99' => [ 'showitem' => '']
-                ]
-            ]
+                    '99' => [ 'showitem' => ''],
+                ],
+            ],
         ];
 
         $return = BackendUtility::getTCAtypes($table, $rec, $useFieldNameAsKey);
@@ -1214,7 +1217,7 @@ class BackendUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $propertyNames = [
             'uid',
             'pid',
-            '_ORIG_PID'
+            '_ORIG_PID',
         ];
         $computedPropertyNames = BackendUtility::purgeComputedPropertyNames($propertyNames);
         self::assertSame(['uid', 'pid'], $computedPropertyNames);
@@ -1226,13 +1229,13 @@ class BackendUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     public function purgeComputedPropertiesFromRecordRemovesPropertiesStartingWithUnderscore()
     {
         $record = [
-            'uid'       => 1,
-            'pid'       => 2,
-            '_ORIG_PID' => 1
+            'uid' => 1,
+            'pid' => 2,
+            '_ORIG_PID' => 1,
         ];
         $expected = [
             'uid' => 1,
-            'pid' => 2
+            'pid' => 2,
         ];
         $computedProperties = BackendUtility::purgeComputedPropertiesFromRecord($record);
         self::assertSame($expected, $computedProperties);

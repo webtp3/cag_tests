@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Utility;
 
 /*
@@ -99,7 +100,7 @@ class DebugUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'stdClass prototype object' . PHP_EOL
                     . '   foo => public 42 (integer)' . PHP_EOL
                     . '   bar => public array(1 item)' . PHP_EOL
-                    . '      0 => "baz" (3 chars)'
+                    . '      0 => "baz" (3 chars)',
             ],
         ];
     }

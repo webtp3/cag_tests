@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace typo3\sysext\backend\Tests\Unit\Form\FormDataProvider;
 
 /*
@@ -118,7 +119,7 @@ class InlineOverrrideChildTcaTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                 'aNewSetting' => 'anotherNewValue',
                                 'appearance' => [
                                     'elementBrowserType' => 'file',
-                                    'elementBrowserAllowed' => 'jpg,png'
+                                    'elementBrowserAllowed' => 'jpg,png',
                                 ],
                             ],
                         ],
@@ -136,7 +137,7 @@ class InlineOverrrideChildTcaTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                 'elementBrowserType' => 'db',
                             ],
                         ],
-                    ]
+                    ],
                 ],
             ],
         ];

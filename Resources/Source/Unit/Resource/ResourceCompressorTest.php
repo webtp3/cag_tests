@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Resource;
 
 /*
@@ -49,35 +50,35 @@ class ResourceCompressorTest extends BaseTestCase
         return [
             'nothing to do - no charset/import/namespace' => [
                 'body { background: #ffffff; }',
-                'body { background: #ffffff; }'
+                'body { background: #ffffff; }',
             ],
             'import in front' => [
                 '@import url(http://www.example.com/css); body { background: #ffffff; }',
-                'LF/* moved by compressor */LF@import url(http://www.example.com/css);LF/* moved by compressor */LFbody { background: #ffffff; }'
+                'LF/* moved by compressor */LF@import url(http://www.example.com/css);LF/* moved by compressor */LFbody { background: #ffffff; }',
             ],
             'import in back, without quotes' => [
                 'body { background: #ffffff; } @import url(http://www.example.com/css);',
-                'LF/* moved by compressor */LF@import url(http://www.example.com/css);LF/* moved by compressor */LFbody { background: #ffffff; }'
+                'LF/* moved by compressor */LF@import url(http://www.example.com/css);LF/* moved by compressor */LFbody { background: #ffffff; }',
             ],
             'import in back, with double-quotes' => [
                 'body { background: #ffffff; } @import url("http://www.example.com/css");',
-                'LF/* moved by compressor */LF@import url("http://www.example.com/css");LF/* moved by compressor */LFbody { background: #ffffff; }'
+                'LF/* moved by compressor */LF@import url("http://www.example.com/css");LF/* moved by compressor */LFbody { background: #ffffff; }',
             ],
             'import in back, with single-quotes' => [
                 'body { background: #ffffff; } @import url(\'http://www.example.com/css\');',
-                'LF/* moved by compressor */LF@import url(\'http://www.example.com/css\');LF/* moved by compressor */LFbody { background: #ffffff; }'
+                'LF/* moved by compressor */LF@import url(\'http://www.example.com/css\');LF/* moved by compressor */LFbody { background: #ffffff; }',
             ],
             'import in middle and back, without quotes' => [
                 'body { background: #ffffff; } @import url(http://www.example.com/A); div { background: #000; } @import url(http://www.example.com/B);',
-                'LF/* moved by compressor */LF@import url(http://www.example.com/A);@import url(http://www.example.com/B);LF/* moved by compressor */LFbody { background: #ffffff; }  div { background: #000; }'
+                'LF/* moved by compressor */LF@import url(http://www.example.com/A);@import url(http://www.example.com/B);LF/* moved by compressor */LFbody { background: #ffffff; }  div { background: #000; }',
             ],
             'charset declaration is unique' => [
                 'body { background: #ffffff; } @charset "UTF-8"; div { background: #000; }; @charset "UTF-8";',
-                '@charset "UTF-8";LF/* moved by compressor */LFbody { background: #ffffff; }  div { background: #000; };'
+                '@charset "UTF-8";LF/* moved by compressor */LFbody { background: #ffffff; }  div { background: #000; };',
             ],
             'order of charset, namespace and import is correct' => [
                 'body { background: #ffffff; } @charset "UTF-8"; div { background: #000; }; @import "file2.css"; @namespace url(http://www.w3.org/1999/xhtml);',
-                '@charset "UTF-8";LF/* moved by compressor */LF@namespace url(http://www.w3.org/1999/xhtml);LF/* moved by compressor */LF@import "file2.css";LF/* moved by compressor */LFbody { background: #ffffff; }  div { background: #000; };'
+                '@charset "UTF-8";LF/* moved by compressor */LF@namespace url(http://www.w3.org/1999/xhtml);LF/* moved by compressor */LF@import "file2.css";LF/* moved by compressor */LFbody { background: #ffffff; }  div { background: #000; };',
             ],
         ];
     }
@@ -106,7 +107,7 @@ class ResourceCompressorTest extends BaseTestCase
             $fileName => [
                 'file' => $fileName,
                 'compress' => true,
-            ]
+            ],
         ];
         $this->subject->expects($this->once())
             ->method('compressCssFile')
@@ -131,7 +132,7 @@ class ResourceCompressorTest extends BaseTestCase
             $fileName => [
                 'file' => $fileName,
                 'compress' => true,
-            ]
+            ],
         ];
         $this->subject->expects($this->once())
             ->method('compressJsFile')
@@ -157,7 +158,7 @@ class ResourceCompressorTest extends BaseTestCase
                 'file' => $fileName,
                 'excludeFromConcatenation' => false,
                 'media' => 'all',
-            ]
+            ],
         ];
         $this->subject->expects($this->once())
             ->method('createMergedCssFile')
@@ -207,7 +208,7 @@ class ResourceCompressorTest extends BaseTestCase
 
         $this->assertEquals([
             'merged_' . $allFileName,
-            'merged_' . $screenFileName1
+            'merged_' . $screenFileName1,
         ], array_keys($result));
         $this->assertEquals('all', $result['merged_' . $allFileName]['media']);
         $this->assertEquals('screen', $result['merged_' . $screenFileName1]['media']);
@@ -282,7 +283,7 @@ class ResourceCompressorTest extends BaseTestCase
         $result = $this->subject->concatenateCssFiles($testFileFixture);
         $this->assertEquals([
             $screen2FileName,
-            'merged_screen'
+            'merged_screen',
         ], array_keys($result));
         $this->assertEquals('screen', $result[$screen2FileName]['media']);
         $this->assertEquals('screen', $result['merged_screen']['media']);
@@ -300,7 +301,7 @@ class ResourceCompressorTest extends BaseTestCase
                 'file' => $fileName,
                 'excludeFromConcatenation' => false,
                 'section' => 'top',
-            ]
+            ],
         ];
         $this->subject->expects($this->once())
             ->method('createMergedJsFile')
@@ -356,6 +357,7 @@ class ResourceCompressorTest extends BaseTestCase
     public function compressCssFileContentDataProvider()
     {
         $path = __DIR__ . '/ResourceCompressorTest/Fixtures/';
+
         return [
             // File. Tests:
             // - Stripped comments and white-space.
@@ -363,24 +365,24 @@ class ResourceCompressorTest extends BaseTestCase
             // - Retain pseudo-selectors. (http://drupal.org/node/460448)
             0 => [
                 $path . 'css_input_without_import.css',
-                $path . 'css_input_without_import.css.optimized.css'
+                $path . 'css_input_without_import.css.optimized.css',
             ],
             // File. Tests:
             // - Retain comment hacks.
             2 => [
                 $path . 'comment_hacks.css',
-                $path . 'comment_hacks.css.optimized.css'
+                $path . 'comment_hacks.css.optimized.css',
             ], /*
             // File. Tests:
             // - Any @charset declaration at the beginning of a file should be
             //   removed without breaking subsequent CSS.*/
             6 => [
                 $path . 'charset_sameline.css',
-                $path . 'charset.css.optimized.css'
+                $path . 'charset.css.optimized.css',
             ],
             7 => [
                 $path . 'charset_newline.css',
-                $path . 'charset.css.optimized.css'
+                $path . 'charset.css.optimized.css',
             ],
         ];
     }
@@ -414,20 +416,20 @@ class ResourceCompressorTest extends BaseTestCase
             // Get filename using EXT:
             [
                 'EXT:core/Tests/Unit/Resource/ResourceCompressorTest/Fixtures/charset.css',
-                'sysext/core/Tests/Unit/Resource/ResourceCompressorTest/Fixtures/charset.css'
+                'sysext/core/Tests/Unit/Resource/ResourceCompressorTest/Fixtures/charset.css',
             ],
             // Get filename using relative path
             [
                 'typo3/sysext/core/Tests/Unit/Resource/ResourceCompressorTest/Fixtures/charset.css',
-                'sysext/core/Tests/Unit/Resource/ResourceCompressorTest/Fixtures/charset.css'
+                'sysext/core/Tests/Unit/Resource/ResourceCompressorTest/Fixtures/charset.css',
             ],
             [
                 'sysext/core/Tests/Unit/Resource/ResourceCompressorTest/Fixtures/charset.css',
-                'sysext/core/Tests/Unit/Resource/ResourceCompressorTest/Fixtures/charset.css'
+                'sysext/core/Tests/Unit/Resource/ResourceCompressorTest/Fixtures/charset.css',
             ],
             [
                 'typo3temp/assets/compressed/.htaccess',
-                '../typo3temp/assets/compressed/.htaccess'
+                '../typo3temp/assets/compressed/.htaccess',
             ],
         ];
     }
@@ -457,11 +459,11 @@ class ResourceCompressorTest extends BaseTestCase
             // Get filename using relative path
             [
                 'typo3/sysext/core/Tests/Unit/Resource/ResourceCompressorTest/Fixtures/charset.css',
-                'typo3/sysext/core/Tests/Unit/Resource/ResourceCompressorTest/Fixtures/charset.css'
+                'typo3/sysext/core/Tests/Unit/Resource/ResourceCompressorTest/Fixtures/charset.css',
             ],
             [
                 'typo3temp/assets/compressed/.htaccess',
-                'typo3temp/assets/compressed/.htaccess'
+                'typo3temp/assets/compressed/.htaccess',
             ],
         ];
     }

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Log\Processor;
 
 /*
@@ -34,24 +35,24 @@ class IntrospectionProcessorTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'file' => '/foo/filename1.php',
             'line' => 1,
             'class' => 'class1',
-            'function' => 'function1'
+            'function' => 'function1',
         ],
         [
             'file' => '/foo/filename2.php',
             'line' => 2,
             'class' => 'class2',
-            'function' => 'function2'
+            'function' => 'function2',
         ],
         [
             'class' => 'class3',
-            'function' => 'function3'
+            'function' => 'function3',
         ],
         [
             'file' => '/foo/filename4.php',
             'line' => 4,
             'class' => 'class4',
-            'function' => 'function4'
-        ]
+            'function' => 'function4',
+        ],
     ];
 
     /**
@@ -92,13 +93,13 @@ class IntrospectionProcessorTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'file' => '/foo/Log.php',
                 'line' => 999,
                 'class' => 'TYPO3\CMS\Core\Log\Bar\Foo',
-                'function' => 'function999'
+                'function' => 'function999',
             ],
             [
                 'file' => '/foo/Log2.php',
                 'line' => 888,
                 'class' => 'TYPO3\CMS\Core\Log\Bar2\Foo2',
-                'function' => 'function888'
+                'function' => 'function888',
             ]
         );
         $this->processor->expects($this->any())->method('getDebugBacktrace')->will($this->returnValue($dummyBacktrace));
@@ -120,13 +121,14 @@ class IntrospectionProcessorTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         return [
             ['0'],
             ['1'],
-            ['3']
+            ['3'],
         ];
     }
 
     /**
      * @test
      * @dataProvider introspectionProcessorShiftsGivenNumberOfEntriesFromBacktraceDataProvider
+     * @param mixed $number
      */
     public function introspectionProcessorShiftsGivenNumberOfEntriesFromBacktrace($number)
     {

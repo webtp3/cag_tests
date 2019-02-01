@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Core;
 
 /*
@@ -42,6 +43,7 @@ class ApplicationContextTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider allowedContexts
+     * @param mixed $allowedContext
      */
     public function contextStringCanBeSetInConstructorAndReadByCallingToString($allowedContext)
     {
@@ -67,6 +69,7 @@ class ApplicationContextTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider forbiddenContexts
+     * @param mixed $forbiddenContext
      */
     public function constructorThrowsExceptionIfMainContextIsForbidden($forbiddenContext)
     {
@@ -89,14 +92,14 @@ class ApplicationContextTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'isDevelopment' => true,
                 'isProduction' => false,
                 'isTesting' => false,
-                'parentContext' => null
+                'parentContext' => null,
             ],
             'Development/YourSpecialContext' => [
                 'contextName' => 'Development/YourSpecialContext',
                 'isDevelopment' => true,
                 'isProduction' => false,
                 'isTesting' => false,
-                'parentContext' => 'Development'
+                'parentContext' => 'Development',
             ],
 
             'Production' => [
@@ -104,14 +107,14 @@ class ApplicationContextTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'isDevelopment' => false,
                 'isProduction' => true,
                 'isTesting' => false,
-                'parentContext' => null
+                'parentContext' => null,
             ],
             'Production/MySpecialContext' => [
                 'contextName' => 'Production/MySpecialContext',
                 'isDevelopment' => false,
                 'isProduction' => true,
                 'isTesting' => false,
-                'parentContext' => 'Production'
+                'parentContext' => 'Production',
             ],
 
             'Testing' => [
@@ -119,21 +122,26 @@ class ApplicationContextTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'isDevelopment' => false,
                 'isProduction' => false,
                 'isTesting' => true,
-                'parentContext' => null
+                'parentContext' => null,
             ],
             'Testing/MySpecialContext' => [
                 'contextName' => 'Testing/MySpecialContext',
                 'isDevelopment' => false,
                 'isProduction' => false,
                 'isTesting' => true,
-                'parentContext' => 'Testing'
-            ]
+                'parentContext' => 'Testing',
+            ],
         ];
     }
 
     /**
      * @test
      * @dataProvider isMethods
+     * @param mixed $contextName
+     * @param mixed $isDevelopment
+     * @param mixed $isProduction
+     * @param mixed $isTesting
+     * @param mixed $parentContext
      */
     public function contextMethodsReturnTheCorrectValues($contextName, $isDevelopment, $isProduction, $isTesting, $parentContext)
     {

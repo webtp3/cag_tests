@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Rsaauth\Tests\Functional\Storage;
 
 /*
@@ -29,7 +30,7 @@ class SplitStorageTest extends \CAG\CagTests\Core\Functional\FunctionalTestCase
      * @var array
      */
     protected $xmlDatabaseFixtures = [
-        'typo3/sysext/rsaauth/Tests/Functional/Fixtures/tx_rsaauth_keys.xml'
+        'typo3/sysext/rsaauth/Tests/Functional/Fixtures/tx_rsaauth_keys.xml',
     ];
 
     /**
@@ -38,7 +39,7 @@ class SplitStorageTest extends \CAG\CagTests\Core\Functional\FunctionalTestCase
      * @var array
      */
     protected $testExtensionsToLoad = [
-        'typo3/sysext/rsaauth'
+        'typo3/sysext/rsaauth',
     ];
 
     /**

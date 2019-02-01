@@ -47,12 +47,12 @@ class RichtextTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                     'proc.' => [
                                         'overruleMode' => 'myTransformation',
                                     ],
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
         $expected = [
             'classes.' => [
@@ -100,10 +100,10 @@ class RichtextTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'proc.' => [
                                 'overruleMode' => 'myTransformation',
                             ],
-                        ]
-                    ]
-                ]
-            ]
+                        ],
+                    ],
+                ],
+            ],
         ];
         $expected = [
             'classes.' => [
@@ -145,7 +145,7 @@ class RichtextTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'default.' => [
                     'removeComments' => '1',
                 ],
-            ]
+            ],
         ];
         $expected = [
             'classes.' => [
@@ -230,8 +230,8 @@ class RichtextTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     ],
                     'editor.' => [
                         'config.' => [
-                            'contentsCss' => 'my.css'
-                        ]
+                            'contentsCss' => 'my.css',
+                        ],
                     ],
                 ],
             ],
@@ -242,16 +242,16 @@ class RichtextTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             ],
             'editor.' => [
                 'config.' => [
-                    'contentsCss' => 'my.css'
-                ]
+                    'contentsCss' => 'my.css',
+                ],
             ],
             'classes' => [
                 'aClass' => 'anotherConfig',
             ],
             'editor' => [
                 'config' => [
-                    'contentsCss' => 'my.css'
-                ]
+                    'contentsCss' => 'my.css',
+                ],
             ],
             'proc.' => [
                 'overruleMode' => 'default',
@@ -292,8 +292,8 @@ class RichtextTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             ],
                             'editor.' => [
                                 'config.' => [
-                                    'contentsCss' => 'my.css'
-                                ]
+                                    'contentsCss' => 'my.css',
+                                ],
                             ],
                         ],
                     ],
@@ -307,8 +307,8 @@ class RichtextTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             ],
             'editor.' => [
                 'config.' => [
-                    'contentsCss' => 'my.css'
-                ]
+                    'contentsCss' => 'my.css',
+                ],
             ],
             // Config without pagets dots
             'classes' => [
@@ -316,8 +316,8 @@ class RichtextTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             ],
             'editor' => [
                 'config' => [
-                    'contentsCss' => 'my.css'
-                ]
+                    'contentsCss' => 'my.css',
+                ],
             ],
             'proc.' => [
                 'overruleMode' => 'default',
@@ -358,8 +358,8 @@ class RichtextTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             ],
                             'editor.' => [
                                 'config.' => [
-                                    'contentsCss' => 'my.css'
-                                ]
+                                    'contentsCss' => 'my.css',
+                                ],
                             ],
                             'types.' => [
                                 'textmedia.' => [
@@ -368,11 +368,11 @@ class RichtextTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                     ],
                                     'editor.' => [
                                         'config.' => [
-                                            'contentsCss' => 'your.css'
-                                        ]
+                                            'contentsCss' => 'your.css',
+                                        ],
                                     ],
-                                ]
-                            ]
+                                ],
+                            ],
                         ],
                     ],
                 ],
@@ -385,8 +385,8 @@ class RichtextTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             ],
             'editor.' => [
                 'config.' => [
-                    'contentsCss' => 'your.css'
-                ]
+                    'contentsCss' => 'your.css',
+                ],
             ],
             // Config without pagets dots
             'classes' => [
@@ -394,8 +394,8 @@ class RichtextTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             ],
             'editor' => [
                 'config' => [
-                    'contentsCss' => 'your.css'
-                ]
+                    'contentsCss' => 'your.css',
+                ],
             ],
             'proc.' => [
                 'overruleMode' => 'default',
@@ -420,7 +420,7 @@ class RichtextTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $preset = [
             'editor' => [
                 'config' => [
-                    'width' => 100
+                    'width' => 100,
                 ],
             ],
         ];
@@ -430,7 +430,7 @@ class RichtextTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'preset' => $presetKey,
                 'editor.' => [
                     'config.' => [
-                        'width' => 200
+                        'width' => 200,
                     ],
                 ],
             ],
@@ -451,13 +451,13 @@ class RichtextTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $expected = [
             'editor' => [
                 'config' => [
-                    'width' => 200
+                    'width' => 200,
                 ],
             ],
             'preset' => 'default',
             'editor.' => [
                 'config.' => [
-                    'width' => 200
+                    'width' => 200,
                 ],
             ],
             'proc.' => [

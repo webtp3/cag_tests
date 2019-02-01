@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Cache\Backend;
 
 /*
@@ -14,8 +15,8 @@ namespace TYPO3\CMS\Core\Tests\Unit\Cache\Backend;
  * The TYPO3 project - inspiring people to share!
  */
 
-use TYPO3\CMS\Core\Cache\Backend\MemcachedBackend;
 use CAG\CagTests\Core\Unit\UnitTestCase;
+use TYPO3\CMS\Core\Cache\Backend\MemcachedBackend;
 
 /**
  * Testcase for the cache to memcached backend
@@ -57,6 +58,7 @@ class MemcachedBackendTest extends UnitTestCase
         $subject = new MemcachedBackend('Testing', [ 'servers' => [$memcachedHost . ':' . $memcachedPort] ]);
         $subject->setCache($cache);
         $subject->initializeObject();
+
         return $subject;
     }
 

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Configuration\TypoScript\ConditionMatching;
 
 /*
@@ -81,6 +82,7 @@ class AbstractConditionMatcherTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider matchingApplicationContextConditionsDataProvider
+     * @param mixed $matchingContextCondition
      */
     public function evaluateConditionCommonReturnsTrueForMatchingContexts($matchingContextCondition)
     {
@@ -113,6 +115,7 @@ class AbstractConditionMatcherTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider notMatchingApplicationContextConditionsDataProvider
+     * @param mixed $notMatchingApplicationContextCondition
      */
     public function evaluateConditionCommonReturnsNullForNotMatchingApplicationContexts($notMatchingApplicationContextCondition)
     {
@@ -169,7 +172,7 @@ class AbstractConditionMatcherTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'ipv6 subnet does not match' => [
                 '::1/127',
                 '::2',
-                false
+                false,
             ],
             'List of addresses does not match' => [
                 '127.0.0.1, ::1',
@@ -182,6 +185,9 @@ class AbstractConditionMatcherTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider evaluateConditionCommonDevIpMaskDataProvider
+     * @param mixed $devIpMask
+     * @param mixed $actualIp
+     * @param mixed $expectedResult
      */
     public function evaluateConditionCommonEvaluatesIpAddressesCorrectly($devIpMask, $actualIp, $expectedResult)
     {

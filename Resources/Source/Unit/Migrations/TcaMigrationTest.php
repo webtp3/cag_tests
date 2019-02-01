@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Migrations;
 
 /*
@@ -39,7 +40,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         'label' => 'bLabel',
                         'config' => [
                             'rows' => 42,
-                            'wizards' => []
+                            'wizards' => [],
                         ],
                     ],
                 ],
@@ -67,7 +68,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         'config' => [
                             'type' => 'aType',
                             'lolli' => 'did this',
-                        ]
+                        ],
                     ],
                 ],
                 'types' => [
@@ -102,11 +103,11 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                     'title' => 't3editor',
                                     'icon' => 'content-table',
                                     'module' => [
-                                        'name' => 'wizard_table'
+                                        'name' => 'wizard_table',
                                     ],
                                     'params' => [
                                         'format' => 'html',
-                                        'style' => 'width:98%; height: 60%;'
+                                        'style' => 'width:98%; height: 60%;',
                                     ],
                                 ],
                             ],
@@ -191,7 +192,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'anotherField' => [
                                 'config' => [
                                     'wrap' => 'off',
-                                ]
+                                ],
                             ],
                         ],
                     ],
@@ -271,11 +272,11 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                     'title' => 't3editor',
                                     'icon' => 'content-table',
                                     'module' => [
-                                        'name' => 'wizard_table'
+                                        'name' => 'wizard_table',
                                     ],
                                     'params' => [
                                         'format' => 'html',
-                                        'style' => 'width:98%; height: 60%;'
+                                        'style' => 'width:98%; height: 60%;',
                                     ],
                                 ],
                                 't3editorTypoScript' => [
@@ -285,11 +286,11 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                     'title' => 't3editor',
                                     'icon' => 'content-table',
                                     'module' => [
-                                        'name' => 'wizard_table'
+                                        'name' => 'wizard_table',
                                     ],
                                     'params' => [
                                         'format' => 'typoscript',
-                                        'style' => 'width:98%; height: 60%;'
+                                        'style' => 'width:98%; height: 60%;',
                                     ],
                                 ],
                             ],
@@ -371,11 +372,11 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                     'title' => 't3editor',
                                     'icon' => 'content-table',
                                     'module' => [
-                                        'name' => 'wizard_table'
+                                        'name' => 'wizard_table',
                                     ],
                                     'params' => [
                                         'format' => 'html',
-                                        'style' => 'width:98%; height: 60%;'
+                                        'style' => 'width:98%; height: 60%;',
                                     ],
                                 ],
                             ],
@@ -417,7 +418,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     0 => [
                         'showitem' => 'aField;;;',
                     ],
-                    1 => []
+                    1 => [],
                 ],
             ],
         ];
@@ -692,9 +693,9 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     'a-column' => [
                         'config' => [
                             'type' => 'select',
-                            'renderType' => 'fooBar'
-                        ]
-                    ]
+                            'renderType' => 'fooBar',
+                        ],
+                    ],
                 ],
             ],
             'aTable-do-migrate-because-renderType-is-not-set' => [
@@ -702,70 +703,70 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     'a-tree-column' => [
                         'config' => [
                             'type' => 'select',
-                            'renderMode' => 'tree'
-                        ]
+                            'renderMode' => 'tree',
+                        ],
                     ],
                     'a-singlebox-column' => [
                         'config' => [
                             'type' => 'select',
-                            'renderMode' => 'singlebox'
-                        ]
+                            'renderMode' => 'singlebox',
+                        ],
                     ],
                     'a-checkbox-column' => [
                         'config' => [
                             'type' => 'select',
-                            'renderMode' => 'checkbox'
-                        ]
+                            'renderMode' => 'checkbox',
+                        ],
                     ],
                     'an-unknown-column' => [
                         'config' => [
                             'type' => 'select',
-                            'renderMode' => 'unknown'
-                        ]
+                            'renderMode' => 'unknown',
+                        ],
                     ],
                     'a-maxitems-column-not-set' => [
                         'config' => [
                             'type' => 'select',
-                        ]
+                        ],
                     ],
                     'a-maxitems-column-0' => [
                         'config' => [
                             'type' => 'select',
-                            'maxitems' => '0'
-                        ]
+                            'maxitems' => '0',
+                        ],
                     ],
                     'a-maxitems-column-1' => [
                         'config' => [
                             'type' => 'select',
-                            'maxitems' => '1'
-                        ]
+                            'maxitems' => '1',
+                        ],
                     ],
                     'a-maxitems-column-2' => [
                         'config' => [
                             'type' => 'select',
-                            'maxitems' => '2'
-                        ]
+                            'maxitems' => '2',
+                        ],
                     ],
                     'a-tree-column-with-maxitems' => [
                         'config' => [
                             'type' => 'select',
                             'renderMode' => 'tree',
-                            'maxitems' => '1'
-                        ]
+                            'maxitems' => '1',
+                        ],
                     ],
                     'a-singlebox-column-with-maxitems' => [
                         'config' => [
                             'type' => 'select',
                             'renderMode' => 'singlebox',
-                            'maxitems' => '1'
-                        ]
+                            'maxitems' => '1',
+                        ],
                     ],
                     'a-checkbox-column-with-maxitems' => [
                         'config' => [
                             'type' => 'select',
                             'renderMode' => 'checkbox',
-                            'maxitems' => '1'
-                        ]
+                            'maxitems' => '1',
+                        ],
                     ],
                 ],
             ],
@@ -776,9 +777,9 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     'a-column' => [
                         'config' => [
                             'type' => 'select',
-                            'renderType' => 'fooBar'
-                        ]
-                    ]
+                            'renderType' => 'fooBar',
+                        ],
+                    ],
                 ],
             ],
             'aTable-do-migrate-because-renderType-is-not-set' => [
@@ -787,79 +788,79 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         'config' => [
                             'type' => 'select',
                             'renderMode' => 'tree',
-                            'renderType' => 'selectTree'
-                        ]
+                            'renderType' => 'selectTree',
+                        ],
                     ],
                     'a-singlebox-column' => [
                         'config' => [
                             'type' => 'select',
                             'renderMode' => 'singlebox',
-                            'renderType' => 'selectSingleBox'
-                        ]
+                            'renderType' => 'selectSingleBox',
+                        ],
                     ],
                     'a-checkbox-column' => [
                         'config' => [
                             'type' => 'select',
                             'renderMode' => 'checkbox',
-                            'renderType' => 'selectCheckBox'
-                        ]
+                            'renderType' => 'selectCheckBox',
+                        ],
                     ],
                     'an-unknown-column' => [
                         'config' => [
                             'type' => 'select',
-                            'renderMode' => 'unknown'
-                        ]
+                            'renderMode' => 'unknown',
+                        ],
                     ],
                     'a-maxitems-column-not-set' => [
                         'config' => [
                             'type' => 'select',
-                            'renderType' => 'selectSingle'
-                        ]
+                            'renderType' => 'selectSingle',
+                        ],
                     ],
                     'a-maxitems-column-0' => [
                         'config' => [
                             'type' => 'select',
                             'maxitems' => '0',
-                            'renderType' => 'selectSingle'
-                        ]
+                            'renderType' => 'selectSingle',
+                        ],
                     ],
                     'a-maxitems-column-1' => [
                         'config' => [
                             'type' => 'select',
                             'maxitems' => 1,
-                            'renderType' => 'selectSingle'
-                        ]
+                            'renderType' => 'selectSingle',
+                        ],
                     ],
                     'a-maxitems-column-2' => [
                         'config' => [
                             'type' => 'select',
                             'maxitems' => 2,
-                            'renderType' => 'selectMultipleSideBySide'
-                        ]
+                            'renderType' => 'selectMultipleSideBySide',
+                        ],
                     ],
                     'a-tree-column-with-maxitems' => [
                         'config' => [
                             'type' => 'select',
                             'renderMode' => 'tree',
                             'renderType' => 'selectTree',
-                            'maxitems' => '1'
-                        ]
+                            'maxitems' => '1',
+                        ],
                     ],
                     'a-singlebox-column-with-maxitems' => [
                         'config' => [
                             'type' => 'select',
                             'renderMode' => 'singlebox',
                             'renderType' => 'selectSingleBox',
-                            'maxitems' => '1'
-                        ]
+                            'maxitems' => '1',
+                        ],
                     ],
                     'a-checkbox-column-with-maxitems' => [
                         'config' => [
                             'type' => 'select',
                             'renderMode' => 'checkbox',
                             'renderType' => 'selectCheckBox',
-                            'maxitems' => '1'
-                        ]
+                            'maxitems' => '1',
+                        ],
                     ],
                 ],
             ],
@@ -993,7 +994,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'columns' => [
                     'aField' => [
                         'config' => $givenConfig,
-                    ]
+                    ],
                 ],
             ],
         ];
@@ -1020,8 +1021,8 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                     'module' => [
                                         'name' => 'wizard_element_browser',
                                         'urlParameters' => [
-                                            'mode' => 'wizard'
-                                        ]
+                                            'mode' => 'wizard',
+                                        ],
                                     ],
                                 ],
                             ],
@@ -1068,10 +1069,10 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                 'config' => [
                                     'type' => 'text',
                                 ],
-                                'defaultExtras' => 'richtext:rte_transform[]'
-                            ]
-                        ]
-                    ]
+                                'defaultExtras' => 'richtext:rte_transform[]',
+                            ],
+                        ],
+                    ],
                 ],
                 [
                     // Expected config section
@@ -1083,9 +1084,9 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                     'enableRichtext' => true,
                                     'richtextConfiguration' => 'default',
                                 ],
-                            ]
-                        ]
-                    ]
+                            ],
+                        ],
+                    ],
                 ],
             ],
             'columns richtext configuration without bracket' => [
@@ -1096,10 +1097,10 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                 'config' => [
                                     'type' => 'text',
                                 ],
-                                'defaultExtras' => 'richtext:rte_transform'
-                            ]
-                        ]
-                    ]
+                                'defaultExtras' => 'richtext:rte_transform',
+                            ],
+                        ],
+                    ],
                 ],
                 [
                     'aTable' => [
@@ -1110,9 +1111,9 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                     'enableRichtext' => true,
                                     'richtextConfiguration' => 'default',
                                 ],
-                            ]
-                        ]
-                    ]
+                            ],
+                        ],
+                    ],
                 ],
             ],
             'columns richtext with mode' => [
@@ -1123,10 +1124,10 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                 'config' => [
                                     'type' => 'text',
                                 ],
-                                'defaultExtras' => 'richtext:rte_transform[mode=ts_css]'
-                            ]
-                        ]
-                    ]
+                                'defaultExtras' => 'richtext:rte_transform[mode=ts_css]',
+                            ],
+                        ],
+                    ],
                 ],
                 [
                     'aTable' => [
@@ -1137,9 +1138,9 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                     'enableRichtext' => true,
                                     'richtextConfiguration' => 'default',
                                 ],
-                            ]
-                        ]
-                    ]
+                            ],
+                        ],
+                    ],
                 ],
             ],
             'columns richtext with mode and others' => [
@@ -1150,10 +1151,10 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                 'config' => [
                                     'type' => 'text',
                                 ],
-                                'defaultExtras' => 'richtext:rte_transform[flag=rte_enabled|mode=ts_css]'
-                            ]
-                        ]
-                    ]
+                                'defaultExtras' => 'richtext:rte_transform[flag=rte_enabled|mode=ts_css]',
+                            ],
+                        ],
+                    ],
                 ],
                 [
                     'aTable' => [
@@ -1164,9 +1165,9 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                     'enableRichtext' => true,
                                     'richtextConfiguration' => 'default',
                                 ],
-                            ]
-                        ]
-                    ]
+                            ],
+                        ],
+                    ],
                 ],
             ],
             'columns richtext with array with mode and others' => [
@@ -1177,10 +1178,10 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                 'config' => [
                                     'type' => 'text',
                                 ],
-                                'defaultExtras' => 'richtext[]:rte_transform[flag=rte_enabled|mode=ts_css]'
-                            ]
-                        ]
-                    ]
+                                'defaultExtras' => 'richtext[]:rte_transform[flag=rte_enabled|mode=ts_css]',
+                            ],
+                        ],
+                    ],
                 ],
                 [
                     'aTable' => [
@@ -1191,9 +1192,9 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                     'enableRichtext' => true,
                                     'richtextConfiguration' => 'default',
                                 ],
-                            ]
-                        ]
-                    ]
+                            ],
+                        ],
+                    ],
                 ],
             ],
             'columns richtext * with mode and others' => [
@@ -1204,10 +1205,10 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                 'config' => [
                                     'type' => 'text',
                                 ],
-                                'defaultExtras' => 'richtext[*]:rte_transform[flag=rte_enabled|mode=ts_css]'
-                            ]
-                        ]
-                    ]
+                                'defaultExtras' => 'richtext[*]:rte_transform[flag=rte_enabled|mode=ts_css]',
+                            ],
+                        ],
+                    ],
                 ],
                 [
                     'aTable' => [
@@ -1218,9 +1219,9 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                     'enableRichtext' => true,
                                     'richtextConfiguration' => 'default',
                                 ],
-                            ]
-                        ]
-                    ]
+                            ],
+                        ],
+                    ],
                 ],
             ],
             'columns richtext cut-copy-paste with mode and others' => [
@@ -1231,10 +1232,10 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                 'config' => [
                                     'type' => 'text',
                                 ],
-                                'defaultExtras' => 'richtext[cut|copy|paste]:rte_transform[flag=rte_enabled|mode=ts_css]'
-                            ]
-                        ]
-                    ]
+                                'defaultExtras' => 'richtext[cut|copy|paste]:rte_transform[flag=rte_enabled|mode=ts_css]',
+                            ],
+                        ],
+                    ],
                 ],
                 [
                     'aTable' => [
@@ -1245,9 +1246,9 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                     'enableRichtext' => true,
                                     'richtextConfiguration' => 'default',
                                 ],
-                            ]
-                        ]
-                    ]
+                            ],
+                        ],
+                    ],
                 ],
             ],
             'columnsOverrides richtext with brackets' => [
@@ -1264,12 +1265,12 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'aType' => [
                                 'columnsOverrides' => [
                                     'aField' => [
-                                        'defaultExtras' => 'richtext:rte_transform[]'
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
+                                        'defaultExtras' => 'richtext:rte_transform[]',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
                 [
                     'aTable' => [
@@ -1288,11 +1289,11 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                             'enableRichtext' => true,
                                             'richtextConfiguration' => 'default',
                                         ],
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
             ],
             'columnsOverrides richtext' => [
@@ -1309,12 +1310,12 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'aType' => [
                                 'columnsOverrides' => [
                                     'aField' => [
-                                        'defaultExtras' => 'richtext:rte_transform'
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
+                                        'defaultExtras' => 'richtext:rte_transform',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
                 [
                     'aTable' => [
@@ -1333,11 +1334,11 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                             'enableRichtext' => true,
                                             'richtextConfiguration' => 'default',
                                         ],
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
             ],
             'columnsOverrides richtext with defalut mode' => [
@@ -1354,12 +1355,12 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'aType' => [
                                 'columnsOverrides' => [
                                     'aField' => [
-                                        'defaultExtras' => 'richtext:rte_transform[mode=ts_css]'
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
+                                        'defaultExtras' => 'richtext:rte_transform[mode=ts_css]',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
                 [
                     'aTable' => [
@@ -1378,11 +1379,11 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                             'enableRichtext' => true,
                                             'richtextConfiguration' => 'default',
                                         ],
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
             ],
             'columnsOverrides richtext with mode and others' => [
@@ -1399,12 +1400,12 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'aType' => [
                                 'columnsOverrides' => [
                                     'aField' => [
-                                        'defaultExtras' => 'richtext:rte_transform[flag=rte_enabled|mode=ts_css]'
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
+                                        'defaultExtras' => 'richtext:rte_transform[flag=rte_enabled|mode=ts_css]',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
                 [
                     'aTable' => [
@@ -1423,11 +1424,11 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                             'enableRichtext' => true,
                                             'richtextConfiguration' => 'default',
                                         ],
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
             ],
             'columnsOverrides richtext brackets mode and others' => [
@@ -1444,12 +1445,12 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'aType' => [
                                 'columnsOverrides' => [
                                     'aField' => [
-                                        'defaultExtras' => 'richtext[]:rte_transform[flag=rte_enabled|mode=ts_css]'
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
+                                        'defaultExtras' => 'richtext[]:rte_transform[flag=rte_enabled|mode=ts_css]',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
                 [
                     'aTable' => [
@@ -1468,11 +1469,11 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                             'enableRichtext' => true,
                                             'richtextConfiguration' => 'default',
                                         ],
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
             ],
             'columnsOverrides richtext star with mode and others' => [
@@ -1489,12 +1490,12 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'aType' => [
                                 'columnsOverrides' => [
                                     'aField' => [
-                                        'defaultExtras' => 'richtext[*]:rte_transform[flag=rte_enabled|mode=ts_css]'
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
+                                        'defaultExtras' => 'richtext[*]:rte_transform[flag=rte_enabled|mode=ts_css]',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
                 [
                     'aTable' => [
@@ -1513,11 +1514,11 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                             'enableRichtext' => true,
                                             'richtextConfiguration' => 'default',
                                         ],
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
             ],
             'columnsOverrides richtext cut-copy-paste ith mode and others' => [
@@ -1534,12 +1535,12 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'aType' => [
                                 'columnsOverrides' => [
                                     'aField' => [
-                                        'defaultExtras' => 'richtext[copy|cut|paste]:rte_transform[flag=rte_enabled|mode=ts_css]'
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
+                                        'defaultExtras' => 'richtext[copy|cut|paste]:rte_transform[flag=rte_enabled|mode=ts_css]',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
                 [
                     'aTable' => [
@@ -1558,11 +1559,11 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                             'enableRichtext' => true,
                                             'richtextConfiguration' => 'default',
                                         ],
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
             ],
         ];
@@ -1597,13 +1598,13 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                     'renderType' => 'selectTree',
                                     'treeConfig' => [
                                         'appearance' => [
-                                            'width' => 200
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
+                                            'width' => 200,
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
                 [
                     // Expected config section
@@ -1615,13 +1616,13 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                     'renderType' => 'selectTree',
                                     'treeConfig' => [
                                         'appearance' => [
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             'remove allowRecursiveMode' => [
                 [
@@ -1635,13 +1636,13 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                     'treeConfig' => [
                                         'appearance' => [
                                             'someKey' => 'value',
-                                            'allowRecursiveMode' => true
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
+                                            'allowRecursiveMode' => true,
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
                 [
                     // Expected config section
@@ -1653,14 +1654,14 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                     'renderType' => 'selectTree',
                                     'treeConfig' => [
                                         'appearance' => [
-                                            'someKey' => 'value'
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                            'someKey' => 'value',
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             'move autoSizeMax to size' => [
                 [
@@ -1672,11 +1673,11 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                     'type' => 'select',
                                     'renderType' => 'selectTree',
                                     'autoSizeMax' => 20,
-                                    'size' => 10
-                                ]
-                            ]
-                        ]
-                    ]
+                                    'size' => 10,
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
                 [
                     // Expected config section
@@ -1686,12 +1687,12 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                 'config' => [
                                     'type' => 'select',
                                     'renderType' => 'selectTree',
-                                    'size' => 20
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                    'size' => 20,
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             'keep settings for non selectTree' => [
                 [
@@ -1708,13 +1709,13 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                         'appearance' => [
                                             'someKey' => 'value',
                                             'allowRecursiveMode' => true,
-                                            'width' => 200
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
+                                            'width' => 200,
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
                 [
                     // Expected config section
@@ -1730,15 +1731,15 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                         'appearance' => [
                                             'someKey' => 'value',
                                             'allowRecursiveMode' => true,
-                                            'width' => 200
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                            'width' => 200,
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -1764,7 +1765,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'aCol' => [
                                 'config' => [
                                     'type' => 'input',
-                                    'softref' => 'email,somethingelse'
+                                    'softref' => 'email,somethingelse',
                                 ],
                             ],
                         ],
@@ -1781,7 +1782,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             ],
                         ],
                     ],
-                ]
+                ],
             ],
             'TStemplate only' => [
                 [
@@ -1790,7 +1791,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'aCol' => [
                                 'config' => [
                                     'type' => 'input',
-                                    'softref' => 'TStemplate,somethingelse'
+                                    'softref' => 'TStemplate,somethingelse',
                                 ],
                             ],
                         ],
@@ -1807,7 +1808,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             ],
                         ],
                     ],
-                ]
+                ],
             ],
             'TStemplate and TSconfig' => [
                 [
@@ -1816,7 +1817,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'aCol' => [
                                 'config' => [
                                     'type' => 'input',
-                                    'softref' => 'TStemplate,somethingelse,TSconfig'
+                                    'softref' => 'TStemplate,somethingelse,TSconfig',
                                 ],
                             ],
                         ],
@@ -1833,7 +1834,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             ],
                         ],
                     ],
-                ]
+                ],
             ],
         ];
     }
@@ -1859,7 +1860,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         'columns' => [
                             'aCol' => [
                                 'config' => [
-                                    'type' => 'check'
+                                    'type' => 'check',
                                 ],
                             ],
                         ],
@@ -1870,12 +1871,12 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         'columns' => [
                             'aCol' => [
                                 'config' => [
-                                    'type' => 'check'
+                                    'type' => 'check',
                                 ],
                             ],
                         ],
                     ],
-                ]
+                ],
             ],
             'Option removed' => [
                 [
@@ -1884,7 +1885,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'aCol' => [
                                 'config' => [
                                     'type' => 'check',
-                                    'showIfRTE' => false
+                                    'showIfRTE' => false,
                                 ],
                             ],
                         ],
@@ -1895,13 +1896,12 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         'columns' => [
                             'aCol' => [
                                 'config' => [
-                                    'type' => 'check'
+                                    'type' => 'check',
                                 ],
                             ],
                         ],
                     ],
-                ]
-
+                ],
             ],
         ];
     }
@@ -1925,98 +1925,98 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [
                     'aTable' => [
                         'ctrl' => [
-                            'versioningWS' => false
+                            'versioningWS' => false,
                         ],
                     ],
                 ],
                 [
                     'aTable' => [
                         'ctrl' => [
-                            'versioningWS' => false
+                            'versioningWS' => false,
                         ],
                     ],
-                ]
+                ],
             ],
             'nothing activated' => [
                 [
                     'aTable' => [
                         'ctrl' => [
-                            'label' => 'blabla'
+                            'label' => 'blabla',
                         ],
                     ],
                 ],
                 [
                     'aTable' => [
                         'ctrl' => [
-                            'label' => 'blabla'
+                            'label' => 'blabla',
                         ],
                     ],
-                ]
+                ],
             ],
             'nothing changed, workspaces enabled' => [
                 [
                     'aTable' => [
                         'ctrl' => [
-                            'versioningWS' => true
+                            'versioningWS' => true,
                         ],
                     ],
                 ],
                 [
                     'aTable' => [
                         'ctrl' => [
-                            'versioningWS' => true
+                            'versioningWS' => true,
                         ],
                     ],
-                ]
+                ],
             ],
             'cast workspaces to bool' => [
                 [
                     'aTable' => [
                         'ctrl' => [
-                            'versioningWS' => 1
+                            'versioningWS' => 1,
                         ],
                     ],
                 ],
                 [
                     'aTable' => [
                         'ctrl' => [
-                            'versioningWS' => true
+                            'versioningWS' => true,
                         ],
                     ],
-                ]
+                ],
             ],
             'cast workspaces v2 to bool' => [
                 [
                     'aTable' => [
                         'ctrl' => [
-                            'versioningWS' => 2
+                            'versioningWS' => 2,
                         ],
                     ],
                 ],
                 [
                     'aTable' => [
                         'ctrl' => [
-                            'versioningWS' => true
+                            'versioningWS' => true,
                         ],
                     ],
-                ]
+                ],
             ],
             'cast workspaces v2 to bool and remove followpages' => [
                 [
                     'aTable' => [
                         'ctrl' => [
                             'versioningWS' => 2,
-                            'versioning_followPages' => true
+                            'versioning_followPages' => true,
                         ],
                     ],
                 ],
                 [
                     'aTable' => [
                         'ctrl' => [
-                            'versioningWS' => true
+                            'versioningWS' => true,
                         ],
                     ],
-                ]
+                ],
             ],
         ];
     }
@@ -2051,7 +2051,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     'aTable' => [
                         'ctrl' => [],
                     ],
-                ]
+                ],
             ],
             'remove transOrigPointerTable' => [
                 [
@@ -2065,8 +2065,8 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     'aTable' => [
                         'ctrl' => [],
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
     }
 
@@ -2105,7 +2105,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             ],
                         ],
                     ],
-                ]
+                ],
             ],
             'remove l10n_mode mergeIfNotBlank' => [
                 [
@@ -2124,12 +2124,12 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                 'config' => [
                                     'behaviour' => [
                                         'allowLanguageSynchronization' => true,
-                                    ]
-                                ]
+                                    ],
+                                ],
                             ],
                         ],
                     ],
-                ]
+                ],
             ],
         ];
     }
@@ -2194,7 +2194,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             ],
                         ],
                     ],
-                ]
+                ],
             ],
             'missing allowLanguageSynchronization' => [
                 [
@@ -2205,7 +2205,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                     'type' => 'input',
                                     'behaviour' => [
                                         'allowLanguageSynchronization' => true,
-                                    ]
+                                    ],
                                 ],
                             ],
                         ],
@@ -2226,7 +2226,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'aColumn' => [
                                 'config' => [
                                     'type' => 'input',
-                                    'behaviour' => []
+                                    'behaviour' => [],
                                 ],
                             ],
                         ],
@@ -2238,12 +2238,12 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                     'type' => 'input',
                                     'behaviour' => [
                                         'allowLanguageSynchronization' => true,
-                                    ]
+                                    ],
                                 ],
                             ],
                         ],
                     ],
-                ]
+                ],
             ],
             'superfluous l10n_mode' => [
                 [
@@ -2278,7 +2278,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             ],
                         ],
                     ],
-                ]
+                ],
             ],
             'superfluous allowLanguageSynchronization' => [
                 [
@@ -2294,7 +2294,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                     'type' => 'input',
                                     'behaviour' => [
                                         'allowLanguageSynchronization' => true,
-                                    ]
+                                    ],
                                 ],
                             ],
                         ],
@@ -2311,12 +2311,12 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'aColumn' => [
                                 'config' => [
                                     'type' => 'input',
-                                    'behaviour' => []
+                                    'behaviour' => [],
                                 ],
                             ],
                         ],
                     ],
-                ]
+                ],
             ],
         ];
     }
@@ -2350,7 +2350,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                         'localizationMode' => 'keep',
                                         'allowLanguageSynchronization' => true,
                                     ],
-                                ]
+                                ],
                             ],
                         ],
                     ],
@@ -2368,7 +2368,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             ],
                         ],
                     ],
-                ]
+                ],
             ],
             'keep deprecated localizationMode=keep' => [
                 [
@@ -2394,11 +2394,11 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                     'behaviour' => [
                                         'localizationMode' => 'keep',
                                     ],
-                                ]
+                                ],
                             ],
                         ],
                     ],
-                ]
+                ],
             ],
             'keep deprecated localizationMode=select' => [
                 [
@@ -2424,11 +2424,11 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                     'behaviour' => [
                                         'localizationMode' => 'select',
                                     ],
-                                ]
+                                ],
                             ],
                         ],
                     ],
-                ]
+                ],
             ],
         ];
     }
@@ -2556,7 +2556,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             ],
                         ],
                     ],
-                ]
+                ],
             ],
             'simple input with eval datetime' => [
                 [
@@ -2585,7 +2585,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             ],
                         ],
                     ],
-                ]
+                ],
             ],
             'simple input with eval time' => [
                 [
@@ -2614,7 +2614,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             ],
                         ],
                     ],
-                ]
+                ],
             ],
             'simple input with eval timesec' => [
                 [
@@ -2643,7 +2643,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             ],
                         ],
                     ],
-                ]
+                ],
             ],
             'input with multiple evals' => [
                 [
@@ -2672,7 +2672,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             ],
                         ],
                     ],
-                ]
+                ],
             ],
         ];
     }
@@ -2973,8 +2973,8 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                           'aField' => [
                               'config' => [
                                   'type' => 'input',
-                              ]
-                          ]
+                              ],
+                          ],
                         ],
                         'types' => [
                             'aType' => [
@@ -3004,8 +3004,8 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'aField' => [
                                 'config' => [
                                     'type' => 'input',
-                                ]
-                            ]
+                                ],
+                            ],
                         ],
                         'types' => [
                             'aType' => [
@@ -3020,8 +3020,8 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             ],
                         ],
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
     }
 
@@ -3351,7 +3351,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                         ],
                                         'differentWizard' => [
                                             'type' => 'foo',
-                                        ]
+                                        ],
                                     ],
                                 ],
                             ],
@@ -3376,7 +3376,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                         'differentWizard' => [
                                             'type' => 'foo',
                                         ],
-                                    ]
+                                    ],
                                 ],
                             ],
                         ],
@@ -3390,8 +3390,8 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'aField' => [
                                 'config' => [
                                     'type' => 'text',
-                                ]
-                            ]
+                                ],
+                            ],
                         ],
                         'types' => [
                             'aType' => [
@@ -3420,8 +3420,8 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'aField' => [
                                 'config' => [
                                     'type' => 'text',
-                                ]
-                            ]
+                                ],
+                            ],
                         ],
                         'types' => [
                             'aType' => [
@@ -3440,8 +3440,8 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             ],
                         ],
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
     }
 
@@ -3492,7 +3492,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             ],
                         ],
                     ],
-                ]
+                ],
             ],
             'slider wizard with options' => [
                 [
@@ -3546,7 +3546,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                         ],
                                         'differentWizard' => [
                                             'type' => 'foo',
-                                        ]
+                                        ],
                                     ],
                                 ],
                             ],
@@ -3567,7 +3567,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                         'differentWizard' => [
                                             'type' => 'foo',
                                         ],
-                                    ]
+                                    ],
                                 ],
                             ],
                         ],
@@ -3581,8 +3581,8 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'aField' => [
                                 'config' => [
                                     'type' => 'input',
-                                ]
-                            ]
+                                ],
+                            ],
                         ],
                         'types' => [
                             'aType' => [
@@ -3611,8 +3611,8 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'aField' => [
                                 'config' => [
                                     'type' => 'input',
-                                ]
-                            ]
+                                ],
+                            ],
                         ],
                         'types' => [
                             'aType' => [
@@ -3626,7 +3626,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                                 'differentWizard' => [
                                                     'type' => 'foo',
                                                 ],
-                                            ]
+                                            ],
                                         ],
                                     ],
                                 ],
@@ -3804,7 +3804,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                         ],
                                         'differentWizard' => [
                                             'type' => 'foo',
-                                        ]
+                                        ],
                                     ],
                                 ],
                             ],
@@ -3823,7 +3823,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                         'differentWizard' => [
                                             'type' => 'foo',
                                         ],
-                                    ]
+                                    ],
                                 ],
                             ],
                         ],
@@ -3837,8 +3837,8 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'aField' => [
                                 'config' => [
                                     'type' => 'input',
-                                ]
-                            ]
+                                ],
+                            ],
                         ],
                         'types' => [
                             'aType' => [
@@ -3861,7 +3861,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                                 ],
                                                 'differentWizard' => [
                                                     'type' => 'foo',
-                                                ]
+                                                ],
                                             ],
                                         ],
                                     ],
@@ -3876,8 +3876,8 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'aField' => [
                                 'config' => [
                                     'type' => 'input',
-                                ]
-                            ]
+                                ],
+                            ],
                         ],
                         'types' => [
                             'aType' => [
@@ -3900,15 +3900,15 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                                 'differentWizard' => [
                                                     'type' => 'foo',
                                                 ],
-                                            ]
+                                            ],
                                         ],
                                     ],
                                 ],
                             ],
                         ],
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
     }
 
@@ -3987,7 +3987,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                             ],
                                             'popup_onlyOpenIfSelected' => 1,
                                             'icon' => 'actions-open',
-                                            'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1'
+                                            'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
                                         ],
                                     ],
                                 ],
@@ -4519,9 +4519,9 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'aType' => [
                                 'columnsOverrides' => [
                                     'aField' => [],
-                                ]
-                            ]
-                        ]
+                                ],
+                            ],
+                        ],
                     ],
                 ],
             ],
@@ -4622,7 +4622,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                             'type' => 'script',
                                             'icon' => 'content-table',
                                             'module' => [
-                                                'name' => 'wizard_table'
+                                                'name' => 'wizard_table',
                                             ],
                                             'notNewRecords' => 1,
                                         ],
@@ -4666,7 +4666,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                                     'type' => 'script',
                                                     'icon' => 'content-table',
                                                     'module' => [
-                                                        'name' => 'wizard_table'
+                                                        'name' => 'wizard_table',
                                                     ],
                                                     'notNewRecords' => 1,
                                                 ],
@@ -4714,10 +4714,10 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                             'type' => 'script',
                                             'icon' => 'content-table',
                                             'module' => [
-                                                'name' => 'wizard_table'
+                                                'name' => 'wizard_table',
                                             ],
                                             'params' => [
-                                                'xmlOutput' => 0
+                                                'xmlOutput' => 0,
                                             ],
                                             'notNewRecords' => 1,
                                         ],
@@ -4761,10 +4761,10 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                                     'type' => 'script',
                                                     'icon' => 'content-table',
                                                     'module' => [
-                                                        'name' => 'wizard_table'
+                                                        'name' => 'wizard_table',
                                                     ],
                                                     'params' => [
-                                                        'xmlOutput' => 0
+                                                        'xmlOutput' => 0,
                                                     ],
                                                     'notNewRecords' => 1,
                                                 ],
@@ -4813,7 +4813,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                             'title' => 'aTitle',
                                             'icon' => 'content-table',
                                             'module' => [
-                                                'name' => 'wizard_table'
+                                                'name' => 'wizard_table',
                                             ],
                                             'params' => [
                                                 'xmlOutput' => 1,
@@ -4871,7 +4871,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                                     'title' => 'aTitle',
                                                     'icon' => 'content-table',
                                                     'module' => [
-                                                        'name' => 'wizard_table'
+                                                        'name' => 'wizard_table',
                                                     ],
                                                     'params' => [
                                                         'xmlOutput' => '1',
@@ -4956,8 +4956,8 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                             'title' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:bodytext.W.RTE',
                                             'icon' => 'actions-wizard-rte',
                                             'module' => [
-                                                'name' => 'wizard_rte'
-                                            ]
+                                                'name' => 'wizard_rte',
+                                            ],
                                         ],
                                     ],
                                 ],
@@ -5002,7 +5002,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                             'type' => 'script',
                                             'icon' => 'actions-wizard-rte',
                                             'module' => [
-                                                'name' => 'wizard_rte'
+                                                'name' => 'wizard_rte',
                                             ],
                                         ],
                                     ],
@@ -5092,8 +5092,8 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                                     'title' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:bodytext.W.RTE',
                                                     'icon' => 'actions-wizard-rte',
                                                     'module' => [
-                                                        'name' => 'wizard_rte'
-                                                    ]
+                                                        'name' => 'wizard_rte',
+                                                    ],
                                                 ],
                                             ],
                                         ],
@@ -5232,7 +5232,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                                         'minimumCharacters' => 23,
                                                     ],
                                                     'aTable' => [
-                                                        'searchCondition' => 'doktype = 1'
+                                                        'searchCondition' => 'doktype = 1',
                                                     ],
                                                 ],
                                             ],
@@ -5266,7 +5266,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                                     'minimumCharacters' => 23,
                                                 ],
                                                 'aTable' => [
-                                                    'searchCondition' => 'doktype = 1'
+                                                    'searchCondition' => 'doktype = 1',
                                                 ],
                                             ],
                                         ],
@@ -5369,7 +5369,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                                 'minimumCharacters' => 23,
                                             ],
                                             'aTable' => [
-                                                'searchCondition' => 'doktype = 1'
+                                                'searchCondition' => 'doktype = 1',
                                             ],
                                         ],
                                     ],
@@ -5391,7 +5391,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                             'minimumCharacters' => 23,
                                         ],
                                         'aTable' => [
-                                            'searchCondition' => 'doktype = 1'
+                                            'searchCondition' => 'doktype = 1',
                                         ],
                                     ],
                                 ],
@@ -5911,7 +5911,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'columns' => [
                     'foo' => [
                         'config' => [
-                            'type' => 'input'
+                            'type' => 'input',
                         ],
                     ],
                 ],
@@ -5923,7 +5923,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'columns' => [
                     'foo' => [
                         'config' => [
-                            'type' => 'input'
+                            'type' => 'input',
                         ],
                     ],
                 ],
@@ -5945,7 +5945,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     'foo' => [
                         'config' => [
                             'type' => 'input',
-                            'renderType' => 'fooBar'
+                            'renderType' => 'fooBar',
                         ],
                     ],
                 ],
@@ -5958,7 +5958,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     'foo' => [
                         'config' => [
                             'type' => 'input',
-                            'renderType' => 'fooBar'
+                            'renderType' => 'fooBar',
                         ],
                     ],
                 ],
@@ -5980,7 +5980,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     'foo' => [
                         'config' => [
                             'type' => 'input',
-                            'renderType' => 'inputDateTime'
+                            'renderType' => 'inputDateTime',
                         ],
                     ],
                 ],
@@ -5993,7 +5993,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     'foo' => [
                         'config' => [
                             'type' => 'input',
-                            'renderType' => 'inputDateTime'
+                            'renderType' => 'inputDateTime',
                         ],
                     ],
                 ],
@@ -6125,7 +6125,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'type' => 'inline',
                             'foreign_types' => [
                                 '0' => [
-                                    'showitem' => 'bar'
+                                    'showitem' => 'bar',
                                 ],
                             ],
                         ],
@@ -6142,7 +6142,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'overrideChildTca' => [
                                 'types' => [
                                     '0' => [
-                                        'showitem' => 'bar'
+                                        'showitem' => 'bar',
                                     ],
                                 ],
                             ],
@@ -6180,7 +6180,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'overrideChildTca' => [
                                 'types' => [
                                     '0' => [
-                                        'showitem' => 'baz'
+                                        'showitem' => 'baz',
                                     ],
                                 ],
                             ],
@@ -6234,12 +6234,12 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                 'columns' => [
                                     'aField' => [
                                         'config' => [
-                                            'default' => 'aDefault'
+                                            'default' => 'aDefault',
                                         ],
                                     ],
                                     'cField' => [
                                         'config' => [
-                                            'default' => 'aDefault'
+                                            'default' => 'aDefault',
                                         ],
                                     ],
                                 ],
@@ -6259,17 +6259,17 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                 'columns' => [
                                     'aField' => [
                                         'config' => [
-                                            'default' => 'aDefault'
+                                            'default' => 'aDefault',
                                         ],
                                     ],
                                     'bField' => [
                                         'config' => [
-                                            'default' => 'aDefault'
+                                            'default' => 'aDefault',
                                         ],
                                     ],
                                     'cField' => [
                                         'config' => [
-                                            'default' => 'aDefault'
+                                            'default' => 'aDefault',
                                         ],
                                     ],
                                 ],
@@ -6303,7 +6303,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                     'anExistingSettingInOverrideChildTca' => 'doesNotOverrideExistingOverrideChildTcaDefault',
                                     'appearance' => [
                                         'elementBrowserType' => 'file',
-                                        'elementBrowserAllowed' => 'jpg,png'
+                                        'elementBrowserAllowed' => 'jpg,png',
                                     ],
                                 ],
                             ],
@@ -6338,7 +6338,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                             'aNewSetting' => 'anotherNewValue',
                                             'appearance' => [
                                                 'elementBrowserType' => 'file',
-                                                'elementBrowserAllowed' => 'jpg,png'
+                                                'elementBrowserAllowed' => 'jpg,png',
                                             ],
                                         ],
                                     ],
@@ -6369,7 +6369,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                     'foreign_selector' => 'uid_local',
                                     'foreign_types' => [
                                         '0' => [
-                                            'showitem' => 'bar'
+                                            'showitem' => 'bar',
                                         ],
                                     ],
                                     'foreign_selector_fieldTcaOverride' => [
@@ -6379,7 +6379,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                             'aNewSetting' => 'anotherNewValue',
                                             'appearance' => [
                                                 'elementBrowserType' => 'file',
-                                                'elementBrowserAllowed' => 'jpg,png'
+                                                'elementBrowserAllowed' => 'jpg,png',
                                             ],
                                         ],
                                     ],
@@ -6406,7 +6406,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                     'overrideChildTca' => [
                                         'types' => [
                                             '0' => [
-                                                'showitem' => 'bar'
+                                                'showitem' => 'bar',
                                             ],
                                         ],
                                         'columns' => [
@@ -6417,18 +6417,18 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                                     'aNewSetting' => 'anotherNewValue',
                                                     'appearance' => [
                                                         'elementBrowserType' => 'file',
-                                                        'elementBrowserAllowed' => 'jpg,png'
+                                                        'elementBrowserAllowed' => 'jpg,png',
                                                     ],
                                                 ],
                                             ],
                                             'aField' => [
                                                 'config' => [
-                                                    'default' => 'overriddenValue'
+                                                    'default' => 'overriddenValue',
                                                 ],
                                             ],
                                             'bField' => [
                                                 'config' => [
-                                                    'default' => 'overriddenValue'
+                                                    'default' => 'overriddenValue',
                                                 ],
                                             ],
                                         ],
@@ -6459,7 +6459,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'overrideChildTca' => [
                                 'types' => [
                                     '0' => [
-                                        'showitem' => 'foo'
+                                        'showitem' => 'foo',
                                     ],
                                 ],
                                 'columns' => [
@@ -6468,7 +6468,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                         'config' => [
                                             'appearance' => [
                                                 'elementBrowserType' => 'file',
-                                                'elementBrowserAllowed' => 'jpg,png'
+                                                'elementBrowserAllowed' => 'jpg,png',
                                             ],
                                         ],
                                     ],
@@ -6484,13 +6484,13 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                 'config' => [
                                     'foreign_types' => [
                                         '0' => [
-                                            'showitem' => 'bar'
+                                            'showitem' => 'bar',
                                         ],
                                     ],
                                     'foreign_selector_fieldTcaOverride' => [
                                         'config' => [
                                             'appearance' => [
-                                                'elementBrowserAllowed' => 'jpg,png'
+                                                'elementBrowserAllowed' => 'jpg,png',
                                             ],
                                         ],
                                     ],
@@ -6511,7 +6511,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'overrideChildTca' => [
                                 'types' => [
                                     '0' => [
-                                        'showitem' => 'foo'
+                                        'showitem' => 'foo',
                                     ],
                                 ],
                                 'columns' => [
@@ -6520,7 +6520,7 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                         'config' => [
                                             'appearance' => [
                                                 'elementBrowserType' => 'file',
-                                                'elementBrowserAllowed' => 'jpg,png'
+                                                'elementBrowserAllowed' => 'jpg,png',
                                             ],
                                         ],
                                     ],
@@ -6537,14 +6537,14 @@ class TcaMigrationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                     'overrideChildTca' => [
                                         'types' => [
                                             '0' => [
-                                                'showitem' => 'bar'
+                                                'showitem' => 'bar',
                                             ],
                                         ],
                                         'columns' => [
                                             'uid_local' => [
                                                 'config' => [
                                                     'appearance' => [
-                                                        'elementBrowserAllowed' => 'jpg,png'
+                                                        'elementBrowserAllowed' => 'jpg,png',
                                                     ],
                                                 ],
                                             ],

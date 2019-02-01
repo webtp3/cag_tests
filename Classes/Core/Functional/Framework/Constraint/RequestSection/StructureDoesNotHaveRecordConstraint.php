@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace CAG\CagTests\Core\Functional\Framework\Constraint\RequestSection;
 
 /*
@@ -32,6 +33,7 @@ class StructureDoesNotHaveRecordConstraint extends AbstractStructureRecordConstr
         foreach ($responseSection->findStructures($this->recordIdentifier, $this->recordField) as $path => $structure) {
             if (empty($structure) || !is_array($structure)) {
                 $this->sectionFailures[$responseSection->getIdentifier()] = 'No records found in "' . $path . '"';
+
                 return false;
             }
 
@@ -53,6 +55,7 @@ class StructureDoesNotHaveRecordConstraint extends AbstractStructureRecordConstr
         }
 
         $this->sectionFailures[$responseSection->getIdentifier()] = 'Could not assert not having values for "' . $this->table . '.' . $this->field . '"' . LF . $matchingMessage;
+
         return false;
     }
 

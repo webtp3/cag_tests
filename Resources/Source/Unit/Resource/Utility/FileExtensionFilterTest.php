@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Resource\Utility;
 
 /*
@@ -77,7 +78,7 @@ class FileExtensionFilterTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         return [
             [null, null, null],
             ['', '', [0, '', null, false]],
-            [null, null, [0, '', null, false]]
+            [null, null, [0, '', null, false]],
         ];
     }
 
@@ -93,7 +94,7 @@ class FileExtensionFilterTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $this->parameters = [
             'allowedFileExtensions' => $allowed,
             'disallowedFileExtensions' => $disallowed,
-            'values' => $values
+            'values' => $values,
         ];
         $this->dataHandlerMock->expects($this->never())->method('deleteAction');
         $this->fileFactoryMock->expects($this->never())->method('getFileReferenceObject');
@@ -107,19 +108,19 @@ class FileExtensionFilterTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     {
         return [
             'Allowed extensions' => [
-                'ext1', 'EXT1', '', true
+                'ext1', 'EXT1', '', true,
             ],
             'Allowed extensions, lower and upper case mix' => [
-                'ext1', 'ext2, ExT1, Ext3', '', true
+                'ext1', 'ext2, ExT1, Ext3', '', true,
             ],
             'Disallowed extensions' => [
-                'ext1', '', 'EXT1', false
+                'ext1', '', 'EXT1', false,
             ],
             'Disallowed extensions, lower and upper case mix' => [
-                'ext1', '', 'ext2, ExT1, Ext3', false
+                'ext1', '', 'ext2, ExT1, Ext3', false,
             ],
             'Combine allowed / disallowed extensions' => [
-                'ext1', 'EXT1', 'EXT1', false
+                'ext1', 'EXT1', 'EXT1', false,
             ],
         ];
     }

@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 return [
     'ctrl' => [
         'title' => 'LLL:EXT:irre_tutorial/Resources/Private/Language/locallang_db.xml:tx_irretutorial_1ncsv_hotel',
@@ -21,7 +23,7 @@ return [
         'shadowColumnsForMovePlaceholders' => 'offers',
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid,l18n_parent,l18n_diffsource,hidden,title,offers'
+        'showRecordFieldList' => 'sys_language_uid,l18n_parent,l18n_diffsource,hidden,title,offers',
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -34,10 +36,10 @@ return [
                 'foreign_table_where' => 'ORDER BY sys_language.title',
                 'items' => [
                     ['LLL:EXT:lang/Resources/Private/Language/locallang_general.xml:LGL.allLanguages', -1],
-                    ['LLL:EXT:lang/Resources/Private/Language/locallang_general.xml:LGL.default_value', 0]
+                    ['LLL:EXT:lang/Resources/Private/Language/locallang_general.xml:LGL.default_value', 0],
                 ],
                 'default' => 0,
-            ]
+            ],
         ],
         'l18n_parent' => [
             'displayCond' => 'FIELD:sys_language_uid:>:0',
@@ -51,22 +53,22 @@ return [
                 ],
                 'foreign_table' => 'tx_irretutorial_1ncsv_hotel',
                 'foreign_table_where' => 'AND tx_irretutorial_1ncsv_hotel.pid=###CURRENT_PID### AND tx_irretutorial_1ncsv_hotel.sys_language_uid IN (-1,0)',
-                'default' => 0
-            ]
+                'default' => 0,
+            ],
         ],
         'l18n_diffsource' => [
             'config' => [
                 'type' => 'passthrough',
-                'default' => ''
-            ]
+                'default' => '',
+            ],
         ],
         'hidden' => [
             'exclude' => true,
             'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xml:LGL.hidden',
             'config' => [
                 'type' => 'check',
-                'default' => 0
-            ]
+                'default' => 0,
+            ],
         ],
         'title' => [
             'exclude' => true,
@@ -76,7 +78,7 @@ return [
                 'type' => 'input',
                 'size' => 30,
                 'eval' => 'required',
-            ]
+            ],
         ],
         'offers' => [
             'exclude' => true,
@@ -95,17 +97,16 @@ return [
                     'localizationMode' => 'select',
                     'localizeChildrenAtParentLocalization' => true,
                 ],
-                'default' => ''
-            ]
+                'default' => '',
+            ],
         ],
     ],
     'types' => [
-        '0' => ['showitem' =>
-            '--div--;LLL:EXT:irre_tutorial/Resources/Private/Language/locallang_db.xml:tabs.general, title, offers, ' .
-            '--div--;LLL:EXT:irre_tutorial/Resources/Private/Language/locallang_db.xml:tabs.visibility, sys_language_uid, l18n_parent, l18n_diffsource, hidden'
-        ]
+        '0' => ['showitem' => '--div--;LLL:EXT:irre_tutorial/Resources/Private/Language/locallang_db.xml:tabs.general, title, offers, ' .
+            '--div--;LLL:EXT:irre_tutorial/Resources/Private/Language/locallang_db.xml:tabs.visibility, sys_language_uid, l18n_parent, l18n_diffsource, hidden',
+        ],
     ],
     'palettes' => [
-        '1' => ['showitem' => '']
-    ]
+        '1' => ['showitem' => ''],
+    ],
 ];

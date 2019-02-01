@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\FormProtection;
 
 /*
@@ -32,6 +33,7 @@ class AbstractFormProtectionTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /////////////////////////////////////////
     // Tests concerning the basic functions
     /////////////////////////////////////////
+
     /**
      * @test
      */
@@ -84,6 +86,7 @@ class AbstractFormProtectionTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     ///////////////////////////////////
     // Tests concerning generateToken
     ///////////////////////////////////
+
     /**
      * @test
      */
@@ -137,6 +140,7 @@ class AbstractFormProtectionTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     ///////////////////////////////////
     // Tests concerning validateToken
     ///////////////////////////////////
+
     /**
      * @test
      */

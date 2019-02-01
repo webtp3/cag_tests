@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Cache;
 
 /*
@@ -322,8 +323,8 @@ class CacheManagerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $configuration = [
             $cacheIdentifier => [
                 'backend' => BackendFixture::class,
-                'options' => []
-            ]
+                'options' => [],
+            ],
         ];
         $defaultCacheConfiguration = [
             'frontend' => FrontendDefaultFixture::class,
@@ -348,8 +349,8 @@ class CacheManagerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $configuration = [
             $cacheIdentifier => [
                 'frontend' => FrontendFixture::class,
-                'options' => []
-            ]
+                'options' => [],
+            ],
         ];
         $defaultCacheConfiguration = [
             'backend' => BackendDefaultFixture::class,
@@ -439,7 +440,7 @@ class CacheManagerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $frontend = $this->prophesize(FrontendFixture::class);
 
         $caches = [
-            $cacheIdentifier => $frontend->reveal()
+            $cacheIdentifier => $frontend->reveal(),
         ];
         $manager->_set('caches', $caches);
 
@@ -450,7 +451,7 @@ class CacheManagerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'frontend' => $frontend,
                 'backend' => BackendFixture::class,
                 'options' => [],
-                'groups' => ['group1', 'group2']
+                'groups' => ['group1', 'group2'],
             ],
         ];
         $manager->setCacheConfigurations($configuration);
@@ -475,7 +476,7 @@ class CacheManagerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $frontend = $this->prophesize(FrontendFixture::class);
 
         $caches = [
-            $cacheIdentifier => $frontend->reveal()
+            $cacheIdentifier => $frontend->reveal(),
         ];
         $manager->_set('caches', $caches);
 
@@ -487,7 +488,7 @@ class CacheManagerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'frontend' => $frontend,
                 'backend' => BackendFixture::class,
                 'options' => [],
-                'groups' => ['group1', 'group2']
+                'groups' => ['group1', 'group2'],
             ],
         ];
         $manager->setCacheConfigurations($configuration);

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace OliverHader\IrreTutorial\Controller;
 
 /*
@@ -30,8 +31,6 @@ class QueueController extends AbstractController
      */
     protected $defaultViewObjectName = \TYPO3\CMS\Extbase\Mvc\View\JsonView::class;
 
-    /**
-     */
     public function indexAction()
     {
         $calls = [];
@@ -45,8 +44,6 @@ class QueueController extends AbstractController
         $this->forward('process');
     }
 
-    /**
-     */
     public function processAction()
     {
         $call = $this->getQueueService()->shift();
@@ -80,6 +77,7 @@ class QueueController extends AbstractController
         if (!$controller instanceof \TYPO3\CMS\Extbase\Mvc\Controller\ControllerInterface) {
             throw new \TYPO3\CMS\Extbase\Mvc\Exception\InvalidControllerException('Invalid controller "' . $request->getControllerObjectName() . '". The controller must implement the TYPO3\\CMS\\Extbase\\Mvc\\Controller\\ControllerInterface.', 1202921619);
         }
+
         return $controller;
     }
 }

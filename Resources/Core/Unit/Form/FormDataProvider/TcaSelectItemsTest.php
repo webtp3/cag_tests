@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Backend\Tests\Unit\Form\FormDataProvider;
 
 /*
@@ -377,7 +378,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 3 => [
                     'description' => 'aDescription',
                 ],
-            ]
+            ],
         ];
 
         $this->assertSame($expected, $this->subject->addData($input));
@@ -439,7 +440,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 1 => 'aValue',
                 2 => 'default-not-found',
                 3 => null,
-            ]
+            ],
         ];
 
         $this->assertSame($expected, $this->subject->addData($input));
@@ -461,7 +462,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         'columns' => [
                             'bar' => [
                                 'label' => 'barColumnTitle',
-                                'exclude' => 1
+                                'exclude' => 1,
                             ],
                             'baz' => [
                                 'label' => 'bazColumnTitle',
@@ -566,6 +567,8 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider addDataAddsExcludeFieldsWithSpecialExcludeDataProvider
+     * @param mixed $tca
+     * @param mixed $expectedItems
      */
     public function addDataAddsExcludeFieldsWithSpecialExclude($tca, $expectedItems)
     {
@@ -720,7 +723,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                     'anItemTitle',
                                     'anItemValue',
                                 ],
-                            ]
+                            ],
                         ],
                     ],
                 ],
@@ -791,7 +794,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                     'anItemTitle',
                                     'anItemValue',
                                 ],
-                            ]
+                            ],
                         ],
                     ],
                 ],
@@ -877,7 +880,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                     null,
                                     'EXPL_ALLOW',
                                 ],
-                            ]
+                            ],
                         ],
                     ],
                 ],
@@ -969,7 +972,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                     null,
                                     'EXPL_DENY',
                                 ],
-                            ]
+                            ],
                         ],
                     ],
                 ],
@@ -1094,7 +1097,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         2 => 'aDescription',
                     ],
                 ],
-            ]
+            ],
         ];
 
         $expectedItems = [
@@ -1160,13 +1163,13 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         ];
         $moduleLoaderProphecy->modules = [
             'aModule' => [
-                'iconIdentifier' => 'empty-empty'
-            ]
+                'iconIdentifier' => 'empty-empty',
+            ],
         ];
         $moduleLoaderProphecy->getLabelsForModule('aModule')->shouldBeCalled()->willReturn([
             'shortdescription' => 'aModuleTabLabel',
             'description' => 'aModuleTabDescription',
-            'title' => 'aModuleLabel'
+            'title' => 'aModuleLabel',
         ]);
 
         $expectedItems = [
@@ -1296,14 +1299,14 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'maxitems' => 99999,
                         ],
                     ],
-                ]
+                ],
             ],
             'pageTsConfig' => [
                 'TCEFORM.' => [
                     'aTable.' => [
                         'aField.' => [
                             'addItems.' => [
-                                '1' => 'addMe'
+                                '1' => 'addMe',
                             ],
                         ],
                     ],
@@ -1355,14 +1358,14 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'maxitems' => 99999,
                         ],
                     ],
-                ]
+                ],
             ],
             'pageTsConfig' => [
                 'TCEFORM.' => [
                     'aTable.' => [
                         'aField.' => [
                             'addItems.' => [
-                                'keep' => 'addMe'
+                                'keep' => 'addMe',
                             ],
                         ],
                     ],
@@ -1398,7 +1401,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [
                     ['fTable.title=\'rowFieldValue\''],
                     [' 1=1'],
-                    ['`pages.uid` = `fTable.pid`']
+                    ['`pages.uid` = `fTable.pid`'],
                 ],
                 [],
             ],
@@ -1407,18 +1410,18 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [
                     ['fTable.title=\'rowFieldFlexFormValue\''],
                     [' 1=1'],
-                    ['`pages.uid` = `fTable.pid`']
+                    ['`pages.uid` = `fTable.pid`'],
                 ],
                 [
                     'databaseRow' => [
                         'rowFieldThree' => [
-                            0 => 'rowFieldThreeValue'
-                        ]
+                            0 => 'rowFieldThreeValue',
+                        ],
                     ],
                     'flexParentDatabaseRow' => [
                         'rowFieldFlexForm' => [
-                            0 => 'rowFieldFlexFormValue'
-                        ]
+                            0 => 'rowFieldFlexFormValue',
+                        ],
                     ],
                 ],
             ],
@@ -1427,7 +1430,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [
                     ['fTable.title=\'rowFieldValue\''],
                     [' 1=1'],
-                    ['`pages.uid` = `fTable.pid`']
+                    ['`pages.uid` = `fTable.pid`'],
                 ],
                 [],
             ],
@@ -1436,13 +1439,13 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [
                     ['fTable.title=\'rowFieldThreeValue\''],
                     [' 1=1'],
-                    ['`pages.uid` = `fTable.pid`']
+                    ['`pages.uid` = `fTable.pid`'],
                 ],
                 [
                     'databaseRow' => [
                         'rowFieldThree' => [
-                            0 => 'rowFieldThreeValue'
-                        ]
+                            0 => 'rowFieldThreeValue',
+                        ],
                     ],
                 ],
             ],
@@ -1451,7 +1454,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [
                     ['fTable.title=\'rowFieldValue\' AND fTable.pid=\'rowFieldTwoValue\''],
                     [' 1=1'],
-                    ['`pages.uid` = `fTable.pid`']
+                    ['`pages.uid` = `fTable.pid`'],
                 ],
                 [],
             ],
@@ -1460,7 +1463,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [
                     ['fTable.uid=43'],
                     [' 1=1'],
-                    ['`pages.uid` = `fTable.pid`']
+                    ['`pages.uid` = `fTable.pid`'],
                 ],
                 [],
             ],
@@ -1469,7 +1472,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [
                     ['fTable.uid=77'],
                     [' 1=1'],
-                    ['`pages.uid` = `fTable.pid`']
+                    ['`pages.uid` = `fTable.pid`'],
                 ],
                 [
                     'flexParentDatabaseRow' => [
@@ -1482,7 +1485,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [
                     ['fTable.uid=431'],
                     [' 1=1'],
-                    ['`pages.uid` = `fTable.pid`']
+                    ['`pages.uid` = `fTable.pid`'],
                 ],
                 [
                     'effectivePid' => '431string',
@@ -1493,7 +1496,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [
                     ['fTable.uid=42'],
                     [' 1=1'],
-                    ['`pages.uid` = `fTable.pid`']
+                    ['`pages.uid` = `fTable.pid`'],
                 ],
                 [],
             ],
@@ -1502,7 +1505,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [
                     ['fTable.uid=421'],
                     [' 1=1'],
-                    ['`pages.uid` = `fTable.pid`']
+                    ['`pages.uid` = `fTable.pid`'],
                 ],
                 [
                     'databaseRow' => [
@@ -1515,7 +1518,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [
                     ['fTable.uid=44'],
                     [' 1=1'],
-                    ['`pages.uid` = `fTable.pid`']
+                    ['`pages.uid` = `fTable.pid`'],
                 ],
                 [],
             ],
@@ -1524,7 +1527,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [
                     ['fTable.uid=441'],
                     [' 1=1'],
-                    ['`pages.uid` = `fTable.pid`']
+                    ['`pages.uid` = `fTable.pid`'],
                 ],
                 [
                     'rootline' => [
@@ -1539,7 +1542,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [
                     ['fTable.uid=45'],
                     [' 1=1'],
-                    ['`pages.uid` = `fTable.pid`']
+                    ['`pages.uid` = `fTable.pid`'],
                 ],
                 [
                     'pageTsConfig' => [
@@ -1558,14 +1561,14 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [
                     ['fTable.uid=451'],
                     [' 1=1'],
-                    ['`pages.uid` = `fTable.pid`']
+                    ['`pages.uid` = `fTable.pid`'],
                 ],
                 [
                     'pageTsConfig' => [
                         'TCEFORM.' => [
                             'aTable.' => [
                                 'aField.' => [
-                                    'PAGE_TSCONFIG_ID' => '451string'
+                                    'PAGE_TSCONFIG_ID' => '451string',
                                 ],
                             ],
                         ],
@@ -1577,7 +1580,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [
                     ['fTable.uid=\'46\''],
                     [' 1=1'],
-                    ['`pages.uid` = `fTable.pid`']
+                    ['`pages.uid` = `fTable.pid`'],
                 ],
                 [
                     'pageTsConfig' => [
@@ -1596,7 +1599,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [
                     ['fTable.uid IN (47,48)'],
                     [' 1=1'],
-                    ['`pages.uid` = `fTable.pid`']
+                    ['`pages.uid` = `fTable.pid`'],
                 ],
                 [
                     'pageTsConfig' => [
@@ -1615,7 +1618,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [
                     ['fTable.uid IN (471,481)'],
                     [' 1=1'],
-                    ['`pages.uid` = `fTable.pid`']
+                    ['`pages.uid` = `fTable.pid`'],
                 ],
                 [
                     'pageTsConfig' => [
@@ -1634,7 +1637,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [
                     ['fTable.uid=123'],
                     [' 1=1'],
-                    ['`pages.uid` = `fTable.pid`']
+                    ['`pages.uid` = `fTable.pid`'],
                 ],
                 [
                     'pageTsConfig' => [
@@ -1649,7 +1652,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [
                     ['fTable.uid IN (123,124)'],
                     [' 1=1'],
-                    ['`pages.uid` = `fTable.pid`']
+                    ['`pages.uid` = `fTable.pid`'],
                 ],
                 [
                     'pageTsConfig' => [
@@ -1664,7 +1667,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [
                     ['fTable.uid=\'aString\''],
                     [' 1=1'],
-                    ['`pages.uid` = `fTable.pid`']
+                    ['`pages.uid` = `fTable.pid`'],
                 ],
                 [
                     'pageTsConfig' => [
@@ -1680,6 +1683,8 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider addDataReplacesMarkersInForeignTableClauseDataProvider
+     * @param mixed $foreignTableWhere
+     * @param mixed $expectedWhere
      */
     public function addDataReplacesMarkersInForeignTableClause($foreignTableWhere, $expectedWhere, array $inputOverride)
     {
@@ -1701,7 +1706,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'foreign_table_where' => $foreignTableWhere,
                         ],
                     ],
-                ]
+                ],
             ],
             'rootline' => [
                 2 => [
@@ -1768,7 +1773,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'foreign_table' => 'fTable',
                         ],
                     ],
-                ]
+                ],
             ],
         ];
 
@@ -1800,7 +1805,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                 LIMIT 1,2',
                         ],
                     ],
-                ]
+                ],
             ],
             'rootline' => [],
         ];
@@ -1864,7 +1869,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'maxitems' => 99999,
                         ],
                     ],
-                ]
+                ],
             ],
             'rootline' => [],
         ];
@@ -1942,7 +1947,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'maxitems' => 99999,
                         ],
                     ],
-                ]
+                ],
             ],
             'rootline' => [],
         ];
@@ -1982,6 +1987,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             if ($counter >= 3) {
                 return false;
             }
+
             return [
                 'uid' => $counter,
                 'aValue' => 'bar,',
@@ -2029,7 +2035,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'maxitems' => 99999,
                         ],
                     ],
-                ]
+                ],
             ],
             'rootline' => [],
         ];
@@ -2041,7 +2047,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'selicon_field' => 'icon',
                 'selicon_field_path' => 'uploads/media',
             ],
-            'columns' =>[
+            'columns' => [
                 'icon' => [],
             ],
         ];
@@ -2129,7 +2135,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'maxitems' => 99999,
                         ],
                     ],
-                ]
+                ],
             ],
             'pageTsConfig' => [
                 'TCEFORM.' => [
@@ -2188,7 +2194,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'maxitems' => 99999,
                         ],
                     ],
-                ]
+                ],
             ],
             'pageTsConfig' => [
                 'TCEFORM.' => [
@@ -2244,7 +2250,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'maxitems' => 99999,
                         ],
                     ],
-                ]
+                ],
             ],
             'pageTsConfig' => [
                 'TCEFORM.' => [
@@ -2299,7 +2305,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     {
         $input = [
             'databaseRow' => [
-                'aField' => ''
+                'aField' => '',
             ],
             'tableName' => 'aTable',
             'processedTca' => [
@@ -2329,7 +2335,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'maxitems' => 99999,
                         ],
                     ],
-                ]
+                ],
             ],
             'pageTsConfig' => [
                 'TCEFORM.' => [
@@ -2361,7 +2367,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     {
         $input = [
             'databaseRow' => [
-                'aField' => ''
+                'aField' => '',
             ],
             'tableName' => 'aTable',
             'processedTca' => [
@@ -2391,7 +2397,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'maxitems' => 99999,
                         ],
                     ],
-                ]
+                ],
             ],
             'pageTsConfig' => [
                 'TCEFORM.' => [
@@ -2422,7 +2428,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     {
         $input = [
             'databaseRow' => [
-                'aField' => ''
+                'aField' => '',
             ],
             'tableName' => 'aTable',
             'processedTca' => [
@@ -2446,7 +2452,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'maxitems' => 99999,
                         ],
                     ],
-                ]
+                ],
             ],
             'pageTsConfig' => [
                 'TCEFORM.' => [
@@ -2454,8 +2460,8 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         'aField.' => [
                             'removeItems' => 'remove,add',
                             'addItems.' => [
-                                'add' => 'addMe'
-                            ]
+                                'add' => 'addMe',
+                            ],
                         ],
                     ],
                 ],
@@ -2481,7 +2487,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     {
         $input = [
             'databaseRow' => [
-                'aField' => 'aValue,remove'
+                'aField' => 'aValue,remove',
             ],
             'tableName' => 'aTable',
             'processedTca' => [
@@ -2508,7 +2514,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'maxitems' => 99999,
                         ],
                     ],
-                ]
+                ],
             ],
         ];
 
@@ -2541,7 +2547,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     {
         $input = [
             'databaseRow' => [
-                'aField' => 'keep,remove'
+                'aField' => 'keep,remove',
             ],
             'tableName' => 'aTable',
             'processedTca' => [
@@ -2566,7 +2572,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'maxitems' => 99999,
                         ],
                     ],
-                ]
+                ],
             ],
         ];
 
@@ -2595,7 +2601,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     {
         $input = [
             'databaseRow' => [
-                'doktype' => 'keep'
+                'doktype' => 'keep',
             ],
             'tableName' => 'pages',
             'processedTca' => [
@@ -2698,7 +2704,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $input = [
             'tableName' => 'aTable',
             'databaseRow' => [
-                'aField' => 'aValue'
+                'aField' => 'aValue',
             ],
             'processedTca' => [
                 'columns' => [
@@ -2764,7 +2770,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'itemsProcFunc.' => [
                                 'itemParamKey' => 'itemParamValue',
                             ],
-                        ]
+                        ],
                     ],
                 ],
             ],
@@ -2834,7 +2840,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'itemsProcFunc.' => [
                                 'itemParamKey' => 'itemParamValue',
                             ],
-                        ]
+                        ],
                     ],
                 ],
             ],
@@ -2913,7 +2919,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'altLabels.' => [
                                 'aValue' => 'labelOverride',
                             ],
-                        ]
+                        ],
                     ],
                 ],
             ],
@@ -2977,7 +2983,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 
         $relationHandlerUids = [
             23,
-            24
+            24,
         ];
 
         $relationHandlerProphecy->start(2, 'foreignTable', 'aTable_foreignTable_mm', 42, 'aTable', $fieldConfig)->shouldBeCalled();
@@ -3031,7 +3037,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 
         $relationHandlerUids = [
             23,
-            24
+            24,
         ];
 
         $relationHandlerProphecy->start('22,23,24,25', 'foreignTable', '', 42, 'aTable', $fieldConfig)->shouldBeCalled();
@@ -3128,7 +3134,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $expected = $input;
         $expected['databaseRow']['aField'] = [
             'foo',
-            'bar'
+            'bar',
         ];
 
         $this->assertEquals($expected, $this->subject->addData($input));
@@ -3337,7 +3343,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'foo',
             'foo',
             '2',
-            'bar'
+            'bar',
         ];
 
         $this->assertEquals($expected, $this->subject->addData($input));
@@ -3420,11 +3426,11 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     ],
                 ],
                 [
-                    'MM' => ''
+                    'MM' => '',
                 ],
                 [
-                    24, 35
-                ]
+                    24, 35,
+                ],
             ],
             'Relation with MM table and item array in list but no new status' => [
                 [
@@ -3449,7 +3455,7 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     ],
                 ],
                 [],
-                []
+                [],
             ],
             'Relation with MM table and maxitems = 1 processes field value (item count)' => [
                 [
@@ -3476,8 +3482,8 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 ],
                 [],
                 [
-                    24
-                ]
+                    24,
+                ],
             ],
             'Relation with MM table and maxitems = 1 results in empty array if no items are set' => [
                 [
@@ -3503,8 +3509,8 @@ class TcaSelectItemsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     ],
                 ],
                 [],
-                []
-            ]
+                [],
+            ],
         ];
     }
 

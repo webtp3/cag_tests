@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\ViewHelpers;
 
 /*
@@ -14,13 +15,13 @@ namespace TYPO3\CMS\Core\Tests\Unit\ViewHelpers;
  * The TYPO3 project - inspiring people to share!
  */
 
+use CAG\CagTests\Fluid\Unit\ViewHelpers\ViewHelperBaseTestcase;
 use Prophecy\Argument;
 use TYPO3\CMS\Core\Imaging\Icon;
 use TYPO3\CMS\Core\Imaging\IconFactory;
 use TYPO3\CMS\Core\Type\Icon\IconState;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\ViewHelpers\IconViewHelper;
-use CAG\CagTests\Fluid\Unit\ViewHelpers\ViewHelperBaseTestcase;
 
 /**
  * Test case
@@ -54,7 +55,7 @@ class IconViewHelperTest extends ViewHelperBaseTestcase
 
         $this->viewHelper->setArguments([
             'identifier' => 'myIdentifier',
-            'size' => Icon::SIZE_SMALL
+            'size' => Icon::SIZE_SMALL,
         ]);
 
         $this->assertSame('htmlFoo', $this->viewHelper->render());
@@ -74,7 +75,7 @@ class IconViewHelperTest extends ViewHelperBaseTestcase
 
         $this->viewHelper->setArguments([
             'identifier' => 'myIdentifier',
-            'size' => Icon::SIZE_LARGE
+            'size' => Icon::SIZE_LARGE,
         ]);
 
         $this->assertSame('htmlFoo', $this->viewHelper->render());
@@ -96,7 +97,7 @@ class IconViewHelperTest extends ViewHelperBaseTestcase
             'identifier' => 'myIdentifier',
             'size' => Icon::SIZE_SMALL,
             'overlay' => null,
-            'state' => IconState::cast(IconState::STATE_DISABLED)
+            'state' => IconState::cast(IconState::STATE_DISABLED),
         ]);
 
         $this->assertSame('htmlFoo', $this->viewHelper->render());
@@ -117,7 +118,7 @@ class IconViewHelperTest extends ViewHelperBaseTestcase
         $this->viewHelper->setArguments([
             'identifier' => 'myIdentifier',
             'size' => Icon::SIZE_LARGE,
-            'overlay' => 'overlayString'
+            'overlay' => 'overlayString',
         ]);
         $this->assertSame('htmlFoo', $this->viewHelper->render());
     }

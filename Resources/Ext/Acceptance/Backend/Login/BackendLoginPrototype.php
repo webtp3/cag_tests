@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Acceptance\Backend\Login;
 
 /*
@@ -36,11 +37,10 @@ class BackendLoginPrototype
         $I->waitForElement('.scaffold-content iframe', 30);
         $I->waitForElement('#extdd-1');
         $I->see(getenv('HOST_TITLE'));
-        #todo  logout again
+        //todo  logout again
       //  $I->seeCurrentURLEquals('/typo3/index.php');
-
-
     }
+
 //    /**
 //     * Call backend login page and verify login button changes color on mouse over,
 //     * verifies page is available and CSS is properly loaded.

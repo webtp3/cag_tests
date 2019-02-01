@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Functional\DataHandling;
 
 /*
@@ -14,15 +15,15 @@ namespace TYPO3\CMS\Core\Tests\Functional\DataHandling;
  * The TYPO3 project - inspiring people to share!
  */
 
-use TYPO3\CMS\Core\Core\Bootstrap;
-use TYPO3\CMS\Core\Database\Connection;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use CAG\CagTests\Core\Functional\Framework\Constraint\RequestSection\DoesNotHaveRecordConstraint;
 use CAG\CagTests\Core\Functional\Framework\Constraint\RequestSection\HasRecordConstraint;
 use CAG\CagTests\Core\Functional\Framework\Constraint\RequestSection\StructureDoesNotHaveRecordConstraint;
 use CAG\CagTests\Core\Functional\Framework\Constraint\RequestSection\StructureHasRecordConstraint;
 use CAG\CagTests\Core\Functional\Framework\DataHandling\ActionService;
 use CAG\CagTests\Core\Functional\FunctionalTestCase;
+use TYPO3\CMS\Core\Core\Bootstrap;
+use TYPO3\CMS\Core\Database\Connection;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * Functional test for the DataHandler

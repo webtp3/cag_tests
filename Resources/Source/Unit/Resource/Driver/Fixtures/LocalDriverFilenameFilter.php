@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Resource\Driver\Fixtures;
 
 /*
@@ -34,6 +35,7 @@ class LocalDriverFilenameFilter
         if ($itemName === 'fileA' || $itemName === 'folderA/') {
             return -1;
         }
+
         return true;
     }
 }

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Functional\Log\Writer;
 
 /*
@@ -36,7 +37,7 @@ class DatabaseWriterTest extends \CAG\CagTests\Core\Functional\FunctionalTestCas
             'component' => 'aComponent',
             'level' => LogLevel::DEBUG,
             'message' => 'aMessage',
-            'data' => ''
+            'data' => '',
         ];
         $logRecord = new LogRecord(
             $logRecordData['component'],

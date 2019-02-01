@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Cache\Backend;
 
 /*
@@ -280,6 +281,7 @@ class PdoBackendTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $backend->setCache($mockCache);
         $backend->setDataSourceName('sqlite::memory:');
         $backend->initializeObject();
+
         return $backend;
     }
 }

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Backend\Tests\Unit\Utility\Fixtures;
 
 /*
@@ -20,6 +21,9 @@ namespace TYPO3\CMS\Backend\Tests\Unit\Utility\Fixtures;
 class LabelFromItemListMergedReturnsCorrectFieldsFixture extends \TYPO3\CMS\Backend\Utility\BackendUtility
 {
     /**
+     * @param mixed $id
+     * @param null|mixed $rootLine
+     * @param mixed $returnPartArray
      * @return array
      */
     public static function getPagesTSconfig($id, $rootLine = null, $returnPartArray = false)

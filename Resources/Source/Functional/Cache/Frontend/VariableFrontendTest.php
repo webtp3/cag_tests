@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Functional\Cache\Frontend;
 
 /*
@@ -41,7 +42,7 @@ class VariableFrontendTest extends \CAG\CagTests\Core\Functional\FunctionalTestC
                 $arrayToSerialize,
                 'cache_pages',
                 $arrayToSerialize,
-            ]
+            ],
         ];
     }
 

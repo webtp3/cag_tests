@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Backend\Tests\Unit\Form\FormDataProvider;
 
 /*
@@ -298,7 +299,7 @@ class TcaFlexPrepareTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         ];
         $expected['databaseRow']['aField'] = [
             'data' => [],
-            'meta' => []
+            'meta' => [],
         ];
 
         $this->assertEquals($expected, $this->subject->addData($input));

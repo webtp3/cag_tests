@@ -54,7 +54,7 @@ class AuthenticationServiceTest extends \CAG\CagTests\Core\Functional\Functional
         ];
         $expected = [
             'username' => 'test1',
-            'deleted' => 0
+            'deleted' => 0,
         ];
         $result = $this->subject->getUser();
         $this->assertArraySubset($expected, $result);

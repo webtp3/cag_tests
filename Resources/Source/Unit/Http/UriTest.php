@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Http;
 
 /*
@@ -109,20 +110,22 @@ class UriTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             (string)$new
         );
     }
+
     /**
      * @return array
      */
     public function validPortsDataProvider()
     {
         return [
-            'int'    => [3000],
-            'string' => ['3000']
+            'int' => [3000],
+            'string' => ['3000'],
         ];
     }
 
     /**
      * @dataProvider validPortsDataProvider
      * @test
+     * @param mixed $port
      */
     public function withPortReturnsNewInstanceWithProvidedPort($port)
     {
@@ -142,16 +145,17 @@ class UriTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     public function invalidPortsDataProviderType()
     {
         return [
-            'false'     => [false],
-            'string'    => ['string'],
-            'array'     => [[3000]],
-            'object'    => [(object)[3000]],
+            'false' => [false],
+            'string' => ['string'],
+            'array' => [[3000]],
+            'object' => [(object)[3000]],
         ];
     }
 
     /**
      * @dataProvider invalidPortsDataProviderType
      * @test
+     * @param mixed $port
      */
     public function withPortRaisesExceptionForInvalidPortsByType($port)
     {
@@ -167,9 +171,9 @@ class UriTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     public function invalidPortsDataProviderRange()
     {
         return [
-            'zero'      => [0],
+            'zero' => [0],
             'too-small' => [-1],
-            'too-big'   => [65536],
+            'too-big' => [65536],
         ];
     }
 
@@ -191,6 +195,7 @@ class UriTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @dataProvider invalidPortsDataProviderRange
      * @test
+     * @param mixed $port
      */
     public function withPortRaisesExceptionForInvalidPortsByRange($port)
     {
@@ -218,17 +223,18 @@ class UriTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     public function invalidPathsDataProvider()
     {
         return [
-            'null'     => [null],
-            'true'     => [true],
-            'false'    => [false],
-            'array'    => [['/bar/baz']],
-            'object'   => [(object)['/bar/baz']],
+            'null' => [null],
+            'true' => [true],
+            'false' => [false],
+            'array' => [['/bar/baz']],
+            'object' => [(object)['/bar/baz']],
         ];
     }
 
     /**
      * @dataProvider invalidPathsDataProvider
      * @test
+     * @param mixed $path
      */
     public function withPathRaisesExceptionForInvalidPaths($path)
     {
@@ -278,17 +284,18 @@ class UriTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     public function invalidQueryStringsDataProvider()
     {
         return [
-            'null'     => [null],
-            'true'     => [true],
-            'false'    => [false],
-            'array'    => [['baz=bat']],
-            'object'   => [(object)['baz=bat']],
+            'null' => [null],
+            'true' => [true],
+            'false' => [false],
+            'array' => [['baz=bat']],
+            'object' => [(object)['baz=bat']],
         ];
     }
 
     /**
      * @dataProvider invalidQueryStringsDataProvider
      * @test
+     * @param mixed $query
      */
     public function withQueryRaisesExceptionForInvalidQueryStringsByType($query)
     {
@@ -327,9 +334,9 @@ class UriTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     public function authorityInfoDataProvider()
     {
         return [
-            'host-only'      => ['http://foo.com/bar', 'foo.com'],
-            'host-port'      => ['http://foo.com:3000/bar', 'foo.com:3000'],
-            'user-host'      => ['http://me@foo.com/bar', 'me@foo.com'],
+            'host-only' => ['http://foo.com/bar', 'foo.com'],
+            'host-port' => ['http://foo.com:3000/bar', 'foo.com:3000'],
+            'user-host' => ['http://me@foo.com/bar', 'me@foo.com'],
             'user-host-port' => ['http://me@foo.com:3000/bar', 'me@foo.com:3000'],
         ];
     }
@@ -337,6 +344,8 @@ class UriTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @dataProvider authorityInfoDataProvider
      * @test
+     * @param mixed $url
+     * @param mixed $expected
      */
     public function getAuthorityReturnsExpectedValues($url, $expected)
     {
@@ -397,18 +406,19 @@ class UriTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     public function invalidConstructorUrisDataProvider()
     {
         return [
-            'null'   => [null],
-            'true'   => [true],
-            'false'  => [false],
-            'int'    => [1],
-            'float'  => [1.1],
-            'array'  => [['http://example.com/']],
+            'null' => [null],
+            'true' => [true],
+            'false' => [false],
+            'int' => [1],
+            'float' => [1.1],
+            'array' => [['http://example.com/']],
             'object' => [(object)['uri' => 'http://example.com/']],
         ];
     }
 
     /**
      * @dataProvider invalidConstructorUrisDataProvider
+     * @param mixed $uri
      */
     public function constructorRaisesExceptionForNonStringURI($uri)
     {
@@ -442,16 +452,17 @@ class UriTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     {
         return [
             'mailto' => ['mailto'],
-            'ftp'    => ['ftp'],
+            'ftp' => ['ftp'],
             'telnet' => ['telnet'],
-            'ssh'    => ['ssh'],
-            'git'    => ['git'],
+            'ssh' => ['ssh'],
+            'git' => ['git'],
         ];
     }
 
     /**
      * @dataProvider invalidSchemesDataProvider
      * @test
+     * @param mixed $scheme
      */
     public function constructWithUnsupportedSchemeRaisesAnException($scheme)
     {
@@ -463,6 +474,7 @@ class UriTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @dataProvider invalidSchemesDataProvider
      * @test
+     * @param mixed $scheme
      */
     public function withSchemeUsingUnsupportedSchemeRaisesAnException($scheme)
     {
@@ -518,7 +530,7 @@ class UriTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     public function standardSchemePortCombinationsDataProvider()
     {
         return [
-            'http'  => ['http', 80],
+            'http' => ['http', 80],
             'https' => ['https', 443],
         ];
     }
@@ -526,6 +538,8 @@ class UriTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @dataProvider standardSchemePortCombinationsDataProvider
      * @test
+     * @param mixed $scheme
+     * @param mixed $port
      */
     public function getAuthorityOmitsPortForStandardSchemePortCombinations($scheme, $port)
     {
@@ -562,17 +576,19 @@ class UriTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     public function queryStringsForEncodingDataProvider()
     {
         return [
-            'key-only'        => ['k^ey', 'k%5Eey'],
-            'key-value'       => ['k^ey=valu`', 'k%5Eey=valu%60'],
-            'array-key-only'  => ['key[]', 'key%5B%5D'],
+            'key-only' => ['k^ey', 'k%5Eey'],
+            'key-value' => ['k^ey=valu`', 'k%5Eey=valu%60'],
+            'array-key-only' => ['key[]', 'key%5B%5D'],
             'array-key-value' => ['key[]=valu`', 'key%5B%5D=valu%60'],
-            'complex'         => ['k^ey&key[]=valu`&f<>=`bar', 'k%5Eey&key%5B%5D=valu%60&f%3C%3E=%60bar'],
+            'complex' => ['k^ey&key[]=valu`&f<>=`bar', 'k%5Eey&key%5B%5D=valu%60&f%3C%3E=%60bar'],
         ];
     }
 
     /**
      * @dataProvider queryStringsForEncodingDataProvider
      * @test
+     * @param mixed $query
+     * @param mixed $expected
      */
     public function getQueryIsProperlyEncoded($query, $expected)
     {
@@ -583,6 +599,8 @@ class UriTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @dataProvider queryStringsForEncodingDataProvider
      * @test
+     * @param mixed $query
+     * @param mixed $expected
      */
     public function getQueryIsNotDoubleEncoded($query, $expected)
     {

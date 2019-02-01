@@ -1,6 +1,5 @@
 <?php
 declare(strict_types = 1);
-
 namespace TYPO3\CMS\Core\Tests\Unit\Database\Platform;
 
 /*
@@ -16,13 +15,13 @@ namespace TYPO3\CMS\Core\Tests\Unit\Database\Platform;
  * The TYPO3 project - inspiring people to share!
  */
 
+use CAG\CagTests\Core\Unit\UnitTestCase;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Platforms\MySqlPlatform;
 use Doctrine\DBAL\Platforms\PostgreSqlPlatform;
 use Doctrine\DBAL\Platforms\SqlitePlatform;
 use Doctrine\DBAL\Platforms\SQLServerPlatform;
 use TYPO3\CMS\Core\Database\Platform\PlatformInformation;
-use CAG\CagTests\Core\Unit\UnitTestCase;
 
 /**
  * Test case

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Http;
 
 /*
@@ -46,16 +47,16 @@ class UploadedFileTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     public function invalidStreamsDataProvider()
     {
         return [
-            'null'   => [null],
-            'true'   => [true],
-            'false'  => [false],
-            'int'    => [1],
-            'float'  => [1.1],
+            'null' => [null],
+            'true' => [true],
+            'false' => [false],
+            'int' => [1],
+            'float' => [1.1],
             /* Have not figured out a valid way to test an invalid path yet; null byte injection
              * appears to get caught by fopen()
             'invalid-path' => [ ('WIN' === strtoupper(substr(PHP_OS, 0, 3))) ? '[:]' : 'foo' . chr(0) ],
              */
-            'array'  => [['filename']],
+            'array' => [['filename']],
             'object' => [(object)['filename']],
         ];
     }
@@ -63,6 +64,7 @@ class UploadedFileTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @dataProvider invalidStreamsDataProvider
      * @test
+     * @param mixed $streamOrFile
      */
     public function constructorRaisesExceptionOnInvalidStreamOrFile($streamOrFile)
     {
@@ -76,12 +78,12 @@ class UploadedFileTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     public function invalidSizesDataProvider()
     {
         return [
-            'null'   => [null],
-            'true'   => [true],
-            'false'  => [false],
-            'float'  => [1.1],
+            'null' => [null],
+            'true' => [true],
+            'false' => [false],
+            'float' => [1.1],
             'string' => ['1'],
-            'array'  => [[1]],
+            'array' => [[1]],
             'object' => [(object)[1]],
         ];
     }
@@ -89,6 +91,7 @@ class UploadedFileTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @dataProvider invalidSizesDataProvider
      * @test
+     * @param mixed $size
      */
     public function constructorRaisesExceptionOnInvalidSize($size)
     {
@@ -103,21 +106,22 @@ class UploadedFileTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     public function invalidErrorStatusesDataProvider()
     {
         return [
-            'null'     => [null],
-            'true'     => [true],
-            'false'    => [false],
-            'float'    => [1.1],
-            'string'   => ['1'],
-            'array'    => [[1]],
-            'object'   => [(object)[1]],
+            'null' => [null],
+            'true' => [true],
+            'false' => [false],
+            'float' => [1.1],
+            'string' => ['1'],
+            'array' => [[1]],
+            'object' => [(object)[1]],
             'negative' => [-1],
-            'too-big'  => [9],
+            'too-big' => [9],
         ];
     }
 
     /**
      * @dataProvider invalidErrorStatusesDataProvider
      * @test
+     * @param mixed $status
      */
     public function constructorRaisesExceptionOnInvalidErrorStatus($status)
     {
@@ -132,11 +136,11 @@ class UploadedFileTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     public function invalidFilenamesAndMediaTypesDataProvider()
     {
         return [
-            'true'   => [true],
-            'false'  => [false],
-            'int'    => [1],
-            'float'  => [1.1],
-            'array'  => [['string']],
+            'true' => [true],
+            'false' => [false],
+            'int' => [1],
+            'float' => [1.1],
+            'array' => [['string']],
             'object' => [(object)['string']],
         ];
     }
@@ -144,6 +148,7 @@ class UploadedFileTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @dataProvider invalidFilenamesAndMediaTypesDataProvider
      * @test
+     * @param mixed $filename
      */
     public function constructorRaisesExceptionOnInvalidClientFilename($filename)
     {
@@ -155,6 +160,7 @@ class UploadedFileTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @dataProvider invalidFilenamesAndMediaTypesDataProvider
      * @test
+     * @param mixed $mediaType
      */
     public function constructorRaisesExceptionOnInvalidClientMediaType($mediaType)
     {
@@ -219,13 +225,13 @@ class UploadedFileTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     public function invalidMovePathsDataProvider()
     {
         return [
-            'null'   => [null],
-            'true'   => [true],
-            'false'  => [false],
-            'int'    => [1],
-            'float'  => [1.1],
-            'empty'  => [''],
-            'array'  => [['filename']],
+            'null' => [null],
+            'true' => [true],
+            'false' => [false],
+            'int' => [1],
+            'float' => [1.1],
+            'empty' => [''],
+            'array' => [['filename']],
             'object' => [(object)['filename']],
         ];
     }
@@ -233,6 +239,7 @@ class UploadedFileTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @dataProvider invalidMovePathsDataProvider
      * @test
+     * @param mixed $path
      */
     public function moveToRaisesExceptionForInvalidPath($path)
     {

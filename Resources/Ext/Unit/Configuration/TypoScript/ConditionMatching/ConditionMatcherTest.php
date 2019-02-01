@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Backend\Tests\Unit\Configuration\TypoScript\ConditionMatching;
 
 /*
@@ -68,7 +69,7 @@ class ConditionMatcherTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $this->rootline = [
             2 => ['uid' => 121, 'pid' => 111],
             1 => ['uid' => 111, 'pid' => 101],
-            0 => ['uid' => 101, 'pid' => 0]
+            0 => ['uid' => 101, 'pid' => 0],
         ];
         $GLOBALS['BE_USER'] = $this->getMockBuilder(BackendUserAuthentication::class)
             ->setMethods(['dummy'])
@@ -521,8 +522,8 @@ class ConditionMatcherTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'uid' => 'NEW4adc6021e37e7',
                 'pid' => 121,
                 'cmd' => 'new',
-                'deleteAccess' => 0
-            ]
+                'deleteAccess' => 0,
+            ],
         ];
         $GLOBALS['SOBE']->data = [];
         $this->matchCondition->setRootline($this->rootline);
@@ -545,15 +546,15 @@ class ConditionMatcherTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'uid' => 999,
                 'pid' => 121,
                 'cmd' => 'edit',
-                'deleteAccess' => 1
-            ]
+                'deleteAccess' => 1,
+            ],
         ];
         $GLOBALS['SOBE']->data = [
             'pages' => [
                 'NEW4adc6021e37e7' => [
-                    'pid' => 121
-                ]
-            ]
+                    'pid' => 121,
+                ],
+            ],
         ];
         $this->matchCondition->setRootline($this->rootline);
         $this->matchCondition->setPageId(121);
@@ -622,8 +623,8 @@ class ConditionMatcherTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'uid' => 'NEW4adc6021e37e7',
                 'pid' => 121,
                 'cmd' => 'new',
-                'deleteAccess' => 0
-            ]
+                'deleteAccess' => 0,
+            ],
         ];
         $GLOBALS['SOBE']->data = [];
         $this->matchCondition->setRootline($this->rootline);
@@ -646,15 +647,15 @@ class ConditionMatcherTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'uid' => 999,
                 'pid' => 121,
                 'cmd' => 'edit',
-                'deleteAccess' => 1
-            ]
+                'deleteAccess' => 1,
+            ],
         ];
         $GLOBALS['SOBE']->data = [
             'pages' => [
                 'NEW4adc6021e37e7' => [
-                    'pid' => 121
-                ]
-            ]
+                    'pid' => 121,
+                ],
+            ],
         ];
         $this->matchCondition->setRootline($this->rootline);
         $this->matchCondition->setPageId(121);
@@ -800,7 +801,7 @@ class ConditionMatcherTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     {
         $GLOBALS[$this->testGlobalNamespace] = [
             'first' => 'testFirst',
-            'second' => ['third' => 'testThird']
+            'second' => ['third' => 'testThird'],
         ];
         $this->assertTrue($this->matchCondition->match('[globalString = ' . $this->testGlobalNamespace . '|first = testFirst]'));
         $this->assertTrue($this->matchCondition->match('[globalString = ' . $this->testGlobalNamespace . '|second|third = testThird]'));

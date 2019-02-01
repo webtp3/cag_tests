@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\core\Tests\Acceptance\Backend\Topbar;
 
 /*
@@ -21,7 +22,6 @@ use CAG\CagTests\Core\Acceptance\Step\Backend\Admin;
  */
 class ModuleMenuButtonCest
 {
-
     /**
      * @param Admin $I
      */

@@ -15,11 +15,11 @@ namespace TYPO3\CMS\Core\Tests\Unit\Imaging\ImageManipulation;
  * The TYPO3 project - inspiring people to share!
  */
 
+use CAG\CagTests\Core\Unit\UnitTestCase;
 use TYPO3\CMS\Core\Imaging\ImageManipulation\Area;
 use TYPO3\CMS\Core\Imaging\ImageManipulation\Ratio;
 use TYPO3\CMS\Core\Resource\File;
 use TYPO3\CMS\Core\Resource\ResourceStorage;
-use CAG\CagTests\Core\Unit\UnitTestCase;
 
 class AreaTest extends UnitTestCase
 {
@@ -49,11 +49,11 @@ class AreaTest extends UnitTestCase
         return [
             [
                 [0.0, 0.0, 1, 1],
-                4 / 3
+                4 / 3,
             ],
             [
                 [0.0, 0.0, 1, 1],
-                3 / 4
+                3 / 4,
             ],
             [
                 [0.1, 0.1, 0.2, 0.4],
@@ -61,7 +61,7 @@ class AreaTest extends UnitTestCase
             ],
             [
                 [0.1, 0.1, 0.4, 0.2],
-                1.0
+                1.0,
             ],
         ];
     }

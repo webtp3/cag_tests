@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Cache\Backend;
 
 /*
@@ -229,6 +230,7 @@ class Typo3DatabaseBackendTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $this->expectExceptionCode(1236518288);
         $subject->flushByTag('Tag');
     }
+
     /**
      * @test
      */

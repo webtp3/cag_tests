@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Http;
 
 /*
@@ -188,18 +189,19 @@ class MessageTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     public function invalidGeneralHeaderValuesDataProvider()
     {
         return [
-            'null'   => [null],
-            'true'   => [true],
-            'false'  => [false],
-            'int'    => [1],
-            'float'  => [1.1],
-            'array'  => [['foo' => ['bar']]],
+            'null' => [null],
+            'true' => [true],
+            'false' => [false],
+            'int' => [1],
+            'float' => [1.1],
+            'array' => [['foo' => ['bar']]],
             'object' => [(object)['foo' => 'bar']],
         ];
     }
 
     /**
      * @dataProvider invalidGeneralHeaderValuesDataProvider
+     * @param mixed $value
      */
     public function testWithHeaderRaisesExceptionForInvalidNestedHeaderValue($value)
     {
@@ -214,17 +216,18 @@ class MessageTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     public function invalidHeaderValuesDataProvider()
     {
         return [
-            'null'   => [null],
-            'true'   => [true],
-            'false'  => [false],
-            'int'    => [1],
-            'float'  => [1.1],
+            'null' => [null],
+            'true' => [true],
+            'false' => [false],
+            'int' => [1],
+            'float' => [1.1],
             'object' => [(object)['foo' => 'bar']],
         ];
     }
 
     /**
      * @dataProvider invalidHeaderValuesDataProvider
+     * @param mixed $value
      */
     public function withHeaderRaisesExceptionForInvalidValueType($value)
     {
@@ -235,6 +238,7 @@ class MessageTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 
     /**
      * @dataProvider invalidHeaderValuesDataProvider
+     * @param mixed $value
      */
     public function withAddedHeaderRaisesExceptionForNonStringNonArrayValue($value)
     {
@@ -276,17 +280,17 @@ class MessageTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     public function headersWithInjectionVectorsDataProvider()
     {
         return [
-            'name-with-cr'           => ["X-Foo\r-Bar", 'value'],
-            'name-with-lf'           => ["X-Foo\n-Bar", 'value'],
-            'name-with-crlf'         => ["X-Foo\r\n-Bar", 'value'],
-            'name-with-2crlf'        => ["X-Foo\r\n\r\n-Bar", 'value'],
-            'value-with-cr'          => ['X-Foo-Bar', "value\rinjection"],
-            'value-with-lf'          => ['X-Foo-Bar', "value\ninjection"],
-            'value-with-crlf'        => ['X-Foo-Bar', "value\r\ninjection"],
-            'value-with-2crlf'       => ['X-Foo-Bar', "value\r\n\r\ninjection"],
-            'array-value-with-cr'    => ['X-Foo-Bar', ["value\rinjection"]],
-            'array-value-with-lf'    => ['X-Foo-Bar', ["value\ninjection"]],
-            'array-value-with-crlf'  => ['X-Foo-Bar', ["value\r\ninjection"]],
+            'name-with-cr' => ["X-Foo\r-Bar", 'value'],
+            'name-with-lf' => ["X-Foo\n-Bar", 'value'],
+            'name-with-crlf' => ["X-Foo\r\n-Bar", 'value'],
+            'name-with-2crlf' => ["X-Foo\r\n\r\n-Bar", 'value'],
+            'value-with-cr' => ['X-Foo-Bar', "value\rinjection"],
+            'value-with-lf' => ['X-Foo-Bar', "value\ninjection"],
+            'value-with-crlf' => ['X-Foo-Bar', "value\r\ninjection"],
+            'value-with-2crlf' => ['X-Foo-Bar', "value\r\n\r\ninjection"],
+            'array-value-with-cr' => ['X-Foo-Bar', ["value\rinjection"]],
+            'array-value-with-lf' => ['X-Foo-Bar', ["value\ninjection"]],
+            'array-value-with-crlf' => ['X-Foo-Bar', ["value\r\ninjection"]],
             'array-value-with-2crlf' => ['X-Foo-Bar', ["value\r\n\r\ninjection"]],
             'multi-line-header-space' => ['X-Foo-Bar', "value\r\n injection"],
             'multi-line-header-tab' => ['X-Foo-Bar', "value\r\n\tinjection"],
@@ -296,6 +300,8 @@ class MessageTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @dataProvider headersWithInjectionVectorsDataProvider
      * @test
+     * @param mixed $name
+     * @param mixed $value
      */
     public function doesNotAllowCRLFInjectionWhenCallingWithHeader($name, $value)
     {
@@ -306,6 +312,8 @@ class MessageTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @dataProvider headersWithInjectionVectorsDataProvider
      * @test
+     * @param mixed $name
+     * @param mixed $value
      */
     public function doesNotAllowCRLFInjectionWhenCallingWithAddedHeader($name, $value)
     {

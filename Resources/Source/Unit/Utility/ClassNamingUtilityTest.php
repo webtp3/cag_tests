@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Utility;
 
 /*
@@ -32,72 +33,72 @@ class ClassNamingUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             [
                 'Tx_BlogExample_Domain_Repository_BlogRepository',
                 'Tx_BlogExample_Domain_Model_Blog',
-                'Tx_BlogExample_Domain_Validator_BlogValidator'
+                'Tx_BlogExample_Domain_Validator_BlogValidator',
             ],
             [
                 ' _Domain_Repository_Content_PageRepository',
                 ' _Domain_Model_Content_Page',
-                ' _Domain_Validator_Content_PageValidator'
+                ' _Domain_Validator_Content_PageValidator',
             ],
             [
                 'Tx_RepositoryExample_Domain_Repository_SomeModelRepository',
                 'Tx_RepositoryExample_Domain_Model_SomeModel',
-                'Tx_RepositoryExample_Domain_Validator_SomeModelValidator'
+                'Tx_RepositoryExample_Domain_Validator_SomeModelValidator',
             ],
             [
                 'Tx_RepositoryExample_Domain_Repository_RepositoryRepository',
                 'Tx_RepositoryExample_Domain_Model_Repository',
-                'Tx_RepositoryExample_Domain_Validator_RepositoryValidator'
+                'Tx_RepositoryExample_Domain_Validator_RepositoryValidator',
             ],
             [
                 'Tx_Repository_Domain_Repository_RepositoryRepository',
                 'Tx_Repository_Domain_Model_Repository',
-                'Tx_Repository_Domain_Validator_RepositoryValidator'
+                'Tx_Repository_Domain_Validator_RepositoryValidator',
             ],
             [
                 'Tx_ModelCollection_Domain_Repository_ModelRepository',
                 'Tx_ModelCollection_Domain_Model_Model',
-                'Tx_ModelCollection_Domain_Validator_ModelValidator'
+                'Tx_ModelCollection_Domain_Validator_ModelValidator',
             ],
             [
                 'Tx_Model_Domain_Repository_ModelRepository',
                 'Tx_Model_Domain_Model_Model',
-                'Tx_Model_Domain_Validator_ModelValidator'
+                'Tx_Model_Domain_Validator_ModelValidator',
             ],
             [
                 'VENDOR\\EXT\\Domain\\Repository\\BlogRepository',
                 'VENDOR\\EXT\\Domain\\Model\\Blog',
-                'VENDOR\\EXT\\Domain\\Validator\\BlogValidator'
+                'VENDOR\\EXT\\Domain\\Validator\\BlogValidator',
             ],
             [
                 'VENDOR\\EXT\\Domain\\Repository\\_PageRepository',
                 'VENDOR\\EXT\\Domain\\Model\\_Page',
-                'VENDOR\\EXT\\Domain\\Validator\\_PageValidator'
+                'VENDOR\\EXT\\Domain\\Validator\\_PageValidator',
             ],
             [
                 'VENDOR\\Repository\\Domain\\Repository\\SomeModelRepository',
                 'VENDOR\\Repository\\Domain\\Model\\SomeModel',
-                'VENDOR\\Repository\\Domain\\Validator\\SomeModelValidator'
+                'VENDOR\\Repository\\Domain\\Validator\\SomeModelValidator',
             ],
             [
                 'VENDOR\\EXT\\Domain\\Repository\\RepositoryRepository',
                 'VENDOR\\EXT\\Domain\\Model\\Repository',
-                'VENDOR\\EXT\\Domain\\Validator\\RepositoryValidator'
+                'VENDOR\\EXT\\Domain\\Validator\\RepositoryValidator',
             ],
             [
                 'VENDOR\\Repository\\Domain\\Repository\\RepositoryRepository',
                 'VENDOR\\Repository\\Domain\\Model\\Repository',
-                'VENDOR\\Repository\\Domain\\Validator\\RepositoryValidator'
+                'VENDOR\\Repository\\Domain\\Validator\\RepositoryValidator',
             ],
             [
                 'VENDOR\\ModelCollection\\Domain\\Repository\\ModelRepository',
                 'VENDOR\\ModelCollection\\Domain\\Model\\Model',
-                'VENDOR\\ModelCollection\\Domain\\Validator\\ModelValidator'
+                'VENDOR\\ModelCollection\\Domain\\Validator\\ModelValidator',
             ],
             [
                 'VENDOR\\Model\\Domain\\Repository\\ModelRepository',
                 'VENDOR\\Model\\Domain\\Model\\Model',
-                'VENDOR\\Model\\Domain\\Validator\\ModelValidator'
+                'VENDOR\\Model\\Domain\\Validator\\ModelValidator',
             ],
         ];
     }
@@ -156,7 +157,7 @@ class ClassNamingUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     'extensionName' => 'Ext',
                     'subpackageKey' => '',
                     'controllerName' => 'Foo',
-                ]
+                ],
             ],
             [
                 'TYPO3\\CMS\\Ext\\Command\\FooCommandController',
@@ -165,7 +166,7 @@ class ClassNamingUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     'extensionName' => 'Ext',
                     'subpackageKey' => '',
                     'controllerName' => 'FooCommand',
-                ]
+                ],
             ],
             [
                 \TYPO3\CMS\Fluid\ViewHelpers\Widget\Controller\PaginateController::class,
@@ -174,7 +175,7 @@ class ClassNamingUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     'extensionName' => 'Fluid',
                     'subpackageKey' => 'ViewHelpers\\Widget',
                     'controllerName' => 'Paginate',
-                ]
+                ],
             ],
             [
                 'VENDOR\\Ext\\Controller\\FooController',
@@ -183,7 +184,7 @@ class ClassNamingUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     'extensionName' => 'Ext',
                     'subpackageKey' => '',
                     'controllerName' => 'Foo',
-                ]
+                ],
             ],
             [
                 'VENDOR\\Ext\\Command\\FooCommandController',
@@ -192,7 +193,7 @@ class ClassNamingUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     'extensionName' => 'Ext',
                     'subpackageKey' => '',
                     'controllerName' => 'FooCommand',
-                ]
+                ],
             ],
             [
                 'VENDOR\\Ext\\ViewHelpers\\Widget\\Controller\\FooController',
@@ -201,7 +202,7 @@ class ClassNamingUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     'extensionName' => 'Ext',
                     'subpackageKey' => 'ViewHelpers\\Widget',
                     'controllerName' => 'Foo',
-                ]
+                ],
             ],
             // Oldschool
             [
@@ -211,7 +212,7 @@ class ClassNamingUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     'extensionName' => 'Ext',
                     'subpackageKey' => '',
                     'controllerName' => 'Foo',
-                ]
+                ],
             ],
             [
                 'Tx_Ext_Command_FooCommandController',
@@ -220,7 +221,7 @@ class ClassNamingUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     'extensionName' => 'Ext',
                     'subpackageKey' => '',
                     'controllerName' => 'FooCommand',
-                ]
+                ],
             ],
             [
                 'Tx_Fluid_ViewHelpers_Widget_Controller_PaginateController',
@@ -229,7 +230,7 @@ class ClassNamingUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     'extensionName' => 'Fluid',
                     'subpackageKey' => 'ViewHelpers_Widget',
                     'controllerName' => 'Paginate',
-                ]
+                ],
             ],
         ];
     }

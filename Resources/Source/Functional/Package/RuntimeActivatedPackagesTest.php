@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Functional\Package;
 
 /*
@@ -14,8 +15,8 @@ namespace TYPO3\CMS\Core\Tests\Functional\Package;
  * The TYPO3 project - inspiring people to share!
  */
 
-use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use CAG\CagTests\Core\Functional\FunctionalTestCase;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
 /**
  * Test case
@@ -25,9 +26,9 @@ class RuntimeActivatedPackagesTest extends FunctionalTestCase
     protected $configurationToUseInTestInstance = [
         'EXT' => [
             'runtimeActivatedPackages' => [
-                'felogin'
-            ]
-        ]
+                'felogin',
+            ],
+        ],
     ];
 
     /**

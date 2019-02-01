@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Backend\Tests\Unit\Tree;
 
 /*
@@ -28,6 +29,7 @@ class SortedTreeNodeCollectionTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $nodeCollection->append($node);
         $node = new \TYPO3\CMS\Backend\Tree\TreeNode(['id' => 3]);
         $nodeCollection->append($node);
+
         return $nodeCollection;
     }
 
@@ -38,6 +40,7 @@ class SortedTreeNodeCollectionTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $nodeCollection->append($node);
         $node = new \TYPO3\CMS\Backend\Tree\TreeNode(['id' => 3]);
         $nodeCollection->append($node);
+
         return $nodeCollection;
     }
 

@@ -15,12 +15,12 @@ namespace TYPO3\CMS\Core\Tests\Unit\Session;
  * The TYPO3 project - inspiring people to share!
  */
 
+use CAG\CagTests\Core\Unit\UnitTestCase;
 use Prophecy\Argument;
 use TYPO3\CMS\Core\Session\Backend\DatabaseSessionBackend;
 use TYPO3\CMS\Core\Session\Backend\SessionBackendInterface;
 use TYPO3\CMS\Core\Session\SessionManager;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use CAG\CagTests\Core\Unit\UnitTestCase;
 
 /**
  * Tests for the SessionManager
@@ -45,8 +45,8 @@ class SessionManagerTest extends UnitTestCase
         $backendRevelation = $backendProphecy->reveal();
         $backendClassName = get_class($backendRevelation);
         $GLOBALS['TYPO3_CONF_VARS']['SYS']['session']['myidentifier'] = [
-            'backend'  => $backendClassName,
-            'options' => []
+            'backend' => $backendClassName,
+            'options' => [],
         ];
         $backendProphecy->initialize(Argument::cetera())->shouldBeCalled();
         $backendProphecy->validateConfiguration(Argument::cetera())->shouldBeCalled();
@@ -75,8 +75,8 @@ class SessionManagerTest extends UnitTestCase
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionCode(1482235035);
         $GLOBALS['TYPO3_CONF_VARS']['SYS']['session']['myidentifier'] = [
-            'backend'  => \stdClass::class,
-            'options' => []
+            'backend' => \stdClass::class,
+            'options' => [],
         ];
         (new SessionManager())->getSessionBackend('myidentifier');
     }

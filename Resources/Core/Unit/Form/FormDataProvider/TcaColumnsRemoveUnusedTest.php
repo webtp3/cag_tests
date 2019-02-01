@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Backend\Tests\Unit\Form\FormDataProvider;
 
 /*
@@ -43,20 +44,20 @@ class TcaColumnsRemoveUnusedTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     'keepMe' => [
                         'config' => [
                             'type' => 'input',
-                        ]
+                        ],
                     ],
                     'keepMeToo' => [
                         'config' => [
                             'type' => 'input',
-                        ]
+                        ],
                     ],
                     'aField' => [
                         'config' => [
                             'type' => 'input',
-                        ]
-                    ]
-                ]
-            ]
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         $expected = $input;

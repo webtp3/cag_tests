@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Functional\Resource;
 
 /*
@@ -59,7 +60,7 @@ class ResourceStorageTest extends \CAG\CagTests\Core\Functional\FunctionalTestCa
         $this->assertInstanceOf(Folder::class, $processingFolder);
         $this->assertNotEquals($rootProcessingFolder, $processingFolder);
 
-        for ($i = ResourceStorage::PROCESSING_FOLDER_LEVELS; $i>0; $i--) {
+        for ($i = ResourceStorage::PROCESSING_FOLDER_LEVELS; $i > 0; $i--) {
             $processingFolder = $processingFolder->getParentFolder();
         }
         $this->assertEquals($rootProcessingFolder, $processingFolder);

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace CAG\CagTests\Core\Functional\Framework\Frontend;
 
 /*
@@ -95,6 +96,7 @@ class Collector implements \TYPO3\CMS\Core\SingletonInterface
             $recordData,
             array_flip($this->getTableFields($tableName))
         );
+
         return $recordData;
     }
 
@@ -124,7 +126,7 @@ class Collector implements \TYPO3\CMS\Core\SingletonInterface
 
     /**
      * @param string $content
-     * @param NULL|array $configuration
+     * @param null|array $configuration
      * @return void
      */
     public function attachSection($content, array $configuration = null)
@@ -166,6 +168,7 @@ class Collector implements \TYPO3\CMS\Core\SingletonInterface
         if (isset($this->getFrontendController()->register['watcher'])) {
             $watcherValue = $this->getFrontendController()->register['watcher'];
         }
+
         return $watcherValue;
     }
 
