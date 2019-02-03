@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Utility\Fixtures;
 
 /*
@@ -26,9 +25,6 @@ class GeneralUtilityMinifyJavaScriptFixture extends GeneralUtility
      * Logs message to the development log.
      *
      * @param string $errorMessage Message (in english).
-     * @param mixed $extKey
-     * @param mixed $severity
-     * @param mixed $dataVar
      * @throws \UnexpectedValueException
      * @throws \RuntimeException
      */

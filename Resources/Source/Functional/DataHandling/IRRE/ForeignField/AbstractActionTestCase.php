@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Functional\DataHandling\IRRE\ForeignField;
 
 /*
@@ -358,8 +357,8 @@ abstract class AbstractActionTestCase extends \TYPO3\CMS\Core\Tests\Functional\D
         unset($GLOBALS['TCA'][self::TABLE_Hotel]['columns'][self::FIELD_HotelOffer]['config']['behaviour']['localizeChildrenAtParentLocalization']);
 
         $this->actionService->createNewRecords(self::VALUE_PageId, [
-            self::TABLE_Hotel => ['title' => 'Hotel Standalone', 'parenttable' => 'tt_content'],
-            self::TABLE_Offer => ['title' => 'Offer Standalone', 'parenttable' => 'tt_content'],
+            self::TABLE_Hotel =>  ['title' => 'Hotel Standalone', 'parenttable' => 'tt_content'],
+            self::TABLE_Offer =>  ['title' => 'Offer Standalone', 'parenttable' => 'tt_content'],
         ]);
 
         $newTableIds = $this->actionService->localizeRecord(self::TABLE_Content, self::VALUE_ContentIdLast, self::VALUE_LanguageId);

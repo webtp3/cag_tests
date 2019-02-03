@@ -15,9 +15,9 @@ namespace TYPO3\CMS\Core\Tests\Unit\Imaging\ImageManipulation;
  * The TYPO3 project - inspiring people to share!
  */
 
-use CAG\CagTests\Core\Unit\UnitTestCase;
 use TYPO3\CMS\Core\Imaging\ImageManipulation\CropVariant;
 use TYPO3\CMS\Core\Imaging\ImageManipulation\InvalidConfigurationException;
+use CAG\CagTests\Core\Unit\UnitTestCase;
 
 class CropVariantTest extends UnitTestCase
 {
@@ -35,19 +35,19 @@ class CropVariantTest extends UnitTestCase
         'allowedAspectRatios' => [
             '16:9' => [
                 'title' => 'LLL:EXT:lang/Resources/Private/Language/locallang_wizards.xlf:imwizard.ratio.16_9',
-                'value' => 1.777777777777777,
+                'value' => 1.777777777777777
             ],
             '4:3' => [
                 'title' => 'LLL:EXT:lang/Resources/Private/Language/locallang_wizards.xlf:imwizard.ratio.4_3',
-                'value' => 1.333333333333333,
+                'value' => 1.333333333333333
             ],
             '1:1' => [
                 'title' => 'LLL:EXT:lang/Resources/Private/Language/locallang_wizards.xlf:imwizard.ratio.1_1',
-                'value' => 1.0,
+                'value' => 1.0
             ],
             'free' => [
                 'title' => 'LLL:EXT:lang/Resources/Private/Language/locallang_wizards.xlf:imwizard.ratio.free',
-                'value' => 0.0,
+                'value' => 0.0
             ],
         ],
         'selectedRatio' => '16:9',
@@ -63,7 +63,7 @@ class CropVariantTest extends UnitTestCase
                 'y' => 0.8,
                 'width' => 1.0,
                 'height' => 0.2,
-            ],
+            ]
         ],
     ];
 

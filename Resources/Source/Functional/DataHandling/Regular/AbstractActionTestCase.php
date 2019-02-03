@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Functional\DataHandling\Regular;
 
 /*
@@ -200,7 +199,7 @@ abstract class AbstractActionTestCase extends \TYPO3\CMS\Core\Tests\Functional\D
             self::TABLE_Content => [
                 $newContentIdDefault => ['pid' => self::VALUE_PageId, 'header' => 'Testing'],
                 $newContentIdLocalized => ['pid' => self::VALUE_PageId, 'header' => 'Localized Testing', 'sys_language_uid' => self::VALUE_LanguageId, 'l18n_parent' => $newContentIdDefault, 'l10n_source' => $newContentIdDefault],
-            ],
+            ]
         ];
         $this->actionService->invoke($dataMap, []);
         $this->recordIds['newContentIdDefault'] = $this->actionService->getDataHandler()->substNEWwithIDs[$newContentIdDefault];

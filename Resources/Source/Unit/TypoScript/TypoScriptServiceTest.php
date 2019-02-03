@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Service;
 
 /*
@@ -34,40 +33,40 @@ class TypoScriptServiceTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     '10.' => [
                         'value' => 'Hello World!',
                         'foo.' => [
-                            'bar' => 5,
-                        ],
+                            'bar' => 5
+                        ]
                     ],
-                    '10' => 'TEXT',
+                    '10' => 'TEXT'
                 ],
                 'expectedSettings' => [
                     '10' => [
                         'value' => 'Hello World!',
                         'foo' => [
-                            'bar' => 5,
+                            'bar' => 5
                         ],
-                        '_typoScriptNodeValue' => 'TEXT',
-                    ],
-                ],
+                        '_typoScriptNodeValue' => 'TEXT'
+                    ]
+                ]
             ],
             'typoscript with intermediate dots' => [
                 'typoScriptSettings' => [
                     '10.' => [
                         'value' => 'Hello World!',
                         'foo.' => [
-                            'bar' => 5,
-                        ],
+                            'bar' => 5
+                        ]
                     ],
-                    '10' => 'TEXT',
+                    '10' => 'TEXT'
                 ],
                 'expectedSettings' => [
                     '10' => [
                         'value' => 'Hello World!',
                         'foo' => [
-                            'bar' => 5,
+                            'bar' => 5
                         ],
-                        '_typoScriptNodeValue' => 'TEXT',
-                    ],
-                ],
+                        '_typoScriptNodeValue' => 'TEXT'
+                    ]
+                ]
             ],
             'typoscript array with changed order' => [
                 'typoScriptSettings' => [
@@ -75,19 +74,19 @@ class TypoScriptServiceTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     '10.' => [
                         'value' => 'Hello World!',
                         'foo.' => [
-                            'bar' => 5,
-                        ],
-                    ],
+                            'bar' => 5
+                        ]
+                    ]
                 ],
                 'expectedSettings' => [
                     '10' => [
                         'value' => 'Hello World!',
                         'foo' => [
-                            'bar' => 5,
+                            'bar' => 5
                         ],
-                        '_typoScriptNodeValue' => 'TEXT',
-                    ],
-                ],
+                        '_typoScriptNodeValue' => 'TEXT'
+                    ]
+                ]
             ],
             'nested typoscript array' => [
                 'typoScriptSettings' => [
@@ -97,51 +96,51 @@ class TypoScriptServiceTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         '10.' => [
                             'value' => 'Hello World!',
                             'foo.' => [
-                                'bar' => 5,
-                            ],
+                                'bar' => 5
+                            ]
                         ],
                         '20' => 'COA',
                         '20.' => [
                             '10' => 'TEXT',
                             '10.' => [
                                 'value' => 'Test',
-                                'wrap' => '[|]',
+                                'wrap' => '[|]'
                             ],
                             '20' => 'TEXT',
                             '20.' => [
                                 'value' => 'Test',
-                                'wrap' => '[|]',
-                            ],
+                                'wrap' => '[|]'
+                            ]
                         ],
-                        '30' => 'custom',
-                    ],
+                        '30' => 'custom'
+                    ]
                 ],
                 'expectedSettings' => [
                     '10' => [
                         '10' => [
                             'value' => 'Hello World!',
                             'foo' => [
-                                'bar' => 5,
+                                'bar' => 5
                             ],
-                            '_typoScriptNodeValue' => 'TEXT',
+                            '_typoScriptNodeValue' => 'TEXT'
                         ],
                         '20' => [
                             '10' => [
                                 'value' => 'Test',
                                 'wrap' => '[|]',
-                                '_typoScriptNodeValue' => 'TEXT',
+                                '_typoScriptNodeValue' => 'TEXT'
                             ],
                             '20' => [
                                 'value' => 'Test',
                                 'wrap' => '[|]',
-                                '_typoScriptNodeValue' => 'TEXT',
+                                '_typoScriptNodeValue' => 'TEXT'
                             ],
-                            '_typoScriptNodeValue' => 'COA',
+                            '_typoScriptNodeValue' => 'COA'
                         ],
                         '30' => 'custom',
-                        '_typoScriptNodeValue' => 'COA',
-                    ],
-                ],
+                        '_typoScriptNodeValue' => 'COA'
+                    ]
+                ]
             ],
         ];
     }
@@ -171,59 +170,59 @@ class TypoScriptServiceTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'extbaseTS' => [
                     '10' => [
                         'value' => 'Hallo',
-                        '_typoScriptNodeValue' => 'TEXT',
-                    ],
+                        '_typoScriptNodeValue' => 'TEXT'
+                    ]
                 ],
                 'classic' => [
                     '10' => 'TEXT',
                     '10.' => [
-                        'value' => 'Hallo',
-                    ],
-                ],
+                        'value' => 'Hallo'
+                    ]
+                ]
             ],
             'typoscript with null value' => [
                 'extbaseTS' => [
                     '10' => [
                         'value' => 'Hallo',
-                        '_typoScriptNodeValue' => 'TEXT',
+                        '_typoScriptNodeValue' => 'TEXT'
                     ],
-                    '20' => null,
+                    '20' => null
                 ],
                 'classic' => [
                     '10' => 'TEXT',
                     '10.' => [
-                        'value' => 'Hallo',
+                        'value' => 'Hallo'
                     ],
-                    '20' => '',
-                ],
+                    '20' => ''
+                ]
             ],
             'ts with dots in key' => [
                 'extbaseTS' => [
                     '1.0' => [
                         'value' => 'Hallo',
-                        '_typoScriptNodeValue' => 'TEXT',
-                    ],
+                        '_typoScriptNodeValue' => 'TEXT'
+                    ]
                 ],
                 'classic' => [
                     '1.0' => 'TEXT',
                     '1.0.' => [
-                        'value' => 'Hallo',
-                    ],
-                ],
+                        'value' => 'Hallo'
+                    ]
+                ]
             ],
             'ts with backslashes in key' => [
                 'extbaseTS' => [
                     '1\\0\\' => [
                         'value' => 'Hallo',
-                        '_typoScriptNodeValue' => 'TEXT',
-                    ],
+                        '_typoScriptNodeValue' => 'TEXT'
+                    ]
                 ],
                 'classic' => [
                     '1\\0\\' => 'TEXT',
                     '1\\0\\.' => [
-                        'value' => 'Hallo',
-                    ],
-                ],
+                        'value' => 'Hallo'
+                    ]
+                ]
             ],
             'bigger typoscript' => [
                 'extbaseTS' => [
@@ -231,25 +230,25 @@ class TypoScriptServiceTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         '10' => [
                             'value' => 'Hello World!',
                             'foo' => [
-                                'bar' => 5,
+                                'bar' => 5
                             ],
-                            '_typoScriptNodeValue' => 'TEXT',
+                            '_typoScriptNodeValue' => 'TEXT'
                         ],
                         '20' => [
                             '10' => [
                                 'value' => 'Test',
                                 'wrap' => '[|]',
-                                '_typoScriptNodeValue' => 'TEXT',
+                                '_typoScriptNodeValue' => 'TEXT'
                             ],
                             '20' => [
                                 'value' => 'Test',
                                 'wrap' => '[|]',
-                                '_typoScriptNodeValue' => 'TEXT',
+                                '_typoScriptNodeValue' => 'TEXT'
                             ],
-                            '_typoScriptNodeValue' => 'COA',
+                            '_typoScriptNodeValue' => 'COA'
                         ],
-                        '_typoScriptNodeValue' => 'COA',
-                    ],
+                        '_typoScriptNodeValue' => 'COA'
+                    ]
                 ],
                 'classic' => [
                     '10' => 'COA',
@@ -258,24 +257,24 @@ class TypoScriptServiceTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         '10.' => [
                             'value' => 'Hello World!',
                             'foo.' => [
-                                'bar' => 5,
-                            ],
+                                'bar' => 5
+                            ]
                         ],
                         '20' => 'COA',
                         '20.' => [
                             '10' => 'TEXT',
                             '10.' => [
                                 'value' => 'Test',
-                                'wrap' => '[|]',
+                                'wrap' => '[|]'
                             ],
                             '20' => 'TEXT',
                             '20.' => [
                                 'value' => 'Test',
-                                'wrap' => '[|]',
-                            ],
-                        ],
-                    ],
-                ],
+                                'wrap' => '[|]'
+                            ]
+                        ]
+                    ]
+                ]
             ],
         ];
     }
@@ -305,8 +304,8 @@ class TypoScriptServiceTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [
                     0 => ['splitConfiguration' => 'a'],
                     1 => ['splitConfiguration' => 'a'],
-                    2 => ['splitConfiguration' => 'a'],
-                ],
+                    2 => ['splitConfiguration' => 'a']
+                ]
             ],
             [
                 ['splitConfiguration' => 'a || b || c'],
@@ -316,8 +315,8 @@ class TypoScriptServiceTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     1 => ['splitConfiguration' => 'b'],
                     2 => ['splitConfiguration' => 'c'],
                     3 => ['splitConfiguration' => 'c'],
-                    4 => ['splitConfiguration' => 'c'],
-                ],
+                    4 => ['splitConfiguration' => 'c']
+                ]
             ],
             [
                 ['splitConfiguration' => 'a || b |*| c'],
@@ -327,8 +326,8 @@ class TypoScriptServiceTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     1 => ['splitConfiguration' => 'b'],
                     2 => ['splitConfiguration' => 'c'],
                     3 => ['splitConfiguration' => 'c'],
-                    4 => ['splitConfiguration' => 'c'],
-                ],
+                    4 => ['splitConfiguration' => 'c']
+                ]
             ],
             [
                 ['splitConfiguration' => 'a || b |*| c |*| d || e'],
@@ -340,8 +339,8 @@ class TypoScriptServiceTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     3 => ['splitConfiguration' => 'c'],
                     4 => ['splitConfiguration' => 'c'],
                     5 => ['splitConfiguration' => 'd'],
-                    6 => ['splitConfiguration' => 'e'],
-                ],
+                    6 => ['splitConfiguration' => 'e']
+                ]
             ],
             [
                 ['splitConfiguration' => 'a || b |*| c |*| d || e'],
@@ -350,8 +349,8 @@ class TypoScriptServiceTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     0 => ['splitConfiguration' => 'a'],
                     1 => ['splitConfiguration' => 'b'],
                     2 => ['splitConfiguration' => 'd'],
-                    3 => ['splitConfiguration' => 'e'],
-                ],
+                    3 => ['splitConfiguration' => 'e']
+                ]
             ],
             [
                 ['splitConfiguration' => 'a || b |*| c |*| d || e'],
@@ -359,8 +358,8 @@ class TypoScriptServiceTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [
                     0 => ['splitConfiguration' => 'a'],
                     1 => ['splitConfiguration' => 'd'],
-                    2 => ['splitConfiguration' => 'e'],
-                ],
+                    2 => ['splitConfiguration' => 'e']
+                ]
             ],
             [
                 ['splitConfiguration' => 'a || b |*||*| c || d'],
@@ -372,8 +371,8 @@ class TypoScriptServiceTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     3 => ['splitConfiguration' => 'b'],
                     4 => ['splitConfiguration' => 'b'],
                     5 => ['splitConfiguration' => 'c'],
-                    6 => ['splitConfiguration' => 'd'],
-                ],
+                    6 => ['splitConfiguration' => 'd']
+                ]
             ],
             [
                 ['splitConfiguration' => '|*||*| a || b'],
@@ -385,8 +384,8 @@ class TypoScriptServiceTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     3 => ['splitConfiguration' => 'a'],
                     4 => ['splitConfiguration' => 'a'],
                     5 => ['splitConfiguration' => 'a'],
-                    6 => ['splitConfiguration' => 'b'],
-                ],
+                    6 => ['splitConfiguration' => 'b']
+                ]
             ],
             [
                 ['splitConfiguration' => 'a |*| b || c |*|'],
@@ -398,8 +397,8 @@ class TypoScriptServiceTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     3 => ['splitConfiguration' => 'b'],
                     4 => ['splitConfiguration' => 'c'],
                     5 => ['splitConfiguration' => 'b'],
-                    6 => ['splitConfiguration' => 'c'],
-                ],
+                    6 => ['splitConfiguration' => 'c']
+                ]
             ],
         ];
     }
@@ -408,9 +407,6 @@ class TypoScriptServiceTest extends \CAG\CagTests\Core\Unit\UnitTestCase
      * @test
      * @dataProvider explodeConfigurationForOptionSplitProvider
      * @see https://docs.typo3.org/typo3cms/TyposcriptReference/ObjectsAndProperties/Index.html#objects-optionsplit
-     * @param mixed $configuration
-     * @param mixed $splitCount
-     * @param mixed $expected
      */
     public function explodeConfigurationForOptionSplitTest($configuration, $splitCount, $expected)
     {

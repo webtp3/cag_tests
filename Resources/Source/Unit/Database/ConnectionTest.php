@@ -111,6 +111,7 @@ class ConnectionTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'single quotes' => [
                 "'single'",
                 '"\'single\'"',
+
             ],
             'multiple double quotes' => [
                 '""multiple""',
@@ -192,7 +193,7 @@ class ConnectionTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [
                     'aTestTable',
                     ['aField' => 123, 'bField' => 'bValue'],
-                    ['aField' => Connection::PARAM_INT, 'bField' => Connection::PARAM_LOB],
+                    ['aField' => Connection::PARAM_INT, 'bField' => Connection::PARAM_LOB]
                 ],
                 'INSERT INTO "aTestTable" ("aField", "bField") VALUES (?, ?)',
                 [123, 'bValue'],

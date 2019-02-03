@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Package;
 
 /*
@@ -47,7 +46,6 @@ class DependencyResolverTest extends \CAG\CagTests\Core\Unit\UnitTestCase
      * @param array $unsortedPackageStatesConfiguration
      * @param array $frameworkPackageKeys
      * @param array $expectedSortedPackageStatesConfiguration
-     * @param mixed $expectedSortedPackageKeys
      */
     public function sortPackageStatesConfigurationByDependencyMakesSureThatDependantPackagesAreStandingBeforeAPackageInTheInternalPackagesAndPackagesConfigurationArrays($unsortedPackageStatesConfiguration, $frameworkPackageKeys, $expectedSortedPackageKeys)
     {
@@ -70,7 +68,7 @@ class DependencyResolverTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'dependencies' => ['B'],
             ],
             'B' => [
-                'dependencies' => ['A'],
+                'dependencies' => ['A']
             ],
         ];
 
@@ -93,23 +91,23 @@ class DependencyResolverTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'TYPO3 Flow Packages' => [
                 [
                     'TYPO3.Flow' => [
-                        'dependencies' => ['Symfony.Component.Yaml', 'Doctrine.Common', 'Doctrine.DBAL', 'Doctrine.ORM'],
+                        'dependencies' => ['Symfony.Component.Yaml', 'Doctrine.Common', 'Doctrine.DBAL', 'Doctrine.ORM']
                     ],
                     'Doctrine.ORM' => [
-                        'dependencies' => ['Doctrine.Common', 'Doctrine.DBAL'],
+                        'dependencies' => ['Doctrine.Common', 'Doctrine.DBAL']
                     ],
                     'Doctrine.Common' => [
-                        'dependencies' => [],
+                        'dependencies' => []
                     ],
                     'Doctrine.DBAL' => [
-                        'dependencies' => ['Doctrine.Common'],
+                        'dependencies' => ['Doctrine.Common']
                     ],
                     'Symfony.Component.Yaml' => [
-                        'dependencies' => [],
+                        'dependencies' => []
                     ],
                 ],
                 [
-                    'Doctrine.Common',
+                    'Doctrine.Common'
                 ],
                 [
                     'TYPO3.Flow' => [
@@ -158,7 +156,7 @@ class DependencyResolverTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         'dependencies' => ['core'],
                     ],
                     'openid' => [
-                        'dependencies' => ['core', 'setup'],
+                        'dependencies' => ['core', 'setup']
                     ],
                     'news' => [
                         'dependencies' => ['extbase'],
@@ -174,7 +172,7 @@ class DependencyResolverTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     ],
                 ],
                 [
-                    'core', 'setup', 'openid', 'extbase',
+                    'core', 'setup', 'openid', 'extbase'
                 ],
                 [
                     'core' => [
@@ -184,7 +182,7 @@ class DependencyResolverTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         'news' => false,
                         'extbase' => false,
                         'pt_extbase' => false,
-                        'foo' => false,
+                        'foo' => false
                     ],
                     'setup' => [
                         'core' => true,
@@ -193,7 +191,7 @@ class DependencyResolverTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         'news' => false,
                         'extbase' => false,
                         'pt_extbase' => false,
-                        'foo' => false,
+                        'foo' => false
                     ],
                     'openid' => [
                         'core' => true,
@@ -202,7 +200,7 @@ class DependencyResolverTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         'news' => false,
                         'extbase' => false,
                         'pt_extbase' => false,
-                        'foo' => false,
+                        'foo' => false
                     ],
                     'news' => [
                         'core' => false,
@@ -211,7 +209,7 @@ class DependencyResolverTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         'news' => false,
                         'extbase' => true,
                         'pt_extbase' => false,
-                        'foo' => false,
+                        'foo' => false
                     ],
                     'extbase' => [
                         'core' => true,
@@ -220,7 +218,7 @@ class DependencyResolverTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         'news' => false,
                         'extbase' => false,
                         'pt_extbase' => false,
-                        'foo' => false,
+                        'foo' => false
                     ],
                     'pt_extbase' => [
                         'core' => false,
@@ -229,7 +227,7 @@ class DependencyResolverTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         'news' => false,
                         'extbase' => true,
                         'pt_extbase' => false,
-                        'foo' => false,
+                        'foo' => false
                     ],
                     'foo' => [
                         'core' => false,
@@ -238,7 +236,7 @@ class DependencyResolverTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         'news' => false,
                         'extbase' => true,
                         'pt_extbase' => false,
-                        'foo' => false,
+                        'foo' => false
                     ],
                 ],
             ],
@@ -248,10 +246,10 @@ class DependencyResolverTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         'dependencies' => ['B', 'D', 'C'],
                     ],
                     'B' => [
-                        'dependencies' => [],
+                        'dependencies' => []
                     ],
                     'C' => [
-                        'dependencies' => ['E'],
+                        'dependencies' => ['E']
                     ],
                     'D' => [
                         'dependencies' => ['E'],
@@ -264,7 +262,7 @@ class DependencyResolverTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     ],
                 ],
                 [
-                    'B', 'C', 'E',
+                    'B', 'C', 'E'
                 ],
                 [
                     'A' => [
@@ -329,23 +327,23 @@ class DependencyResolverTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'TYPO3 Flow Packages' => [
                 [
                     'TYPO3.Flow' => [
-                        'dependencies' => ['Symfony.Component.Yaml', 'Doctrine.Common', 'Doctrine.DBAL', 'Doctrine.ORM'],
+                        'dependencies' => ['Symfony.Component.Yaml', 'Doctrine.Common', 'Doctrine.DBAL', 'Doctrine.ORM']
                     ],
                     'Doctrine.ORM' => [
-                        'dependencies' => ['Doctrine.Common', 'Doctrine.DBAL'],
+                        'dependencies' => ['Doctrine.Common', 'Doctrine.DBAL']
                     ],
                     'Doctrine.Common' => [
-                        'dependencies' => [],
+                        'dependencies' => []
                     ],
                     'Doctrine.DBAL' => [
-                        'dependencies' => ['Doctrine.Common'],
+                        'dependencies' => ['Doctrine.Common']
                     ],
                     'Symfony.Component.Yaml' => [
-                        'dependencies' => [],
+                        'dependencies' => []
                     ],
                 ],
                 [
-                    'Doctrine.Common',
+                    'Doctrine.Common'
                 ],
                 [
                     'Doctrine.Common',
@@ -364,7 +362,7 @@ class DependencyResolverTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         'dependencies' => ['core'],
                     ],
                     'openid' => [
-                        'dependencies' => ['core', 'setup'],
+                        'dependencies' => ['core', 'setup']
                     ],
                     'news' => [
                         'dependencies' => ['extbase'],
@@ -380,7 +378,7 @@ class DependencyResolverTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     ],
                 ],
                 [
-                    'core', 'setup', 'openid', 'extbase',
+                    'core', 'setup', 'openid', 'extbase'
                 ],
                 [
                     'core',
@@ -398,10 +396,10 @@ class DependencyResolverTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         'dependencies' => ['B', 'D', 'C'],
                     ],
                     'B' => [
-                        'dependencies' => [],
+                        'dependencies' => []
                     ],
                     'C' => [
-                        'dependencies' => ['E'],
+                        'dependencies' => ['E']
                     ],
                     'D' => [
                         'dependencies' => ['E'],
@@ -414,7 +412,7 @@ class DependencyResolverTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     ],
                 ],
                 [
-                    'B', 'C', 'E',
+                    'B', 'C', 'E'
                 ],
                 [
                     'E',

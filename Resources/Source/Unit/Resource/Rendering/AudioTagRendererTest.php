@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Resource\Rendering;
 
 /*
@@ -92,7 +91,7 @@ class AudioTagRendererTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 '//:path/myAudioFile',
                 ['controls' => 1, 'controlsList' => 'nodownload'],
                 '<audio controls controlsList="nodownload"><source src="//:path/myAudioFile" type="audio/mpeg"></audio>',
-            ],
+            ]
         ];
     }
 

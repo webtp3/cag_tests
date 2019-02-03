@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Package;
 
 /*                                                                        *
@@ -23,6 +22,8 @@ use TYPO3\CMS\Core\Package\PackageManager;
  */
 class PackageTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
+    /**
+     */
     protected function setUp()
     {
         vfsStream::setup('Packages');
@@ -41,6 +42,8 @@ class PackageTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         new Package($packageManagerMock, 'Vendor.TestPackage', './ThisPackageSurelyDoesNotExist');
     }
 
+    /**
+     */
     public function validPackageKeys()
     {
         return [
@@ -48,14 +51,13 @@ class PackageTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             ['TYPO3.CMS'],
             ['My.Own.TwitterPackage'],
             ['GoFor.IT'],
-            ['Symfony.Symfony'],
+            ['Symfony.Symfony']
         ];
     }
 
     /**
      * @test
      * @dataProvider validPackageKeys
-     * @param mixed $packageKey
      */
     public function constructAcceptsValidPackageKeys($packageKey)
     {
@@ -70,19 +72,20 @@ class PackageTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $this->assertEquals($packageKey, $package->getPackageKey());
     }
 
+    /**
+     */
     public function invalidPackageKeys()
     {
         return [
             ['TYPO3..Flow'],
             ['RobertLemke.Flow. Twitter'],
-            ['Schalke*4'],
+            ['Schalke*4']
         ];
     }
 
     /**
      * @test
      * @dataProvider invalidPackageKeys
-     * @param mixed $packageKey
      */
     public function constructRejectsInvalidPackageKeys($packageKey)
     {

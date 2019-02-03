@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace CAG\CagTests\Core\Functional\Framework\Constraint\RequestSection;
 
 /*
@@ -33,14 +32,12 @@ abstract class AbstractStructureRecordConstraint extends AbstractRecordConstrain
     public function setRecordIdentifier($recordIdentifier)
     {
         $this->recordIdentifier = $recordIdentifier;
-
         return $this;
     }
 
     public function setRecordField($recordField)
     {
         $this->recordField = $recordField;
-
         return $this;
     }
 }

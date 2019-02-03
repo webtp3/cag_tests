@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace CAG\CagTests\Controller;
 
 /***
@@ -21,7 +20,7 @@ class FeGroupController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 {
     /**
      * action list
-     *
+     * 
      * @return void
      */
     public function listAction()
@@ -32,7 +31,7 @@ class FeGroupController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 
     /**
      * action show
-     *
+     * 
      * @param \CAG\CagTests\Domain\Model\FeGroup $feGroup
      * @return void
      */
@@ -43,16 +42,17 @@ class FeGroupController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 
     /**
      * action new
-     *
+     * 
      * @return void
      */
     public function newAction()
     {
+
     }
 
     /**
      * action create
-     *
+     * 
      * @param \CAG\CagTests\Domain\Model\FeGroup $newFeGroup
      * @return void
      */
@@ -65,7 +65,7 @@ class FeGroupController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 
     /**
      * action edit
-     *
+     * 
      * @param \CAG\CagTests\Domain\Model\FeGroup $feGroup
      * @ignorevalidation $feGroup
      * @return void
@@ -77,7 +77,7 @@ class FeGroupController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 
     /**
      * action update
-     *
+     * 
      * @param \CAG\CagTests\Domain\Model\FeGroup $feGroup
      * @return void
      */
@@ -90,7 +90,7 @@ class FeGroupController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 
     /**
      * action delete
-     *
+     * 
      * @param \CAG\CagTests\Domain\Model\FeGroup $feGroup
      * @return void
      */
@@ -103,10 +103,11 @@ class FeGroupController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 
     /**
      * action login
-     *
+     * 
      * @return void
      */
     public function loginAction()
     {
+
     }
 }

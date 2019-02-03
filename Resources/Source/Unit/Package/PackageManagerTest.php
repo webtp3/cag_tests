@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Package;
 
 /*                                                                        *
@@ -27,7 +26,7 @@ use TYPO3\CMS\Core\Package\PackageManager;
 class PackageManagerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
     /**
-     * @var PackageManager|\PHPUnit_Framework_MockObject_MockObject|\CAG\CagTests\Core\AccessibleObjectInterface
+     * @var PackageManager|\PHPUnit_Framework_MockObject_MockObject|\CAG\CagTests\Core\AccessibleObjectInterface $packageManager
      */
     protected $packageManager;
 
@@ -58,7 +57,7 @@ class PackageManagerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         file_put_contents('vfs://Test/Configuration/PackageStates.php', "<?php return array ('packages' => array(), 'version' => 5); ");
 
         $composerNameToPackageKeyMap = [
-            'typo3/flow' => 'TYPO3.Flow',
+            'typo3/flow' => 'TYPO3.Flow'
         ];
 
         $this->packageManager->injectCoreCache($mockCache);
@@ -115,7 +114,7 @@ class PackageManagerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             $this->getUniqueId('TYPO3.CMS'),
             $this->getUniqueId('TYPO3.CMS.Test'),
             $this->getUniqueId('TYPO3.YetAnotherTestPackage'),
-            $this->getUniqueId('Lolli.Pop.NothingElse'),
+            $this->getUniqueId('Lolli.Pop.NothingElse')
         ];
 
         foreach ($expectedPackageKeys as $packageKey) {
@@ -146,7 +145,7 @@ class PackageManagerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             $this->getUniqueId('TYPO3.CMS'),
             $this->getUniqueId('TYPO3.CMS.Test'),
             $this->getUniqueId('TYPO3.YetAnotherTestPackage'),
-            $this->getUniqueId('Lolli.Pop.NothingElse'),
+            $this->getUniqueId('Lolli.Pop.NothingElse')
         ];
 
         $packagePaths = [];
@@ -178,10 +177,10 @@ class PackageManagerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $packageManager->_set('packageStatesConfiguration', [
             'packages' => [
                 $packageKey => [
-                    'packagePath' => 'Application/' . $packageKey . '/',
-                ],
+                    'packagePath' => 'Application/' . $packageKey . '/'
+                ]
             ],
-            'version' => 5,
+            'version' => 5
         ]);
         $packageManager->_call('scanAvailablePackages');
         $packageManager->_call('sortAndSavePackageStates');
@@ -198,7 +197,7 @@ class PackageManagerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $packageKeys = [
             $this->getUniqueId('Lolli.Pop.NothingElse'),
             $this->getUniqueId('TYPO3.Package'),
-            $this->getUniqueId('TYPO3.YetAnotherTestPackage'),
+            $this->getUniqueId('TYPO3.YetAnotherTestPackage')
         ];
 
         $packagePaths = [];
@@ -232,7 +231,7 @@ class PackageManagerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $expectedPackageStatesConfiguration = [];
         foreach ($packageKeys as $packageKey) {
             $expectedPackageStatesConfiguration[$packageKey] = [
-                'packagePath' => 'Application/' . $packageKey . '/',
+                'packagePath' => 'Application/' . $packageKey . '/'
             ];
             $packageManager->activatePackage($packageKey);
         }
@@ -250,15 +249,13 @@ class PackageManagerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     {
         return [
             ['TYPO3.YetAnotherTestPackage', 'vfs://Test/Packages/Application/TYPO3.YetAnotherTestPackage/'],
-            ['Lolli.Pop.NothingElse', 'vfs://Test/Packages/Application/Lolli.Pop.NothingElse/'],
+            ['Lolli.Pop.NothingElse', 'vfs://Test/Packages/Application/Lolli.Pop.NothingElse/']
         ];
     }
 
     /**
      * @test
      * @dataProvider packageKeysAndPaths
-     * @param mixed $packageKey
-     * @param mixed $expectedPackagePath
      */
     public function createPackageCreatesPackageFolderAndReturnsPackage($packageKey, $expectedPackagePath)
     {
@@ -355,27 +352,25 @@ class PackageManagerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             ['imagine/Imagine', 'imagine.Imagine'],
             ['imagine/imagine', 'imagine.Imagine'],
             ['typo3/cms', 'TYPO3.CMS'],
-            ['TYPO3/CMS', 'TYPO3.CMS'],
+            ['TYPO3/CMS', 'TYPO3.CMS']
         ];
     }
 
     /**
      * @test
      * @dataProvider composerNamesAndPackageKeys
-     * @param mixed $composerName
-     * @param mixed $packageKey
      */
     public function getPackageKeyFromComposerNameIgnoresCaseDifferences($composerName, $packageKey)
     {
         $packageStatesConfiguration = [
             'packages' => [
                 'TYPO3.CMS',
-                'imagine.Imagine',
-            ],
+                'imagine.Imagine'
+            ]
         ];
         $composerNameToPackageKeyMap = [
             'typo3/cms' => 'TYPO3.CMS',
-            'imagine/imagine' => 'imagine.Imagine',
+            'imagine/imagine' => 'imagine.Imagine'
         ];
 
         $packageManager = $this->getAccessibleMock(PackageManager::class, ['resolvePackageDependencies']);

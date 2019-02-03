@@ -454,7 +454,6 @@ class ExpressionBuilderTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     {
         $this->connectionProphet->quoteIdentifier(Argument::cetera())->will(function ($args) {
             $platform = new MockPlatform();
-
             return $platform->quoteIdentifier($args[0]);
         });
 
@@ -472,7 +471,6 @@ class ExpressionBuilderTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     {
         $this->connectionProphet->quoteIdentifier(Argument::cetera())->will(function ($args) {
             $platform = new MockPlatform();
-
             return $platform->quoteIdentifier($args[0]);
         });
 
@@ -490,7 +488,6 @@ class ExpressionBuilderTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     {
         $this->connectionProphet->quoteIdentifier(Argument::cetera())->will(function ($args) {
             $platform = new MockPlatform();
-
             return $platform->quoteIdentifier($args[0]);
         });
 
@@ -508,7 +505,6 @@ class ExpressionBuilderTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     {
         $this->connectionProphet->quoteIdentifier(Argument::cetera())->will(function ($args) {
             $platform = new MockPlatform();
-
             return $platform->quoteIdentifier($args[0]);
         });
 
@@ -526,7 +522,6 @@ class ExpressionBuilderTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     {
         $this->connectionProphet->quoteIdentifier(Argument::cetera())->will(function ($args) {
             $platform = new MockPlatform();
-
             return $platform->quoteIdentifier($args[0]);
         });
 
@@ -544,7 +539,6 @@ class ExpressionBuilderTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     {
         $this->connectionProphet->quoteIdentifier(Argument::cetera())->will(function ($args) {
             $platform = new MockPlatform();
-
             return $platform->quoteIdentifier($args[0]);
         });
 
@@ -587,7 +581,7 @@ class ExpressionBuilderTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'trim leading character' => [
                 AbstractPlatform::TRIM_LEADING,
                 'x',
-                'TRIM(LEADING "x" FROM "tableName"."fieldName")',
+                'TRIM(LEADING "x" FROM "tableName"."fieldName")'
             ],
             'trim trailing character' => [
                 AbstractPlatform::TRIM_TRAILING,
@@ -603,7 +597,7 @@ class ExpressionBuilderTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 AbstractPlatform::TRIM_BOTH,
                 ' ',
                 'TRIM(BOTH " " FROM "tableName"."fieldName")',
-            ],
+            ]
         ];
     }
 

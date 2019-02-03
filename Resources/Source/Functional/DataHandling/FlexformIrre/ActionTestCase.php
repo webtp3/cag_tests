@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Functional\DataHandling\FlexformIrre;
 
 /*
@@ -48,7 +47,7 @@ class ActionTestCase extends \TYPO3\CMS\Core\Tests\Functional\DataHandling\Abstr
         $GLOBALS['BE_USER']->workspace = 1;
         $this->getActionService()->modifyRecords(1, [
             //'sys_file_reference' => ['uid' => 10, 'hidden' => 0],
-            'tt_content' => ['uid' => 100, 'header' => 'Content #1 (WS)'],
+            'tt_content' => ['uid' => 100, 'header' => 'Content #1 (WS)']
         ]);
 
         // there should be one relation in the live WS and one in the draft WS pointing to the file field.

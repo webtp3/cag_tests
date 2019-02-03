@@ -38,7 +38,6 @@ class DataStructureIdentifierPostProcessHookReturnArray
         array $identifier
     ): array {
         $identifier['myExtensionData'] = 'foo';
-
         return $identifier;
     }
 }

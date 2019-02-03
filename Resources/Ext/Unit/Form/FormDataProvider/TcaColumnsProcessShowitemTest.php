@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Backend\Tests\Unit\Form\FormDataProvider;
 
 /*
@@ -67,22 +66,22 @@ class TcaColumnsProcessShowitemTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'processedTca' => [
                 'types' => [
                     'aType' => [
-                        'showitem' => 'keepMe',
+                        'showitem' => 'keepMe'
                     ],
                 ],
                 'columns' => [
                     'keepMe' => [
                         'config' => [
                             'type' => 'input',
-                        ],
+                        ]
                     ],
                     'aField' => [
                         'config' => [
                             'type' => 'input',
-                        ],
-                    ],
-                ],
-            ],
+                        ]
+                    ]
+                ]
+            ]
         ];
 
         $expected = $input;
@@ -103,7 +102,7 @@ class TcaColumnsProcessShowitemTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'processedTca' => [
                 'types' => [
                     'aType' => [
-                        'showitem' => '--palette--;;aPalette',
+                        'showitem' => '--palette--;;aPalette'
                     ],
                 ],
                 'palettes' => [
@@ -115,15 +114,15 @@ class TcaColumnsProcessShowitemTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     'keepMe' => [
                         'config' => [
                             'type' => 'input',
-                        ],
+                        ]
                     ],
                     'bField' => [
                         'config' => [
                             'type' => 'input',
-                        ],
-                    ],
-                ],
-            ],
+                        ]
+                    ]
+                ]
+            ]
         ];
 
         $expected = $input;
@@ -143,7 +142,7 @@ class TcaColumnsProcessShowitemTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'processedTca' => [
                 'types' => [
                     'aType' => [
-                        'showitem' => '--palette--;;aPalette, anotherField',
+                        'showitem' => '--palette--;;aPalette, anotherField'
                     ],
                 ],
                 'palettes' => [
@@ -155,20 +154,20 @@ class TcaColumnsProcessShowitemTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     'aField' => [
                         'config' => [
                             'type' => 'input',
-                        ],
+                        ]
                     ],
                     'removeMe' => [
                         'config' => [
                             'type' => 'input',
-                        ],
+                        ]
                     ],
                     'anotherField' => [
                         'config' => [
                             'type' => 'input',
-                        ],
-                    ],
-                ],
-            ],
+                        ]
+                    ]
+                ]
+            ]
         ];
 
         $expected = $input;
@@ -198,7 +197,7 @@ class TcaColumnsProcessShowitemTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     'aField' => [
                         'config' => [
                             'type' => 'input',
-                        ],
+                        ]
                     ],
                 ],
             ],
@@ -234,7 +233,7 @@ class TcaColumnsProcessShowitemTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     'aField' => [
                         'config' => [
                             'type' => 'input',
-                        ],
+                        ]
                     ],
                 ],
             ],
@@ -278,7 +277,7 @@ class TcaColumnsProcessShowitemTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     'aField' => [
                         'config' => [
                             'type' => 'input',
-                        ],
+                        ]
                     ],
                 ],
             ],

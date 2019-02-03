@@ -25,8 +25,8 @@ class DataStructureParsePostProcessHookThrowException
      *
      * @param array $dataStructure
      * @param array $identifier
-     * @throws \RuntimeException
      * @return array
+     * @throws \RuntimeException
      */
     public function parseDataStructureByIdentifierPostProcess(array $dataStructure, array $identifier): array
     {

@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Page;
 
 /*
@@ -100,7 +99,7 @@ class PageRendererTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'fileRef' => $fileReference,
             'selectionPrefix' => $selectionPrefix,
             'stripFromSelectionName' => $stripFromSelectionName,
-            'errorMode' => $errorMode,
+            'errorMode' => $errorMode
         ];
 
         $subject->addInlineLanguageLabelFile($fileReference, $selectionPrefix, $stripFromSelectionName, $errorMode);
@@ -124,7 +123,7 @@ class PageRendererTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'fileRef' => $fileReference1,
             'selectionPrefix' => $selectionPrefix1,
             'stripFromSelectionName' => $stripFromSelectionName1,
-            'errorMode' => $errorMode1,
+            'errorMode' => $errorMode1
         ];
         $fileReference2 = $this->getUniqueId('file2_');
         $selectionPrefix2 = $this->getUniqueId('prefix2_');
@@ -134,7 +133,7 @@ class PageRendererTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'fileRef' => $fileReference2,
             'selectionPrefix' => $selectionPrefix2,
             'stripFromSelectionName' => $stripFromSelectionName2,
-            'errorMode' => $errorMode2,
+            'errorMode' => $errorMode2
         ];
 
         $subject->addInlineLanguageLabelFile($fileReference1, $selectionPrefix1, $stripFromSelectionName1, $errorMode1);
@@ -214,16 +213,15 @@ class PageRendererTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'default' => [
                 'inline_label_first_Key' => 'first',
                 'inline_label_second_Key' => 'second',
-                'thirdKey' => 'third',
-            ],
+                'thirdKey' => 'third'
+            ]
         ];
-
         return [
             'No processing' => [
                 $llFileContent,
                 '',
                 '',
-                $llFileContent['default'],
+                $llFileContent['default']
             ],
             'Respect $selectionPrefix' => [
                 $llFileContent,
@@ -231,8 +229,8 @@ class PageRendererTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 '',
                 [
                     'inline_label_first_Key' => 'first',
-                    'inline_label_second_Key' => 'second',
-                ],
+                    'inline_label_second_Key' => 'second'
+                ]
             ],
             'Respect $stripFromSelectionName' => [
                 $llFileContent,
@@ -241,8 +239,8 @@ class PageRendererTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [
                     'label_first_Key' => 'first',
                     'label_second_Key' => 'second',
-                    'thirdKey' => 'third',
-                ],
+                    'thirdKey' => 'third'
+                ]
             ],
             'Respect $selectionPrefix and $stripFromSelectionName' => [
                 $llFileContent,
@@ -250,8 +248,8 @@ class PageRendererTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'inline_label_',
                 [
                     'first_Key' => 'first',
-                    'second_Key' => 'second',
-                ],
+                    'second_Key' => 'second'
+                ]
             ],
         ];
     }
@@ -259,10 +257,6 @@ class PageRendererTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @dataProvider includeLanguageFileForInlineAddsProcessesLabelsToInlineLanguageLabelsProvider
      * @test
-     * @param mixed $llFileContent
-     * @param mixed $selectionPrefix
-     * @param mixed $stripFromSelectionName
-     * @param mixed $expectation
      */
     public function includeLanguageFileForInlineAddsProcessesLabelsToInlineLanguageLabels($llFileContent, $selectionPrefix, $stripFromSelectionName, $expectation)
     {

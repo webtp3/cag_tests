@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace CAG\CagTests\Core;
 
 /*
@@ -155,7 +154,6 @@ class FileStreamWrapper
                 break;
             }
         }
-
         return $hasOverlay ? $newPath : $path;
     }
 
@@ -215,13 +213,13 @@ class FileStreamWrapper
     {
         if ($this->dirHandle === null) {
             return false;
+        } else {
+            self::restore();
+            closedir($this->dirHandle);
+            self::register();
+            $this->dirHandle = null;
+            return true;
         }
-        self::restore();
-        closedir($this->dirHandle);
-        self::register();
-        $this->dirHandle = null;
-
-        return true;
     }
 
     /**
@@ -240,7 +238,6 @@ class FileStreamWrapper
         $path = self::overlayPath($path);
         $this->dirHandle = opendir($path);
         self::register();
-
         return $this->dirHandle !== false;
     }
 
@@ -257,7 +254,6 @@ class FileStreamWrapper
         self::restore();
         $success = readdir($this->dirHandle);
         self::register();
-
         return $success;
     }
 
@@ -274,7 +270,6 @@ class FileStreamWrapper
         self::restore();
         rewinddir($this->dirHandle);
         self::register();
-
         return true;
     }
 
@@ -292,7 +287,6 @@ class FileStreamWrapper
         $path = self::overlayPath($path);
         $success = mkdir($path, $mode, (bool)($options & STREAM_MKDIR_RECURSIVE));
         self::register();
-
         return $success;
     }
 
@@ -310,7 +304,6 @@ class FileStreamWrapper
         $pathTo = self::overlayPath($pathTo);
         $success = rename($pathFrom, $pathTo);
         self::register();
-
         return $success;
     }
 
@@ -326,7 +319,6 @@ class FileStreamWrapper
         $path = self::overlayPath($path);
         $success = rmdir($path);
         self::register();
-
         return $success;
     }
 
@@ -342,13 +334,14 @@ class FileStreamWrapper
     {
         if ($this->fileHandle !== null && $castAs & STREAM_CAST_AS_STREAM) {
             return $this->fileHandle;
+        } else {
+            return false;
         }
-
-        return false;
     }
 
     /**
      * Close a file
+     *
      */
     public function stream_close()
     {
@@ -373,7 +366,6 @@ class FileStreamWrapper
         self::restore();
         $success = feof($this->fileHandle);
         self::register();
-
         return $success;
     }
 
@@ -390,7 +382,6 @@ class FileStreamWrapper
         self::restore();
         $success = fflush($this->fileHandle);
         self::register();
-
         return $success;
     }
 
@@ -408,7 +399,6 @@ class FileStreamWrapper
         self::restore();
         $success = flock($this->fileHandle, $operation);
         self::register();
-
         return $success;
     }
 
@@ -445,7 +435,6 @@ class FileStreamWrapper
                 $success = false;
         }
         self::register();
-
         return $success;
     }
 
@@ -467,7 +456,6 @@ class FileStreamWrapper
         $path = self::overlayPath($path);
         $this->fileHandle = fopen($path, $mode, (bool)($options & STREAM_USE_PATH));
         self::register();
-
         return $this->fileHandle !== false;
     }
 
@@ -485,7 +473,6 @@ class FileStreamWrapper
         self::restore();
         $content = fread($this->fileHandle, $length);
         self::register();
-
         return $content;
     }
 
@@ -504,7 +491,6 @@ class FileStreamWrapper
         self::restore();
         $success = fseek($this->fileHandle, $offset, $whence);
         self::register();
-
         return $success;
     }
 
@@ -534,7 +520,6 @@ class FileStreamWrapper
         self::restore();
         $stats = fstat($this->fileHandle);
         self::register();
-
         return $stats;
     }
 
@@ -551,7 +536,6 @@ class FileStreamWrapper
         self::restore();
         $position = ftell($this->fileHandle);
         self::register();
-
         return $position;
     }
 
@@ -569,7 +553,6 @@ class FileStreamWrapper
         self::restore();
         $success = ftruncate($this->fileHandle, $size);
         self::register();
-
         return $success;
     }
 
@@ -587,7 +570,6 @@ class FileStreamWrapper
         self::restore();
         $length = fwrite($this->fileHandle, $data);
         self::register();
-
         return $length;
     }
 
@@ -603,7 +585,6 @@ class FileStreamWrapper
         $path = self::overlayPath($path);
         $success = unlink($path);
         self::register();
-
         return $success;
     }
 
@@ -624,7 +605,6 @@ class FileStreamWrapper
             $information = @stat($path);
         }
         self::register();
-
         return $information;
     }
 }

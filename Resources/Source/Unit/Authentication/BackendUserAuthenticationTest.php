@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Authentication;
 
 /*
@@ -15,7 +14,6 @@ namespace TYPO3\CMS\Core\Tests\Unit\Authentication;
  * The TYPO3 project - inspiring people to share!
  */
 
-use CAG\CagTests\Core\Unit\UnitTestCase;
 use Prophecy\Argument;
 use Prophecy\Prophecy\ObjectProphecy;
 use TYPO3\CMS\Core\Authentication\BackendUserAuthentication;
@@ -28,6 +26,7 @@ use TYPO3\CMS\Core\Resource\ResourceStorage;
 use TYPO3\CMS\Core\Tests\Unit\Database\Mocks\MockPlatform;
 use TYPO3\CMS\Core\Type\Bitmask\JsConfirmation;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use CAG\CagTests\Core\Unit\UnitTestCase;
 
 /**
  * Test case
@@ -54,7 +53,7 @@ class BackendUserAuthenticationTest extends UnitTestCase
         'moveFolder' => false,
         'renameFolder' => false,
         'deleteFolder' => false,
-        'recursivedeleteFolder' => false,
+        'recursivedeleteFolder' => false
     ];
 
     /**
@@ -69,7 +68,6 @@ class BackendUserAuthenticationTest extends UnitTestCase
     /////////////////////////////////////////
     // Tests concerning the form protection
     /////////////////////////////////////////
-
     /**
      * @test
      */
@@ -130,7 +128,7 @@ class BackendUserAuthenticationTest extends UnitTestCase
                     '1.' => ['writeAction' => '1'],
                     '0.' => ['readAction' => '0'],
                 ],
-            ],
+            ]
         ];
 
         return [
@@ -139,7 +137,8 @@ class BackendUserAuthenticationTest extends UnitTestCase
                 'permissions',
                 [
                     'value' => null,
-                    'properties' => [
+                    'properties' =>
+                    [
                         'file.' => [
                             'default.' => ['readAction' => '1'],
                             '1.' => ['writeAction' => '1'],
@@ -153,7 +152,8 @@ class BackendUserAuthenticationTest extends UnitTestCase
                 'permissions.file',
                 [
                     'value' => null,
-                    'properties' => [
+                    'properties' =>
+                    [
                         'default.' => ['readAction' => '1'],
                         '1.' => ['writeAction' => '1'],
                         '0.' => ['readAction' => '0'],
@@ -165,7 +165,8 @@ class BackendUserAuthenticationTest extends UnitTestCase
                 'permissions.file.default',
                 [
                     'value' => null,
-                    'properties' => ['readAction' => '1'],
+                    'properties' =>
+                    ['readAction' => '1'],
                 ],
             ],
             'three levels string with integer property' => [
@@ -294,7 +295,7 @@ class BackendUserAuthenticationTest extends UnitTestCase
                     'writeFolder' => 0,
                     'deleteFolder' => 0,
                     'recursivedeleteFolder' => 0,
-                ],
+                ]
             ],
             'Uploading allowed' => [
                 [
@@ -312,13 +313,13 @@ class BackendUserAuthenticationTest extends UnitTestCase
                     'renameFolder' => 0,
                     'writeFolder' => 0,
                     'deleteFolder' => 0,
-                    'recursivedeleteFolder' => 0,
-                ],
+                    'recursivedeleteFolder' => 0
+                ]
             ],
             'One value is enough' => [
                 [
                     'addFile' => 1,
-                ],
+                ]
             ],
         ];
     }
@@ -343,9 +344,9 @@ class BackendUserAuthenticationTest extends UnitTestCase
         $subject->userTS = [
             'permissions.' => [
                 'file.' => [
-                    'default.' => $userTsConfiguration,
+                    'default.' => $userTsConfiguration
                 ],
-            ],
+            ]
         ];
 
         $expectedPermissions = array_merge($this->defaultFilePermissions, $userTsConfiguration);
@@ -379,7 +380,7 @@ class BackendUserAuthenticationTest extends UnitTestCase
             'renameFolder' => true,
             'writeFolder' => true,
             'deleteFolder' => true,
-            'recursivedeleteFolder' => true,
+            'recursivedeleteFolder' => true
         ];
 
         return [
@@ -388,7 +389,7 @@ class BackendUserAuthenticationTest extends UnitTestCase
                 1,
                 [
                     'addFile' => 0,
-                    'recursivedeleteFolder' => 0,
+                    'recursivedeleteFolder' =>0
                 ],
                 [
                     'addFile' => 0,
@@ -405,15 +406,15 @@ class BackendUserAuthenticationTest extends UnitTestCase
                     'renameFolder' => 1,
                     'writeFolder' => 1,
                     'deleteFolder' => 1,
-                    'recursivedeleteFolder' => 0,
-                ],
+                    'recursivedeleteFolder' => 0
+                ]
             ],
             'Overwrites given storage 0 permissions with default permissions' => [
                 $defaultPermissions,
                 0,
                 [
                     'addFile' => 0,
-                    'recursivedeleteFolder' => 0,
+                    'recursivedeleteFolder' =>0
                 ],
                 [
                     'addFile' => false,
@@ -430,8 +431,8 @@ class BackendUserAuthenticationTest extends UnitTestCase
                     'renameFolder' => true,
                     'writeFolder' => true,
                     'deleteFolder' => true,
-                    'recursivedeleteFolder' => false,
-                ],
+                    'recursivedeleteFolder' => false
+                ]
             ],
             'Returns default permissions if no storage permissions are found' => [
                 $defaultPermissions,
@@ -452,8 +453,8 @@ class BackendUserAuthenticationTest extends UnitTestCase
                     'renameFolder' => true,
                     'writeFolder' => true,
                     'deleteFolder' => true,
-                    'recursivedeleteFolder' => true,
-                ],
+                    'recursivedeleteFolder' => true
+                ]
             ],
         ];
     }
@@ -489,10 +490,10 @@ class BackendUserAuthenticationTest extends UnitTestCase
             'permissions.' => [
                 'file.' => [
                     'storage.' => [
-                        $storageUid . '.' => $storagePermissions,
+                        $storageUid . '.' => $storagePermissions
                     ],
                 ],
-            ],
+            ]
         ];
 
         $this->assertEquals($expectedPermissions, $subject->getFilePermissionsForStorage($storageMock));
@@ -528,10 +529,10 @@ class BackendUserAuthenticationTest extends UnitTestCase
             'permissions.' => [
                 'file.' => [
                     'storage.' => [
-                        $storageUid . '.' => $storagePermissions,
+                        $storageUid . '.' => $storagePermissions
                     ],
                 ],
-            ],
+            ]
         ];
 
         $this->assertEquals($defaultPermissions, $subject->getFilePermissionsForStorage($storageMock));
@@ -560,8 +561,8 @@ class BackendUserAuthenticationTest extends UnitTestCase
                     'renameFolder' => false,
                     'writeFolder' => false,
                     'deleteFolder' => false,
-                    'recursivedeleteFolder' => false,
-                ],
+                    'recursivedeleteFolder' => false
+                ]
             ],
             'Standard file permissions' => [
                 'addFile,readFile,writeFile,copyFile,moveFile,renameFile,deleteFile',
@@ -580,8 +581,8 @@ class BackendUserAuthenticationTest extends UnitTestCase
                     'renameFolder' => false,
                     'writeFolder' => false,
                     'deleteFolder' => false,
-                    'recursivedeleteFolder' => false,
-                ],
+                    'recursivedeleteFolder' => false
+                ]
             ],
             'Standard folder permissions' => [
                 'addFolder,readFolder,moveFolder,renameFolder,writeFolder,deleteFolder',
@@ -600,8 +601,8 @@ class BackendUserAuthenticationTest extends UnitTestCase
                     'moveFolder' => true,
                     'renameFolder' => true,
                     'deleteFolder' => true,
-                    'recursivedeleteFolder' => false,
-                ],
+                    'recursivedeleteFolder' => false
+                ]
             ],
             'Copy folder allowed' => [
                 'readFolder,copyFolder',
@@ -620,8 +621,8 @@ class BackendUserAuthenticationTest extends UnitTestCase
                     'moveFolder' => false,
                     'renameFolder' => false,
                     'deleteFolder' => false,
-                    'recursivedeleteFolder' => false,
-                ],
+                    'recursivedeleteFolder' => false
+                ]
             ],
             'Copy folder and remove subfolders allowed' => [
                 'readFolder,copyFolder,recursivedeleteFolder',
@@ -640,8 +641,8 @@ class BackendUserAuthenticationTest extends UnitTestCase
                     'moveFolder' => false,
                     'renameFolder' => false,
                     'deleteFolder' => false,
-                    'recursivedeleteFolder' => true,
-                ],
+                    'recursivedeleteFolder' => true
+                ]
             ],
         ];
     }
@@ -701,7 +702,7 @@ class BackendUserAuthenticationTest extends UnitTestCase
             'moveFolder' => true,
             'renameFolder' => true,
             'deleteFolder' => true,
-            'recursivedeleteFolder' => true,
+            'recursivedeleteFolder' => true
         ];
 
         $this->assertEquals($expectedPermissions, $subject->getFilePermissions());
@@ -832,20 +833,20 @@ class BackendUserAuthenticationTest extends UnitTestCase
                 1,
                 true,
                 '',
-                ' 1=1',
+                ' 1=1'
             ],
             'for admin with groups' => [
                 11,
                 true,
                 '1,2',
-                ' 1=1',
+                ' 1=1'
             ],
             'for user' => [
                 2,
                 false,
                 '',
                 ' ((`pages`.`perms_everybody` & 2 = 2) OR' .
-                ' ((`pages`.`perms_userid` = 123) AND (`pages`.`perms_user` & 2 = 2)))',
+                ' ((`pages`.`perms_userid` = 123) AND (`pages`.`perms_user` & 2 = 2)))'
             ],
             'for user with groups' => [
                 8,
@@ -853,7 +854,7 @@ class BackendUserAuthenticationTest extends UnitTestCase
                 '1,2',
                 ' ((`pages`.`perms_everybody` & 8 = 8) OR' .
                 ' ((`pages`.`perms_userid` = 123) AND (`pages`.`perms_user` & 8 = 8))' .
-                ' OR ((`pages`.`perms_groupid` IN (1, 2)) AND (`pages`.`perms_group` & 8 = 8)))',
+                ' OR ((`pages`.`perms_groupid` IN (1, 2)) AND (`pages`.`perms_group` & 8 = 8)))'
             ],
         ];
     }

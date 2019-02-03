@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Resource;
 
 /*
@@ -125,7 +124,6 @@ abstract class BaseTestCase extends \CAG\CagTests\Core\Unit\UnitTestCase
             ->getMock();
         $mock->expects($this->any())->method('getIdentifier')->will($this->returnValue($identifier));
         $mock->expects($this->any())->method('getName')->will($this->returnValue(basename($identifier)));
-
         return $mock;
     }
 
@@ -167,7 +165,6 @@ abstract class BaseTestCase extends \CAG\CagTests\Core\Unit\UnitTestCase
         $folder = $this->_createFileFolderMock(\TYPO3\CMS\Core\Resource\Folder::class, $identifier, array_merge($mockedMethods, ['getFiles', 'getSubfolders']));
         $folder->expects($this->any())->method('getSubfolders')->will($this->returnValue($subfolders));
         $folder->expects($this->any())->method('getFiles')->will($this->returnValue($files));
-
         return $folder;
     }
 }

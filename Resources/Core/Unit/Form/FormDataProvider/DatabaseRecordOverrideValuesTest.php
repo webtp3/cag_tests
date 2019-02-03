@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Backend\Tests\Unit\Form\FormDataProvider;
 
 /*
@@ -53,7 +52,7 @@ class DatabaseRecordOverrideValuesTest extends \CAG\CagTests\Core\Unit\UnitTestC
             ],
             'overrideValues' => [
                 'anotherField' => 13,
-            ],
+            ]
         ];
 
         $this->assertSame($input, $this->subject->addData($input));
@@ -86,7 +85,7 @@ class DatabaseRecordOverrideValuesTest extends \CAG\CagTests\Core\Unit\UnitTestC
             'overrideValues' => [
                 'aField' => 256,
                 'anotherField' => 13,
-            ],
+            ]
         ];
 
         $expected = $input;

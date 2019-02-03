@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Backend\Tests\Unit\Form\FormDataProvider;
 
 /*
@@ -75,7 +74,7 @@ class DatabaseEffectivePidTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'command' => 'new',
             'tableName' => 'tt_content',
             'parentPageRow' => [
-                'uid' => 123,
+                'uid' => 123
             ],
         ];
         $expected = $input;

@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Utility;
 
 /*
@@ -25,7 +24,6 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     ///////////////////////
     // Tests concerning filterByValueRecursive
     ///////////////////////
-
     /**
      * Data provider for filterByValueRecursiveCorrectlyFiltersArray
      *
@@ -40,39 +38,39 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'empty search array' => [
                 'banana',
                 [],
-                [],
+                []
             ],
             'empty string as needle' => [
                 '',
                 [
                     '',
-                    'apple',
+                    'apple'
                 ],
                 [
-                    '',
-                ],
+                    ''
+                ]
             ],
             'flat array searching for string' => [
                 'banana',
                 [
                     'apple',
-                    'banana',
+                    'banana'
                 ],
                 [
-                    1 => 'banana',
-                ],
+                    1 => 'banana'
+                ]
             ],
             'flat array searching for string with two matches' => [
                 'banana',
                 [
                     'foo' => 'apple',
                     'firstbanana' => 'banana',
-                    'secondbanana' => 'banana',
+                    'secondbanana' => 'banana'
                 ],
                 [
                     'firstbanana' => 'banana',
-                    'secondbanana' => 'banana',
-                ],
+                    'secondbanana' => 'banana'
+                ]
             ],
             'multi dimensional array searching for string with multiple matches' => [
                 'banana',
@@ -82,16 +80,16 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     'grape' => [
                         'foo2' => 'apple2',
                         'secondbanana' => 'banana',
-                        'foo3' => [],
+                        'foo3' => []
                     ],
-                    'bar' => 'orange',
+                    'bar' => 'orange'
                 ],
                 [
                     'firstbanana' => 'banana',
                     'grape' => [
-                        'secondbanana' => 'banana',
-                    ],
-                ],
+                        'secondbanana' => 'banana'
+                    ]
+                ]
             ],
             'multi dimensional array searching for integer with multiple matches' => [
                 42,
@@ -100,25 +98,25 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     'bar' => 42,
                     [
                         'foo' => 23,
-                        'bar' => 42,
-                    ],
+                        'bar' => 42
+                    ]
                 ],
                 [
                     'bar' => 42,
                     [
-                        'bar' => 42,
-                    ],
-                ],
+                        'bar' => 42
+                    ]
+                ]
             ],
             'flat array searching for boolean TRUE' => [
                 true,
                 [
                     23 => false,
-                    42 => true,
+                    42 => true
                 ],
                 [
-                    42 => true,
-                ],
+                    42 => true
+                ]
             ],
             'multi dimensional array searching for boolean FALSE' => [
                 false,
@@ -127,32 +125,32 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     42 => true,
                     'foo' => [
                         23 => false,
-                        42 => true,
-                    ],
+                        42 => true
+                    ]
                 ],
                 [
                     23 => false,
                     'foo' => [
-                        23 => false,
-                    ],
-                ],
+                        23 => false
+                    ]
+                ]
             ],
             'flat array searching for array' => [
                 [
-                    'foo' => 'bar',
+                    'foo' => 'bar'
                 ],
                 [
                     'foo' => 'bar',
                     'foobar' => [
-                        'foo' => 'bar',
-                    ],
+                        'foo' => 'bar'
+                    ]
                 ],
                 [
                     'foobar' => [
-                        'foo' => 'bar',
-                    ],
-                ],
-            ],
+                        'foo' => 'bar'
+                    ]
+                ]
+            ]
         ];
     }
 
@@ -197,7 +195,6 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     ///////////////////////
     // Tests concerning isValidPath
     ///////////////////////
-
     /**
      * Mock the class under test, isValidPath() (method under test), calls
      * static getValuePath() internally, which is mocked here to return a specific
@@ -222,7 +219,6 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     ///////////////////////
     // Tests concerning getValueByPath
     ///////////////////////
-
     /**
      * @test
      */
@@ -274,50 +270,50 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         return [
             'not existing index' => [
                 [
-                    'foo' => ['foo'],
+                    'foo' => ['foo']
                 ],
                 'foo/1',
-                false,
+                false
             ],
             'not existing path 1' => [
                 [
-                    'foo' => [],
+                    'foo' => []
                 ],
                 'foo/bar/baz',
-                false,
+                false
             ],
             'not existing path 2' => [
                 [
                     'foo' => [
-                        'baz' => 42,
+                        'baz' => 42
                     ],
-                    'bar' => [],
+                    'bar' => []
                 ],
                 'foo/bar/baz',
-                false,
+                false
             ],
             // Negative test: This could be improved and the test moved to
             // the valid data provider if the method supports this
             'doubletick encapsulated quoted doubletick does not work' => [
                 [
                     '"foo"bar"' => [
-                        'baz' => 42,
+                        'baz' => 42
                     ],
-                    'bar' => [],
+                    'bar' => []
                 ],
                 '"foo\\"bar"/baz',
-                42,
+                42
             ],
             // Negative test: Method could be improved here
             'path with doubletick does not work' => [
                 [
                     'fo"o' => [
-                        'bar' => 42,
-                    ],
+                        'bar' => 42
+                    ]
                 ],
                 'fo"o/foobar',
-                42,
-            ],
+                42
+            ]
         ];
     }
 
@@ -347,85 +343,84 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $testObject = new \stdClass();
         $testObject->foo = 'foo';
         $testObject->bar = 'bar';
-
         return [
             'integer in multi level array' => [
                 [
                     'foo' => [
                         'bar' => [
-                            'baz' => 42,
+                            'baz' => 42
                         ],
-                        'bar2' => [],
-                    ],
+                        'bar2' => []
+                    ]
                 ],
                 'foo/bar/baz',
-                42,
+                42
             ],
             'zero integer in multi level array' => [
                 [
                     'foo' => [
                         'bar' => [
-                            'baz' => 0,
-                        ],
-                    ],
+                            'baz' => 0
+                        ]
+                    ]
                 ],
                 'foo/bar/baz',
-                0,
+                0
             ],
             'NULL value in multi level array' => [
                 [
                     'foo' => [
-                        'baz' => null,
-                    ],
+                        'baz' => null
+                    ]
                 ],
                 'foo/baz',
-                null,
+                null
             ],
             'get string value' => [
                 [
                     'foo' => [
-                        'baz' => 'this is a test string',
-                    ],
+                        'baz' => 'this is a test string'
+                    ]
                 ],
                 'foo/baz',
-                'this is a test string',
+                'this is a test string'
             ],
             'get boolean value: FALSE' => [
                 [
                     'foo' => [
-                        'baz' => false,
-                    ],
+                        'baz' => false
+                    ]
                 ],
                 'foo/baz',
-                false,
+                false
             ],
             'get boolean value: TRUE' => [
                 [
                     'foo' => [
-                        'baz' => true,
-                    ],
+                        'baz' => true
+                    ]
                 ],
                 'foo/baz',
-                true,
+                true
             ],
             'get object value' => [
                 [
                     'foo' => [
-                        'baz' => $testObject,
-                    ],
+                        'baz' => $testObject
+                    ]
                 ],
                 'foo/baz',
-                $testObject,
+                $testObject
             ],
             'enclosed path' => [
                 [
                     'foo/bar' => [
-                        'foobar' => 42,
-                    ],
+                        'foobar' => 42
+                    ]
                 ],
                 '"foo/bar"/foobar',
-                42,
-            ],
+                42
+            ]
         ];
     }
 
@@ -449,10 +444,10 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $input = [
             'foo' => [
                 'bar' => [
-                    'baz' => 42,
+                    'baz' => 42
                 ],
-                'bar2' => [],
-            ],
+                'bar2' => []
+            ]
         ];
         $searchPath = 'foo%bar%baz';
         $expected = 42;
@@ -466,7 +461,6 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     ///////////////////////
     // Tests concerning setValueByPath
     ///////////////////////
-
     /**
      * @test
      */
@@ -530,162 +524,161 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $testObject = new \stdClass();
         $testObject->foo = 'foo';
         $testObject->bar = 'bar';
-
         return [
             'set integer value: 42' => [
                 [
                     'foo' => [
                         'bar' => [
-                            'baz' => 0,
-                        ],
-                    ],
+                            'baz' => 0
+                        ]
+                    ]
                 ],
                 'foo/bar/baz',
                 42,
                 [
                     'foo' => [
                         'bar' => [
-                            'baz' => 42,
-                        ],
-                    ],
-                ],
+                            'baz' => 42
+                        ]
+                    ]
+                ]
             ],
             'set integer value: 0' => [
                 [
                     'foo' => [
                         'bar' => [
-                            'baz' => 42,
-                        ],
-                    ],
+                            'baz' => 42
+                        ]
+                    ]
                 ],
                 'foo/bar/baz',
                 0,
                 [
                     'foo' => [
                         'bar' => [
-                            'baz' => 0,
-                        ],
-                    ],
-                ],
+                            'baz' => 0
+                        ]
+                    ]
+                ]
             ],
             'set null value' => [
                 [
                     'foo' => [
                         'bar' => [
-                            'baz' => 42,
-                        ],
-                    ],
+                            'baz' => 42
+                        ]
+                    ]
                 ],
                 'foo/bar/baz',
                 null,
                 [
                     'foo' => [
                         'bar' => [
-                            'baz' => null,
-                        ],
-                    ],
-                ],
+                            'baz' => null
+                        ]
+                    ]
+                ]
             ],
             'set array value' => [
                 [
                     'foo' => [
                         'bar' => [
-                            'baz' => 42,
-                        ],
-                    ],
+                            'baz' => 42
+                        ]
+                    ]
                 ],
                 'foo/bar/baz',
                 [
-                    'foo' => 123,
+                    'foo' => 123
                 ],
                 [
                     'foo' => [
                         'bar' => [
                             'baz' => [
-                                'foo' => 123,
-                            ],
-                        ],
-                    ],
-                ],
+                                'foo' => 123
+                            ]
+                        ]
+                    ]
+                ]
             ],
             'set boolean value: FALSE' => [
                 [
                     'foo' => [
                         'bar' => [
-                            'baz' => true,
-                        ],
-                    ],
+                            'baz' => true
+                        ]
+                    ]
                 ],
                 'foo/bar/baz',
                 false,
                 [
                     'foo' => [
                         'bar' => [
-                            'baz' => false,
-                        ],
-                    ],
-                ],
+                            'baz' => false
+                        ]
+                    ]
+                ]
             ],
             'set boolean value: TRUE' => [
                 [
                     'foo' => [
                         'bar' => [
-                            'baz' => null,
-                        ],
-                    ],
+                            'baz' => null
+                        ]
+                    ]
                 ],
                 'foo/bar/baz',
                 true,
                 [
                     'foo' => [
                         'bar' => [
-                            'baz' => true,
-                        ],
-                    ],
-                ],
+                            'baz' => true
+                        ]
+                    ]
+                ]
             ],
             'set object value' => [
                 [
                     'foo' => [
                         'bar' => [
-                            'baz' => null,
-                        ],
-                    ],
+                            'baz' => null
+                        ]
+                    ]
                 ],
                 'foo/bar/baz',
                 $testObject,
                 [
                     'foo' => [
                         'bar' => [
-                            'baz' => $testObject,
-                        ],
-                    ],
-                ],
+                            'baz' => $testObject
+                        ]
+                    ]
+                ]
             ],
             'multi keys in array' => [
                 [
                     'foo' => [
                         'bar' => [
-                            'baz' => 'value',
+                            'baz' => 'value'
                         ],
                         'bar2' => [
-                            'baz' => 'value',
-                        ],
-                    ],
+                            'baz' => 'value'
+                        ]
+                    ]
                 ],
                 'foo/bar2/baz',
                 'newValue',
                 [
                     'foo' => [
                         'bar' => [
-                            'baz' => 'value',
+                            'baz' => 'value'
                         ],
                         'bar2' => [
-                            'baz' => 'newValue',
-                        ],
-                    ],
-                ],
-            ],
+                            'baz' => 'newValue'
+                        ]
+                    ]
+                ]
+            ]
         ];
     }
 
@@ -739,7 +732,7 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $inputArray = [
             'foo' => [
                 'bar' => 42,
-            ],
+            ]
         ];
 
         $this->expectException(\RuntimeException::class);
@@ -754,7 +747,7 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     public function removeByPathRemovesFirstIndexWithZeroAsPathSegment()
     {
         $inputArray = [
-            'foo' => ['bar'],
+            'foo' => ['bar']
         ];
 
         $this->assertSame(['foo' => []], ArrayUtility::removeByPath($inputArray, 'foo/0'));
@@ -778,7 +771,7 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $inputArray = [
             'foo' => [
                 'bar' => 42,
-            ],
+            ]
         ];
 
         $this->expectException(\RuntimeException::class);
@@ -795,7 +788,7 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $inputArray = [
             'foo' => [
                 'toRemove' => 42,
-                'keep' => 23,
+                'keep' => 23
             ],
         ];
         $path = 'foo.toRemove';
@@ -820,7 +813,7 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [
                     'foo' => [
                         'toRemove' => 42,
-                        'keep' => 23,
+                        'keep' => 23
                     ],
                 ],
                 'foo/toRemove',
@@ -833,7 +826,7 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'whole array' => [
                 [
                     'foo' => [
-                        'bar' => 42,
+                        'bar' => 42
                     ],
                 ],
                 'foo',
@@ -876,7 +869,6 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     ///////////////////////
     // Tests concerning sortByKeyRecursive
     ///////////////////////
-
     /**
      * @test
      */
@@ -889,8 +881,8 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'c' => null,
                 'b' => null,
                 'd' => null,
-                'a' => null,
-            ],
+                'a' => null
+            ]
         ];
         $expectedResult = [
             'a' => null,
@@ -898,9 +890,9 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'a' => null,
                 'b' => null,
                 'c' => null,
-                'd' => null,
+                'd' => null
             ],
-            'z' => null,
+            'z' => null
         ];
         $this->assertSame($expectedResult, ArrayUtility::sortByKeyRecursive($unsortedArray));
     }
@@ -908,7 +900,6 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     ///////////////////////
     // Tests concerning sortArraysByKey
     ///////////////////////
-
     /**
      * Data provider for sortArraysByKeyCheckIfSortingIsCorrect
      */
@@ -920,17 +911,17 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     '22' => [
                         'uid' => '22',
                         'title' => 'c',
-                        'dummy' => 2,
+                        'dummy' => 2
                     ],
                     '24' => [
                         'uid' => '24',
                         'title' => 'a',
-                        'dummy' => 3,
+                        'dummy' => 3
                     ],
                     '23' => [
                         'uid' => '23',
                         'title' => 'b',
-                        'dummy' => 4,
+                        'dummy' => 4
                     ],
                 ],
                 'title',
@@ -939,17 +930,17 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     '24' => [
                         'uid' => '24',
                         'title' => 'a',
-                        'dummy' => 3,
+                        'dummy' => 3
                     ],
                     '23' => [
                         'uid' => '23',
                         'title' => 'b',
-                        'dummy' => 4,
+                        'dummy' => 4
                     ],
                     '22' => [
                         'uid' => '22',
                         'title' => 'c',
-                        'dummy' => 2,
+                        'dummy' => 2
                     ],
                 ],
             ],
@@ -958,17 +949,17 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     22 => [
                         'uid' => '22',
                         'title' => 'c',
-                        'dummy' => 2,
+                        'dummy' => 2
                     ],
                     24 => [
                         'uid' => '24',
                         'title' => 'a',
-                        'dummy' => 3,
+                        'dummy' => 3
                     ],
                     23 => [
                         'uid' => '23',
                         'title' => 'b',
-                        'dummy' => 4,
+                        'dummy' => 4
                     ],
                 ],
                 'title',
@@ -977,17 +968,17 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     24 => [
                         'uid' => '24',
                         'title' => 'a',
-                        'dummy' => 3,
+                        'dummy' => 3
                     ],
                     23 => [
                         'uid' => '23',
                         'title' => 'b',
-                        'dummy' => 4,
+                        'dummy' => 4
                     ],
                     22 => [
                         'uid' => '22',
                         'title' => 'c',
-                        'dummy' => 2,
+                        'dummy' => 2
                     ],
                 ],
             ],
@@ -996,17 +987,17 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     23 => [
                         'uid' => '23',
                         'title' => 'b',
-                        'dummy' => 4,
+                        'dummy' => 4
                     ],
                     22 => [
                         'uid' => '22',
                         'title' => 'c',
-                        'dummy' => 2,
+                        'dummy' => 2
                     ],
                     24 => [
                         'uid' => '24',
                         'title' => 'a',
-                        'dummy' => 3,
+                        'dummy' => 3
                     ],
                 ],
                 'title',
@@ -1015,17 +1006,17 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     22 => [
                         'uid' => '22',
                         'title' => 'c',
-                        'dummy' => 2,
+                        'dummy' => 2
                     ],
                     23 => [
                         'uid' => '23',
                         'title' => 'b',
-                        'dummy' => 4,
+                        'dummy' => 4
                     ],
                     24 => [
                         'uid' => '24',
                         'title' => 'a',
-                        'dummy' => 3,
+                        'dummy' => 3
                     ],
                 ],
             ],
@@ -1060,7 +1051,6 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     ///////////////////////
     // Tests concerning arrayExport
     ///////////////////////
-
     /**
      * @test
      */
@@ -1073,8 +1063,8 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     'baz' => 'val\'ue',
                     'baz2' => true,
                     'baz3' => false,
-                    'baz4' => [],
-                ],
+                    'baz4' => []
+                ]
             ],
             'baz' => 23,
             'foobar' => null,
@@ -1107,8 +1097,8 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     {
         $array = [
             'foo' => [
-                'bar' => new \stdClass(),
-            ],
+                'bar' => new \stdClass()
+            ]
         ];
 
         $this->expectException(\RuntimeException::class);
@@ -1125,7 +1115,7 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $array = [
             'foo' => 'string key',
             23 => 'integer key',
-            '42' => 'string key representing integer',
+            '42' => 'string key representing integer'
         ];
         $expected =
             '[' . LF .
@@ -1144,7 +1134,7 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $array = [
             0 => 'zero',
             1 => 'one',
-            2 => 'two',
+            2 => 'two'
         ];
         $expected =
             '[' . LF .
@@ -1164,7 +1154,7 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             0 => 'zero',
             1 => 'one',
             3 => 'three',
-            4 => 'four',
+            4 => 'four'
         ];
         $expected =
             '[' . LF .
@@ -1189,87 +1179,87 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'plain array' => [
                 [
                     'first' => 1,
-                    'second' => 2,
+                    'second' => 2
                 ],
                 [
                     'first' => 1,
-                    'second' => 2,
-                ],
+                    'second' => 2
+                ]
             ],
             'plain array with faulty dots' => [
                 [
                     'first.' => 1,
-                    'second.' => 2,
+                    'second.' => 2
                 ],
                 [
                     'first' => 1,
-                    'second' => 2,
-                ],
+                    'second' => 2
+                ]
             ],
             'nested array of 2 levels' => [
                 [
                     'first.' => [
-                        'firstSub' => 1,
+                        'firstSub' => 1
                     ],
                     'second.' => [
-                        'secondSub' => 2,
-                    ],
+                        'secondSub' => 2
+                    ]
                 ],
                 [
                     'first.firstSub' => 1,
-                    'second.secondSub' => 2,
-                ],
+                    'second.secondSub' => 2
+                ]
             ],
             'nested array of 2 levels with faulty dots' => [
                 [
                     'first.' => [
-                        'firstSub.' => 1,
+                        'firstSub.' => 1
                     ],
                     'second.' => [
-                        'secondSub.' => 2,
-                    ],
+                        'secondSub.' => 2
+                    ]
                 ],
                 [
                     'first.firstSub' => 1,
-                    'second.secondSub' => 2,
-                ],
+                    'second.secondSub' => 2
+                ]
             ],
             'nested array of 3 levels' => [
                 [
                     'first.' => [
                         'firstSub.' => [
-                            'firstSubSub' => 1,
-                        ],
+                            'firstSubSub' => 1
+                        ]
                     ],
                     'second.' => [
                         'secondSub.' => [
-                            'secondSubSub' => 2,
-                        ],
-                    ],
+                            'secondSubSub' => 2
+                        ]
+                    ]
                 ],
                 [
                     'first.firstSub.firstSubSub' => 1,
-                    'second.secondSub.secondSubSub' => 2,
-                ],
+                    'second.secondSub.secondSubSub' => 2
+                ]
             ],
             'nested array of 3 levels with faulty dots' => [
                 [
                     'first.' => [
                         'firstSub.' => [
-                            'firstSubSub.' => 1,
-                        ],
+                            'firstSubSub.' => 1
+                        ]
                     ],
                     'second.' => [
                         'secondSub.' => [
-                            'secondSubSub.' => 2,
-                        ],
-                    ],
+                            'secondSubSub.' => 2
+                        ]
+                    ]
                 ],
                 [
                     'first.firstSub.firstSubSub' => 1,
-                    'second.secondSub.secondSubSub' => 2,
-                ],
-            ],
+                    'second.secondSub.secondSubSub' => 2
+                ]
+            ]
         ];
     }
 
@@ -1294,7 +1284,6 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     public function intersectRecursiveCalculatesExpectedResultDataProvider()
     {
         $sameObject = new \stdClass();
-
         return [
             // array($source, $mask, $expected)
             'empty array is returned if source is empty array' => [
@@ -1353,7 +1342,7 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 ],
                 [
                     'foo' => null,
-                ],
+                ]
             ],
             'mask does not add new keys' => [
                 [
@@ -1362,7 +1351,7 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [
                     'foo' => 23,
                     'bar' => [
-                        4711,
+                        4711
                     ],
                 ],
                 [
@@ -1388,7 +1377,7 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 ],
                 [
                     'foo' => [
-                        'bar' => 23,
+                        'bar' => 23
                     ],
                 ],
                 [
@@ -1398,7 +1387,7 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'full array is kept if value is array and mask value is simple type' => [
                 [
                     'foo' => [
-                        'bar' => 23,
+                        'bar' => 23
                     ],
                 ],
                 [
@@ -1406,7 +1395,7 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 ],
                 [
                     'foo' => [
-                        'bar' => 23,
+                        'bar' => 23
                     ],
                 ],
             ],
@@ -1438,7 +1427,7 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 ],
                 [
                     'foo' => '42',
-                    'bar' => 23,
+                    'bar' => 23
                 ],
                 [
                     'foo' => '42',
@@ -1448,7 +1437,7 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [
                     'foo' => '42',
                     'bar' => [
-                        'baz' => 23,
+                        'baz' => 23
                     ],
                 ],
                 [
@@ -1458,7 +1447,7 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [
                     'foo' => '42',
                     'bar' => [
-                        'baz' => 23,
+                        'baz' => 23
                     ],
                 ],
             ],
@@ -1501,7 +1490,6 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     ///////////////////////
     // Tests concerning renumberKeysToAvoidLeapsIfKeysAreAllNumeric
     ///////////////////////
-
     /**
      * @return array
      */
@@ -1510,11 +1498,11 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         return [
             'empty array is returned if source is empty array' => [
                 [],
-                [],
+                []
             ],
             'returns self if array is already numerically keyed' => [
                 [1, 2, 3],
-                [1, 2, 3],
+                [1, 2, 3]
             ],
             'returns correctly if keys are numeric, but contains a leap' => [
                 [0 => 'One', 1 => 'Two', 3 => 'Three'],
@@ -1536,7 +1524,7 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     [
                         'sub.One',
                         'sub.Two',
-                    ],
+                    ]
                 ],
                 [
                     'One',
@@ -1545,8 +1533,8 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     [
                         'sub.One',
                         'sub.Two',
-                    ],
-                ],
+                    ]
+                ]
             ],
             'returns correctly with nested numerically keyed array with leaps' => [
                 [
@@ -1556,7 +1544,7 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     [
                         0 => 'sub.One',
                         2 => 'sub.Two',
-                    ],
+                    ]
                 ],
                 [
                     'One',
@@ -1565,8 +1553,8 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     [
                         'sub.One',
                         'sub.Two',
-                    ],
-                ],
+                    ]
+                ]
             ],
             'returns correctly with nested string-keyed array' => [
                 [
@@ -1576,7 +1564,7 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     [
                         'one' => 'sub.One',
                         'two' => 'sub.Two',
-                    ],
+                    ]
                 ],
                 [
                     'One',
@@ -1585,8 +1573,8 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     [
                         'one' => 'sub.One',
                         'two' => 'sub.Two',
-                    ],
-                ],
+                    ]
+                ]
             ],
             'returns correctly with deeply nested arrays' => [
                 [
@@ -1599,9 +1587,9 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             2 => 'SubSubOne',
                             5 => 'SubSubTwo',
                             9 => [0, 1, 2],
-                            [],
-                        ],
-                    ],
+                            []
+                        ]
+                    ]
                 ],
                 [
                     'One',
@@ -1613,11 +1601,11 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'SubSubOne',
                             'SubSubTwo',
                             [0, 1, 2],
-                            [],
-                        ],
-                    ],
-                ],
-            ],
+                            []
+                        ]
+                    ]
+                ]
+            ]
         ];
     }
 
@@ -1889,7 +1877,6 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     //////////////////////////////////
     // Tests concerning inArray
     //////////////////////////////////
-
     /**
      * @test
      * @dataProvider inArrayDataProvider
@@ -1917,14 +1904,13 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'Multiple items array match' => [['one', 2, 'three', 4], 'three', true],
             'Integer search items can match string values' => [['0', '1', '2'], 1, true],
             'Search item is not casted to integer for a match' => [[4], '4a', false],
-            'Empty item won\'t match - in contrast to the php-builtin ' => [[0, 1, 2], '', false],
+            'Empty item won\'t match - in contrast to the php-builtin ' => [[0, 1, 2], '', false]
         ];
     }
 
     //////////////////////////////////
     // Tests concerning removeArrayEntryByValue
     //////////////////////////////////
-
     /**
      * @test
      */
@@ -1934,12 +1920,12 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             '0' => 'test1',
             '1' => 'test2',
             '2' => 'test3',
-            '3' => 'test2',
+            '3' => 'test2'
         ];
         $compareValue = 'test2';
         $expectedResult = [
             '0' => 'test1',
-            '2' => 'test3',
+            '2' => 'test3'
         ];
         $actualResult = ArrayUtility::removeArrayEntryByValue($inputArray, $compareValue);
         $this->assertEquals($expectedResult, $actualResult);
@@ -1953,14 +1939,14 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $inputArray = [
             '0' => 'foo',
             '1' => [
-                '10' => 'bar',
+                '10' => 'bar'
             ],
-            '2' => 'bar',
+            '2' => 'bar'
         ];
         $compareValue = 'bar';
         $expectedResult = [
             '0' => 'foo',
-            '1' => [],
+            '1' => []
         ];
         $actualResult = ArrayUtility::removeArrayEntryByValue($inputArray, $compareValue);
         $this->assertEquals($expectedResult, $actualResult);
@@ -1974,12 +1960,12 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $inputArray = [
             '0' => 'foo',
             '1' => '',
-            '2' => 'bar',
+            '2' => 'bar'
         ];
         $compareValue = '';
         $expectedResult = [
             '0' => 'foo',
-            '2' => 'bar',
+            '2' => 'bar'
         ];
         $actualResult = ArrayUtility::removeArrayEntryByValue($inputArray, $compareValue);
         $this->assertEquals($expectedResult, $actualResult);
@@ -1988,7 +1974,6 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     //////////////////////////////////
     // Tests concerning keepItemsInArray
     //////////////////////////////////
-
     /**
      * @test
      * @dataProvider keepItemsInArrayWorksWithOneArgumentDataProvider
@@ -2012,15 +1997,14 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             0 => 0,
             'one' => 'one',
             'two' => 'two',
-            'three' => 'three',
+            'three' => 'three'
         ];
-
         return [
             'Empty argument will match "all" elements' => [null, $array, $array],
             'No match' => ['four', $array, []],
             'One match' => ['two', $array, ['two' => 'two']],
             'Multiple matches' => ['two,one', $array, ['one' => 'one', 'two' => 'two']],
-            'Argument can be an array' => [['three'], $array, ['three' => 'three']],
+            'Argument can be an array' => [['three'], $array, ['three' => 'three']]
         ];
     }
 
@@ -2036,7 +2020,7 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $array = [
             'aa' => ['first', 'second'],
             'bb' => ['third', 'fourth'],
-            'cc' => ['fifth', 'sixth'],
+            'cc' => ['fifth', 'sixth']
         ];
         $expected = ['bb' => ['third', 'fourth']];
         $keepItems = 'third';
@@ -2053,7 +2037,6 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     //////////////////////////////////
     // Tests concerning remapArrayKeys
     //////////////////////////////////
-
     /**
      * @test
      */
@@ -2062,16 +2045,16 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $array = [
             'one' => 'one',
             'two' => 'two',
-            'three' => 'three',
+            'three' => 'three'
         ];
         $keyMapping = [
             'one' => '1',
-            'two' => '2',
+            'two' => '2'
         ];
         $expected = [
             '1' => 'one',
             '2' => 'two',
-            'three' => 'three',
+            'three' => 'three'
         ];
         ArrayUtility::remapArrayKeys($array, $keyMapping);
         $this->assertEquals($expected, $array);
@@ -2080,7 +2063,6 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     //////////////////////////////////////
     // Tests concerning arrayDiffAssocRecursive
     //////////////////////////////////////
-
     /**
      * @test
      */
@@ -2089,14 +2071,14 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $array1 = [
             'key1' => 'value1',
             'key2' => 'value2',
-            'key3' => 'value3',
+            'key3' => 'value3'
         ];
         $array2 = [
             'key1' => 'value1',
-            'key3' => 'value3',
+            'key3' => 'value3'
         ];
         $expectedResult = [
-            'key2' => 'value2',
+            'key2' => 'value2'
         ];
         $actualResult = ArrayUtility::arrayDiffAssocRecursive($array1, $array2);
         $this->assertEquals($expectedResult, $actualResult);
@@ -2114,26 +2096,26 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'key22' => 'value22',
                 'key23' => [
                     'key231' => 'value231',
-                    'key232' => 'value232',
-                ],
-            ],
+                    'key232' => 'value232'
+                ]
+            ]
         ];
         $array2 = [
             'key1' => 'valueDoesNotMatter',
             'key2' => [
                 'key21' => 'value21',
                 'key23' => [
-                    'key231' => 'value231',
-                ],
-            ],
+                    'key231' => 'value231'
+                ]
+            ]
         ];
         $expectedResult = [
             'key2' => [
                 'key22' => 'value22',
                 'key23' => [
-                    'key232' => 'value232',
-                ],
-            ],
+                    'key232' => 'value232'
+                ]
+            ]
         ];
         $actualResult = ArrayUtility::arrayDiffAssocRecursive($array1, $array2);
         $this->assertEquals($expectedResult, $actualResult);
@@ -2147,19 +2129,19 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $array1 = [
             'key1' => [
                 'key11' => 'value11',
-                'key12' => 'value12',
+                'key12' => 'value12'
             ],
             'key2' => 'value2',
-            'key3' => 'value3',
+            'key3' => 'value3'
         ];
         $array2 = [
             'key1' => 'value1',
             'key2' => [
-                'key21' => 'valueDoesNotMatter',
-            ],
+                'key21' => 'valueDoesNotMatter'
+            ]
         ];
         $expectedResult = [
-            'key3' => 'value3',
+            'key3' => 'value3'
         ];
         $actualResult = ArrayUtility::arrayDiffAssocRecursive($array1, $array2);
         $this->assertEquals($expectedResult, $actualResult);
@@ -2173,18 +2155,18 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $array1 = [
             'key1' => [
                 'key11' => 'value11',
-                'key12' => 'value12',
+                'key12' => 'value12'
             ],
             'key2' => 'value2',
-            'key3' => 'value3',
+            'key3' => 'value3'
         ];
         $array2 = [
             'key1' => [
                 'key11' => 'valueDoesNotMatter',
-                'key12' => 'value12',
+                'key12' => 'value12'
             ],
             'key2' => 'value2',
-            'key3' => 'value3',
+            'key3' => 'value3'
         ];
         $expectedResult = [];
         $actualResult = ArrayUtility::arrayDiffAssocRecursive($array1, $array2);
@@ -2211,7 +2193,7 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'bad' => 'bad',
             '2' => '2',
             'zap' => 'zap',
-            '210' => '210',
+            '210' => '210'
         ];
         $expectedResult = [
             '2',
@@ -2224,7 +2206,7 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'ba',
             'bad',
             'bb',
-            'zap',
+            'zap'
         ];
         ArrayUtility::naturalKeySortRecursive($testArray);
         $this->assertEquals($expectedResult, array_values($testArray));
@@ -2260,17 +2242,17 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     'bad' => 'bad',
                     '2' => '2',
                     'zap' => 'zap',
-                    '210' => '210',
+                    '210' => '210'
                 ],
                 '210' => '210',
-                'zap' => 'zap',
+                'zap' => 'zap'
             ],
             'abc' => 'abc',
             'ba' => 'ba',
             '210' => '210',
             'bad' => 'bad',
             '123' => '123',
-            'zap' => 'zap',
+            'zap' => 'zap'
         ];
         $expectedResult = [
             '2',
@@ -2283,7 +2265,7 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'ba',
             'bad',
             'bb',
-            'zap',
+            'zap'
         ];
         ArrayUtility::naturalKeySortRecursive($testArray);
         $this->assertEquals($expectedResult, array_values(array_keys($testArray['aaa']['bad'])));
@@ -2472,7 +2454,7 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     '11' => 'test2',
                     '16' => 'test3',
                     '20' => 'test1',
-                ],
+                ]
             ],
             [
                 [
@@ -2484,7 +2466,7 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     '20' => 'test1',
                     '16.5' => 'test2',
                     '16' => 'test3',
-                ],
+                ]
             ],
             [
                 [
@@ -2496,7 +2478,7 @@ class ArrayUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     '20' => 'test20',
                     'somestring' => 'teststring',
                     '16' => 'test16',
-                ],
+                ]
             ],
         ];
     }

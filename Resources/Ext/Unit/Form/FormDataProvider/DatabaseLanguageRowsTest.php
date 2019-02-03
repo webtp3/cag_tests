@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Backend\Tests\Unit\Form\FormDataProvider;
 
 /*
@@ -306,7 +305,7 @@ class DatabaseLanguageRowsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 2 => [
                     'uid' => 2,
                     'title' => 'dansk',
-                    'iso' => 'dk,',
+                    'iso' => 'dk,'
                 ],
                 3 => [
                     'uid' => 3,
@@ -399,7 +398,7 @@ class DatabaseLanguageRowsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 2 => [
                     'uid' => 2,
                     'title' => 'dansk',
-                    'iso' => 'dk,',
+                    'iso' => 'dk,'
                 ],
                 3 => [
                     'uid' => 3,

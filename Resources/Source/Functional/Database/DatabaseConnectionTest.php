@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Functional\Database;
 
 /*
@@ -14,9 +13,9 @@ namespace TYPO3\CMS\Core\Tests\Functional\Database;
  *
  * The TYPO3 project - inspiring people to share!
  */
-use CAG\CagTests\Core\AccessibleObjectInterface;
 use TYPO3\CMS\Core\Core\Bootstrap;
 use TYPO3\CMS\Core\Database\DatabaseConnection;
+use CAG\CagTests\Core\AccessibleObjectInterface;
 
 /**
  * Test case for \TYPO3\CMS\Core\Database\DatabaseConnection
@@ -423,23 +422,23 @@ class DatabaseConnectionTest extends \CAG\CagTests\Core\Functional\FunctionalTes
         return [
             'Double Quotes' => [
                 '"Hello"',
-                '\\"Hello\\"',
+                '\\"Hello\\"'
             ],
             'Single Quotes' => [
                 '\'Hello\'',
-                "\\'Hello\\'",
+                "\\'Hello\\'"
             ],
             'Slashes' => [
                 '/var/log/syslog.log',
-                '/var/log/syslog.log',
+                '/var/log/syslog.log'
             ],
             'Literal Backslashes' => [
                 '\\var\\log\\syslog.log',
-                '\\\\var\\\\log\\\\syslog.log',
+                '\\\\var\\\\log\\\\syslog.log'
             ],
             'Fallback Literal Backslashes' => [
                 '\var\log\syslog.log',
-                '\\\\var\\\\log\\\\syslog.log',
+                '\\\\var\\\\log\\\\syslog.log'
             ],
         ];
     }

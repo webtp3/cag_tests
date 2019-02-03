@@ -15,9 +15,9 @@ namespace TYPO3\CMS\Core\Tests\Functional\IO;
  * The TYPO3 project - inspiring people to share!
  */
 
-use CAG\CagTests\Core\Functional\FunctionalTestCase;
 use TYPO3\CMS\Core\IO\PharStreamWrapper;
 use TYPO3\CMS\Core\IO\PharStreamWrapperException;
+use CAG\CagTests\Core\Functional\FunctionalTestCase;
 
 class PharStreamWrapperTest extends FunctionalTestCase
 {
@@ -25,14 +25,14 @@ class PharStreamWrapperTest extends FunctionalTestCase
      * @var array
      */
     protected $testExtensionsToLoad = [
-        'typo3/sysext/core/Tests/Functional/Fixtures/Extensions/test_resources',
+        'typo3/sysext/core/Tests/Functional/Fixtures/Extensions/test_resources'
     ];
 
     /**
      * @var array
      */
     protected $pathsToLinkInTestInstance = [
-        'typo3/sysext/core/Tests/Functional/Fixtures/Extensions/test_resources/bundle.phar' => 'fileadmin/bundle.phar',
+        'typo3/sysext/core/Tests/Functional/Fixtures/Extensions/test_resources/bundle.phar' => 'fileadmin/bundle.phar'
     ];
 
     protected function setUp()
@@ -60,15 +60,15 @@ class PharStreamWrapperTest extends FunctionalTestCase
         return [
             'root directory' => [
                 $allowedPath,
-                ['Classes', 'Resources'],
+                ['Classes', 'Resources']
             ],
             'Classes/Domain/Model directory' => [
                 $allowedPath . '/Classes/Domain/Model',
-                ['DemoModel.php'],
+                ['DemoModel.php']
             ],
             'Resources directory' => [
                 $allowedPath . '/Resources',
-                ['content.txt'],
+                ['content.txt']
             ],
         ];
     }
@@ -130,15 +130,15 @@ class PharStreamWrapperTest extends FunctionalTestCase
         return [
             'root directory' => [
                 $deniedPath,
-                ['Classes', 'Resources'],
+                ['Classes', 'Resources']
             ],
             'Classes/Domain/Model directory' => [
                 $deniedPath . '/Classes/Domain/Model',
-                ['DemoModel.php'],
+                ['DemoModel.php']
             ],
             'Resources directory' => [
                 $deniedPath . '/Resources',
-                ['content.txt'],
+                ['content.txt']
             ],
         ];
     }
@@ -199,12 +199,12 @@ class PharStreamWrapperTest extends FunctionalTestCase
             'file_exists base file' => [
                 'file_exists',
                 $allowedPath,
-                true,
+                true
             ],
             'file_exists Resources/content.txt' => [
                 'file_exists',
                 $allowedPath . '/Resources/content.txt',
-                true,
+                true
             ],
         ];
     }
@@ -268,12 +268,12 @@ class PharStreamWrapperTest extends FunctionalTestCase
             'file_exists base file' => [
                 'file_exists',
                 $deniedPath,
-                true,
+                true
             ],
             'file_exists Resources/content.txt' => [
                 'file_exists',
                 $deniedPath . '/Resources/content.txt',
-                true,
+                true
             ],
         ];
     }

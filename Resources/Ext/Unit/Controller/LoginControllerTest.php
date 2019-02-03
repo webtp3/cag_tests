@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Backend\Tests\Unit\Controller;
 
 /*
@@ -77,7 +76,7 @@ class LoginControllerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $this->expectException(\RuntimeException::class);
         $this->expectExceptionCode(1433416043);
         $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['backend']['loginProviders'] = [
-            1433419736 => [],
+            1433419736 => []
         ];
         $this->loginControllerMock->_call('validateAndSortLoginProviders');
     }
@@ -91,8 +90,8 @@ class LoginControllerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $this->expectExceptionCode(1460977275);
         $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['backend']['loginProviders'] = [
             1433419736 => [
-                'provider' => \stdClass::class,
-            ],
+                'provider' => \stdClass::class
+            ]
         ];
         $this->loginControllerMock->_call('validateAndSortLoginProviders');
     }
@@ -108,8 +107,8 @@ class LoginControllerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             1433419736 => [
                 'provider' => UsernamePasswordLoginProvider::class,
                 'sorting' => 30,
-                'icon-class' => 'foo',
-            ],
+                'icon-class' => 'foo'
+            ]
         ];
         $this->loginControllerMock->_call('validateAndSortLoginProviders');
     }
@@ -125,8 +124,8 @@ class LoginControllerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             1433419736 => [
                 'provider' => UsernamePasswordLoginProvider::class,
                 'sorting' => 30,
-                'label' => 'foo',
-            ],
+                'label' => 'foo'
+            ]
         ];
         $this->loginControllerMock->_call('validateAndSortLoginProviders');
     }
@@ -142,8 +141,8 @@ class LoginControllerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             1433419736 => [
                 'provider' => UsernamePasswordLoginProvider::class,
                 'label' => 'foo',
-                'icon-class' => 'foo',
-            ],
+                'icon-class' => 'foo'
+            ]
         ];
         $this->loginControllerMock->_call('validateAndSortLoginProviders');
     }

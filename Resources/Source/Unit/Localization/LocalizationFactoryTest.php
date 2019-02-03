@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Localization;
 
 /*
@@ -29,7 +28,7 @@ class LocalizationFactoryTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     public function getParsedDataHandlesLocallangXMLOverride()
     {
         /** @var $subject LocalizationFactory */
-        $subject = new LocalizationFactory();
+        $subject = new LocalizationFactory;
 
         $unique = 'locallangXMLOverrideTest' . substr($this->getUniqueId(), 0, 10);
         $xml = '<?xml version="1.0" encoding="utf-8" standalone="yes" ?>

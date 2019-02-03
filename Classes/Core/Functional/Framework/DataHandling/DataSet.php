@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 namespace CAG\CagTests\Core\Functional\Framework\DataHandling;
 
 /*
@@ -32,7 +33,7 @@ class DataSet
      * @param bool $applyDefaultValues
      * @return DataSet
      */
-    public static function read(string $fileName, bool $applyDefaultValues = false): self
+    public static function read(string $fileName, bool $applyDefaultValues = false): DataSet
     {
         $data = self::parseData(self::readData($fileName));
 
@@ -41,15 +42,15 @@ class DataSet
         }
 
         return GeneralUtility::makeInstance(
-            self::class,
+            DataSet::class,
             $data
         );
     }
 
     /**
      * @param string $fileName
-     * @throws \RuntimeException
      * @return array
+     * @throws \RuntimeException
      */
     protected static function readData(string $fileName): array
     {
@@ -63,7 +64,6 @@ class DataSet
             $rawData[] = $values;
         }
         fclose($fileHandle);
-
         return $rawData;
     }
 
@@ -86,7 +86,7 @@ class DataSet
         foreach ($rawData as $values) {
             if (!empty($values[0])) {
                 // Skip comment lines, starting with "#"
-                if ($values[0][0] === '#') {
+                if ($values[0]{0} === '#') {
                     continue;
                 }
                 $tableName = $values[0];
@@ -134,7 +134,6 @@ class DataSet
                 }
             }
         }
-
         return $data;
     }
 
@@ -174,7 +173,6 @@ class DataSet
                 }
             }
         }
-
         return $data;
     }
 
@@ -196,7 +194,7 @@ class DataSet
 
     /**
      * @param string $tableName
-     * @return null|array
+     * @return NULL|array
      */
     public function getFields(string $tableName)
     {
@@ -204,13 +202,12 @@ class DataSet
         if (isset($this->data[$tableName]['fields'])) {
             $fields = $this->data[$tableName]['fields'];
         }
-
         return $fields;
     }
 
     /**
      * @param string $tableName
-     * @return null|int
+     * @return NULL|int
      */
     public function getIdIndex(string $tableName)
     {
@@ -218,13 +215,12 @@ class DataSet
         if (isset($this->data[$tableName]['idIndex'])) {
             $idIndex = $this->data[$tableName]['idIndex'];
         }
-
         return $idIndex;
     }
 
     /**
      * @param string $tableName
-     * @return null|array
+     * @return NULL|array
      */
     public function getElements(string $tableName)
     {
@@ -232,7 +228,6 @@ class DataSet
         if (isset($this->data[$tableName]['elements'])) {
             $elements = $this->data[$tableName]['elements'];
         }
-
         return $elements;
     }
 

@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\LinkHandling;
 
 /*
@@ -19,6 +18,7 @@ use TYPO3\CMS\Core\LinkHandling\UrlLinkHandler;
 
 class UrlLinkHandlerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
+
     /**
      * Data to resolve strings to arrays and vice versa, external, mail, page
      *
@@ -29,67 +29,67 @@ class UrlLinkHandlerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         return [
             'URL without a scheme' => [
                 [
-                    'url' => 'www.have.you/ever?did=this',
+                    'url' => 'www.have.you/ever?did=this'
                 ],
                 [
-                    'url' => 'http://www.have.you/ever?did=this',
+                    'url' => 'http://www.have.you/ever?did=this'
                 ],
-                'http://www.have.you/ever?did=this',
+                'http://www.have.you/ever?did=this'
             ],
             'http URL' => [
                 [
-                    'url' => 'http://www.have.you/ever?did=this',
+                    'url' => 'http://www.have.you/ever?did=this'
                 ],
                 [
-                    'url' => 'http://www.have.you/ever?did=this',
+                    'url' => 'http://www.have.you/ever?did=this'
                 ],
-                'http://www.have.you/ever?did=this',
+                'http://www.have.you/ever?did=this'
             ],
             'https URL' => [
                 [
-                    'url' => 'https://www.have.you/ever?did=this',
+                    'url' => 'https://www.have.you/ever?did=this'
                 ],
                 [
-                    'url' => 'https://www.have.you/ever?did=this',
+                    'url' => 'https://www.have.you/ever?did=this'
                 ],
-                'https://www.have.you/ever?did=this',
+                'https://www.have.you/ever?did=this'
             ],
             'https URL with port' => [
                 [
-                    'url' => 'https://www.have.you:8088/ever?did=this',
+                    'url' => 'https://www.have.you:8088/ever?did=this'
                 ],
                 [
-                    'url' => 'https://www.have.you:8088/ever?did=this',
+                    'url' => 'https://www.have.you:8088/ever?did=this'
                 ],
-                'https://www.have.you:8088/ever?did=this',
+                'https://www.have.you:8088/ever?did=this'
             ],
             'ftp URL' => [
                 [
-                    'url' => 'ftp://www.have.you/ever?did=this',
+                    'url' => 'ftp://www.have.you/ever?did=this'
                 ],
                 [
-                    'url' => 'ftp://www.have.you/ever?did=this',
+                    'url' => 'ftp://www.have.you/ever?did=this'
                 ],
-                'ftp://www.have.you/ever?did=this',
+                'ftp://www.have.you/ever?did=this'
             ],
             'afp URL' => [
                 [
-                    'url' => 'afp://www.have.you/ever?did=this',
+                    'url' => 'afp://www.have.you/ever?did=this'
                 ],
                 [
-                    'url' => 'afp://www.have.you/ever?did=this',
+                    'url' => 'afp://www.have.you/ever?did=this'
                 ],
-                'afp://www.have.you/ever?did=this',
+                'afp://www.have.you/ever?did=this'
             ],
             'sftp URL' => [
                 [
-                    'url' => 'sftp://nice:andsecret@www.have.you:23/ever?did=this',
+                    'url' => 'sftp://nice:andsecret@www.have.you:23/ever?did=this'
                 ],
                 [
-                    'url' => 'sftp://nice:andsecret@www.have.you:23/ever?did=this',
+                    'url' => 'sftp://nice:andsecret@www.have.you:23/ever?did=this'
                 ],
-                'sftp://nice:andsecret@www.have.you:23/ever?did=this',
-            ],
+                'sftp://nice:andsecret@www.have.you:23/ever?did=this'
+            ]
         ];
     }
 

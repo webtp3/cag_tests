@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Http;
 
 /*
@@ -423,20 +422,19 @@ class StreamTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $this->testFilesToDelete[] = $fileName;
 
         return [
-            'null' => [null],
-            'false' => [false],
-            'true' => [true],
-            'int' => [1],
-            'float' => [1.1],
-            'array' => [[fopen($fileName, 'r+')]],
-            'object' => [(object)['resource' => fopen($fileName, 'r+')]],
+            'null'                => [null],
+            'false'               => [false],
+            'true'                => [true],
+            'int'                 => [1],
+            'float'               => [1.1],
+            'array'               => [[fopen($fileName, 'r+')]],
+            'object'              => [(object)['resource' => fopen($fileName, 'r+')]],
         ];
     }
 
     /**
      * @dataProvider invalidResourcesDataProvider
      * @test
-     * @param mixed $resource
      */
     public function attachWithNonStringNonResourceRaisesExceptionByType($resource)
     {

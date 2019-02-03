@@ -1,5 +1,6 @@
 <?php
 declare(strict_types = 1);
+
 namespace TYPO3\CMS\Core\Tests\Unit\Database\Schema\Parser\DataTypeAttributes;
 
 /*
@@ -23,6 +24,7 @@ use TYPO3\CMS\Core\Tests\Unit\Database\Schema\Parser\AbstractDataTypeBaseTestCas
  */
 class NumericTypeAttributesTest extends AbstractDataTypeBaseTestCase
 {
+
     /**
      * Data provider for canParseNumericDataTypeAttributes()
      *
@@ -42,7 +44,7 @@ class NumericTypeAttributesTest extends AbstractDataTypeBaseTestCase
             'UNSIGNED ZEROFILL' => [
                 'INT(11) UNSIGNED ZEROFILL',
                 ['unsigned' => true, 'zerofill' => true],
-            ],
+            ]
         ];
     }
 

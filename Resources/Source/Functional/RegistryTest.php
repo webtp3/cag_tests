@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Functional;
 
 /*
@@ -24,6 +23,7 @@ use TYPO3\CMS\Core\Registry;
  */
 class RegistryTest extends \CAG\CagTests\Core\Functional\FunctionalTestCase
 {
+
     /**
      * @test
      */

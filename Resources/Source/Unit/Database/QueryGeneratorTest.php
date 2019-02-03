@@ -15,8 +15,8 @@ namespace TYPO3\CMS\Core\Tests\Unit\Database;
  * The TYPO3 project - inspiring people to share!
  */
 
-use CAG\CagTests\Core\Unit\UnitTestCase;
 use TYPO3\CMS\Core\Database\QueryGenerator;
+use CAG\CagTests\Core\Unit\UnitTestCase;
 
 /**
  * Test case
@@ -50,9 +50,9 @@ class QueryGeneratorTest extends UnitTestCase
                         'two' => 1,
                         'three' => [
                             'four' => 1,
-                            'five' => 'six',
+                            'five' =>'six',
                         ],
-                    ],
+                    ]
                 ],
                 [
                     0 => 'foo',

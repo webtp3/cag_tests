@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Backend\Tests\Unit\Form\FormDataProvider;
 
 /*
@@ -126,7 +125,7 @@ class TcaInlineExpandCollapseStateTest extends \CAG\CagTests\Core\Unit\UnitTestC
                             'aField' => [
                                 'config' => [
                                     'type' => 'input',
-                                ],
+                                ]
                             ],
                         ],
                     ],
@@ -142,7 +141,7 @@ class TcaInlineExpandCollapseStateTest extends \CAG\CagTests\Core\Unit\UnitTestC
                         ],
                     ],
                 ],
-                true,
+                true
             ],
             'Inline child is expanded because of ajax opening context' => [
                 [
@@ -161,7 +160,7 @@ class TcaInlineExpandCollapseStateTest extends \CAG\CagTests\Core\Unit\UnitTestC
                             'aField' => [
                                 'config' => [
                                     'type' => 'input',
-                                ],
+                                ]
                             ],
                         ],
                     ],
@@ -176,7 +175,7 @@ class TcaInlineExpandCollapseStateTest extends \CAG\CagTests\Core\Unit\UnitTestC
                     'isInlineAjaxOpeningContext' => true,
                     'inlineExpandCollapseStateArray' => [],
                 ],
-                true,
+                true
             ],
             'Inline child is collapsed because of collapseAll' => [
                 [
@@ -195,7 +194,7 @@ class TcaInlineExpandCollapseStateTest extends \CAG\CagTests\Core\Unit\UnitTestC
                             'aField' => [
                                 'config' => [
                                     'type' => 'input',
-                                ],
+                                ]
                             ],
                         ],
                     ],
@@ -209,7 +208,7 @@ class TcaInlineExpandCollapseStateTest extends \CAG\CagTests\Core\Unit\UnitTestC
                     'isInlineChildExpanded' => false,
                     'inlineExpandCollapseStateArray' => [],
                 ],
-                false,
+                false
             ],
             'Inline child is expanded because of expandAll (inverse collapseAll setting)' => [
                 [
@@ -228,7 +227,7 @@ class TcaInlineExpandCollapseStateTest extends \CAG\CagTests\Core\Unit\UnitTestC
                             'aField' => [
                                 'config' => [
                                     'type' => 'input',
-                                ],
+                                ]
                             ],
                         ],
                     ],
@@ -242,7 +241,7 @@ class TcaInlineExpandCollapseStateTest extends \CAG\CagTests\Core\Unit\UnitTestC
                     'isInlineChildExpanded' => false,
                     'inlineExpandCollapseStateArray' => [],
                 ],
-                true,
+                true
             ],
             'New inline child is expanded' => [
                 [
@@ -261,7 +260,7 @@ class TcaInlineExpandCollapseStateTest extends \CAG\CagTests\Core\Unit\UnitTestC
                             'aField' => [
                                 'config' => [
                                     'type' => 'input',
-                                ],
+                                ]
                             ],
                         ],
                     ],
@@ -276,7 +275,7 @@ class TcaInlineExpandCollapseStateTest extends \CAG\CagTests\Core\Unit\UnitTestC
                     'isInlineAjaxOpeningContext' => false,
                     'inlineExpandCollapseStateArray' => [],
                 ],
-                true,
+                true
             ],
             'Inline child marked as expanded stays expanded (e.g. combination child)' => [
                 [
@@ -295,7 +294,7 @@ class TcaInlineExpandCollapseStateTest extends \CAG\CagTests\Core\Unit\UnitTestC
                             'aField' => [
                                 'config' => [
                                     'type' => 'input',
-                                ],
+                                ]
                             ],
                         ],
                     ],
@@ -309,7 +308,7 @@ class TcaInlineExpandCollapseStateTest extends \CAG\CagTests\Core\Unit\UnitTestC
                     'isInlineChildExpanded' => true,
                     'inlineExpandCollapseStateArray' => [],
                 ],
-                true,
+                true
             ],
         ];
     }

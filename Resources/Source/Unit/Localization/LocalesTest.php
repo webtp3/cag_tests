@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Localization;
 
 /*
@@ -50,11 +49,11 @@ class LocalesTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             ],
             'chinese simplified' => [
                 'zh-CN,en-US;q=0.5,en;q=0.3',
-                'ch',
+                'ch'
             ],
             'chinese simplified han' => [
                 'zh-Hans-CN,zh-Hans;q=0.8,en-US;q=0.5,en;q=0.3',
-                'ch',
+                'ch'
             ],
         ];
     }

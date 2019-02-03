@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Mail;
 
 /*
@@ -37,7 +36,6 @@ class MailerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     //////////////////////////
     // Tests concerning TYPO3\CMS\Core\Mail\Mailer
     //////////////////////////
-
     /**
      * @test
      */
@@ -71,7 +69,7 @@ class MailerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'smtp but no host' => [['transport' => 'smtp']],
             'sendmail but no command' => [['transport' => 'sendmail']],
             'mbox but no file' => [['transport' => 'mbox']],
-            'no instance of Swift_Transport' => [['transport' => \TYPO3\CMS\Core\Controller\ErrorPageController::class]],
+            'no instance of Swift_Transport' => [['transport' => \TYPO3\CMS\Core\Controller\ErrorPageController::class]]
         ];
     }
 

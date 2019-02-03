@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Functional\Collection;
 
 /*
@@ -87,7 +86,7 @@ class RecordCollectionRepositoryTest extends \CAG\CagTests\Core\Functional\Funct
         $type = RecordCollectionRepository::TYPE_Static;
         $this->insertTestData([
             ['uid' => 1, 'type' => $type, 'table_name' => $this->testTableName],
-            ['uid' => 2, 'type' => $type, 'table_name' => $this->testTableName],
+            ['uid' => 2, 'type' => $type, 'table_name' => $this->testTableName]
         ]);
 
         $objects = $this->subject->findByType($type);
@@ -113,7 +112,7 @@ class RecordCollectionRepositoryTest extends \CAG\CagTests\Core\Functional\Funct
         $type = RecordCollectionRepository::TYPE_Static;
         $this->insertTestData([
             ['uid' => 1, 'type' => $type, 'table_name' => $this->testTableName],
-            ['uid' => 2, 'type' => $type, 'table_name' => $this->testTableName],
+            ['uid' => 2, 'type' => $type, 'table_name' => $this->testTableName]
         ]);
         $objects = $this->subject->findByTableName($this->testTableName);
 
@@ -141,7 +140,7 @@ class RecordCollectionRepositoryTest extends \CAG\CagTests\Core\Functional\Funct
         $type = RecordCollectionRepository::TYPE_Static;
         $this->insertTestData([
             ['uid' => 1, 'type' => $type, 'table_name' => $this->testTableName],
-            ['uid' => 2, 'type' => $type, 'table_name' => $this->testTableName],
+            ['uid' => 2, 'type' => $type, 'table_name' => $this->testTableName]
         ]);
         $objects = $this->subject->findByTypeAndTableName($type, $this->testTableName);
 
@@ -165,8 +164,8 @@ class RecordCollectionRepositoryTest extends \CAG\CagTests\Core\Functional\Funct
                 'deleted' => 0,
                 'hidden' => 0,
                 'starttime' => 0,
-                'endtime' => 0,
-            ],
+                'endtime' => 0
+            ]
         ]);
         $object = $this->subject->findByUid(1);
 
@@ -188,8 +187,8 @@ class RecordCollectionRepositoryTest extends \CAG\CagTests\Core\Functional\Funct
                 'deleted' => 1,
                 'hidden' => 0,
                 'starttime' => 0,
-                'endtime' => 0,
-            ],
+                'endtime' => 0
+            ]
         ]);
         $object = $this->subject->findByUid(1);
 
@@ -220,11 +219,11 @@ class RecordCollectionRepositoryTest extends \CAG\CagTests\Core\Functional\Funct
                 'uid' => 3,
                 'type' => $type,
                 'table_name' => $this->testTableName,
-                'endtime' => time() - 99999,
-            ],
+                'endtime' => time() - 99999
+            ]
         ]);
-        $hiddenObject = $this->subject->findByUid(1);
-        $futureObject = $this->subject->findByUid(2);
+        $hiddenObject  = $this->subject->findByUid(1);
+        $futureObject  = $this->subject->findByUid(2);
         $expiredObject = $this->subject->findByUid(3);
 
         $this->assertInstanceOf(StaticRecordCollection::class, $hiddenObject);
@@ -247,8 +246,8 @@ class RecordCollectionRepositoryTest extends \CAG\CagTests\Core\Functional\Funct
                 'deleted' => 0,
                 'hidden' => 0,
                 'starttime' => 0,
-                'endtime' => 0,
-            ],
+                'endtime' => 0
+            ]
         ]);
         $object = $this->subject->findByUid(1);
 
@@ -285,12 +284,12 @@ class RecordCollectionRepositoryTest extends \CAG\CagTests\Core\Functional\Funct
                 'uid' => 4,
                 'type' => $type,
                 'table_name' => $this->testTableName,
-                'endtime' => time() - 99999,
-            ],
+                'endtime' => time() - 99999
+            ]
         ]);
         $deletedObject = $this->subject->findByUid(1);
-        $hiddenObject = $this->subject->findByUid(2);
-        $futureObject = $this->subject->findByUid(3);
+        $hiddenObject  = $this->subject->findByUid(2);
+        $futureObject  = $this->subject->findByUid(3);
         $expiredObject = $this->subject->findByUid(4);
 
         $this->assertNull($deletedObject);

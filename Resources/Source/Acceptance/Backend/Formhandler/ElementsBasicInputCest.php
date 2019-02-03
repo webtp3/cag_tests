@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Acceptance\Backend\Formhandler;
 
 /*
@@ -198,7 +197,7 @@ class ElementsBasicInputCest extends AbstractElementsBasicCest
                     'expectedValueAfterSave' => date('Y'),
                     'comment' => 'Invalid character is converted to current year',
                 ],
-            ],
+            ]
         ];
         $this->runTests($I, $dataSets);
     }

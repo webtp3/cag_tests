@@ -528,7 +528,7 @@ class EvaluateDisplayConditionsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'conditionParameters' => [
                 0 => 'more',
                 1 => 'arguments',
-            ],
+            ]
         ];
         if ($expected === $parameter) {
             throw new \RuntimeException('testing', 1488130499);
@@ -766,7 +766,7 @@ class EvaluateDisplayConditionsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         ],
                     ],
                 ],
-            ],
+            ]
         ];
         $this->expectException(\RuntimeException::class);
         $this->expectExceptionCode(1481634649);
@@ -781,6 +781,7 @@ class EvaluateDisplayConditionsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     public function addDataRemovesTcaReferencingOtherFieldsInDisplayConditionDataProvider()
     {
         return [
+
             // tca field to tca field value tests
             'remove tca field by tca field value' => [
                 // path that should be removed from 'processedTca' by condition
@@ -1195,8 +1196,8 @@ class EvaluateDisplayConditionsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                             'ROOT' => [
                                                 'el' => [
                                                     'flexField_1' => [],
-                                                ],
-                                            ],
+                                                ]
+                                            ]
                                         ],
                                         'sheet_2' => [
                                             'ROOT' => [
@@ -1243,8 +1244,8 @@ class EvaluateDisplayConditionsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                             'ROOT' => [
                                                 'el' => [
                                                     'flexField_1' => [],
-                                                ],
-                                            ],
+                                                ]
+                                            ]
                                         ],
                                         'sheet_2' => [
                                             'ROOT' => [
@@ -1291,8 +1292,8 @@ class EvaluateDisplayConditionsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                             'ROOT' => [
                                                 'el' => [
                                                     'flexField.1' => [],
-                                                ],
-                                            ],
+                                                ]
+                                            ]
                                         ],
                                         'sheet_2' => [
                                             'ROOT' => [
@@ -1339,8 +1340,8 @@ class EvaluateDisplayConditionsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                             'ROOT' => [
                                                 'el' => [
                                                     'flexField.1' => [],
-                                                ],
-                                            ],
+                                                ]
+                                            ]
                                         ],
                                         'sheet_2' => [
                                             'ROOT' => [
@@ -3385,7 +3386,7 @@ class EvaluateDisplayConditionsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                                                         'FIELD:sheet_1.field_1:=:LIST',
                                                         'FIELD:sheet_1.field_1:!=:foo',
                                                     ],
-                                                ],
+                                                ] ,
                                             ],
                                         ],
                                     ],
@@ -3484,6 +3485,7 @@ class EvaluateDisplayConditionsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     ],
                 ],
             ],
+
         ];
     }
 
@@ -3564,17 +3566,17 @@ class EvaluateDisplayConditionsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'Field value comparison of 1 against multi-value field of 5 returns true' => [
                 'FIELD:content:BIT:1',
                 ['content' => '5'],
-                true,
+                true
             ],
             'Field value comparison of 2 against multi-value field of 5 returns false' => [
                 'FIELD:content:BIT:2',
                 ['content' => '5'],
-                false,
+                false
             ],
             'Field value of 5 negated comparison against multi-value field of 5 returns false' => [
                 'FIELD:content:!BIT:5',
                 ['content' => '5'],
-                false,
+                false
             ],
             'Field value comparison for required value is false for different value' => [
                 'FIELD:foo:REQ:FALSE',
@@ -3630,7 +3632,7 @@ class EvaluateDisplayConditionsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'VERSION:IS:TRUE',
                 [
                     'uid' => 42,
-                    'pid' => -1,
+                    'pid' => -1
                 ],
                 true,
             ],
@@ -3638,7 +3640,7 @@ class EvaluateDisplayConditionsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'VERSION:IS:FALSE',
                 [
                     'uid' => 42,
-                    'pid' => 1,
+                    'pid' => 1
                 ],
                 true,
             ],
@@ -3658,7 +3660,7 @@ class EvaluateDisplayConditionsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     ],
                 ],
                 [
-                    'testField' => 10,
+                    'testField' => 10
                 ],
                 true,
             ],
@@ -3667,10 +3669,10 @@ class EvaluateDisplayConditionsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     'AND' => [
                         'FIELD:testField:>:9',
                         'FIELD:testField:<:11',
-                    ],
+                    ]
                 ],
                 [
-                    'testField' => 99,
+                    'testField' => 99
                 ],
                 false,
             ],
@@ -3682,7 +3684,7 @@ class EvaluateDisplayConditionsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     ],
                 ],
                 [
-                    'testField' => 10,
+                    'testField' => 10
                 ],
                 true,
             ],
@@ -3694,7 +3696,7 @@ class EvaluateDisplayConditionsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     ],
                 ],
                 [
-                    'testField' => 99,
+                    'testField' => 99
                 ],
                 false,
             ],
@@ -3709,7 +3711,7 @@ class EvaluateDisplayConditionsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     ],
                 ],
                 [
-                    'testField' => 10,
+                    'testField' => 10
                 ],
                 true,
             ],
@@ -3724,7 +3726,7 @@ class EvaluateDisplayConditionsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     ],
                 ],
                 [
-                    'testField' => -999,
+                    'testField' => -999
                 ],
                 false,
             ],
@@ -3748,10 +3750,10 @@ class EvaluateDisplayConditionsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         'displayCond' => $condition,
                         'config' => [
                             'type' => 'input',
-                        ],
+                        ]
                     ],
-                ],
-            ],
+                ]
+            ]
         ];
 
         $expected = $input;
@@ -3810,10 +3812,10 @@ class EvaluateDisplayConditionsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         'displayCond' => 'HIDE_FOR_NON_ADMINS',
                         'config' => [
                             'type' => 'input',
-                        ],
+                        ]
                     ],
-                ],
-            ],
+                ]
+            ]
         ];
 
         /** @var BackendUserAuthentication|ObjectProphecy backendUserProphecy */
@@ -3840,10 +3842,10 @@ class EvaluateDisplayConditionsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         'displayCond' => 'HIDE_FOR_NON_ADMINS',
                         'config' => [
                             'type' => 'input',
-                        ],
+                        ]
                     ],
-                ],
-            ],
+                ]
+            ]
         ];
 
         /** @var BackendUserAuthentication|ObjectProphecy backendUserProphecy */

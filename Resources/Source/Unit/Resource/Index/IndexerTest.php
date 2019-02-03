@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Resource\Index;
 
 /*
@@ -44,7 +43,7 @@ class IndexerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $method->setAccessible(true);
         $arguments = [
             $mockFile,
-            $mockExtractor,
+            $mockExtractor
         ];
 
         $result = $method->invokeArgs(new Indexer($mockStorage), $arguments);
@@ -71,7 +70,7 @@ class IndexerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $method->setAccessible(true);
         $arguments = [
             $mockFile,
-            $mockExtractor,
+            $mockExtractor
         ];
 
         $result = $method->invokeArgs(new Indexer($mockStorage), $arguments);
@@ -98,7 +97,7 @@ class IndexerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $method->setAccessible(true);
         $arguments = [
             $mockFile,
-            $mockExtractor,
+            $mockExtractor
         ];
 
         $result = $method->invokeArgs(new Indexer($mockStorage), $arguments);

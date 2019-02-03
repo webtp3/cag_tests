@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Resource;
 
 /*
@@ -112,7 +111,6 @@ class ResourceStorageTest extends BaseTestCase
             $flexFormArray['data']['sDEF']['lDEF'][$key] = ['vDEF' => $value];
         }
         $configuration = GeneralUtility::array2xml($flexFormArray);
-
         return $configuration;
     }
 
@@ -150,7 +148,6 @@ class ResourceStorageTest extends BaseTestCase
         $driver->setStorageUid(6);
         $driver->processConfiguration();
         $driver->initialize();
-
         return $driver;
     }
 
@@ -215,37 +212,37 @@ class ResourceStorageTest extends BaseTestCase
                 [
                     'public' => true,
                     'writable' => false,
-                    'browsable' => false,
-                ],
+                    'browsable' => false
+                ]
             ],
             'only writable' => [
                 [
                     'public' => false,
                     'writable' => true,
-                    'browsable' => false,
-                ],
+                    'browsable' => false
+                ]
             ],
             'only browsable' => [
                 [
                     'public' => false,
                     'writable' => false,
-                    'browsable' => true,
-                ],
+                    'browsable' => true
+                ]
             ],
             'all capabilities' => [
                 [
                     'public' => true,
                     'writable' => true,
-                    'browsable' => true,
-                ],
+                    'browsable' => true
+                ]
             ],
             'none' => [
                 [
                     'public' => false,
                     'writable' => false,
-                    'browsable' => false,
-                ],
-            ],
+                    'browsable' => false
+                ]
+            ]
         ];
     }
 
@@ -261,7 +258,7 @@ class ResourceStorageTest extends BaseTestCase
             'is_public' => $capabilities['public'],
             'is_writable' => $capabilities['writable'],
             'is_browsable' => $capabilities['browsable'],
-            'is_online' => true,
+            'is_online' => true
         ];
         $mockedDriver = $this->createDriverMock(
             [
@@ -334,18 +331,18 @@ class ResourceStorageTest extends BaseTestCase
             'read action on readable/writable folder' => [
                 'read',
                 ['r' => true, 'w' => true],
-                true,
+                true
             ],
             'read action on unreadable folder' => [
                 'read',
                 ['r' => false, 'w' => true],
-                false,
+                false
             ],
             'write action on read-only folder' => [
                 'write',
                 ['r' => true, 'w' => false],
-                false,
-            ],
+                false
+            ]
         ];
     }
 
@@ -361,7 +358,7 @@ class ResourceStorageTest extends BaseTestCase
         /** @var $mockedDriver LocalDriver|\PHPUnit_Framework_MockObject_MockObject */
         $mockedDriver = $this->createMock(LocalDriver::class);
         $mockedDriver->expects($this->any())->method('getPermissions')->will($this->returnValue($permissionsFromDriver));
-        /** @var $mockedFolder Folder|\PHPUnit_Framework_MockObject_MockObject */
+        /** @var $mockedFolder Folder|\PHPUnit_Framework_MockObject_MockObject  */
         $mockedFolder = $this->createMock(Folder::class);
         // Let all other checks pass
         /** @var $subject ResourceStorage|\PHPUnit_Framework_MockObject_MockObject */
@@ -402,18 +399,18 @@ class ResourceStorageTest extends BaseTestCase
             'all lower cased' => [
                 ['readFolder' => true],
                 'read',
-                'folder',
+                'folder'
             ],
             'all upper case' => [
                 ['readFolder' => true],
                 'READ',
-                'FOLDER',
+                'FOLDER'
             ],
             'mixed case' => [
                 ['readFolder' => true],
                 'ReaD',
-                'FoLdEr',
-            ],
+                'FoLdEr'
+            ]
         ];
     }
 
@@ -504,7 +501,7 @@ class ResourceStorageTest extends BaseTestCase
             'crdate' => $fileInfo['ctime'],
             'mime_type' => $fileInfo['mimetype'],
             'size' => $fileInfo['size'],
-            'name' => $fileInfo['name'],
+            'name' => $fileInfo['name']
         ];
         $hash = 'asdfg';
         /** @var $mockedDriver LocalDriver|\PHPUnit_Framework_MockObject_MockObject */
@@ -549,7 +546,7 @@ class ResourceStorageTest extends BaseTestCase
             'name' => 'G',
         ];
         $this->addToMount([
-            'targetFolder' => [],
+            'targetFolder' => []
         ]);
         $this->initializeVfs();
         $targetFolder = $this->getSimpleFolderMock('/targetFolder/');
@@ -588,8 +585,8 @@ class ResourceStorageTest extends BaseTestCase
         $mockedFile = $this->getSimpleFileMock('/mountFolder/file');
         $this->addToMount([
             'mountFolder' => [
-                'file' => 'asdfg',
-            ],
+                'file' => 'asdfg'
+            ]
         ]);
         $mockedDriver = $this->createDriverMock(['basePath' => $this->getMountRootUrl()], null, null);
         $this->initializeVfs();
@@ -689,7 +686,7 @@ class ResourceStorageTest extends BaseTestCase
     {
         $this->markTestSkipped('This test does way to much and is mocked incomplete. Skipped for now.');
         $this->addToMount([
-            'existingFolder' => [],
+            'existingFolder' => []
         ]);
         $this->initializeVfs();
         $mockedDriver = $this->createDriverMock(['basePath' => $this->getMountRootUrl()], null, null);

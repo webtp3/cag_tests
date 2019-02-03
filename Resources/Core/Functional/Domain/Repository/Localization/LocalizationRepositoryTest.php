@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Backend\Tests\Functional\Domain\Repository\Localization;
 
 /*
@@ -50,50 +49,50 @@ class LocalizationRepositoryTest extends \CAG\CagTests\Core\Functional\Functiona
                 1,
                 0,
                 0,
-                false,
+                false
             ],
             'connected mode translated from default language' => [
                 1,
                 0,
                 1,
-                false,
+                false
             ],
             'connected mode translated from non default language' => [
                 1,
                 0,
                 2,
                 [
-                    'sys_language_uid' => 1,
-                ],
+                    'sys_language_uid' => 1
+                ]
             ],
             'free mode translated from default language' => [
                 2,
                 0,
                 1,
-                false,
+                false
             ],
             'free mode translated from non default language' => [
                 2,
                 0,
                 2,
                 [
-                    'sys_language_uid' => 1,
-                ],
+                    'sys_language_uid' => 1
+                ]
             ],
             'free mode copied from another page translated from default language' => [
                 3,
                 0,
                 1,
-                false,
+                false
             ],
             'free mode copied from another page translated from non default language' => [
                 3,
                 0,
                 2,
                 [
-                    'sys_language_uid' => 1,
-                ],
-            ],
+                    'sys_language_uid' => 1
+                ]
+            ]
         ];
     }
 
@@ -119,54 +118,50 @@ class LocalizationRepositoryTest extends \CAG\CagTests\Core\Functional\Functiona
                 1,
                 0,
                 0,
-                0,
+                0
             ],
             'connected mode translated from default language' => [
                 1,
                 0,
                 1,
-                2,
+                2
             ],
             'connected mode translated from non default language' => [
                 1,
                 0,
                 2,
-                1,
+                1
             ],
             'free mode translated from default language' => [
                 2,
                 0,
                 1,
-                1,
+                1
             ],
             'free mode translated from non default language' => [
                 2,
                 0,
                 2,
-                1,
+                1
             ],
             'free mode copied from another page translated from default language' => [
                 3,
                 0,
                 1,
-                1,
+                1
             ],
             'free mode copied from another page translated from non default language' => [
                 3,
                 0,
                 2,
-                1,
-            ],
+                1
+            ]
         ];
     }
 
     /**
      * @dataProvider getLocalizedRecordCountDataProvider
      * @test
-     * @param mixed $pageId
-     * @param mixed $colPos
-     * @param mixed $localizedLanguage
-     * @param mixed $expectedResult
      */
     public function getLocalizedRecordCount($pageId, $colPos, $localizedLanguage, $expectedResult)
     {
@@ -183,8 +178,8 @@ class LocalizationRepositoryTest extends \CAG\CagTests\Core\Functional\Functiona
                 1,
                 0,
                 [
-                    ['uid' => 298],
-                ],
+                    ['uid' => 298]
+                ]
             ],
             'from language 1 to 2 connected mode' => [
                 1,
@@ -192,36 +187,36 @@ class LocalizationRepositoryTest extends \CAG\CagTests\Core\Functional\Functiona
                 2,
                 1,
                 [
-                    ['uid' => 300],
-                ],
+                    ['uid' => 300]
+                ]
             ],
             'from language 0 to 1 free mode' => [
                 2,
                 0,
                 1,
                 0,
-                [],
+                []
             ],
             'from language 1 to 2 free mode' => [
                 2,
                 0,
                 2,
                 1,
-                [],
+                []
             ],
             'from language 0 to 1 free mode copied' => [
                 3,
                 0,
                 1,
                 0,
-                [],
+                []
             ],
             'from language 1 to 2 free mode  mode copied' => [
                 3,
                 0,
                 2,
                 1,
-                [],
+                []
             ],
         ];
     }
@@ -229,11 +224,6 @@ class LocalizationRepositoryTest extends \CAG\CagTests\Core\Functional\Functiona
     /**
      * @dataProvider getRecordsToCopyDatabaseResultDataProvider
      * @test
-     * @param mixed $pageId
-     * @param mixed $colPos
-     * @param mixed $destLanguageId
-     * @param mixed $languageId
-     * @param mixed $expectedResult
      */
     public function getRecordsToCopyDatabaseResult($pageId, $colPos, $destLanguageId, $languageId, $expectedResult)
     {

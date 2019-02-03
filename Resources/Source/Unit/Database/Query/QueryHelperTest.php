@@ -107,7 +107,7 @@ class QueryHelperTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [
                     ['aField', null],
                     ['anotherField', null],
-                    ['aThirdField', null],
+                    ['aThirdField', null]
                 ],
             ],
             'multiple fields with direction' => [
@@ -115,7 +115,7 @@ class QueryHelperTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [
                     ['aField', 'ASC'],
                     ['anotherField', null],
-                    ['aThirdField', 'DESC'],
+                    ['aThirdField', 'DESC']
                 ],
             ],
             'prefixed multiple fields with direction' => [
@@ -123,14 +123,14 @@ class QueryHelperTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [
                     ['aField', 'ASC'],
                     ['anotherField', null],
-                    ['aThirdField', 'DESC'],
+                    ['aThirdField', 'DESC']
                 ],
             ],
             'with table prefix' => [
                 'ORDER BY be_groups.title',
                 [
-                    ['be_groups.title', null],
-                ],
+                    ['be_groups.title', null]
+                ]
             ],
         ];
     }
@@ -189,7 +189,7 @@ class QueryHelperTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [
                     ['aTable', null],
                     ['anotherTable', null],
-                    ['aThirdTable', null],
+                    ['aThirdTable', null]
                 ],
             ],
             'multiple tables with aliases' => [
@@ -197,7 +197,7 @@ class QueryHelperTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [
                     ['aTable', 'a'],
                     ['anotherTable', null],
-                    ['aThirdTable', 'c'],
+                    ['aThirdTable', 'c']
                 ],
             ],
             'prefixed multiple tables with aliases' => [
@@ -205,9 +205,9 @@ class QueryHelperTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [
                     ['aTable', 'a'],
                     ['anotherTable', null],
-                    ['aThirdTable', 'c'],
+                    ['aThirdTable', 'c']
                 ],
-            ],
+            ]
         ];
     }
 
@@ -248,15 +248,15 @@ class QueryHelperTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             ],
             'multiple fields' => [
                 'aField,anotherField, aThirdField',
-                ['aField', 'anotherField', 'aThirdField'],
+                ['aField', 'anotherField', 'aThirdField']
             ],
             'prefixed multiple fields' => [
                 'GROUP BY aField,anotherField, aThirdField',
-                ['aField', 'anotherField', 'aThirdField'],
+                ['aField', 'anotherField', 'aThirdField']
             ],
             'with table prefix' => [
                 'GROUP BY be_groups.title',
-                ['be_groups.title'],
+                ['be_groups.title']
             ],
         ];
     }
@@ -285,7 +285,7 @@ class QueryHelperTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [
                     'tableName' => 'aTable',
                     'tableAlias' => 'aTable',
-                    'joinCondition' => 'aTable.uid = anotherTable.uid_foreign',
+                    'joinCondition' => 'aTable.uid = anotherTable.uid_foreign'
                 ],
             ],
             'quoted tableName' => [
@@ -293,7 +293,7 @@ class QueryHelperTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [
                     'tableName' => 'aTable',
                     'tableAlias' => 'aTable',
-                    'joinCondition' => 'aTable.uid = anotherTable.uid_foreign',
+                    'joinCondition' => 'aTable.uid = anotherTable.uid_foreign'
                 ],
             ],
             'quoted tableName with alias' => [
@@ -301,7 +301,7 @@ class QueryHelperTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [
                     'tableName' => 'aTable',
                     'tableAlias' => 'a',
-                    'joinCondition' => 'a.uid = anotherTable.uid_foreign',
+                    'joinCondition' => 'a.uid = anotherTable.uid_foreign'
                 ],
             ],
             'quoted tableName with quoted alias' => [
@@ -309,7 +309,7 @@ class QueryHelperTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [
                     'tableName' => 'aTable',
                     'tableAlias' => 'a',
-                    'joinCondition' => 'a.uid = anotherTable.uid_foreign',
+                    'joinCondition' => 'a.uid = anotherTable.uid_foreign'
                 ],
             ],
             'quoted tableName with AS alias' => [
@@ -317,7 +317,7 @@ class QueryHelperTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [
                     'tableName' => 'aTable',
                     'tableAlias' => 'anAlias',
-                    'joinCondition' => 'anAlias.uid = anotherTable.uid_foreign',
+                    'joinCondition' => 'anAlias.uid = anotherTable.uid_foreign'
                 ],
             ],
             'quoted tableName with AS quoted alias' => [
@@ -325,7 +325,7 @@ class QueryHelperTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [
                     'tableName' => 'aTable',
                     'tableAlias' => 'anAlias',
-                    'joinCondition' => 'anAlias.uid = anotherTable.uid_foreign',
+                    'joinCondition' => 'anAlias.uid = anotherTable.uid_foreign'
                 ],
             ],
             'unquoted tableName with AS quoted alias' => [
@@ -333,7 +333,7 @@ class QueryHelperTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 [
                     'tableName' => 'aTable',
                     'tableAlias' => 'anAlias',
-                    'joinCondition' => 'anAlias.uid = anotherTable.uid_foreign',
+                    'joinCondition' => 'anAlias.uid = anotherTable.uid_foreign'
                 ],
             ],
         ];

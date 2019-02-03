@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace CAG\CagTests\Tests\Unit\Controller;
 
 /**
@@ -31,6 +30,7 @@ class FeUserControllerTest extends UnitTestCase
         parent::tearDown();
     }
 
+
     /**
      * @test
      */
@@ -40,5 +40,6 @@ class FeUserControllerTest extends UnitTestCase
         $this->testingFramework->createFakeFrontEnd();
         $feUserId = $this->testingFramework->createFrontEndUser();
         $this->testingFramework->loginFrontEndUser($feUserId);
+
     }
 }

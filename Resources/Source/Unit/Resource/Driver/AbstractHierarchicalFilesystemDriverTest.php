@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Resource\Driver;
 
 /*
@@ -82,7 +81,7 @@ class AbstractHierarchicalFilesystemDriverTest extends BaseTestCase
             './ becomes /' => [
                 '/',
                 './',
-            ],
+            ]
         ];
     }
 

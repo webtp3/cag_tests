@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Backend\Tests\Unit\Form\FormDataProvider;
 
 /*
@@ -51,7 +50,7 @@ class TcaInlineTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'aField' => [
                     'config' => [
                         'type' => 'inline',
-                        'foreign_table' => 'aForeignTableName',
+                        'foreign_table' => 'aForeignTableName'
                     ],
                 ],
             ],

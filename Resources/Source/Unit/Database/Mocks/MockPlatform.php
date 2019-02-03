@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Database\Mocks;
 
 /*
@@ -24,8 +23,8 @@ class MockPlatform extends AbstractPlatform
      * Gets the SQL Snippet used to declare a BLOB column type.
      *
      * @param array $field
-     * @throws \Doctrine\DBAL\DBALException
      * @return string|void
+     * @throws \Doctrine\DBAL\DBALException
      */
     public function getBlobTypeDeclarationSQL(array $field)
     {
@@ -169,8 +168,9 @@ class MockPlatform extends AbstractPlatform
      * @param int $length
      * @param bool $fixed
      *
-     * @throws \Doctrine\DBAL\DBALException If not supported on this platform.
      * @return string
+     *
+     * @throws \Doctrine\DBAL\DBALException If not supported on this platform.
      */
     protected function getVarcharTypeDeclarationSQLSnippet($length, $fixed)
     {
@@ -179,8 +179,9 @@ class MockPlatform extends AbstractPlatform
     /**
      * Returns the class name of the reserved keywords list.
      *
-     * @throws \Doctrine\DBAL\DBALException If not supported on this platform.
      * @return string
+     *
+     * @throws \Doctrine\DBAL\DBALException If not supported on this platform.
      */
     protected function getReservedKeywordsClass()
     {

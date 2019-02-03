@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Http;
 
 /*
@@ -59,20 +58,19 @@ class ResponseTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     public function invalidStatusCodesDataProvider()
     {
         return [
-            'too-low' => [99],
+            'too-low'  => [99],
             'too-high' => [600],
-            'null' => [null],
-            'bool' => [true],
-            'string' => ['foo'],
-            'array' => [[200]],
-            'object' => [(object)[200]],
+            'null'     => [null],
+            'bool'     => [true],
+            'string'   => ['foo'],
+            'array'    => [[200]],
+            'object'   => [(object)[200]],
         ];
     }
 
     /**
      * @dataProvider invalidStatusCodesDataProvider
      * @test
-     * @param mixed $code
      */
     public function testCannotSetInvalidStatusCode($code)
     {
@@ -130,21 +128,20 @@ class ResponseTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     public function invalidStatusDataProvider()
     {
         return [
-            'true' => [true],
-            'false' => [false],
-            'float' => [100.1],
+            'true'       => [true],
+            'false'      => [false],
+            'float'      => [100.1],
             'bad-string' => ['Two hundred'],
-            'array' => [[200]],
-            'object' => [(object)['statusCode' => 200]],
-            'too-small' => [1],
-            'too-big' => [600],
+            'array'      => [[200]],
+            'object'     => [(object)['statusCode' => 200]],
+            'too-small'  => [1],
+            'too-big'    => [600],
         ];
     }
 
     /**
      * @dataProvider invalidStatusDataProvider
      * @test
-     * @param mixed $code
      */
     public function testConstructorRaisesExceptionForInvalidStatus($code)
     {
@@ -159,11 +156,11 @@ class ResponseTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     public function invalidResponseBodyDataProvider()
     {
         return [
-            'true' => [true],
-            'false' => [false],
-            'int' => [1],
-            'float' => [1.1],
-            'array' => [['BODY']],
+            'true'     => [true],
+            'false'    => [false],
+            'int'      => [1],
+            'float'    => [1.1],
+            'array'    => [['BODY']],
             'stdClass' => [(object)['body' => 'BODY']],
         ];
     }
@@ -171,7 +168,6 @@ class ResponseTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @dataProvider invalidResponseBodyDataProvider
      * @test
-     * @param mixed $body
      */
     public function testConstructorRaisesExceptionForInvalidBody($body)
     {
@@ -187,17 +183,17 @@ class ResponseTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     {
         $headers = [
             ['INVALID'],
-            'x-invalid-null' => null,
-            'x-invalid-true' => true,
-            'x-invalid-false' => false,
-            'x-invalid-int' => 1,
+            'x-invalid-null'   => null,
+            'x-invalid-true'   => true,
+            'x-invalid-false'  => false,
+            'x-invalid-int'    => 1,
             'x-invalid-object' => (object)['INVALID'],
-            'x-valid-string' => 'VALID',
-            'x-valid-array' => ['VALID'],
+            'x-valid-string'   => 'VALID',
+            'x-valid-array'    => ['VALID'],
         ];
         $expected = [
             'x-valid-string' => ['VALID'],
-            'x-valid-array' => ['VALID'],
+            'x-valid-array'  => ['VALID'],
         ];
         $response = new Response('php://memory', 200, $headers);
         $this->assertEquals($expected, $response->getHeaders());
@@ -209,17 +205,17 @@ class ResponseTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     public function headersWithInjectionVectorsDataProvider()
     {
         return [
-            'name-with-cr' => ["X-Foo\r-Bar", 'value'],
-            'name-with-lf' => ["X-Foo\n-Bar", 'value'],
-            'name-with-crlf' => ["X-Foo\r\n-Bar", 'value'],
-            'name-with-2crlf' => ["X-Foo\r\n\r\n-Bar", 'value'],
-            'value-with-cr' => ['X-Foo-Bar', "value\rinjection"],
-            'value-with-lf' => ['X-Foo-Bar', "value\ninjection"],
-            'value-with-crlf' => ['X-Foo-Bar', "value\r\ninjection"],
-            'value-with-2crlf' => ['X-Foo-Bar', "value\r\n\r\ninjection"],
-            'array-value-with-cr' => ['X-Foo-Bar', ["value\rinjection"]],
-            'array-value-with-lf' => ['X-Foo-Bar', ["value\ninjection"]],
-            'array-value-with-crlf' => ['X-Foo-Bar', ["value\r\ninjection"]],
+            'name-with-cr'           => ["X-Foo\r-Bar", 'value'],
+            'name-with-lf'           => ["X-Foo\n-Bar", 'value'],
+            'name-with-crlf'         => ["X-Foo\r\n-Bar", 'value'],
+            'name-with-2crlf'        => ["X-Foo\r\n\r\n-Bar", 'value'],
+            'value-with-cr'          => ['X-Foo-Bar', "value\rinjection"],
+            'value-with-lf'          => ['X-Foo-Bar', "value\ninjection"],
+            'value-with-crlf'        => ['X-Foo-Bar', "value\r\ninjection"],
+            'value-with-2crlf'       => ['X-Foo-Bar', "value\r\n\r\ninjection"],
+            'array-value-with-cr'    => ['X-Foo-Bar', ["value\rinjection"]],
+            'array-value-with-lf'    => ['X-Foo-Bar', ["value\ninjection"]],
+            'array-value-with-crlf'  => ['X-Foo-Bar', ["value\r\ninjection"]],
             'array-value-with-2crlf' => ['X-Foo-Bar', ["value\r\n\r\ninjection"]],
         ];
     }
@@ -227,8 +223,6 @@ class ResponseTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider headersWithInjectionVectorsDataProvider
-     * @param mixed $name
-     * @param mixed $value
      */
     public function constructorRaisesExceptionForHeadersWithCRLFVectors($name, $value)
     {

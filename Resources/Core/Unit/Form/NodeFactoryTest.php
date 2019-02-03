@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Backend\Tests\Unit\Form;
 
 /*
@@ -89,7 +88,6 @@ class NodeFactoryTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         ];
         new NodeFactory();
     }
-
     /**
      * @test
      */
@@ -193,7 +191,6 @@ class NodeFactoryTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         ];
         new NodeFactory();
     }
-
     /**
      * @test
      */

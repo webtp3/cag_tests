@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+
 namespace TYPO3\CMS\Core\Tests\Unit\DataHandler\Localization;
 
 /*
@@ -15,8 +15,8 @@ namespace TYPO3\CMS\Core\Tests\Unit\DataHandler\Localization;
  * The TYPO3 project - inspiring people to share!
  */
 
-use CAG\CagTests\Core\Unit\UnitTestCase;
 use TYPO3\CMS\Core\DataHandling\Localization\State;
+use CAG\CagTests\Core\Unit\UnitTestCase;
 
 /**
  * Test case
@@ -184,7 +184,6 @@ class StateTest extends UnitTestCase
         foreach ($fieldNames as $fieldName) {
             $columnsConfiguration[$fieldName]['config']['behaviour']['allowLanguageSynchronization'] = true;
         }
-
         return [
             static::TABLE_NAME => [
                 'columns' => $columnsConfiguration,

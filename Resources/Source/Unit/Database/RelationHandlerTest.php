@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Database;
 
 /*
@@ -25,6 +24,8 @@ class RelationHandlerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
      */
     protected $subject;
 
+    /**
+     */
     protected function setUp()
     {
         $this->subject = $this->getMockBuilder(\TYPO3\CMS\Core\Database\RelationHandler::class)

@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Resource;
 
 /*
@@ -81,7 +80,6 @@ class ProcessedFileTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         if ($originalFile === null) {
             $originalFile = $this->getFileFixture();
         }
-
         return new ProcessedFile($originalFile, 'dummy', [], $dbRow ?: $this->databaseRow);
     }
 

@@ -90,7 +90,6 @@ class ServicesListReportTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             ->willReturn(null)
             ->shouldBeCalled();
         $languageServiceProphecy->getLL(Argument::any())->willReturn('translation string');
-
         return $languageServiceProphecy;
     }
 
@@ -100,7 +99,6 @@ class ServicesListReportTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     private function reportControllerProphecy(): ObjectProphecy
     {
         $reportControllerProphecy = $this->prophesize(ReportController::class);
-
         return $reportControllerProphecy;
     }
 }

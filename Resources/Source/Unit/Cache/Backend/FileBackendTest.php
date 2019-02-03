@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Cache\Backend;
 
 /*
@@ -483,6 +482,8 @@ class FileBackendTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $this->assertFileNotExists($pathAndFilename);
     }
 
+    /**
+     */
     public function invalidEntryIdentifiers()
     {
         return [
@@ -504,7 +505,6 @@ class FileBackendTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider invalidEntryIdentifiers
-     * @param mixed $identifier
      */
     public function setThrowsExceptionForInvalidIdentifier($identifier)
     {
@@ -527,7 +527,6 @@ class FileBackendTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider invalidEntryIdentifiers
-     * @param mixed $identifier
      */
     public function getThrowsExceptionForInvalidIdentifier($identifier)
     {
@@ -550,7 +549,6 @@ class FileBackendTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider invalidEntryIdentifiers
-     * @param mixed $identifier
      */
     public function hasThrowsExceptionForInvalidIdentifier($identifier)
     {
@@ -568,7 +566,6 @@ class FileBackendTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider invalidEntryIdentifiers
-     * @param mixed $identifier
      */
     public function removeThrowsExceptionForInvalidIdentifier($identifier)
     {
@@ -591,7 +588,6 @@ class FileBackendTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider invalidEntryIdentifiers
-     * @param mixed $identifier
      */
     public function requireOnceThrowsExceptionForInvalidIdentifier($identifier)
     {

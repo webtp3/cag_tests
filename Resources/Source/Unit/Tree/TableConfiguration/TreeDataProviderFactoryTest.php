@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Tree\TableConfiguration;
 
 /*
@@ -51,28 +50,28 @@ class TreeDataProviderFactoryTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     'internal_type' => 'file',
                     'treeConfig' => [],
                 ],
-                1288215891,
+                1288215891
             ],
             'Unknown Type' => [
                 [
                     'internal_type' => 'foo',
                     'treeConfig' => [],
                 ],
-                1288215892,
+                1288215892
             ],
             'No foreign table' => [
                 [
                     'internal_type' => 'db',
                     'treeConfig' => [],
                 ],
-                1288215888,
+                1288215888
             ],
             'No tree configuration' => [
                 [
                     'internal_type' => 'db',
                     'foreign_table' => 'foo',
                 ],
-                1288215890,
+                1288215890
             ],
             'Tree configuration not array' => [
                 [
@@ -80,7 +79,7 @@ class TreeDataProviderFactoryTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     'foreign_table' => 'foo',
                     'treeConfig' => 'bar',
                 ],
-                1288215890,
+                1288215890
             ],
             'Tree configuration missing childer and parent field' => [
                 [
@@ -88,7 +87,7 @@ class TreeDataProviderFactoryTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     'foreign_table' => 'foo',
                     'treeConfig' => [],
                 ],
-                1288215889,
+                1288215889
             ],
         ];
     }
@@ -116,7 +115,7 @@ class TreeDataProviderFactoryTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 
         $tcaConfiguration = [
             'treeConfig' => ['dataProvider' => $dataProviderMockClassName],
-            'internal_type' => 'foo',
+            'internal_type' => 'foo'
         ];
         $dataProvider = $this->subject->getDataProvider($tcaConfiguration, 'foo', 'bar', ['uid' => 1]);
 

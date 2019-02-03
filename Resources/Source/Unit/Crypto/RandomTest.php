@@ -53,7 +53,7 @@ class RandomTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             [4095],
             [4096],
             [4097],
-            [8000],
+            [8000]
         ];
     }
 

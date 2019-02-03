@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Backend\Tests\Unit\Utility\Fixtures;
 
 /*
@@ -22,12 +21,6 @@ class ProcessedValueForGroupWithMultipleAllowedTablesFixture extends \TYPO3\CMS\
 {
     /**
      * Get record WSOL
-     * @param mixed $table
-     * @param mixed $uid
-     * @param mixed $fields
-     * @param mixed $where
-     * @param mixed $useDeleteClause
-     * @param mixed $unsetMovePointers
      */
     public static function getRecordWSOL($table, $uid, $fields = '*', $where = '', $useDeleteClause = true, $unsetMovePointers = false)
     {
@@ -43,10 +36,6 @@ class ProcessedValueForGroupWithMultipleAllowedTablesFixture extends \TYPO3\CMS\
 
     /**
      * Get record title
-     * @param mixed $table
-     * @param mixed $row
-     * @param mixed $prep
-     * @param mixed $forceResult
      */
     public static function getRecordTitle($table, $row, $prep = false, $forceResult = true)
     {

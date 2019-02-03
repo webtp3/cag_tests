@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace OliverHader\IrreTutorial\Controller;
 
 /*
@@ -31,6 +30,8 @@ class ContentController extends AbstractController
      */
     protected $defaultViewObjectName = \TYPO3\CMS\Extbase\Mvc\View\JsonView::class;
 
+    /**
+     */
     public function listAction()
     {
         $contents = $this->contentRepository->findAll();

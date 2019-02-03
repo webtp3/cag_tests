@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Log;
 
 /*
@@ -55,14 +54,13 @@ class LogLevelTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'array' => [[]],
             'object' => [new \stdClass()],
             'boolean FALSE' => [false],
-            'NULL' => [null],
+            'NULL' => [null]
         ];
     }
 
     /**
      * @test
      * @dataProvider isValidLevelThrowsExceptionOnInvalidLevelIfAskedToDoSoDataProvider
-     * @param mixed $inputValue
      */
     public function isValidLevelThrowsExceptionOnInvalidLevelIfAskedToDoSo($inputValue)
     {

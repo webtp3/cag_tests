@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+
 namespace TYPO3\CMS\Core\Tests\Unit\LinkHandling;
 
 /*
@@ -15,8 +15,8 @@ namespace TYPO3\CMS\Core\Tests\Unit\LinkHandling;
  * The TYPO3 project - inspiring people to share!
  */
 
-use CAG\CagTests\Core\Unit\UnitTestCase;
 use TYPO3\CMS\Core\LinkHandling\RecordLinkHandler;
+use CAG\CagTests\Core\Unit\UnitTestCase;
 
 class RecordLinkHandlerTest extends UnitTestCase
 {
@@ -28,7 +28,7 @@ class RecordLinkHandlerTest extends UnitTestCase
         $subject = new RecordLinkHandler();
         $parameters = [
             'identifier' => 'tx_identifier',
-            'uid' => 123,
+            'uid' => 123
         ];
         $url = sprintf(
             't3://record?identifier=%s&uid=%s',
@@ -47,14 +47,14 @@ class RecordLinkHandlerTest extends UnitTestCase
         return [
             'identifier is missing' => [
                 [
-                    'uid' => 123,
-                ],
+                    'uid' => 123
+                ]
             ],
             'uid is missing' => [
                 [
                     'identifier' => 'identifier',
-                ],
-            ],
+                ]
+            ]
         ];
     }
 

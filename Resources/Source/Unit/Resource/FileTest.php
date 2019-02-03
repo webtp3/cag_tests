@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Resource;
 
 /*
@@ -55,7 +54,6 @@ class FileTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     protected function prepareFixture()
     {
         $fixture = new \TYPO3\CMS\Core\Resource\File(['testfile'], $this->storageMock);
-
         return $fixture;
     }
 
@@ -67,7 +65,7 @@ class FileTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $properties = [
             'name' => $this->getUniqueId(),
             'storage' => $this->storageMock,
-            'size' => 1024,
+            'size' => 1024
         ];
         $fixture = new \TYPO3\CMS\Core\Resource\File($properties, $this->storageMock);
         foreach ($properties as $key => $value) {
@@ -214,15 +212,13 @@ class FileTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider filenameExtensionDataProvider
-     * @param mixed $originalFilename
-     * @param mixed $expectedBasename
      */
     public function getNameWithoutExtensionReturnsCorrectName($originalFilename, $expectedBasename)
     {
         $fixture = new \TYPO3\CMS\Core\Resource\File(
             [
             'name' => $originalFilename,
-            'identifier' => '/' . $originalFilename,
+            'identifier' => '/' . $originalFilename
         ],
         $this->storageMock
         );
@@ -232,15 +228,12 @@ class FileTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider filenameExtensionDataProvider
-     * @param mixed $originalFilename
-     * @param mixed $expectedBasename
-     * @param mixed $expectedExtension
      */
     public function getExtensionReturnsCorrectExtension($originalFilename, $expectedBasename, $expectedExtension)
     {
         $fixture = new \TYPO3\CMS\Core\Resource\File([
             'name' => $originalFilename,
-            'identifier' => '/' . $originalFilename,
+            'identifier' => '/' . $originalFilename
         ], $this->storageMock);
         $this->assertSame($expectedExtension, $fixture->getExtension());
     }

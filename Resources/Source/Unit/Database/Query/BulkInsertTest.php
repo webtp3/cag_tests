@@ -153,7 +153,7 @@ class BulkInsertTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 Connection::PARAM_BOOL,
                 null,
                 Connection::PARAM_BOOL,
-                Connection::PARAM_INT,
+                Connection::PARAM_INT
             ],
             $query->getParameterTypes()
         );

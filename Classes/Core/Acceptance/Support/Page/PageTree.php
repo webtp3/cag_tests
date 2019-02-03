@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace CAG\CagTests\Core\Acceptance\Support\Page;
 
 /*
@@ -17,6 +16,7 @@ namespace CAG\CagTests\Core\Acceptance\Support\Page;
 
 use AcceptanceTester;
 use Facebook\WebDriver\Remote\RemoteWebElement;
+use Facebook\WebDriver\WebDriverBy;
 
 /**
  * Helper class to interact with the page tree
@@ -71,7 +71,6 @@ class PageTree
     {
         $I = $this->tester;
         $I->switchToIFrame();
-
         return $I->executeInSelenium(function (\Facebook\WebDriver\Remote\RemoteWebDriver $webdriver) {
             return $webdriver->findElement(\WebDriverBy::cssSelector(self::$pageTreeSelector));
         });

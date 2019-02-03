@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace CAG\CagTests\Core\Functional\Framework\Frontend;
 
 /*
@@ -62,8 +61,8 @@ class ResponseContent
 
     /**
      * @param string $sectionIdentifier
+     * @return NULL|ResponseSection
      * @throws \RuntimeException
-     * @return null|ResponseSection
      */
     public function getSection($sectionIdentifier)
     {

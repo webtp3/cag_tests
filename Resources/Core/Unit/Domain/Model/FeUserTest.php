@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace CAG\CagTests\Tests\Unit\Domain\Model;
 
 /**
@@ -8,6 +7,7 @@ namespace CAG\CagTests\Tests\Unit\Domain\Model;
  * @author Thomas Ruta <email@thomasruta.de>
  * @author Jochen Rieger <j.rieger@connecta.ag>
  */
+use \TYPO3\CMS\Extbase\Domain\Model\FrontendUser;
 use Nimut\TestingFramework\TestCase\UnitTestCase;
 
 class FeUserTest extends UnitTestCase
@@ -25,7 +25,7 @@ class FeUserTest extends UnitTestCase
 
     protected function tearDown()
     {
-        // parent::tearDown();
+       // parent::tearDown();
     }
 
     /**
@@ -35,7 +35,6 @@ class FeUserTest extends UnitTestCase
     {
         self::markTestIncomplete();
     }
-
     /**
      * Test if title can be set
      *

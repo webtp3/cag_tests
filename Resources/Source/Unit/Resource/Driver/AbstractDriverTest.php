@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Resource\Driver;
 
 /*
@@ -30,7 +29,6 @@ class AbstractDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCas
         parent::setUp();
         $this->subject = $this->createDriver();
     }
-
     /**
      * @return \TYPO3\CMS\Core\Resource\Driver\AbstractDriver
      */

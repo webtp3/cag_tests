@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Functional\DataHandling\Regular;
 
 use TYPO3\CMS\Backend\Utility\BackendUtility;
@@ -54,14 +53,13 @@ class CheckValueTest extends AbstractDataHandlerActionTestCase
     }
 
     /**
-     * @param mixed $value
      * @return array
      */
     protected function insertRecordWithRadioFieldValue($value)
     {
         // pid 88 comes from LiveDefaultPages
         $result = $this->actionService->createNewRecord('tt_content', 88, [
-            'tx_testdatahandler_radio' => $value,
+            'tx_testdatahandler_radio' => $value
         ]);
         $recordUid = $result['tt_content'][0];
 

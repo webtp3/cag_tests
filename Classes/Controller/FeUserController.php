@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace CAG\CagTests\Controller;
 
 /***
@@ -22,7 +21,7 @@ class FeUserController extends FrontendUserAuthentication
 {
     /**
      * action list
-     *
+     * 
      * @return void
      */
     public function listAction()
@@ -33,7 +32,7 @@ class FeUserController extends FrontendUserAuthentication
 
     /**
      * action show
-     *
+     * 
      * @param \CAG\CagTests\Domain\Model\FeUser $feUser
      * @return void
      */
@@ -44,16 +43,17 @@ class FeUserController extends FrontendUserAuthentication
 
     /**
      * action new
-     *
+     * 
      * @return void
      */
     public function newAction()
     {
+
     }
 
     /**
      * action create
-     *
+     * 
      * @param \CAG\CagTests\Domain\Model\FeUser $newFeUser
      * @return void
      */
@@ -66,7 +66,7 @@ class FeUserController extends FrontendUserAuthentication
 
     /**
      * action edit
-     *
+     * 
      * @param \CAG\CagTests\Domain\Model\FeUser $feUser
      * @ignorevalidation $feUser
      * @return void
@@ -78,7 +78,7 @@ class FeUserController extends FrontendUserAuthentication
 
     /**
      * action update
-     *
+     * 
      * @param \CAG\CagTests\Domain\Model\FeUser $feUser
      * @return void
      */
@@ -91,7 +91,7 @@ class FeUserController extends FrontendUserAuthentication
 
     /**
      * action delete
-     *
+     * 
      * @param \CAG\CagTests\Domain\Model\FeUser $feUser
      * @return void
      */
@@ -104,10 +104,11 @@ class FeUserController extends FrontendUserAuthentication
 
     /**
      * action login
-     *
+     * 
      * @return void
      */
     public function loginAction()
     {
+
     }
 }

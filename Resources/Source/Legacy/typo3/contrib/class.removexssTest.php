@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 /*
  * This file is part of the TYPO3 CMS project.
  *
@@ -31,7 +30,6 @@ class RemoveXSSTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 
         $this->assertEquals($expectedString, $actualString);
     }
-
     /**
      * @test
      */
@@ -43,7 +41,6 @@ class RemoveXSSTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 
         $this->assertEquals($expectedString, $actualString);
     }
-
     /**
      * @test
      */
@@ -55,7 +52,6 @@ class RemoveXSSTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 
         $this->assertEquals($expectedString, $actualString);
     }
-
     /**
      * @test
      */
@@ -67,7 +63,6 @@ class RemoveXSSTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 
         $this->assertEquals($expectedString, $actualString);
     }
-
     /**
      * @test
      */
@@ -79,7 +74,6 @@ class RemoveXSSTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 
         $this->assertEquals($expectedString, $actualString);
     }
-
     /**
      * @test
      */
@@ -91,7 +85,6 @@ class RemoveXSSTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 
         $this->assertEquals($expectedString, $actualString);
     }
-
     /**
      * @test
      */
@@ -103,7 +96,6 @@ class RemoveXSSTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 
         $this->assertEquals($expectedString, $actualString);
     }
-
     /**
      * @test
      */
@@ -115,7 +107,6 @@ class RemoveXSSTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 
         $this->assertEquals($expectedString, $actualString);
     }
-
     /**
      * @test
      */
@@ -127,7 +118,6 @@ class RemoveXSSTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 
         $this->assertEquals($expectedString, $actualString);
     }
-
     /**
      * @test
      */
@@ -139,7 +129,6 @@ class RemoveXSSTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 
         $this->assertEquals($expectedString, $actualString);
     }
-
     /**
      * @test
      */
@@ -151,7 +140,6 @@ class RemoveXSSTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 
         $this->assertEquals($expectedString, $actualString);
     }
-
     /**
      * @test
      */
@@ -163,7 +151,6 @@ class RemoveXSSTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 
         $this->assertEquals($expectedString, $actualString);
     }
-
     /**
      * @test
      */
@@ -175,7 +162,6 @@ class RemoveXSSTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 
         $this->assertEquals($expectedString, $actualString);
     }
-
     /**
      * @test
      */
@@ -187,7 +173,6 @@ class RemoveXSSTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 
         $this->assertEquals($expectedString, $actualString);
     }
-
     /**
      * @test
      */
@@ -199,7 +184,6 @@ class RemoveXSSTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 
         $this->assertEquals($expectedString, $actualString);
     }
-
     /**
      * @test
      */
@@ -211,7 +195,6 @@ class RemoveXSSTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 
         $this->assertEquals($expectedString, $actualString);
     }
-
     /**
      * @test
      */
@@ -223,7 +206,6 @@ class RemoveXSSTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 
         $this->assertEquals($expectedString, $actualString);
     }
-
     /**
      * @test
      */
@@ -235,7 +217,6 @@ class RemoveXSSTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 
         $this->assertEquals($expectedString, $actualString);
     }
-
     /**
      * @test
      */
@@ -247,7 +228,6 @@ class RemoveXSSTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 
         $this->assertEquals($expectedString, $actualString);
     }
-
     /**
      * @test
      */
@@ -259,7 +239,6 @@ class RemoveXSSTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 
         $this->assertEquals($expectedString, $actualString);
     }
-
     /**
      * @test
      */
@@ -271,7 +250,6 @@ class RemoveXSSTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 
         $this->assertEquals($expectedString, $actualString);
     }
-
     /**
      * @test
      */
@@ -283,7 +261,6 @@ class RemoveXSSTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 
         $this->assertEquals($expectedString, $actualString);
     }
-
     /**
      * @test
      */
@@ -295,7 +272,6 @@ class RemoveXSSTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 
         $this->assertEquals($expectedString, $actualString);
     }
-
     /**
      * @test
      */
@@ -307,7 +283,6 @@ class RemoveXSSTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 
         $this->assertEquals($expectedString, $actualString);
     }
-
     /**
      * @test
      */
@@ -319,7 +294,6 @@ class RemoveXSSTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 
         $this->assertEquals($expectedString, $actualString);
     }
-
     /**
      * @test
      */
@@ -331,7 +305,6 @@ class RemoveXSSTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 
         $this->assertEquals($expectedString, $actualString);
     }
-
     /**
      * @test
      */
@@ -343,7 +316,6 @@ class RemoveXSSTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 
         $this->assertEquals($expectedString, $actualString);
     }
-
     /**
      * @test
      */
@@ -355,7 +327,6 @@ class RemoveXSSTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 
         $this->assertEquals($expectedString, $actualString);
     }
-
     /**
      * @test
      */
@@ -367,7 +338,6 @@ class RemoveXSSTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 
         $this->assertEquals($expectedString, $actualString);
     }
-
     /**
      * @test
      */
@@ -379,7 +349,6 @@ class RemoveXSSTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 
         $this->assertEquals($expectedString, $actualString);
     }
-
     /**
      * @test
      */
@@ -391,7 +360,6 @@ class RemoveXSSTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 
         $this->assertEquals($expectedString, $actualString);
     }
-
     /**
      * @test
      */
@@ -403,7 +371,6 @@ class RemoveXSSTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 
         $this->assertEquals($expectedString, $actualString);
     }
-
     /**
      * @test
      */
@@ -442,11 +409,11 @@ class RemoveXSSTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             ],
             'attack with null character' => [
                 '<scr' . chr(0) . 'ipt></script>',
-                '<sc<x>ript></script>',
+                '<sc<x>ript></script>'
             ],
             'attack with null character in attribute' => [
                 '<a href="j' . chr(0) . 'avascript:alert(123);"></a>',
-                '<a href="ja<x>vascript:alert(123);"></a>',
+                '<a href="ja<x>vascript:alert(123);"></a>'
             ],
         ];
     }

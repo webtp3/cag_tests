@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Utility;
 
 /*
@@ -32,44 +31,43 @@ class CommandUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'perl' => [
                 'app' => 'perl',
                 'path' => '/usr/bin/',
-                'valid' => true,
+                'valid' => true
             ],
             'unzip' => [
                 'app' => 'unzip',
                 'path' => '/usr/local/bin/',
-                'valid' => true,
+                'valid' => true
             ],
         ];
-
         return [
             'returns empty array for empty string' => [
                 '',
-                [],
+                []
             ],
             'separated by comma' => [
                 'perl=/usr/bin/perl,unzip=/usr/local/bin/unzip',
-                $defaultExpected,
+                $defaultExpected
             ],
             'separated by new line' => [
                 'perl=/usr/bin/perl ' . LF . ' unzip=/usr/local/bin/unzip',
-                $defaultExpected,
+                $defaultExpected
             ],
             'separated by new line with spaces' => [
                 'perl = /usr/bin/perl ' . LF . ' unzip = /usr/local/bin/unzip',
-                $defaultExpected,
+                $defaultExpected
             ],
             'separated by new line with spaces and empty rows' => [
                 LF . 'perl = /usr/bin/perl ' . LF . LF . ' unzip = /usr/local/bin/unzip' . LF,
-                $defaultExpected,
+                $defaultExpected
             ],
             'separated by char(10)' => [
                 'perl=/usr/bin/perl' . '\'.chr(10).\'' . 'unzip=/usr/local/bin/unzip',
-                $defaultExpected,
+                $defaultExpected
             ],
             'separated by LF as string' => [
                 'perl=/usr/bin/perl' . '\' . LF . \'' . 'unzip=/usr/local/bin/unzip',
-                $defaultExpected,
-            ],
+                $defaultExpected
+            ]
         ];
     }
 

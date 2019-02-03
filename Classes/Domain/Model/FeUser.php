@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace CAG\CagTests\Domain\Model;
 
 /***
@@ -19,4 +18,4 @@ namespace CAG\CagTests\Domain\Model;
  */
 class FeUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser
 {
-}
+    }

@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Localization\Parser;
 
 /*
@@ -80,7 +79,7 @@ class LocallangXmlParserTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $expectedLabels = [
             'label1' => 'This is label #1',
             'label2' => 'This is label #2',
-            'label3' => 'This is label #3',
+            'label3' => 'This is label #3'
         ];
         foreach ($expectedLabels as $key => $expectedLabel) {
             $this->assertEquals($expectedLabel, $LOCAL_LANG['default'][$key][0]['target']);
@@ -97,7 +96,7 @@ class LocallangXmlParserTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $expectedLabels = [
             'label1' => '409a6edbc70dbeeccbfe5f1e569d6717',
             'label2' => 'b5dc71ae9f52ecb9e7704c50562e39b0',
-            'label3' => '51eac55fa5ca15789ce9bbb0cf927296',
+            'label3' => '51eac55fa5ca15789ce9bbb0cf927296'
         ];
         foreach ($expectedLabels as $key => $expectedLabel) {
             $this->assertEquals($expectedLabel, $LOCAL_LANG['md5'][$key][0]['target']);
@@ -113,7 +112,7 @@ class LocallangXmlParserTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $expectedLabels = [
             'label1' => null,
             'label2' => null,
-            'label3' => null,
+            'label3' => null
         ];
         foreach ($expectedLabels as $key => $expectedLabel) {
             $this->assertEquals($expectedLabel, $LOCAL_LANG['fr'][$key][0]['target']);
@@ -126,7 +125,7 @@ class LocallangXmlParserTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     public function canOverrideLlxml()
     {
         /** @var $factory LocalizationFactory */
-        $factory = new LocalizationFactory();
+        $factory = new LocalizationFactory;
 
         $GLOBALS['TYPO3_CONF_VARS']['SYS']['locallangXMLOverride'][self::getFixtureFilePath('locallang.xml')][] = self::getFixtureFilePath('locallang_override.xml');
         $LOCAL_LANG = array_merge(
@@ -139,13 +138,13 @@ class LocallangXmlParserTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'default' => [
                 'label1' => 'This is my 1st label',
                 'label2' => 'This is my 2nd label',
-                'label3' => 'This is label #3',
+                'label3' => 'This is label #3'
             ],
             'md5' => [
                 'label1' => '409a6edbc70dbeeccbfe5f1e569d6717',
                 'label2' => 'b5dc71ae9f52ecb9e7704c50562e39b0',
-                'label3' => '51eac55fa5ca15789ce9bbb0cf927296',
-            ],
+                'label3' => '51eac55fa5ca15789ce9bbb0cf927296'
+            ]
         ];
         foreach ($expectedLabels as $languageKey => $expectedLanguageLabels) {
             foreach ($expectedLanguageLabels as $key => $expectedLabel) {
@@ -157,7 +156,7 @@ class LocallangXmlParserTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     public function numericKeysDataProvider()
     {
         /** @var $factory LocalizationFactory */
-        $factory = new LocalizationFactory();
+        $factory = new LocalizationFactory;
 
         $LOCAL_LANG = $factory->getParsedData(self::getFixtureFilePath('locallangNumericKeys.xml'), 'default');
         $translations = [];
@@ -172,13 +171,11 @@ class LocallangXmlParserTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider numericKeysDataProvider
-     * @param mixed $key
-     * @param mixed $expectedResult
      */
     public function canTranslateNumericKeys($key, $expectedResult)
     {
         /** @var $factory LocalizationFactory */
-        $factory = new LocalizationFactory();
+        $factory = new LocalizationFactory;
 
         $LOCAL_LANG = $factory->getParsedData(self::getFixtureFilePath('locallangNumericKeys.xml'), 'fr');
 

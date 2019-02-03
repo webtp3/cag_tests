@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Resource\Collection;
 
 /*
@@ -124,7 +123,7 @@ class FileCollectionRegistryTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\Bas
         $className = get_class($this->getMockForAbstractClass(\TYPO3\CMS\Core\Resource\Collection\AbstractFileCollection::class));
         $type = substr($this->getUniqueId(), 0, 30);
         $GLOBALS['TYPO3_CONF_VARS']['SYS']['fal']['registeredCollections'] = [
-            $type => $className,
+            $type => $className
         ];
         $this->initializeTestSubject();
         $this->assertEquals($className, $this->testSubject->getFileCollectionClass($type));
@@ -138,7 +137,7 @@ class FileCollectionRegistryTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\Bas
         $className = get_class($this->getMockForAbstractClass(\TYPO3\CMS\Core\Resource\Collection\AbstractFileCollection::class));
         $type = 'foo';
         $GLOBALS['TYPO3_CONF_VARS']['SYS']['fal']['registeredCollections'] = [
-            $type => $className,
+            $type => $className
         ];
         $this->initializeTestSubject();
         $this->assertTrue($this->testSubject->fileCollectionTypeExists($type));
@@ -160,6 +159,7 @@ class FileCollectionRegistryTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\Bas
      */
     public function addNewTypeToTCA()
     {
+
         // Create a TCA fixture for sys_file_collection
         $GLOBALS['TCA']['sys_file_collection'] = [
             'types' => [
@@ -168,10 +168,10 @@ class FileCollectionRegistryTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\Bas
             'columns' => [
                 'type' => [
                     'config' => [
-                        'items' => ['Type B', 'typeB'],
-                    ],
-                ],
-            ],
+                        'items' => ['Type B', 'typeB']
+                    ]
+                ]
+            ]
         ];
 
         $type = 'my_type';

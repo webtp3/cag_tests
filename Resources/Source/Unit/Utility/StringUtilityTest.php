@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Utility;
 
 /*
@@ -35,15 +34,13 @@ class StringUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'match whole string' => ['hello', 'hello'],
             'integer is part of string with same number' => ['24', 24],
             'string is part of integer with same number' => [24, '24'],
-            'integer is part of string ending with same number' => ['please gimme beer, 24', 24],
+            'integer is part of string ending with same number' => ['please gimme beer, 24', 24]
         ];
     }
 
     /**
      * @test
      * @dataProvider endsWithReturnsTrueForMatchingLastPartDataProvider
-     * @param mixed $string
-     * @param mixed $part
      */
     public function endsWithReturnsTrueForMatchingLastPart($string, $part)
     {
@@ -69,8 +66,6 @@ class StringUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider endsWithReturnsFalseForNotMatchingLastPartDataProvider
-     * @param mixed $string
-     * @param mixed $part
      */
     public function endsWithReturnsFalseForNotMatchingLastPart($string, $part)
     {
@@ -106,9 +101,6 @@ class StringUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider endsWithReturnsThrowsExceptionWithInvalidArgumentsDataProvider
-     * @param mixed $string
-     * @param mixed $part
-     * @param mixed $expectedException
      */
     public function endsWithReturnsThrowsExceptionWithInvalidArguments($string, $part, $expectedException)
     {
@@ -138,8 +130,6 @@ class StringUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider beginsWithReturnsTrueForMatchingFirstPartDataProvider
-     * @param mixed $string
-     * @param mixed $part
      */
     public function beginsWithReturnsTrueForMatchingFirstPart($string, $part)
     {
@@ -156,15 +146,13 @@ class StringUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         return [
             'no string match' => ['hello', 'bye'],
             'no case sensitive string match' => ['hello world', 'Hello'],
-            'string in empty string' => ['', 'foo'],
+            'string in empty string' => ['', 'foo']
         ];
     }
 
     /**
      * @test
      * @dataProvider beginsWithReturnsFalseForNotMatchingFirstPartDataProvider
-     * @param mixed $string
-     * @param mixed $part
      */
     public function beginsWithReturnsFalseForNotMatchingFirstPart($string, $part)
     {
@@ -275,7 +263,7 @@ class StringUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         return [
             'BOM gets removed' => [
                 'efbbbf424f4d2061742074686520626567696e6e696e6720676574732072656d6f766564',
-                'BOM at the beginning gets removed',
+                'BOM at the beginning gets removed'
             ],
             'No BOM available' => [
                 '4e6f20424f4d20617661696c61626c65',

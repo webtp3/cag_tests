@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Resource;
 
 /*
@@ -46,7 +45,6 @@ class FolderTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         if ($mockedStorage === null) {
             $mockedStorage = $this->createMock(\TYPO3\CMS\Core\Resource\ResourceStorage::class);
         }
-
         return new \TYPO3\CMS\Core\Resource\Folder($mockedStorage, $path, $name);
     }
 
@@ -94,11 +92,11 @@ class FolderTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $mockedStorage->expects($this->once())->method('getFilesInFolder')->will($this->returnValue(
             [
                 'somefile.png' => [
-                    'name' => 'somefile.png',
+                    'name' => 'somefile.png'
                 ],
                 'somefile.jpg' => [
-                    'name' => 'somefile.jpg',
-                ],
+                    'name' => 'somefile.jpg'
+                ]
             ]
         ));
         $fixture = $this->createFolderFixture('/somePath', 'someName', $mockedStorage);

@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Backend\Tests\Functional\Controller;
 
 /*
@@ -15,12 +14,12 @@ namespace TYPO3\CMS\Backend\Tests\Functional\Controller;
  * The TYPO3 project - inspiring people to share!
  */
 
-use CAG\CagTests\Core\Functional\FunctionalTestCase;
 use TYPO3\CMS\Backend\Controller\FormInlineAjaxController;
 use TYPO3\CMS\Core\Core\Bootstrap;
 use TYPO3\CMS\Core\Http\Response;
 use TYPO3\CMS\Core\Http\ServerRequest;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use CAG\CagTests\Core\Functional\FunctionalTestCase;
 
 /**
  * Test case for TYPO3\CMS\Backend\Controller\Page\LocalizationController

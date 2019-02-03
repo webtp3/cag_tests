@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Felogin\Tests\Functional\Tca;
 
 /*
@@ -37,7 +36,7 @@ class ContentVisibleFieldsTest extends \CAG\CagTests\Core\Functional\FunctionalT
         'editlock',
         'rowDescription',
         'categories',
-        'pi_flexform',
+        'pi_flexform'
     ];
 
     /**

@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Log\Writer;
 
 /*
@@ -56,7 +55,6 @@ class FileWriterTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Log\LogManager::class)->registerLogger($name);
         /** @var \TYPO3\CMS\Core\Log\Logger $logger */
         $logger = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Log\LogManager::class)->getLogger($name);
-
         return $logger;
     }
 
@@ -70,9 +68,8 @@ class FileWriterTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     {
         /** @var \TYPO3\CMS\Core\Log\Writer\FileWriter $writer */
         $writer = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Log\Writer\FileWriter::class, [
-            'logFile' => $this->getDefaultFileName($prependName),
+            'logFile' => $this->getDefaultFileName($prependName)
         ]);
-
         return $writer;
     }
 
@@ -131,10 +128,9 @@ class FileWriterTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     {
         $simpleRecord = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Log\LogRecord::class, $this->getUniqueId('test.core.log.fileWriter.simpleRecord.'), \TYPO3\CMS\Core\Log\LogLevel::INFO, 'test record');
         $recordWithData = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Log\LogRecord::class, $this->getUniqueId('test.core.log.fileWriter.recordWithData.'), \TYPO3\CMS\Core\Log\LogLevel::ALERT, 'test record with data', ['foo' => ['bar' => 'baz']]);
-
         return [
             'simple record' => [$simpleRecord, trim((string)$simpleRecord)],
-            'record with data' => [$recordWithData, trim((string)$recordWithData)],
+            'record with data' => [$recordWithData, trim((string)$recordWithData)]
         ];
     }
 

@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Backend\Tests\Unit\Form\FormDataProvider;
 
 /*
@@ -209,7 +208,7 @@ class TcaInlineConfigurationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'foreign_table' => 'aForeignTableName',
                             'behaviour' => [
                                 'localizationMode' => 'foo',
-                            ],
+                            ]
                         ],
                     ],
                 ],
@@ -235,7 +234,7 @@ class TcaInlineConfigurationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'foreign_table' => 'aForeignTableName',
                             'behaviour' => [
                                 'localizationMode' => 'select',
-                            ],
+                            ]
                         ],
                     ],
                 ],
@@ -262,7 +261,7 @@ class TcaInlineConfigurationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'foreign_table' => 'aForeignTableName',
                             'behaviour' => [
                                 'localizationMode' => 'select',
-                            ],
+                            ]
                         ],
                     ],
                 ],
@@ -293,7 +292,7 @@ class TcaInlineConfigurationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                             'foreign_table' => 'aForeignTableName',
                             'behaviour' => [
                                 'localizationMode' => 'keep',
-                            ],
+                            ]
                         ],
                     ],
                 ],
@@ -686,7 +685,7 @@ class TcaInlineConfigurationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         ];
         $GLOBALS['TCA']['aForeignTableName']['columns']['aField']['config'] = [
             'type' => 'group',
-            'internal_type' => 'notDb',
+            'internal_type' => 'notDb'
         ];
         $this->expectException(\UnexpectedValueException::class);
         $this->expectExceptionCode(1444999130);

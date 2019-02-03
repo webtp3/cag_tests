@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Log;
 
 /*
@@ -32,7 +31,6 @@ class LogRecordTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     {
         /** @var $record LogRecord */
         $record = new LogRecord($parameters['component'] ?: 'test.core.log', $parameters['level'] ?: \TYPO3\CMS\Core\Log\LogLevel::DEBUG, $parameters['message'] ?: 'test message', $parameters['data'] ?: []);
-
         return $record;
     }
 
@@ -72,7 +70,7 @@ class LogRecordTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     public function constructorSetsCorrectData()
     {
         $dataArray = [
-            'foo' => 'bar',
+            'foo' => 'bar'
         ];
         $record = $this->getRecord(['data' => $dataArray]);
         $this->assertEquals($dataArray, $record->getData());

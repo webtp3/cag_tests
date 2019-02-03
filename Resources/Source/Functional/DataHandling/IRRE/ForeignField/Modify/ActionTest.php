@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Functional\DataHandling\IRRE\ForeignField\Modify;
 
 /*
@@ -161,7 +160,7 @@ class ActionTest extends \TYPO3\CMS\Core\Tests\Functional\DataHandling\IRRE\Fore
         $this->setUpFrontendRootPage(1, [
             'typo3/sysext/core/Tests/Functional/Fixtures/Frontend/JsonRenderer.ts',
             'typo3/sysext/core/Tests/Functional/Fixtures/Frontend/ExtbaseJsonRenderer.ts',
-            'typo3/sysext/core/Tests/Functional/Fixtures/Frontend/JsonRendererNoOverlay.ts',
+            'typo3/sysext/core/Tests/Functional/Fixtures/Frontend/JsonRendererNoOverlay.ts'
         ]);
         $responseSections = $this->getFrontendResponse(self::VALUE_PageId, self::VALUE_LanguageId)->getResponseSections('Default', 'Extbase:list()');
         $this->assertThat($responseSections, $this->getRequestSectionStructureHasRecordConstraint()

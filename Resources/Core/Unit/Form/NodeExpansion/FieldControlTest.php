@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Backend\Tests\Unit\Form\NodeExpansion;
 
 /*
@@ -15,12 +14,12 @@ namespace TYPO3\CMS\Backend\Tests\Unit\Form\NodeExpansion;
  * The TYPO3 project - inspiring people to share!
  */
 
-use CAG\CagTests\Core\Unit\UnitTestCase;
 use Prophecy\Argument;
 use TYPO3\CMS\Backend\Form\AbstractNode;
 use TYPO3\CMS\Backend\Form\NodeExpansion\FieldControl;
 use TYPO3\CMS\Backend\Form\NodeFactory;
 use TYPO3\CMS\Lang\LanguageService;
+use CAG\CagTests\Core\Unit\UnitTestCase;
 
 /**
  * Test case
@@ -97,7 +96,7 @@ class FieldControlTest extends UnitTestCase
                 'anotherModule',
             ],
             'inlineData' => [],
-            'html' => '\n<a class="btn btn-default">\n...>\n</a>',
+            'html' => '\n<a class="btn btn-default">\n...>\n</a>'
         ];
         $result = (new FieldControl($nodeFactoryProphecy->reveal(), $data))->render();
         // We're not interested in testing the html merge here

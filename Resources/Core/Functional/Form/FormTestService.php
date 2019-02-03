@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Backend\Tests\Functional\Form;
 
 /*
@@ -42,12 +41,11 @@ class FormTestService
             'tableName' => $table,
             'vanillaUid' => 0,
             'command' => 'new',
-            'databaseRow' => $defaults,
+            'databaseRow' => $defaults
         ];
         $formData = $formDataCompiler->compile($formDataCompilerInput);
 
         $formData['renderType'] = 'outerWrapContainer';
-
         return $nodeFactory->create($formData)->render();
     }
 

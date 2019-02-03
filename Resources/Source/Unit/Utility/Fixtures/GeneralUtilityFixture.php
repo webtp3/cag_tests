@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Utility\Fixtures;
 
 /*
@@ -38,7 +37,6 @@ class GeneralUtilityFixture extends GeneralUtility
     public static function isAllowedHostHeaderValue($hostHeaderValue)
     {
         self::$isAllowedHostHeaderValueCallCount++;
-
         return parent::isAllowedHostHeaderValue($hostHeaderValue);
     }
 

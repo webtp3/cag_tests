@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Backend\Tests\Unit\Form;
 
 /*
@@ -132,7 +131,6 @@ class FormDataCompilerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $this->formDataGroupProphecy->compile(Argument::cetera())->will(function ($arguments) {
             $result = $arguments[0];
             $result['databaseRow'] = 'newData';
-
             return $result;
         });
         $result = $this->subject->compile([]);
@@ -171,7 +169,6 @@ class FormDataCompilerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $this->formDataGroupProphecy->compile(Argument::cetera())->will(function ($arguments) {
             $result = $arguments[0];
             unset($result['tableName']);
-
             return $result;
         });
         $this->expectException(\UnexpectedValueException::class);
@@ -187,7 +184,6 @@ class FormDataCompilerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $this->formDataGroupProphecy->compile(Argument::cetera())->will(function ($arguments) {
             $result = $arguments[0];
             $result['newKey'] = 'newData';
-
             return $result;
         });
         $this->expectException(\UnexpectedValueException::class);

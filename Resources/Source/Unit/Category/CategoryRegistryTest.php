@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Category;
 
 /*
@@ -40,7 +39,7 @@ class CategoryRegistryTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $this->subject = new \TYPO3\CMS\Core\Category\CategoryRegistry();
         $this->tables = [
             'first' => $this->getUniqueId('first'),
-            'second' => $this->getUniqueId('second'),
+            'second' => $this->getUniqueId('second')
         ];
         foreach ($this->tables as $tableName) {
             $GLOBALS['TCA'][$tableName] = [
@@ -48,11 +47,11 @@ class CategoryRegistryTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 'columns' => [],
                 'types' => [
                     '0' => [
-                        'showitem' => '',
+                        'showitem' => ''
                     ],
                     '1' => [
-                        'showitem' => '',
-                    ],
+                        'showitem' => ''
+                    ]
                 ],
             ];
         }

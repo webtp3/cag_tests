@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit;
 
 /*
@@ -14,9 +13,9 @@ namespace TYPO3\CMS\Core\Tests\Unit;
  *
  * The TYPO3 project - inspiring people to share!
  */
-use CAG\CagTests\Core\FileStreamWrapper;
 use org\bovigo\vfs\vfsStream;
 use org\bovigo\vfs\visitor\vfsStreamStructureVisitor;
+use CAG\CagTests\Core\FileStreamWrapper;
 
 /**
  * Test case for \TYPO3\CMS\Core\Tests\Unit\FileStreamWrapper
@@ -32,7 +31,7 @@ class FileStreamWrapperTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $subfolder = vfsStream::newDirectory('fileadmin');
         $root->addChild($subfolder);
         // Load fixture files and folders from disk
-        vfsStream::copyFromFileSystem(__DIR__ . '/TypoScript/Fixtures', $subfolder, 1024 * 1024);
+        vfsStream::copyFromFileSystem(__DIR__ . '/TypoScript/Fixtures', $subfolder, 1024*1024);
         FileStreamWrapper::init(PATH_site);
         FileStreamWrapper::registerOverlayPath('fileadmin', 'vfs://root/fileadmin', false);
 

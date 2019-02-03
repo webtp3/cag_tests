@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Imaging;
 
 /*
@@ -55,7 +54,7 @@ class GraphicalFunctionsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     'origH' => 0,
                     'max' => 0,
                     0 => 150,
-                    1 => (float)120,
+                    1 => (float)120
                 ],
             ],
             'Get image scale with a maximum width of 100px' => [
@@ -66,7 +65,7 @@ class GraphicalFunctionsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 '',
                 '',
                 [
-                    'maxW' => 100,
+                    'maxW' => 100
                 ],
                 [
                     'crs' => false,
@@ -74,7 +73,7 @@ class GraphicalFunctionsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     'origH' => 0,
                     'max' => 1,
                     0 => 100,
-                    1 => (float)80,
+                    1 => (float)80
                 ],
             ],
             'Get image scale with a minimum width of 200px' => [
@@ -85,7 +84,7 @@ class GraphicalFunctionsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 '',
                 '',
                 [
-                    'minW' => 200,
+                    'minW' => 200
                 ],
                 [
                     'crs' => false,
@@ -93,7 +92,7 @@ class GraphicalFunctionsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     'origH' => 0,
                     'max' => 0,
                     0 => 200,
-                    1 => (float)136,
+                    1 => (float)136
                 ],
             ],
         ];
@@ -102,11 +101,6 @@ class GraphicalFunctionsTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider getScaleForImageDataProvider
-     * @param mixed $info
-     * @param mixed $width
-     * @param mixed $height
-     * @param mixed $options
-     * @param mixed $expected
      */
     public function getScaleForImage($info, $width, $height, $options, $expected)
     {

@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Type;
 
 /*
@@ -105,7 +104,7 @@ class EnumerationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $expectedValue = [
             'INTEGER_VALUE' => 1,
             'STRING_VALUE' => 'foo',
-             '__default' => 1,
+             '__default' => 1
         ];
 
         $result = $enumeration->_getStatic('enumConstants');
@@ -166,62 +165,59 @@ class EnumerationTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             [
                 1,
                 1,
-                true,
+                true
             ],
             [
                 1,
                 '1',
-                true,
+                true
             ],
             [
                 '1',
                 1,
-                true,
+                true
             ],
             [
                 'a1',
                 1,
-                false,
+                false
             ],
             [
                 1,
                 'a1',
-                false,
+                false
             ],
             [
                 '1a',
                 1,
-                false,
+                false
             ],
             [
                 1,
                 '1a',
-                false,
+                false
             ],
             [
                 'foo',
                 'foo',
-                true,
+                true
             ],
             [
                 'foo',
                 'bar',
-                false,
+                false
             ],
             [
                 'foo',
                 'foobar',
-                false,
-            ],
+                false
+            ]
         ];
     }
 
     /**
      * @test
      * @dataProvider isValidComparisonExpectations
-     * @param mixed $enumerationValue
-     * @param mixed $testValue
-     * @param mixed $expectation
      */
     public function isValidDoesTypeLooseComparison($enumerationValue, $testValue, $expectation)
     {

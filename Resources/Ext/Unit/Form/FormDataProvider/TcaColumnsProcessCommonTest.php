@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Backend\Tests\Unit\Form\FormDataProvider;
 
 /*
@@ -41,9 +40,9 @@ class TcaColumnsProcessCommonTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'columnsToProcess' => [],
             'processedTca' => [
                 'ctrl' => [
-                    'origUid' => 't3_origuid',
-                ],
-            ],
+                    'origUid' => 't3_origuid'
+                ]
+            ]
         ];
 
         $expected = $input;
@@ -60,9 +59,9 @@ class TcaColumnsProcessCommonTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'columnsToProcess' => [],
             'processedTca' => [
                 'ctrl' => [
-                    'type' => 'doktype',
-                ],
-            ],
+                    'type' => 'doktype'
+                ]
+            ]
         ];
 
         $expected = $input;
@@ -79,9 +78,9 @@ class TcaColumnsProcessCommonTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'columnsToProcess' => [],
             'processedTca' => [
                 'ctrl' => [
-                    'type' => 'relation_field:foreign_type_field',
-                ],
-            ],
+                    'type' => 'relation_field:foreign_type_field'
+                ]
+            ]
         ];
 
         $expected = $input;
@@ -98,9 +97,9 @@ class TcaColumnsProcessCommonTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'columnsToProcess' => [],
             'processedTca' => [
                 'ctrl' => [
-                    'languageField' => 'sys_language_uid',
-                ],
-            ],
+                    'languageField' => 'sys_language_uid'
+                ]
+            ]
         ];
 
         $expected = $input;
@@ -117,9 +116,9 @@ class TcaColumnsProcessCommonTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'columnsToProcess' => [],
             'processedTca' => [
                 'ctrl' => [
-                    'transOrigPointerField' => 'l10n_parent',
-                ],
-            ],
+                    'transOrigPointerField' => 'l10n_parent'
+                ]
+            ]
         ];
 
         $expected = $input;
@@ -136,9 +135,9 @@ class TcaColumnsProcessCommonTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'columnsToProcess' => [],
             'processedTca' => [
                 'ctrl' => [
-                    'transOrigDiffSourceField' => 'l18n_diffsource',
-                ],
-            ],
+                    'transOrigDiffSourceField' => 'l18n_diffsource'
+                ]
+            ]
         ];
 
         $expected = $input;
@@ -160,7 +159,7 @@ class TcaColumnsProcessCommonTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         'subtype_value_field' => 'list_type',
                         'subtypes_addlist' => [
                             'aType' => 'aField',
-                        ],
+                        ]
                     ],
                 ],
             ],
@@ -188,7 +187,7 @@ class TcaColumnsProcessCommonTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                         'subtype_value_field' => 'theSubtypeValueField',
                         'subtypes_addlist' => [
                             'theSubtypeValue' => 'aField, bField',
-                        ],
+                        ]
                     ],
                 ],
             ],

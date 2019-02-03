@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Resource\Driver;
 
 /*
@@ -15,11 +14,11 @@ namespace TYPO3\CMS\Core\Tests\Unit\Resource\Driver;
  * The TYPO3 project - inspiring people to share!
  */
 
-use CAG\CagTests\Core\FileStreamWrapper;
 use org\bovigo\vfs\vfsStream;
 use org\bovigo\vfs\vfsStreamWrapper;
 use TYPO3\CMS\Core\Resource\Exception\InvalidFileNameException;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use CAG\CagTests\Core\FileStreamWrapper;
 
 /**
  * Testcase for the local storage driver class of the TYPO3 VFS
@@ -81,7 +80,6 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
         $basedir = PATH_site . 'typo3temp/var/tests/' . $this->getUniqueId('fal-test-');
         mkdir($basedir);
         $this->testDirs[] = $basedir;
-
         return $basedir;
     }
 
@@ -95,9 +93,8 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
     {
         $basedir = $this->createRealTestdir();
         $subject = $this->createDriver([
-            'basePath' => $basedir,
+            'basePath' => $basedir
         ]);
-
         return [$basedir, $subject];
     }
 
@@ -129,7 +126,6 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
         $driver->setStorageUid(5);
         $driver->processConfiguration();
         $driver->initialize();
-
         return $driver;
     }
 
@@ -227,8 +223,8 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
     {
         $this->addToMount([
             'someDir' => [
-                'someSubdir' => [],
-            ],
+                'someSubdir' => []
+            ]
         ]);
         $subject = $this->createDriver();
         $folder = $subject->getFolderInFolder('someSubdir', '/someDir/');
@@ -263,20 +259,18 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
         return [
             'folder name with NULL character' => [
                 'some' . chr(0) . 'Folder',
-                'some_Folder',
+                'some_Folder'
             ],
             'folder name with directory part' => [
                 '../someFolder',
-                '.._someFolder',
-            ],
+                '.._someFolder'
+            ]
         ];
     }
 
     /**
      * @test
      * @dataProvider createFolderSanitizesFolderNameBeforeCreationDataProvider
-     * @param mixed $newFolderName
-     * @param mixed $expectedFolderName
      */
     public function createFolderSanitizesFolderNameBeforeCreation($newFolderName, $expectedFolderName)
     {
@@ -309,52 +303,50 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
         return [
             'size' => [
                 'expectedValue' => filesize(__DIR__ . '/Fixtures/Dummy.html'),
-                'propertyName' => 'size',
+                'propertyName' => 'size'
             ],
             'atime' => [
                 'expectedValue' => 'WILL_BE_REPLACED_BY_VFS_TIME',
-                'propertyName' => 'atime',
+                'propertyName' => 'atime'
             ],
             'mtime' => [
                 'expectedValue' => 'WILL_BE_REPLACED_BY_VFS_TIME',
-                'propertyName' => 'mtime',
+                'propertyName' => 'mtime'
             ],
             'ctime' => [
                 'expectedValue' => 'WILL_BE_REPLACED_BY_VFS_TIME',
-                'propertyName' => 'ctime',
+                'propertyName' => 'ctime'
             ],
             'name' => [
                 'expectedValue' => 'Dummy.html',
-                'propertyName' => 'name',
+                'propertyName' => 'name'
             ],
             'mimetype' => [
                 'expectedValue' => 'text/html',
-                'propertyName' => 'mimetype',
+                'propertyName' => 'mimetype'
             ],
             'identifier' => [
                 'expectedValue' => '/Dummy.html',
-                'propertyName' => 'identifier',
+                'propertyName' => 'identifier'
             ],
             'storage' => [
                 'expectedValue' => 5,
-                'propertyName' => 'storage',
+                'propertyName' => 'storage'
             ],
             'identifier_hash' => [
                 'expectedValue' => 'b11efa5d7c0556a65c6aa261343b9807cac993bc',
-                'propertyName' => 'identifier_hash',
+                'propertyName' => 'identifier_hash'
             ],
             'folder_hash' => [
                 'expectedValue' => '42099b4af021e53fd8fd4e056c2568d7c2e3ffa8',
-                'propertyName' => 'folder_hash',
-            ],
+                'propertyName' => 'folder_hash'
+            ]
         ];
     }
 
     /**
      * @test
      * @dataProvider getSpecificFileInformationDataProvider
-     * @param mixed $expectedValue
-     * @param mixed $property
      */
     public function getSpecificFileInformationReturnsRequestedFileInformation($expectedValue, $property)
     {
@@ -362,7 +354,7 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
         $subFolder = vfsStream::newDirectory('fileadmin');
         $root->addChild($subFolder);
         // Load fixture files and folders from disk
-        $directory = vfsStream::copyFromFileSystem(__DIR__ . '/Fixtures/', $subFolder, 1024 * 1024);
+        $directory = vfsStream::copyFromFileSystem(__DIR__ . '/Fixtures/', $subFolder, 1024*1024);
         if (in_array($property, ['mtime', 'ctime', 'atime'])) {
             $expectedValue = $directory->getChild('Dummy.html')->filemtime();
         }
@@ -385,8 +377,8 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
     {
         $this->addToMount([
             'someFolder' => [
-                'file1.ext' => 'asdfg',
-            ],
+                'file1.ext' => 'asdfg'
+            ]
         ]);
         $subject = $this->createDriver();
         $path = $subject->_call('getAbsolutePath', '/someFolder/file1.ext');
@@ -402,8 +394,8 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
         $this->addToMount(['targetFolder' => []]);
         $this->addToVfs([
             'sourceFolder' => [
-                'file' => 'asdf',
-            ],
+                'file' => 'asdf'
+            ]
         ]);
         $subject = $this->createDriver(
             [],
@@ -422,8 +414,8 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
         $this->addToMount(['targetFolder' => []]);
         $this->addToVfs([
             'sourceFolder' => [
-                'file' => 'asdf',
-            ],
+                'file' => 'asdf'
+            ]
         ]);
         $subject = $this->createDriver(
             [],
@@ -443,8 +435,8 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
         $this->expectExceptionCode(1314778269);
         $this->addToMount([
             'targetFolder' => [
-                'file' => 'asdf',
-            ],
+                'file' => 'asdf'
+            ]
         ]);
         $subject = $this->createDriver();
         $subject->addFile($this->getUrlInMount('/targetFolder/file'), '/targetFolder/', 'file');
@@ -458,8 +450,8 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
         $this->addToMount(['targetFolder' => []]);
         $this->addToVfs([
             'sourceFolder' => [
-                'file' => 'asdf',
-            ],
+                'file' => 'asdf'
+            ]
         ]);
         $subject = $this->createDriver(
             [],
@@ -478,7 +470,7 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
     {
         $this->addToMount([
             'file' => 'asdf',
-            'folder' => [],
+            'folder' => []
         ]);
         $subject = $this->createDriver();
         // Using slashes at the beginning of paths because they will be stored in the DB this way.
@@ -496,8 +488,8 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
         $this->addToMount([
             'subfolder' => [
                 'file' => 'asdf',
-                'folder' => [],
-            ],
+                'folder' => []
+            ]
         ]);
         $subject = $this->createDriver();
         $this->assertTrue($subject->fileExistsInFolder('file', '/subfolder/'));
@@ -515,11 +507,11 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
         $this->addToMount([
             'file.ext' => 'asdf',
             'subfolder' => [
-                'file2.ext' => 'asdf',
-            ],
+                'file2.ext' => 'asdf'
+            ]
         ]);
         $subject = $this->createDriver([
-            'baseUri' => $baseUri,
+            'baseUri' => $baseUri
         ]);
         $this->assertEquals($baseUri . '/file.ext', $subject->getPublicUrl('/file.ext'));
         $this->assertEquals($baseUri . '/subfolder/file2.ext', $subject->getPublicUrl('/subfolder/file2.ext'));
@@ -536,20 +528,19 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
             ['/single file with some special chars äüö!.txt'],
             ['/on subfolder/with special chars äüö!.ext'],
             ['/who names a file like !"§$%&()=?*+~"#\'´`<>-.ext'],
-            ['no leading slash !"§$%&()=?*+~#\'"´`"<>-.txt'],
+            ['no leading slash !"§$%&()=?*+~#\'"´`"<>-.txt']
         ];
     }
 
     /**
      * @test
      * @dataProvider getPublicUrlReturnsValidUrlContainingSpecialCharacters_dataProvider
-     * @param mixed $fileIdentifier
      */
     public function getPublicUrlReturnsValidUrlContainingSpecialCharacters($fileIdentifier)
     {
         $baseUri = 'http://example.org/foobar/' . $this->getUniqueId();
         $subject = $this->createDriver([
-            'baseUri' => $baseUri,
+            'baseUri' => $baseUri
         ]);
         $publicUrl = $subject->getPublicUrl($fileIdentifier);
         $this->assertTrue(GeneralUtility::isValidUrl($publicUrl), 'getPublicUrl did not return a valid URL:' . $publicUrl);
@@ -562,7 +553,7 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
     {
         $fileContents = 'asdf';
         $this->addToMount([
-            'file.ext' => $fileContents,
+            'file.ext' => $fileContents
         ]);
         $subject = $this->createDriver();
         $this->assertEquals($fileContents, $subject->getFileContents('/file.ext'), 'File contents could not be read');
@@ -578,7 +569,7 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
     {
         $fileContents = 'asdf';
         $this->addToMount([
-            'file.ext' => $fileContents,
+            'file.ext' => $fileContents
         ]);
         $subject = $this->createDriver();
         $newFileContents = 'asdfgh';
@@ -625,7 +616,7 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
 
         $this->addToMount(
             [
-                'someDir' => [],
+                'someDir' => []
             ]
         );
         /** @var $subject \TYPO3\CMS\Core\Resource\Driver\LocalDriver */
@@ -638,7 +629,6 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
     /**********************************
      * File and directory listing
      **********************************/
-
     /**
      * @test
      */
@@ -648,7 +638,7 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
         $subFolder = vfsStream::newDirectory('fileadmin');
         $root->addChild($subFolder);
         // Load fixture files and folders from disk
-        vfsStream::copyFromFileSystem(__DIR__ . '/Fixtures/', $subFolder, 1024 * 1024);
+        vfsStream::copyFromFileSystem(__DIR__ . '/Fixtures/', $subFolder, 1024*1024);
         FileStreamWrapper::init(PATH_site);
         FileStreamWrapper::registerOverlayPath('fileadmin/', 'vfs://root/fileadmin/', false);
 
@@ -691,7 +681,7 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
         $dirStructure = [
             'aDir' => [],
             'file1' => 'asdfg',
-            'file2' => 'fdsa',
+            'file2' => 'fdsa'
         ];
         $this->addToMount($dirStructure);
         $subject = $this->createDriver(
@@ -712,11 +702,11 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
             'aDir' => [
                 'file3' => 'asdfgh',
                 'subdir' => [
-                    'file4' => 'asklfjklasjkl',
-                ],
+                    'file4' => 'asklfjklasjkl'
+                ]
             ],
             'file1' => 'asdfg',
-            'file2' => 'fdsa',
+            'file2' => 'fdsa'
         ];
         $this->addToMount($dirStructure);
         $subject = $this->createDriver(
@@ -746,14 +736,14 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
     public function getFileInFolderCallsConfiguredCallbackFunctionWithGivenItemName()
     {
         $dirStructure = [
-            'file2' => 'fdsa',
+            'file2' => 'fdsa'
         ];
         // register static callback to self
         $callback = [
             [
                 get_class($this),
-                'callbackStaticTestFunction',
-            ],
+                'callbackStaticTestFunction'
+            ]
         ];
         $this->addToMount($dirStructure);
         $subject = $this->createDriver();
@@ -786,7 +776,7 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
     {
         $dirStructure = [
             'fileA' => 'asdfg',
-            'fileB' => 'fdsa',
+            'fileB' => 'fdsa'
         ];
         $this->addToMount($dirStructure);
         $subject = $this->createDriver(
@@ -812,7 +802,7 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
         $dirStructure = [
             'dir1' => [],
             'dir2' => [],
-            'file' => 'asdfg',
+            'file' => 'asdfg'
         ];
         $this->addToMount($dirStructure);
         $subject = $this->createDriver();
@@ -828,7 +818,7 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
         $dirStructure = [
             '.someHiddenDir' => [],
             'aDir' => [],
-            'file1' => '',
+            'file1' => ''
         ];
         $this->addToMount($dirStructure);
         $subject = $this->createDriver();
@@ -849,7 +839,7 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
         // to normal filelistings)
         $this->addToMount([
             '..' => [],
-            '.' => [],
+            '.' => []
         ]);
         $subject = $this->createDriver();
         $fileList = $subject->getFoldersInFolder('/');
@@ -863,7 +853,7 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
     {
         $dirStructure = [
             'folderA' => [],
-            'folderB' => [],
+            'folderB' => []
         ];
         $this->addToMount($dirStructure);
         $subject = $this->createDriver();
@@ -923,8 +913,8 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
         $fileContents = 'asdfgh';
         $this->addToMount([
             'someDir' => [
-                'someFile' => $fileContents,
-            ],
+                'someFile' => $fileContents
+            ]
         ]);
         $subject = $this->createDriver([], ['copyFileToTemporaryPath']);
         $subject->expects($this->once())->method('copyFileToTemporaryPath');
@@ -939,8 +929,8 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
         $fileContents = 'asdfgh';
         $this->addToMount([
             'someDir' => [
-                'someFile' => $fileContents,
-            ],
+                'someFile' => $fileContents
+            ]
         ]);
         $subject = $this->createDriver();
         $filePath = $subject->getFileForLocalProcessing('/someDir/someFile', false);
@@ -955,8 +945,8 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
         $fileContents = 'asdfgh';
         $this->addToMount([
             'someDir' => [
-                'someFile.ext' => $fileContents,
-            ],
+                'someFile.ext' => $fileContents
+            ]
         ]);
         $subject = $this->createDriver();
         $filePath = GeneralUtility::fixWindowsFilePath($subject->_call('copyFileToTemporaryPath', '/someDir/someFile.ext'));
@@ -1044,47 +1034,43 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
                 'current group, readable/writable' => [
                     posix_getgid(),
                     48,
-                    ['r' => true, 'w' => true],
+                    ['r' => true, 'w' => true]
                 ],
                 'current group, readable/not writable' => [
                     posix_getgid(),
                     32,
-                    ['r' => true, 'w' => false],
+                    ['r' => true, 'w' => false]
                 ],
                 'current group, not readable/not writable' => [
                     posix_getgid(),
                     0,
-                    ['r' => false, 'w' => false],
-                ],
+                    ['r' => false, 'w' => false]
+                ]
             ];
         }
         $data = array_merge_recursive($data, [
             'arbitrary group, readable/writable' => [
                 vfsStream::GROUP_USER_1,
                 6,
-                ['r' => true, 'w' => true],
+                ['r' => true, 'w' => true]
             ],
             'arbitrary group, readable/not writable' => [
                 vfsStream::GROUP_USER_1,
                 436,
-                ['r' => true, 'w' => false],
+                ['r' => true, 'w' => false]
             ],
             'arbitrary group, not readable/not writable' => [
                 vfsStream::GROUP_USER_1,
                 432,
-                ['r' => false, 'w' => false],
-            ],
+                ['r' => false, 'w' => false]
+            ]
         ]);
-
         return $data;
     }
 
     /**
      * @test
      * @dataProvider getFilePermissionsReturnsCorrectPermissionsForFilesNotOwnedByCurrentUser_dataProvider
-     * @param mixed $group
-     * @param mixed $permissions
-     * @param mixed $expectedResult
      */
     public function getFilePermissionsReturnsCorrectPermissionsForFilesNotOwnedByCurrentUser($group, $permissions, $expectedResult)
     {
@@ -1092,7 +1078,7 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
             $this->markTestSkipped('Test skipped if run on Windows system');
         }
         $this->addToMount([
-            'testfile' => 'asdfg',
+            'testfile' => 'asdfg'
         ]);
         $subject = $this->createDriver();
         /** @var $fileObject vfsStreamContent */
@@ -1137,7 +1123,7 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
         $fileContents = $this->getUniqueId();
         $this->addToMount([
             'someFile' => $fileContents,
-            'targetFolder' => [],
+            'targetFolder' => []
         ]);
         $subject = $this->createDriver(
             [],
@@ -1155,7 +1141,7 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
         $fileContents = $this->getUniqueId();
         $this->addToMount([
             'targetFolder' => [],
-            'someFile' => $fileContents,
+            'someFile' => $fileContents
         ]);
         $subject = $this->createDriver();
         $newIdentifier = $subject->moveFileWithinStorage('/someFile', '/targetFolder/', 'file');
@@ -1172,7 +1158,7 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
         $fileContents = $this->getUniqueId();
         $this->addToMount([
             'targetFolder' => [],
-            'someFile' => $fileContents,
+            'someFile' => $fileContents
         ]);
         $subject = $this->createDriver(
             [],
@@ -1189,29 +1175,26 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
         return [
             'file in subfolder' => [
                 [
-                    'targetFolder' => ['file' => ''],
+                    'targetFolder' => ['file' => '']
                 ],
                 '/targetFolder/file',
                 'newFile',
-                '/targetFolder/newFile',
+                '/targetFolder/newFile'
             ],
             'file in rootfolder' => [
                 [
-                    'fileInRoot' => '',
+                    'fileInRoot' => ''
                 ],
                 '/fileInRoot',
                 'newFile',
-                '/newFile',
-            ],
+                '/newFile'
+            ]
         ];
     }
 
     /**
      * @test
      * @dataProvider renamingFiles_dataProvider
-     * @param mixed $oldFileIdentifier
-     * @param mixed $newFileName
-     * @param mixed $expectedNewIdentifier
      */
     public function renamingFilesChangesFilenameOnDisk(array $filesystemStructure, $oldFileIdentifier, $newFileName, $expectedNewIdentifier)
     {
@@ -1231,7 +1214,7 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
         $this->expectException(\TYPO3\CMS\Core\Resource\Exception\ExistingTargetFileNameException::class);
         $this->expectExceptionCode(1320291063);
         $this->addToMount([
-            'targetFolder' => ['file' => '', 'newFile' => ''],
+            'targetFolder' => ['file' => '', 'newFile' => '']
         ]);
         $subject = $this->createDriver();
         $subject->renameFile('/targetFolder/file', 'newFile');
@@ -1247,31 +1230,28 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
         return [
             'folder in root folder' => [
                 [
-                    'someFolder' => [],
+                    'someFolder' => []
                 ],
                 '/someFolder/',
                 'newFolder',
-                '/newFolder/',
+                '/newFolder/'
             ],
             'file in subfolder' => [
                 [
                     'subfolder' => [
-                        'someFolder' => [],
-                    ],
+                        'someFolder' => []
+                    ]
                 ],
                 '/subfolder/someFolder/',
                 'newFolder',
-                '/subfolder/newFolder/',
-            ],
+                '/subfolder/newFolder/'
+            ]
         ];
     }
 
     /**
      * @test
      * @dataProvider renamingFolders_dataProvider
-     * @param mixed $oldFolderIdentifier
-     * @param mixed $newFolderName
-     * @param mixed $expectedNewIdentifier
      */
     public function renamingFoldersChangesFolderNameOnDisk(array $filesystemStructure, $oldFolderIdentifier, $newFolderName, $expectedNewIdentifier)
     {
@@ -1292,8 +1272,8 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
         $this->addToMount([
             'sourceFolder' => [
                 'subFolder' => ['file' => $fileContents],
-                'file2' => 'asdfg',
-            ],
+                'file2' => 'asdfg'
+            ]
         ]);
         $subject = $this->createDriver();
         $mappingInformation = $subject->renameFolder('/sourceFolder/', 'newFolder');
@@ -1313,8 +1293,8 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
         $this->expectExceptionCode(1334160746);
         $this->addToMount([
             'sourceFolder' => [
-                'file' => 'asdfg',
-            ],
+                'file' => 'asdfg'
+            ]
         ]);
         $subject = $this->createDriver([], ['createIdentifierMap']);
         $subject->expects($this->atLeastOnce())->method('createIdentifierMap')->will(
@@ -1333,11 +1313,10 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
     {
         // This also prepares the next few tests, so add more info than required for this test
         $this->addToMount([
-            'emptyFolder' => [],
+            'emptyFolder' => []
         ]);
         $subject = $this->createDriver();
         $this->assertTrue($subject->isFolderEmpty('/emptyFolder/'));
-
         return $subject;
     }
 
@@ -1348,8 +1327,8 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
     {
         $this->addToMount([
             'folderWithFile' => [
-                'someFile' => '',
-            ],
+                'someFile' => ''
+            ]
         ]);
         $subject = $this->createDriver();
         $this->assertFalse($subject->isFolderEmpty('/folderWithFile/'));
@@ -1362,8 +1341,8 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
     {
         $this->addToMount([
             'folderWithSubfolder' => [
-                'someFolder' => [],
-            ],
+                'someFolder' => []
+            ]
         ]);
         $subject = $this->createDriver();
         $this->assertFalse($subject->isFolderEmpty('/folderWithSubfolder/'));
@@ -1372,7 +1351,6 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
     /**********************************
      * Copy/move folder
      **********************************/
-
     /**
      * @test
      */
@@ -1403,8 +1381,8 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
             'targetFolder' => [],
             'sourceFolder' => [
                 'subFolder' => ['file' => $fileContents],
-                'file' => 'asdfg',
-            ],
+                'file' => 'asdfg'
+            ]
         ]);
         $subject = $this->createDriver();
         $mappingInformation = $subject->moveFolderWithinStorage('/sourceFolder/', '/targetFolder/', 'sourceFolder');
@@ -1522,29 +1500,28 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
     public function sanitizeFileNameUTF8FilesystemDataProvider()
     {
         $this->setUpCharacterStrings();
-
         return [
             // Characters ordered by ASCII table
             'allowed characters utf-8 (ASCII part)' => [
                 '-.0123456789@ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz',
-                '-.0123456789@ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz',
+                '-.0123456789@ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz'
             ],
             // Characters ordered by ASCII table (except for space-character, because space-character ist trimmed)
             'replace special characters with _ (not allowed characters) utf-8 (ASCII part)' => [
                 '! "#$%&\'()*+,/:;<=>?[\\]^`{|}~',
-                '_____________________________',
+                '_____________________________'
             ],
             'utf-8 (Latin-1 Supplement)' => [
                 $this->utf8Latin1Supplement,
-                '________________________________ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ',
+                '________________________________ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ'
             ],
             'trim leading and tailing spaces utf-8' => [
                 ' test.txt  ',
-                'test.txt',
+                'test.txt'
             ],
             'remove tailing dot' => [
                 'test.txt.',
-                'test.txt',
+                'test.txt'
             ],
         ];
     }
@@ -1552,8 +1529,6 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
     /**
      * @test
      * @dataProvider sanitizeFileNameUTF8FilesystemDataProvider
-     * @param mixed $fileName
-     * @param mixed $expectedResult
      */
     public function sanitizeFileNameUTF8Filesystem($fileName, $expectedResult)
     {
@@ -1577,69 +1552,68 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
     public function sanitizeFileNameNonUTF8FilesystemDataProvider()
     {
         $this->setUpCharacterStrings();
-
         return [
             // Characters ordered by ASCII table
             'allowed characters iso-8859-1' => [
                 '-.0123456789@ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz',
                 'iso-8859-1',
-                '-.0123456789@ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz',
+                '-.0123456789@ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz'
             ],
             // Characters ordered by ASCII table
             'allowed characters utf-8' => [
                 '-.0123456789@ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz',
                 'utf-8',
-                '-.0123456789@ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz',
+                '-.0123456789@ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz'
             ],
             // Characters ordered by ASCII table (except for space-character, because space-character ist trimmed)
             'replace special characters with _ (not allowed characters) iso-8859-1' => [
                 '! "#$%&\'()*+,/:;<=>?[\\]^`{|}~',
                 'iso-8859-1',
-                '_____________________________',
+                '_____________________________'
             ],
             // Characters ordered by ASCII table (except for space-character, because space-character ist trimmed)
             'replace special characters with _ (not allowed characters) utf-8' => [
                 '! "#$%&\'()*+,/:;<=>?[\\]^`{|}~',
                 'utf-8',
-                '_____________________________',
+                '_____________________________'
             ],
             'iso-8859-1 (code > 127)' => [
                 // http://de.wikipedia.org/wiki/ISO_8859-1
                 // chr(0xA0) = NBSP (no-break space) => gets trimmed
                 $this->iso88591GreaterThan127,
                 'iso-8859-1',
-                '_centpound_yen____c_a_____R_____-23_u___1o__1_41_23_4_AAAAAEAAAECEEEEIIIIDNOOOOOExOEUUUUEYTHssaaaaaeaaaeceeeeiiiidnoooooe_oeuuuueythy',
+                '_centpound_yen____c_a_____R_____-23_u___1o__1_41_23_4_AAAAAEAAAECEEEEIIIIDNOOOOOExOEUUUUEYTHssaaaaaeaaaeceeeeiiiidnoooooe_oeuuuueythy'
             ],
             'utf-8 (Latin-1 Supplement)' => [
                 // chr(0xC2) . chr(0x0A) = NBSP (no-break space) => gets trimmed
                 $this->utf8Latin1Supplement,
                 'utf-8',
-                '_centpound__yen______c_a_______R_______-23__u_____1o__1_41_23_4_AAAAAEAAAECEEEEIIIIDNOOOOOExOEUUUUEYTHssaaaaaeaaaeceeeeiiiidnoooooe_oeuuuueythy',
+                '_centpound__yen______c_a_______R_______-23__u_____1o__1_41_23_4_AAAAAEAAAECEEEEIIIIDNOOOOOExOEUUUUEYTHssaaaaaeaaaeceeeeiiiidnoooooe_oeuuuueythy'
             ],
             'utf-8 (Latin-1 Extended A)' => [
                 $this->utf8Latin1ExtendedA,
                 'utf-8',
-                'AaAaAaCcCcCcCcDdDdEeEeEeEeEeGgGgGgGgHhHhIiIiIiIiIiIJijJjKk__LlLlLlL_l_LlNnNnNn_n____OOooOoOoOEoeRrRrRrSsSsSsSsTtTtTtUuUuUuUuUuUuWwYyYZzZzZzs',
+                'AaAaAaCcCcCcCcDdDdEeEeEeEeEeGgGgGgGgHhHhIiIiIiIiIiIJijJjKk__LlLlLlL_l_LlNnNnNn_n____OOooOoOoOEoeRrRrRrSsSsSsSsTtTtTtUuUuUuUuUuUuWwYyYZzZzZzs'
             ],
             'trim leading and tailing spaces iso-8859-1' => [
                 ' test.txt  ',
                 'iso-8859-1',
-                'test.txt',
+                'test.txt'
             ],
             'trim leading and tailing spaces utf-8' => [
                 ' test.txt  ',
                 'utf-8',
-                'test.txt',
+                'test.txt'
             ],
             'remove tailing dot iso-8859-1' => [
                 'test.txt.',
                 'iso-8859-1',
-                'test.txt',
+                'test.txt'
             ],
             'remove tailing dot utf-8' => [
                 'test.txt.',
                 'utf-8',
-                'test.txt',
+                'test.txt'
             ],
         ];
     }
@@ -1647,9 +1621,6 @@ class LocalDriverTest extends \TYPO3\CMS\Core\Tests\Unit\Resource\BaseTestCase
     /**
      * @test
      * @dataProvider sanitizeFileNameNonUTF8FilesystemDataProvider
-     * @param mixed $fileName
-     * @param mixed $charset
-     * @param mixed $expectedResult
      */
     public function sanitizeFileNameNonUTF8Filesystem($fileName, $charset, $expectedResult)
     {

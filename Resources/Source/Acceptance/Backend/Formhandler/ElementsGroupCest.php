@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Acceptance\Backend\Formhandler;
 
 /*
@@ -15,9 +14,9 @@ namespace TYPO3\CMS\Core\Tests\Acceptance\Backend\Formhandler;
  * The TYPO3 project - inspiring people to share!
  */
 
+use Facebook\WebDriver\Exception\NoSuchWindowException;
 use CAG\CagTests\Core\Acceptance\Step\Backend\Admin;
 use CAG\CagTests\Core\Acceptance\Support\Page\PageTree;
-use Facebook\WebDriver\Exception\NoSuchWindowException;
 
 /**
  * Tests for ElementsGroupelement fields

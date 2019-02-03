@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Database;
 
 /*
@@ -40,7 +39,6 @@ class PreparedStatementTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     //////////////////////
     // Utility functions
     //////////////////////
-
     /**
      * Set up the stub to be able to get the result of the prepared statement.
      *
@@ -94,7 +92,6 @@ class PreparedStatementTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     ///////////////////////////////////////
     // Tests for \TYPO3\CMS\Core\Database\PreparedStatement
     ///////////////////////////////////////
-
     /**
      * Data Provider for two tests, providing sample queries, parameters and expected result queries.
      *
@@ -108,27 +105,27 @@ class PreparedStatementTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'one named integer parameter' => [
                 'SELECT * FROM pages WHERE pid=:pid',
                 [':pid' => 1],
-                'SELECT * FROM pages WHERE pid=?',
+                'SELECT * FROM pages WHERE pid=?'
             ],
             'one unnamed integer parameter' => [
                 'SELECT * FROM pages WHERE pid=?',
                 [1],
-                'SELECT * FROM pages WHERE pid=?',
+                'SELECT * FROM pages WHERE pid=?'
             ],
             'one named integer parameter is replaced multiple times' => [
                 'SELECT * FROM pages WHERE pid=:pid OR uid=:pid',
                 [':pid' => 1],
-                'SELECT * FROM pages WHERE pid=? OR uid=?',
+                'SELECT * FROM pages WHERE pid=? OR uid=?'
             ],
             'two named integer parameters are replaced' => [
                 'SELECT * FROM pages WHERE pid=:pid OR uid=:uid',
                 [':pid' => 1, ':uid' => 10],
-                'SELECT * FROM pages WHERE pid=? OR uid=?',
+                'SELECT * FROM pages WHERE pid=? OR uid=?'
             ],
             'two unnamed integer parameters are replaced' => [
                 'SELECT * FROM pages WHERE pid=? OR uid=?',
                 [1, 1],
-                'SELECT * FROM pages WHERE pid=? OR uid=?',
+                'SELECT * FROM pages WHERE pid=? OR uid=?'
             ],
         ];
     }
@@ -184,48 +181,48 @@ class PreparedStatementTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'integer passed with param type NULL' => [
                 1,
                 PreparedStatement::PARAM_NULL,
-                1282489834,
+                1282489834
             ],
             'string passed with param type NULL' => [
                 '1',
                 PreparedStatement::PARAM_NULL,
-                1282489834,
+                1282489834
             ],
             'bool passed with param type NULL' => [
                 true,
                 PreparedStatement::PARAM_NULL,
-                1282489834,
+                1282489834
             ],
             'NULL passed with param type INT' => [
                 null,
                 PreparedStatement::PARAM_INT,
-                1281868686,
+                1281868686
             ],
             'string passed with param type INT' => [
                 '1',
                 PreparedStatement::PARAM_INT,
-                1281868686,
+                1281868686
             ],
             'bool passed with param type INT' => [
                 true,
                 PreparedStatement::PARAM_INT,
-                1281868686,
+                1281868686
             ],
             'NULL passed with param type BOOL' => [
                 null,
                 PreparedStatement::PARAM_BOOL,
-                1281868687,
+                1281868687
             ],
             'string passed with param type BOOL' => [
                 '1',
                 PreparedStatement::PARAM_BOOL,
-                1281868687,
+                1281868687
             ],
             'integer passed with param type BOOL' => [
                 1,
                 PreparedStatement::PARAM_BOOL,
-                1281868687,
-            ],
+                1281868687
+            ]
         ];
     }
 
@@ -260,28 +257,28 @@ class PreparedStatementTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'using other prefix than colon' => [
                 /** @lang text */
                 'SELECT * FROM pages WHERE pid=#pid',
-                ['#pid' => 1],
+                ['#pid' => 1]
             ],
             'using non alphanumerical character' => [
                 /** @lang text */
                 'SELECT * FROM pages WHERE title=:stra≠e',
-                [':stra≠e' => 1],
+                [':stra≠e' => 1]
             ],
             'no colon used' => [
                 /** @lang text */
                 'SELECT * FROM pages WHERE pid=pid',
-                ['pid' => 1],
+                ['pid' => 1]
             ],
             'colon at the end' => [
                 /** @lang text */
                 'SELECT * FROM pages WHERE pid=pid:',
-                ['pid:' => 1],
+                ['pid:' => 1]
             ],
             'colon without alphanumerical character' => [
                 /** @lang text */
                 'SELECT * FROM pages WHERE pid=:',
-                [':' => 1],
-            ],
+                [':' => 1]
+            ]
         ];
     }
 

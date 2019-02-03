@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\LinkHandling;
 
 /*
@@ -19,6 +18,7 @@ use TYPO3\CMS\Core\LinkHandling\PageLinkHandler;
 
 class PageLinkHandlerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 {
+
     /**
      * Data to resolve strings to arrays and vice versa, external, mail, page
      *
@@ -29,60 +29,61 @@ class PageLinkHandlerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         return [
             'current page - cool style' => [
                 [
-                    'uid' => 'current',
+                    'uid' => 'current'
                 ],
                 [
-                    'pageuid' => 'current',
+                    'pageuid' => 'current'
                 ],
-                't3://page?uid=current',
+                't3://page?uid=current'
             ],
             'current empty page - cool style' => [
                 [
+
                 ],
                 [
-                    'pageuid' => 'current',
+                    'pageuid' => 'current'
                 ],
-                't3://page?uid=current',
+                't3://page?uid=current'
             ],
             'simple page - cool style' => [
                 [
-                    'uid' => 13,
+                    'uid' => 13
                 ],
                 [
-                    'pageuid' => 13,
+                    'pageuid' => 13
                 ],
-                't3://page?uid=13',
+                't3://page?uid=13'
             ],
             'page with alias - cool style' => [
                 [
-                    'alias' => 'alias13',
+                    'alias' => 'alias13'
                 ],
                 [
-                    'pagealias' => 'alias13',
+                    'pagealias' => 'alias13'
                 ],
-                't3://page?alias=alias13',
+                't3://page?alias=alias13'
             ],
             'page with alias and type - cool style' => [
                 [
                     'alias' => 'alias13',
-                    'type' => 31,
+                    'type' => 31
                 ],
                 [
                     'pagealias' => 'alias13',
-                    'pagetype' => '31',
+                    'pagetype' => '31'
                 ],
-                't3://page?alias=alias13&type=31',
+                't3://page?alias=alias13&type=31'
             ],
             'page with alias and parameters - cool style' => [
                 [
                     'alias' => 'alias13',
                     'my' => 'additional',
                     'parameter' => 'that',
-                    'are' => 'nice',
+                    'are' => 'nice'
                 ],
                 [
                     'pagealias' => 'alias13',
-                    'parameters' => 'my=additional&parameter=that&are=nice',
+                    'parameters' => 'my=additional&parameter=that&are=nice'
                 ],
                 't3://page?alias=alias13&my=additional&parameter=that&are=nice',
             ],
@@ -91,15 +92,15 @@ class PageLinkHandlerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                     'alias' => 'alias13',
                     'my' => 'additional',
                     'parameter' => 'that',
-                    'are' => 'nice',
+                    'are' => 'nice'
                 ],
                 [
                     'pagealias' => 'alias13',
                     'parameters' => 'my=additional&parameter=that&are=nice',
-                    'fragment' => 'again',
+                    'fragment' => 'again'
                 ],
                 't3://page?alias=alias13&my=additional&parameter=that&are=nice#again',
-            ],
+            ]
         ];
     }
 

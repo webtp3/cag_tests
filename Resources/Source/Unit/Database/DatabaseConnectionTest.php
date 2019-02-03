@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Database;
 
 /*
@@ -15,9 +14,9 @@ namespace TYPO3\CMS\Core\Tests\Unit\Database;
  * The TYPO3 project - inspiring people to share!
  */
 
-use CAG\CagTests\Core\AccessibleObjectInterface;
 use TYPO3\CMS\Core\Database\DatabaseConnection;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use CAG\CagTests\Core\AccessibleObjectInterface;
 
 /**
  * Test case
@@ -272,23 +271,23 @@ class DatabaseConnectionTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         return [
             'single ORDER BY' => [
                 'ORDER BY name, tstamp',
-                'name, tstamp',
+                'name, tstamp'
             ],
             'single ORDER BY in lower case' => [
                 'order by name, tstamp',
-                'name, tstamp',
+                'name, tstamp'
             ],
             'ORDER BY with additional space behind' => [
                 'ORDER BY  name, tstamp',
-                'name, tstamp',
+                'name, tstamp'
             ],
             'ORDER BY without space between the words' => [
                 'ORDERBY name, tstamp',
-                'name, tstamp',
+                'name, tstamp'
             ],
             'ORDER BY added twice' => [
                 'ORDER BY ORDER BY name, tstamp',
-                'name, tstamp',
+                'name, tstamp'
             ],
             'ORDER BY added twice without spaces in the first occurrence' => [
                 'ORDERBY ORDER BY  name, tstamp',
@@ -300,11 +299,11 @@ class DatabaseConnectionTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             ],
             'ORDER BY added twice without spaces' => [
                 'ORDERBYORDERBY name, tstamp',
-                'name, tstamp',
+                'name, tstamp'
             ],
             'ORDER BY added twice without spaces afterwards' => [
                 'ORDERBYORDERBYname, tstamp',
-                'name, tstamp',
+                'name, tstamp'
             ],
         ];
     }
@@ -341,23 +340,23 @@ class DatabaseConnectionTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         return [
             'single GROUP BY' => [
                 'GROUP BY name, tstamp',
-                'name, tstamp',
+                'name, tstamp'
             ],
             'single GROUP BY in lower case' => [
                 'group by name, tstamp',
-                'name, tstamp',
+                'name, tstamp'
             ],
             'GROUP BY with additional space behind' => [
                 'GROUP BY  name, tstamp',
-                'name, tstamp',
+                'name, tstamp'
             ],
             'GROUP BY without space between the words' => [
                 'GROUPBY name, tstamp',
-                'name, tstamp',
+                'name, tstamp'
             ],
             'GROUP BY added twice' => [
                 'GROUP BY GROUP BY name, tstamp',
-                'name, tstamp',
+                'name, tstamp'
             ],
             'GROUP BY added twice without spaces in the first occurrence' => [
                 'GROUPBY GROUP BY  name, tstamp',
@@ -369,11 +368,11 @@ class DatabaseConnectionTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             ],
             'GROUP BY added twice without spaces' => [
                 'GROUPBYGROUPBY name, tstamp',
-                'name, tstamp',
+                'name, tstamp'
             ],
             'GROUP BY added twice without spaces afterwards' => [
                 'GROUPBYGROUPBYname, tstamp',
-                'name, tstamp',
+                'name, tstamp'
             ],
         ];
     }

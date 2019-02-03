@@ -28,8 +28,8 @@ class DataStructureIdentifierPostProcessHookThrowException
      * @param string $fieldName
      * @param array $row
      * @param array $identifier
-     * @throws \RuntimeException
      * @return array
+     * @throws \RuntimeException
      */
     public function getDataStructureIdentifierPostProcess(
         array $fieldTca,

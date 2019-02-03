@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Utility;
 
 /*
@@ -36,7 +35,7 @@ class VersionNumberUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             ['5000000', '5.0.0'],
             ['5000001', '5.0.1'],
             ['3008001', '3.8.1'],
-            ['1012', '0.1.12'],
+            ['1012', '0.1.12']
         ];
     }
 
@@ -56,15 +55,13 @@ class VersionNumberUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'object' => [new \stdClass()],
             'NULL' => [null],
             'function' => [function () {
-            }],
+            }]
         ];
     }
 
     /**
      * @test
      * @dataProvider validVersionNumberDataProvider
-     * @param mixed $expected
-     * @param mixed $version
      */
     public function convertVersionNumberToIntegerConvertsVersionNumbersToIntegers($expected, $version)
     {
@@ -74,8 +71,6 @@ class VersionNumberUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider validVersionNumberDataProvider
-     * @param mixed $versionNumber
-     * @param mixed $expected
      */
     public function convertIntegerToVersionNumberConvertsIntegerToVersionNumber($versionNumber, $expected)
     {
@@ -87,7 +82,6 @@ class VersionNumberUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider invalidVersionNumberDataProvider
-     * @param mixed $version
      */
     public function convertIntegerToVersionNumberConvertsOtherTypesAsIntegerToVersionNumber($version)
     {
@@ -104,27 +98,27 @@ class VersionNumberUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         return [
             [
                 '6.0-dev',
-                '6.0.0',
+                '6.0.0'
             ],
             [
                 '4.5-alpha',
-                '4.5.0',
+                '4.5.0'
             ],
             [
                 '4.5-beta',
-                '4.5.0',
+                '4.5.0'
             ],
             [
                 '4.5-RC',
-                '4.5.0',
+                '4.5.0'
             ],
             [
                 '6.0.1',
-                '6.0.1',
+                '6.0.1'
             ],
             [
                 '6.2.0beta5',
-                '6.2.0',
+                '6.2.0'
             ],
         ];
     }
@@ -156,31 +150,29 @@ class VersionNumberUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
                 '4.2.0-4.4.99',
                 [
                     '4.2.0',
-                    '4.4.99',
-                ],
+                    '4.4.99'
+                ]
             ],
             'too high value' => [
                 '4.2.0-4.4.2990',
                 [
                     '4.2.0',
-                    '4.4.999',
-                ],
+                    '4.4.999'
+                ]
             ],
             'empty high value' => [
                 '4.2.0-0.0.0',
                 [
                     '4.2.0',
-                    '',
-                ],
-            ],
+                    ''
+                ]
+            ]
         ];
     }
 
     /**
      * @test
      * @dataProvider convertVersionsStringToVersionNumbersForcesVersionNumberInRangeDataProvider
-     * @param mixed $versionString
-     * @param mixed $expectedResult
      */
     public function convertVersionsStringToVersionNumbersForcesVersionNumberInRange($versionString, $expectedResult)
     {

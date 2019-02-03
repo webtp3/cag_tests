@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Backend\Tests\Unit\Tree;
 
 /*
@@ -23,7 +22,6 @@ class TreeNodeTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     //////////////////////
     // Utility functions
     //////////////////////
-
     /**
      * Returns the absolute fixtures path for this testcase.
      *
@@ -60,14 +58,12 @@ class TreeNodeTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             $nodeCollection->append($node);
         }
         $fixture->setChildNodes($nodeCollection);
-
         return $fixture;
     }
 
     ///////////////
     // Test cases
     ///////////////
-
     /**
      * @test
      */

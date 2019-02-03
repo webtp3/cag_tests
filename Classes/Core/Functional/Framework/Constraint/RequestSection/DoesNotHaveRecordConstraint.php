@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace CAG\CagTests\Core\Functional\Framework\Constraint\RequestSection;
 
 /*
@@ -32,7 +31,6 @@ class DoesNotHaveRecordConstraint extends AbstractRecordConstraint
 
         if (empty($records) || !is_array($records)) {
             $this->sectionFailures[$responseSection->getIdentifier()] = 'No records found.';
-
             return false;
         }
 
@@ -41,7 +39,6 @@ class DoesNotHaveRecordConstraint extends AbstractRecordConstraint
 
         if (!empty($matchingValues)) {
             $this->sectionFailures[$responseSection->getIdentifier()] = 'Could not assert not having values for "' . $this->table . '.' . $this->field . '": ' . implode(', ', $matchingValues);
-
             return false;
         }
 

@@ -15,7 +15,6 @@ namespace TYPO3\CMS\Core\Tests\Unit\Database\Query;
  * The TYPO3 project - inspiring people to share!
  */
 
-use CAG\CagTests\Core\Unit\UnitTestCase;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Platforms\MySqlPlatform;
 use Doctrine\DBAL\Platforms\PostgreSqlPlatform;
@@ -30,6 +29,7 @@ use TYPO3\CMS\Core\Database\Query\Restriction\DeletedRestriction;
 use TYPO3\CMS\Core\Database\Query\Restriction\QueryRestrictionInterface;
 use TYPO3\CMS\Core\Tests\Unit\Database\Mocks\MockPlatform;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use CAG\CagTests\Core\Unit\UnitTestCase;
 
 class QueryBuilderTest extends UnitTestCase
 {
@@ -1131,15 +1131,15 @@ class QueryBuilderTest extends UnitTestCase
                     [
                         'joinType' => 'inner',
                         'joinTable' => 'aTable',
-                        'joinAlias' => 'aTable_alias',
-                    ],
-                ],
+                        'joinAlias' => 'aTable_alias'
+                    ]
+                ]
             ]);
         $result = $this->callInaccessibleMethod($this->subject, 'getQueriedTables');
 
         $expected = [
             'aTable' => 'aTable',
-            'aTable_alias' => 'aTable',
+            'aTable_alias' => 'aTable'
         ];
         $this->assertEquals($expected, $result);
     }
@@ -1180,10 +1180,6 @@ class QueryBuilderTest extends UnitTestCase
     /**
      * @test
      * @dataProvider unquoteSingleIdentifierUnquotesCorrectlyOnDifferentPlatformsDataProvider
-     * @param mixed $platform
-     * @param mixed $quoteChar
-     * @param mixed $input
-     * @param mixed $expected
      */
     public function unquoteSingleIdentifierUnquotesCorrectlyOnDifferentPlatforms($platform, $quoteChar, $input, $expected)
     {

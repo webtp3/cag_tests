@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Html;
 
 /*
@@ -30,7 +29,7 @@ class RteHtmlParserTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $this->subject = new \TYPO3\CMS\Core\Html\RteHtmlParser();
         $this->subject->procOptions = [
             'allowTagsOutside' => 'hr, address',
-            'overruleMode' => 'ts_css',
+            'overruleMode' => 'ts_css'
         ];
     }
 
@@ -106,8 +105,6 @@ class RteHtmlParserTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider hrTagCorrectlyTransformedOnWayToDataBaseDataProvider
-     * @param mixed $content
-     * @param mixed $expectedResult
      */
     public function hrTagCorrectlyTransformedOnWayToDataBase($content, $expectedResult)
     {
@@ -183,8 +180,6 @@ class RteHtmlParserTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider hrTagCorrectlyTransformedOnWayToDatabaseAndBackToRteProvider
-     * @param mixed $content
-     * @param mixed $expectedResult
      */
     public function hrTagCorrectlyTransformedOnWayToDatabaseAndBackToRte($content, $expectedResult)
     {
@@ -200,20 +195,18 @@ class RteHtmlParserTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         return [
             'external url with @ sign' => [
                 '<link http://www.example.org/at@sign>link text</link>',
-                '<p><a href="http://www.example.org/at@sign">link text</a></p>',
+                '<p><a href="http://www.example.org/at@sign">link text</a></p>'
             ],
             'email address with @ sign' => [
                 '<link name@example.org - mail "Opens window for sending email">link text</link>',
-                '<p><a href="mailto:name@example.org" class="mail" title="Opens window for sending email">link text</a></p>',
-            ],
+                '<p><a href="mailto:name@example.org" class="mail" title="Opens window for sending email">link text</a></p>'
+            ]
         ];
     }
 
     /**
      * @test
      * @dataProvider linkWithAtSignCorrectlyTransformedOnWayToRTEProvider
-     * @param mixed $content
-     * @param mixed $expectedResult
      */
     public function linkWithAtSignCorrectlyTransformedOnWayToRTE($content, $expectedResult)
     {
@@ -401,8 +394,6 @@ class RteHtmlParserTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider paragraphCorrectlyTransformedOnWayToDatabaseProvider
-     * @param mixed $content
-     * @param mixed $expectedResult
      */
     public function paragraphCorrectlyTransformedOnWayToDatabase($content, $expectedResult)
     {
@@ -502,8 +493,6 @@ class RteHtmlParserTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider lineBreakCorrectlyTransformedOnWayToRTEProvider
-     * @param mixed $content
-     * @param mixed $expectedResult
      */
     public function lineBreakCorrectlyTransformedOnWayToRTE($content, $expectedResult)
     {
@@ -655,8 +644,6 @@ class RteHtmlParserTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /**
      * @test
      * @dataProvider paragraphCorrectlyTransformedOnWayToDatabaseAndBackToRteProvider
-     * @param mixed $content
-     * @param mixed $expectedResult
      */
     public function paragraphCorrectlyTransformedOnWayToDatabaseAndBackToRte($content, $expectedResult)
     {

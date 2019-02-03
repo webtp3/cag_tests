@@ -15,11 +15,11 @@ namespace CAG\CagTests\Core\Acceptance;
  * The TYPO3 project - inspiring people to share!
  */
 
-use CAG\CagTests\Core\Testbase;
 use Codeception\Event\SuiteEvent;
 use Codeception\Events;
 use Codeception\Extension;
 use Doctrine\DBAL\DriverManager;
+use CAG\CagTests\Core\Testbase;
 
 /**
  * This codeception extension creates a basic TYPO3 instance within

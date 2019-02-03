@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -28,70 +27,65 @@ class CsvUtilityTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     {
         return [
             'Valid data' => [
-                'input' => 'Column A, Column B, Column C' . LF . 'Value, Value2, Value 3',
+                'input'  => 'Column A, Column B, Column C' . LF . 'Value, Value2, Value 3',
                 'fieldDelimiter' => ',',
                 'fieldEnclosure' => '"',
                 'maximumColumns' => 0,
                 'expectedResult' => [
                     ['Column A', ' Column B', ' Column C'],
-                    ['Value', ' Value2', ' Value 3'],
-                ],
+                    ['Value', ' Value2', ' Value 3']
+                ]
             ],
 
             'Valid data with enclosed "' => [
-                'input' => '"Column A", "Column B", "Column C"' . LF . '"Value", "Value2", "Value 3"',
+                'input'  => '"Column A", "Column B", "Column C"' . LF . '"Value", "Value2", "Value 3"',
                 'fieldDelimiter' => ',',
                 'fieldEnclosure' => '"',
                 'maximumColumns' => 0,
                 'expectedResult' => [
                     ['Column A', 'Column B', 'Column C'],
-                    ['Value', 'Value2', 'Value 3'],
-                ],
+                    ['Value', 'Value2', 'Value 3']
+                ]
             ],
 
             'Valid data with semicolons and enclosed "' => [
-                'input' => '"Column A"; "Column B"; "Column C"' . LF . '"Value"; "Value2"; "Value 3"',
+                'input'  => '"Column A"; "Column B"; "Column C"' . LF . '"Value"; "Value2"; "Value 3"',
                 'fieldDelimiter' => ';',
                 'fieldEnclosure' => '"',
                 'maximumColumns' => 0,
                 'expectedResult' => [
                     ['Column A', 'Column B', 'Column C'],
-                    ['Value', 'Value2', 'Value 3'],
-                ],
+                    ['Value', 'Value2', 'Value 3']
+                ]
             ],
 
             'Valid data with semicolons and enclosed " and two columns' => [
-                'input' => '"Column A"; "Column B"; "Column C"; "Column D"' . LF . '"Value"; "Value2"; "Value 3"',
+                'input'  => '"Column A"; "Column B"; "Column C"; "Column D"' . LF . '"Value"; "Value2"; "Value 3"',
                 'fieldDelimiter' => ';',
                 'fieldEnclosure' => '"',
                 'maximumColumns' => 2,
                 'expectedResult' => [
                     ['Column A', 'Column B'],
-                    ['Value', 'Value2'],
-                ],
+                    ['Value', 'Value2']
+                ]
             ],
 
             'Data with comma but configured with semicolons and enclosed "' => [
-                'input' => '"Column A", "Column B", "Column C"' . LF . '"Value", "Value2", "Value 3"',
+                'input'  => '"Column A", "Column B", "Column C"' . LF . '"Value", "Value2", "Value 3"',
                 'fieldDelimiter' => ';',
                 'fieldEnclosure' => '"',
                 'maximumColumns' => 0,
                 'expectedResult' => [
                     ['Column A, "Column B", "Column C"'],
-                    ['Value, "Value2", "Value 3"'],
-                ],
-            ],
+                    ['Value, "Value2", "Value 3"']
+                ]
+            ]
         ];
     }
 
     /**
      * @dataProvider csvToArrayDataProvider
      * @test
-     * @param mixed $input
-     * @param mixed $fieldDelimiter
-     * @param mixed $fieldEnclosure
-     * @param mixed $maximumColumns
-     * @param mixed $expectedResult
      */
     public function csvToArraySplitsAsExpected($input, $fieldDelimiter, $fieldEnclosure, $maximumColumns, $expectedResult)
     {

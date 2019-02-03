@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\LinkHandling;
 
 /*
@@ -39,19 +38,19 @@ class LegacyLinkNotationConverterTest extends \CAG\CagTests\Core\Unit\UnitTestCa
                 // splitted values
                 [
                     'type' => LinkService::TYPE_PAGE,
-                    'pageuid' => 13,
+                    'pageuid' => 13
                 ],
                 // final unified URN
-                't3://page?uid=13',
+                't3://page?uid=13'
             ],
             'page with type - old style' => [
                 '13,31',
                 [
                     'type' => LinkService::TYPE_PAGE,
                     'pageuid' => 13,
-                    'pagetype' => 31,
+                    'pagetype' => 31
                 ],
-                't3://page?uid=13&type=31',
+                't3://page?uid=13&type=31'
             ],
             'page with type and fragment - old style' => [
                 '13,31#uncool',
@@ -59,9 +58,9 @@ class LegacyLinkNotationConverterTest extends \CAG\CagTests\Core\Unit\UnitTestCa
                     'type' => LinkService::TYPE_PAGE,
                     'pageuid' => '13',
                     'pagetype' => '31',
-                    'fragment' => 'uncool',
+                    'fragment' => 'uncool'
                 ],
-                't3://page?uid=13&type=31#uncool',
+                't3://page?uid=13&type=31#uncool'
             ],
             'page with type and parameters and fragment - old style' => [
                 '13,31?unbel=ievable#uncool',
@@ -70,18 +69,18 @@ class LegacyLinkNotationConverterTest extends \CAG\CagTests\Core\Unit\UnitTestCa
                     'pageuid' => '13',
                     'pagetype' => '31',
                     'parameters' => 'unbel=ievable',
-                    'fragment' => 'uncool',
+                    'fragment' => 'uncool'
                 ],
-                't3://page?uid=13&type=31&unbel=ievable#uncool',
+                't3://page?uid=13&type=31&unbel=ievable#uncool'
             ],
             'page with alias - old style' => [
                 'alias13',
                 [
                     'type' => LinkService::TYPE_PAGE,
-                    'pagealias' => 'alias13',
+                    'pagealias' => 'alias13'
                 ],
-                't3://page?alias=alias13',
-            ],
+                't3://page?alias=alias13'
+            ]
         ];
     }
 
@@ -135,41 +134,41 @@ class LegacyLinkNotationConverterTest extends \CAG\CagTests\Core\Unit\UnitTestCa
                 'fileadmin/on/steroids.png',
                 [
                     'type' => LinkService::TYPE_FILE,
-                    'file' => 'fileadmin/on/steroids.png',
+                    'file' => 'fileadmin/on/steroids.png'
                 ],
-                't3://file?identifier=fileadmin%2Fon%2Fsteroids.png',
+                't3://file?identifier=fileadmin%2Fon%2Fsteroids.png'
             ],
             'file without FAL with file prefix - VERY old style' => [
                 'file:fileadmin/on/steroids.png',
                 [
                     'type' => LinkService::TYPE_FILE,
-                    'file' => 'fileadmin/on/steroids.png',
+                    'file' => 'fileadmin/on/steroids.png'
                 ],
-                't3://file?identifier=fileadmin%2Fon%2Fsteroids.png',
+                't3://file?identifier=fileadmin%2Fon%2Fsteroids.png'
             ],
             'file with FAL uid - old style' => [
                 'file:23',
                 [
                     'type' => LinkService::TYPE_FILE,
-                    'file' => 23,
+                    'file' => 23
                 ],
-                't3://file?uid=23',
+                't3://file?uid=23'
             ],
             'folder without FAL - VERY old style' => [
                 'fileadmin/myimages/',
                 [
                     'type' => LinkService::TYPE_FOLDER,
-                    'folder' => 'fileadmin/myimages/',
+                    'folder' => 'fileadmin/myimages/'
                 ],
-                't3://folder?storage=0&identifier=%2Ffileadmin%2Fmyimages%2F',
+                't3://folder?storage=0&identifier=%2Ffileadmin%2Fmyimages%2F'
             ],
             'folder with combined identifier and file prefix (FAL) - old style' => [
                 'file:2:/myimages/',
                 [
                     'type' => LinkService::TYPE_FOLDER,
-                    'folder' => '2:/myimages/',
+                    'folder' => '2:/myimages/'
                 ],
-                't3://folder?storage=2&identifier=%2Fmyimages%2F',
+                't3://folder?storage=2&identifier=%2Fmyimages%2F'
             ],
         ];
     }
@@ -257,7 +256,7 @@ class LegacyLinkNotationConverterTest extends \CAG\CagTests\Core\Unit\UnitTestCa
                 $parameters['folder'] = substr($parameters['folder'], 5);
             }
             // fake "0" storage
-            if (!MathUtility::canBeInterpretedAsInteger($parameters['folder'][0])) {
+            if (!MathUtility::canBeInterpretedAsInteger($parameters['folder']{0})) {
                 $parameters['folder'] = '0:' . $parameters['folder'];
             }
             $folderObject = $this->getMockBuilder(Folder::class)

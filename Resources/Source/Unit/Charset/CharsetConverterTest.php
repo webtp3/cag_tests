@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Charset;
 
 /*
@@ -33,7 +32,6 @@ class CharsetConverterTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     ////////////////////////////
     // Tests concerning substr
     ////////////////////////////
-
     /**
      * @test
      * @see http://forge.typo3.org/issues/22334
@@ -46,7 +44,6 @@ class CharsetConverterTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     /////////////////////////////////
     // Tests concerning utf8_strlen
     /////////////////////////////////
-
     /**
      * @test
      */

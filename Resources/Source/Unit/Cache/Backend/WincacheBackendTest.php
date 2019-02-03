@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Cache\Backend;
 
 /*
@@ -277,7 +276,6 @@ class WincacheBackendTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             $backend = new WincacheBackend('Testing');
         }
         $backend->setCache($cache);
-
         return $backend;
     }
 }

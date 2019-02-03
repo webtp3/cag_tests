@@ -15,14 +15,15 @@ namespace TYPO3\CMS\Core\Tests\Unit\Utility;
  * The TYPO3 project - inspiring people to share!
  */
 
-use CAG\CagTests\Core\Unit\UnitTestCase;
 use TYPO3\CMS\Core\Utility\IpAnonymizationUtility;
+use CAG\CagTests\Core\Unit\UnitTestCase;
 
 /**
  * Testcase for class \TYPO3\CMS\Core\Utility\IpAnonymizationUtility
  */
 class IpAnonymizationUtilityTest extends UnitTestCase
 {
+
     /**
      * Data provider for anonymizeIpReturnsCorrectValue
      *

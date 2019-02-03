@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Configuration;
 
 /*
@@ -99,7 +98,7 @@ class ConfigurationManagerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         ];
         $overrideConfiguration = [
             'changed' => 'changed',
-            'new' => 'new',
+            'new' => 'new'
         ];
         $expectedConfiguration = [
             'notChanged' => 23,
@@ -277,7 +276,7 @@ class ConfigurationManagerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 
         $pairs = [
             'toUpdate' => 'updated',
-            'new' => 'new',
+            'new' => 'new'
         ];
         $this->subject->setLocalConfigurationValuesByPathValuePairs($pairs);
     }
@@ -442,7 +441,7 @@ class ConfigurationManagerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
 
         $pairs = [
             'foo' => 42,
-            'bar' => 23,
+            'bar' => 23
         ];
         $expectedContent =
             '<?php' . LF .

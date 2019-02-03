@@ -1,5 +1,6 @@
 <?php
 declare(strict_types = 1);
+
 namespace TYPO3\CMS\Core\Tests\Unit\Database\Schema\Parser;
 
 /*
@@ -38,42 +39,42 @@ class CreateTableFragmentTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'CREATE TABLE' => [
                 'CREATE TABLE aTable (aField INT);',
                 'aTable',
-                false,
+                false
             ],
             'CREATE TEMPORARY TABLE' => [
                 'CREATE TEMPORARY TABLE aTable (aField INT);',
                 'aTable',
-                true,
+                true
             ],
             'CREATE TABLE IF NOT EXISTS' => [
                 'CREATE TABLE IF NOT EXISTS aTable (aField INT);',
                 'aTable',
-                false,
+                false
             ],
             'CREATE TEMPORARY TABLE IF NOT EXISTS' => [
                 'CREATE TEMPORARY TABLE IF NOT EXISTS aTable (aField INT);',
                 'aTable',
-                true,
+                true
             ],
             'CREATE TABLE (quoted table name)' => [
                 'CREATE TABLE `aTable` (aField INT);',
                 'aTable',
-                false,
+                false
             ],
             'CREATE TEMPORARY TABLE (quoted table name)' => [
                 'CREATE TEMPORARY TABLE `aTable` (aField INT);',
                 'aTable',
-                true,
+                true
             ],
             'CREATE TABLE IF NOT EXISTS (quoted table name)' => [
                 'CREATE TABLE IF NOT EXISTS `aTable` (aField INT);',
                 'aTable',
-                false,
+                false
             ],
             'CREATE TEMPORARY TABLE IF NOT EXISTS (quoted table name)' => [
                 'CREATE TEMPORARY TABLE IF NOT EXISTS `aTable` (aField INT);',
                 'aTable',
-                true,
+                true
             ],
         ];
     }
@@ -102,7 +103,6 @@ class CreateTableFragmentTest extends \CAG\CagTests\Core\Unit\UnitTestCase
     protected function createSubject(string $statement): AbstractCreateStatement
     {
         $parser = new Parser($statement);
-
         return $parser->getAST();
     }
 }

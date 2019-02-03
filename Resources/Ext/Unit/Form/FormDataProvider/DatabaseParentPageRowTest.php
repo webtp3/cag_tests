@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Backend\Tests\Unit\Form\FormDataProvider;
 
 /*
@@ -53,7 +52,7 @@ class DatabaseParentPageRowTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         ];
         $parentPageRow = [
             'uid' => 123,
-            'pid' => 321,
+            'pid' => 321
         ];
 
         $this->subject->expects($this->at(0))
@@ -83,11 +82,11 @@ class DatabaseParentPageRowTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         ];
         $neigborRow = [
             'uid' => 10,
-            'pid' => 321,
+            'pid' => 321
         ];
         $parentPageRow = [
             'uid' => 123,
-            'pid' => 321,
+            'pid' => 321
         ];
         $this->subject->expects($this->at(0))
             ->method('getDatabaseRow')
@@ -137,7 +136,7 @@ class DatabaseParentPageRowTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         ];
         $parentPageRow = [
             'uid' => 123,
-            'pid' => 321,
+            'pid' => 321
         ];
 
         $this->subject->expects($this->once())
@@ -161,12 +160,12 @@ class DatabaseParentPageRowTest extends \CAG\CagTests\Core\Unit\UnitTestCase
             'vanillaUid' => 123,
             'databaseRow' => [
                 'uid' => 123,
-                'pid' => 321,
+                'pid' => 321
             ],
         ];
         $parentPageRow = [
             'uid' => 321,
-            'pid' => 456,
+            'pid' => 456
         ];
         $this->subject->expects($this->once())
             ->method('getDatabaseRow')

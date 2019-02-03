@@ -15,8 +15,8 @@ namespace TYPO3\CMS\Core\Tests\Unit\Session\Backend;
  * The TYPO3 project - inspiring people to share!
  */
 
-use CAG\CagTests\Core\Unit\UnitTestCase;
 use TYPO3\CMS\Core\Session\Backend\RedisSessionBackend;
+use CAG\CagTests\Core\Unit\UnitTestCase;
 
 /**
  * Test case
@@ -42,7 +42,7 @@ class RedisSessionBackendTest extends UnitTestCase
         $subject->initialize(
             'default',
             [
-                'database' => 'numberZero',
+                'database' => 'numberZero'
             ]
         );
         $subject->validateConfiguration();
@@ -57,7 +57,7 @@ class RedisSessionBackendTest extends UnitTestCase
         $subject->initialize(
             'default',
             [
-                'database' => -1,
+                'database' => -1
             ]
         );
 

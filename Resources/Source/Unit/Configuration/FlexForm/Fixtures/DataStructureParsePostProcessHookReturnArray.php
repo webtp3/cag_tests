@@ -32,7 +32,6 @@ class DataStructureParsePostProcessHookReturnArray
         $dataStructure['sheets'] = [
             'foo' => 'bar',
         ];
-
         return $dataStructure;
     }
 }

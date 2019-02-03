@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Log;
 
 /*
@@ -82,8 +81,8 @@ class LogManagerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $level = \TYPO3\CMS\Core\Log\LogLevel::DEBUG;
         $GLOBALS['TYPO3_CONF_VARS']['LOG'][$component]['writerConfiguration'] = [
             $level => [
-                $writer => [],
-            ],
+                $writer => []
+            ]
         ];
         /** @var $logger \TYPO3\CMS\Core\Log\Logger */
         $logger = $this->logManagerInstance->getLogger($component);
@@ -101,8 +100,8 @@ class LogManagerTest extends \CAG\CagTests\Core\Unit\UnitTestCase
         $level = \TYPO3\CMS\Core\Log\LogLevel::DEBUG;
         $GLOBALS['TYPO3_CONF_VARS']['LOG'][$component]['processorConfiguration'] = [
             $level => [
-                $processor => [],
-            ],
+                $processor => []
+            ]
         ];
         /** @var $logger \TYPO3\CMS\Core\Log\Logger */
         $logger = $this->logManagerInstance->getLogger($component);

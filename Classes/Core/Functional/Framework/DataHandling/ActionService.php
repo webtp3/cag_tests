@@ -15,13 +15,13 @@ namespace CAG\CagTests\Core\Functional\Framework\DataHandling;
  * The TYPO3 project - inspiring people to share!
  */
 
-use CAG\CagTests\Core\Exception;
 use TYPO3\CMS\Core\Authentication\BackendUserAuthentication;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\StringUtility;
 use TYPO3\CMS\Workspaces\Service\WorkspaceService;
+use CAG\CagTests\Core\Exception;
 
 /**
  * DataHandler Actions
@@ -226,7 +226,7 @@ class ActionService
                 $commandMap[$tableName][$uid] = [
                     'version' => [
                         'action' => 'clearWSID',
-                    ],
+                    ]
                 ];
             }
         }
@@ -261,7 +261,6 @@ class ActionService
         $this->createDataHandler();
         $this->dataHandler->start([], $commandMap);
         $this->dataHandler->process_cmdmap();
-
         return $this->dataHandler->copyMappingArray;
     }
 
@@ -291,7 +290,6 @@ class ActionService
         $this->createDataHandler();
         $this->dataHandler->start([], $commandMap);
         $this->dataHandler->process_cmdmap();
-
         return $this->dataHandler->copyMappingArray;
     }
 
@@ -313,7 +311,6 @@ class ActionService
         $this->createDataHandler();
         $this->dataHandler->start([], $commandMap);
         $this->dataHandler->process_cmdmap();
-
         return $this->dataHandler->copyMappingArray;
     }
 
@@ -335,7 +332,6 @@ class ActionService
         $this->createDataHandler();
         $this->dataHandler->start([], $commandMap);
         $this->dataHandler->process_cmdmap();
-
         return $this->dataHandler->copyMappingArray;
     }
 
@@ -352,7 +348,7 @@ class ActionService
                 $uid => [
                     $fieldName => implode(',', $referenceIds),
                 ],
-            ],
+            ]
         ];
         $this->createDataHandler();
         $this->dataHandler->start($dataMap, []);
@@ -383,8 +379,9 @@ class ActionService
                 if (empty($versionedUid)) {
                     if ($throwException) {
                         throw new Exception('Versioned UID could not be determined', 1476049592);
+                    } else {
+                        continue;
                     }
-                    continue;
                 }
 
                 $commandMap[$tableName][$liveUid] = [
@@ -437,7 +434,7 @@ class ActionService
 
     /**
      * @param array $recordData
-     * @param null|string|int $previousUid
+     * @param NULL|string|int $previousUid
      * @return array
      */
     protected function resolvePreviousUid(array $recordData, $previousUid): array
@@ -451,13 +448,12 @@ class ActionService
             }
             $recordData[$fieldName] = str_replace('__previousUid', $previousUid, $fieldValue);
         }
-
         return $recordData;
     }
 
     /**
      * @param array $recordData
-     * @param null|string|int $nextUid
+     * @param NULL|string|int $nextUid
      * @return array
      */
     protected function resolveNextUid(array $recordData, $nextUid): array
@@ -471,14 +467,13 @@ class ActionService
             }
             $recordData[$fieldName] = str_replace('__nextUid', $nextUid, $fieldValue);
         }
-
         return $recordData;
     }
 
     /**
      * @param string $tableName
      * @param int|string $liveUid
-     * @return null|int
+     * @return NULL|int
      */
     protected function getVersionedId(string $tableName, $liveUid)
     {
@@ -512,7 +507,6 @@ class ActionService
         if (!empty($row['uid'])) {
             $versionedId = (int)$row['uid'];
         }
-
         return $versionedId;
     }
 
@@ -526,7 +520,6 @@ class ActionService
         if (isset($backendUser->uc['copyLevels'])) {
             $this->dataHandler->copyTree = $backendUser->uc['copyLevels'];
         }
-
         return $this->dataHandler;
     }
 

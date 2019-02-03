@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 $EM_CONF[$_EXTKEY] = [
     'title' => 'Test Resources',
     'description' => 'Test Resources',
@@ -14,7 +13,7 @@ $EM_CONF[$_EXTKEY] = [
     'author_company' => '',
     'constraints' => [
         'depends' => [
-            'typo3' => '8.7.19',
+            'typo3' => '8.7.19'
         ],
         'conflicts' => [],
         'suggests' => [],
