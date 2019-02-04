@@ -1,4 +1,0 @@
-CREATE TABLE IF NOT EXISTS `another_test_table` (
-	`uid`     INT(11) UNSIGNED                NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	`pid`     INT(11) UNSIGNED DEFAULT '0'    NOT NULL
-);
