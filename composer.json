@@ -15,7 +15,7 @@
     }
   ],
   "require": {
-    "typo3/cms-core": "*"
+    "typo3/cms-core": "^8 || ^9"
   },
   "autoload": {
     "psr-4": {
