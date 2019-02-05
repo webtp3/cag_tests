@@ -1,0 +1,25 @@
+<phpunit backupGlobals="false"
+		 backupStaticAttributes="false"
+		 bootstrap="UnitTestsBootstrap.php"
+		 colors="true"
+		 convertErrorsToExceptions="true"
+		 convertWarningsToExceptions="true"
+		 forceCoversAnnotation="false"
+		 processIsolation="false"
+		 stopOnError="false"
+		 stopOnFailure="false"
+		 stopOnIncomplete="false"
+		 stopOnSkipped="false"
+		 strict="false"
+		 verbose="false">
+
+	<testsuites>
+
+
+		<testsuite name="cag_ext_unit_tests">
+			<directory>../../../../../web/typo3conf/ext/cag*/Tests/Unit/</directory>
+		</testsuite>
+
+	</testsuites>
+
+</phpunit>
