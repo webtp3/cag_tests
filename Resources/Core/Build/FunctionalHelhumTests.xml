@@ -16,9 +16,9 @@
 >
 	<testsuites>
 
-		<testsuite name="cag_core_func_tests">
-			<directory>../Functional/</directory>
-		</testsuite>
 
+		<testsuite name="cag_console_func_tests">
+			<directory>../../../../../build/vendor/helhum/typo3-console/Tests/Console/Functional/</directory>
+		</testsuite>
 	</testsuites>
 </phpunit>
