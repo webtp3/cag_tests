@@ -6,7 +6,7 @@ modules:
     - Asserts
   config:
     WebDriver:
-      url: http://connecta.localdev.tp3.de:8000/web/typo3temp/var/tests/acceptance
+      url: http://localdev.localhost:8000/web/typo3temp/var/tests/acceptance
       browser: chrome
       port: 9515
       capabilities:
