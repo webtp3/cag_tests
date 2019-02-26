@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dataset>
+	<be_users>
+		<uid>3</uid>
+		<pid>0</pid>
+		<tstamp>1366642540</tstamp>
+		<username>tp3min</username>
+		<password>$pbkdf2-sha256$25000$bXxY48wUwE6Ssb9eSfku1A$sjxyFAZWgPSaANSHRiZ5ApgiC2Fko68Ay/3efprnOUI</password> <!-- password -->
+		<admin>1</admin>
+		<disable>0</disable>
+		<starttime>0</starttime>
+		<endtime>0</endtime>
+		<options>0</options>
+		<crdate>1366642540</crdate>
+		<cruser_id>0</cruser_id>
+		<workspace_perms>1</workspace_perms>
+		<disableIPlock>1</disableIPlock>
+		<deleted>0</deleted>
+		<TSconfig>NULL</TSconfig>
+		<lastlogin>1371033743</lastlogin>
+		<createdByAction>0</createdByAction>
+		<workspace_id>0</workspace_id>
+	</be_users>
+	<be_users>
+		<uid>4</uid>
+		<pid>0</pid>
+		<tstamp>1452944912</tstamp>
+		<username>editor</username>
+		<password>$pbkdf2-sha256$25000$bXxY48wUwE6Ssb9eSfku1A$sjxyFAZWgPSaANSHRiZ5ApgiC2Fko68Ay/3efprnOUI</password> <!-- password -->
+		<admin>0</admin>
+		<disable>0</disable>
+		<starttime>0</starttime>
+		<endtime>0</endtime>
+		<options>0</options>
+		<crdate>1452944912</crdate>
+		<cruser_id>1</cruser_id>
+		<workspace_perms>1</workspace_perms>
+		<disableIPlock>1</disableIPlock>
+		<deleted>0</deleted>
+		<TSconfig>NULL</TSconfig>
+		<lastlogin>1452944915</lastlogin>
+		<createdByAction>0</createdByAction>
+		<workspace_id>0</workspace_id>
+		<db_mountpoints>1</db_mountpoints>
+		<usergroup>4</usergroup>
+	</be_users>
+</dataset>
