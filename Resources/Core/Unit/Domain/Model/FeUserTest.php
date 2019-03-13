@@ -44,6 +44,6 @@ class FeUserTest extends UnitTestCase
     {
         $act = 'Test setUsername';
         $this->subject->setUsername($act);
-        $this->assertEquals($act, $this->newsDomainModelInstance->getUsername());
+        $this->assertEquals($act, $this->subject->getUsername());
     }
 }

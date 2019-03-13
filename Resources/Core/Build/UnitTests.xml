@@ -18,6 +18,7 @@
 			<directory>../Unit/</directory>
 		</testsuite>
 		<testsuite name="Suite integrity tests">
+			<!--you might need to adjust path-->
 			<directory>../../../../../web/typo3/sysext/core/Tests/Integrity/</directory>
 		</testsuite>
 	</testsuites>

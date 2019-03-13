@@ -17,6 +17,7 @@
 
 
 		<testsuite name="cag_console_unit_tests">
+			<!--you might need to adjust path-->
 			<directory>../../../../../build/vendor/helhum/typo3-console/Tests/Console/Unit/</directory>
 		</testsuite>
 

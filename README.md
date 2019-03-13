@@ -1,4 +1,9 @@
-# CAG Tests
+# TYPO3 Extension ``cag_tests``
+[![Latest Stable Version](https://poser.pugx.org/web-tp3/cag_tests/v/stable)](https://packagist.org/packages/web-tp3/cag_tests)
+[![Daily Downloads](https://poser.pugx.org/web-tp3/cag_tests/d/daily)](https://packagist.org/packages/web-tp3/cag_tests)
+[![Total Downloads](https://poser.pugx.org/web-tp3/cag_tests/downloads)](https://packagist.org/packages/web-tp3/cag_tests)
+[![License](https://poser.pugx.org/web-tp3/cag_tests/license)](https://packagist.org/packages/web-tp3/cag_tests)
+
 
 Dies ist die CAG Tests erlaubt euch Standard Unit-, Acceptance- und  Functional- Tests für Typo3 Installationen durchzuführen. [cag_tests](https://bitbucket.org/connecta-ag/cag_project) eingebettet sein.
 
@@ -141,30 +146,6 @@ Man kann Codeception zusammen mit Chrome/Firefow auch für eine kleine Vorführu
 
 
 clean after Tests
-DELETE FROM `be_users` WHERE `uid`='3333';
-DELETE FROM `be_users` WHERE `uid`='4444';
-DELETE FROM `be_groups` WHERE `uid`='444';
-
-DELETE FROM `sys_category` WHERE `uid`='1111';
-DELETE FROM `sys_category` WHERE `uid`='2222';
-DELETE FROM `sys_category` WHERE `uid`='3333';
-DELETE FROM `sys_category` WHERE `uid`='4444';
-DELETE FROM `sys_category` WHERE `uid`='5555';
-DELETE FROM `sys_category` WHERE `uid`='6666';
-DELETE FROM `sys_category` WHERE `uid`='7777';
-DELETE FROM `sys_category` WHERE `uid`='8888';
-DELETE FROM `sys_category` WHERE `uid`='9999';
-DELETE FROM `sys_category` WHERE `uid`='10000';
-DELETE FROM `sys_category` WHERE `uid`='11111';
-DELETE FROM `sys_category` WHERE `uid`='12222';
-DELETE FROM `sys_category` WHERE `uid`='13333';
-DELETE FROM `sys_category` WHERE `uid`='14444';
-DELETE FROM `sys_category` WHERE `uid`='15555';
-DELETE FROM `tx_extensionmanager_domain_model_extension` WHERE `uid`='111';
-DELETE FROM `tx_extensionmanager_domain_model_extension` WHERE `uid`='222';
-
-DELETE FROM `be_sessions` WHERE `ses_id`='886526ce72b86870739cc41991144ec1';
-DELETE FROM `be_sessions` WHERE `ses_id`='ff83dfd81e20b34c27d3e97771a4525a';
 
 **TODO:** Beispiel Tests für eigene Extensions!
 in cag_wurmloch

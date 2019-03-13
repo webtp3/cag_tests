@@ -36,10 +36,6 @@ class FeUserControllerTest extends UnitTestCase
      */
     public function loginActionTestFeUserLogin()
     {
-        $feUser = new \TYPO3\CMS\Extbase\Domain\Model\FrontendUser();
-        $this->testingFramework->createFakeFrontEnd();
-        $feUserId = $this->testingFramework->createFrontEndUser();
-        $this->testingFramework->loginFrontEndUser($feUserId);
 
     }
 }

@@ -16,6 +16,9 @@
   "require": {
     "typo3/cms-core": "^8 || ^9"
   },
+  "require-dev": {
+    "web-tp3/chromedriver": "^2"
+  },
   "autoload": {
     "psr-4": {
       "CAG\\CagTests\\": "Classes/"
@@ -31,12 +34,12 @@
       "@php -v",
       "@php vendor/phpunit/phpunit/phpunit -c vendor/typo3/testing-framework/Resources/Core/Build/UnitTests.xml"
     ],
-    "CAG_test:core-tests": [
+    "cag:core-tests": [
       "@php bin/phpunit --configuration web/typo3conf/ext/cag_tests/Resources/Core/Build/UnitTests.xml  --log-junit UnitTests.log",
       "@php bin/phpunit --configuration web/typo3conf/ext/cag_tests/Resources/Core/Build/UnitTestsDeprecated.xml  --log-junit  UnitTestsDeprecated.log",
       "@php bin/phpunit --configuration web/typo3conf/ext/cag_tests/Resources/Core/Build/FunctionalTests.xml  --log-junit  FunctionalTests.log"
     ],
-    "CAG_test:extension-tests": [
+    "cag:extension-tests": [
       "@php bin/phpunit --configuration web/typo3conf/ext/cag_tests/Resources/Ext/Build/UnitTests.xml   --log-junit UnitTests.log",
       "@php bin/phpunit --configuration web/typo3conf/ext/cag_tests/Resources/Ext/Build/UnitTestsDeprecated.xml  --log-junit  UnitTestsDeprecated.log",
       "@php bin/phpunit --configuration web/typo3conf/ext/cag_tests/Resources/Ext/Build/FunctionalTests.xml  --log-junit  FunctionalTests.log"

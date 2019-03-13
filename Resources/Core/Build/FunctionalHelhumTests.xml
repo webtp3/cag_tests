@@ -18,6 +18,7 @@
 
 
 		<testsuite name="cag_console_func_tests">
+			<!--you might need to adjust path-->
 			<directory>../../../../../build/vendor/helhum/typo3-console/Tests/Console/Functional/</directory>
 		</testsuite>
 	</testsuites>

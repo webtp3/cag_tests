@@ -19,25 +19,48 @@ use CAG\CagTests\Core\Acceptance\Support\Helper\Topbar;
 /**
  * Various backend login related tests
  */
-class BackendLoginPrototype
+class BackendLoginCest
 {
     /**
      * Login as a cag user, check visible modules and getenv('HOST_TITLE') and logout again
      *
      * @param \AcceptanceTester $I
+     *
+     * typo3InstallAdminUser='tp3min'
+        typo3InstallAdminPass='Init1111'
      */
     public function loginCagUser(\AcceptanceTester $I)
     {
         $I->amOnPage('/typo3/');
-        $I->fillField('username', 'tp3min');
-        $I->fillField('p_field', 'Init1111');
+        $I->fillField('username', getenv('typo3InstallAdminUser'));
+        $I->fillField('#t3-password', getenv('typo3InstallAdminPass'));
         $I->click('commandLI');
         $I->waitForElement('.nav', 30);
         $I->waitForElement('.scaffold-content iframe', 30);
-        $I->waitForElement('#extdd-1');
         $I->see(getenv('HOST_TITLE'));
         #todo  logout again
       //  $I->seeCurrentURLEquals('/typo3/index.php');
+        $I->makeScreenshot('loginCagUser');
+        $I->makeScreenshot();
+
+    }
+    /**
+     * Login as a cag user, check visible modules and getenv('HOST_TITLE') and logout again
+     *
+     * @param \AcceptanceTester $I
+     *
+     */
+    public function NoLoginCagUser(\AcceptanceTester $I)
+    {
+        $I->amOnPage('/typo3/');
+        $I->fillField('username', "irgendwas");
+        $I->fillField('#t3-password', "nix");
+        $I->click('commandLI');
+        $I->see("Your login attempt did not succeed");
+        $I->makeScreenshot('NoLoginCagUser');
+        /* // saved to: tests/_output/debug/edit_page.png
+        ***/
+        $I->makeScreenshot();
 
 
     }
@@ -106,8 +129,12 @@ class BackendLoginPrototype
 //     */
 //    public function loginWorksAsAdminUser(\AcceptanceTester $I)
 //    {
-//        $I->wantTo('login with admin');
-//        $this->login($I, 'admin', 'password');
+//        $I->wantTo('login with admin '.getenv('typo3InstallAdminUser'));
+//       /*
+//        *  $I->fillField('username', getenv('typo3InstallAdminUser'));
+//        $I->fillField('#t3-password', getenv('typo3InstallAdminPass'));
+//        */
+//        $this->login($I, getenv('typo3InstallAdminUser'), getenv('typo3InstallAdminPass'));
 //
 //        // user is redirected to 'about modules' after login, and must see the 'admin tools' section
 //        $I->see('Admin tools');
@@ -116,29 +143,29 @@ class BackendLoginPrototype
 //        $I->waitForElement('#t3-username');
 //    }
 //
-//    /**
-//     * Login as a non-admin user, check visible modules and logout again
-//     *
-//     * @param \AcceptanceTester $I
-//     */
-//    public function loginWorksAsEditorUser(\AcceptanceTester $I)
-//    {
-//        $this->login($I, 'editor', 'password');
-//
-//        // user is redirected to 'about modules' after login, but must not see the 'admin tools' section
-//        $I->cantSee('Admin tools', '#menu');
-//
-//        $topBarItemSelector = Topbar::$containerSelector . ' ' . Topbar::$dropdownToggleSelector . ' *';
-//
-//        // can see bookmarks
-//        $I->seeElement($topBarItemSelector, ['title' => 'Bookmarks']);
-//
-//        // can't see clear cache
-//        $I->cantSeeElement($topBarItemSelector, ['title' => 'Clear cache']);
-//
-//        $this->logout($I);
-//        $I->waitForElement('#t3-username');
-//    }
+////    /**
+////     * Login as a non-admin user, check visible modules and logout again
+////     *
+////     * @param \AcceptanceTester $I
+////     */
+////    public function loginWorksAsEditorUser(\AcceptanceTester $I)
+////    {
+////        $this->login($I, 'editor', 'password');
+////
+////        // user is redirected to 'about modules' after login, but must not see the 'admin tools' section
+////        $I->cantSee('Admin tools', '#menu');
+////
+////        $topBarItemSelector = Topbar::$containerSelector . ' ' . Topbar::$dropdownToggleSelector . ' *';
+////
+////        // can see bookmarks
+////        $I->seeElement($topBarItemSelector, ['title' => 'Bookmarks']);
+////
+////        // can't see clear cache
+////        $I->cantSeeElement($topBarItemSelector, ['title' => 'Clear cache']);
+////
+////        $this->logout($I);
+////        $I->waitForElement('#t3-username');
+////    }
 //
 //    /**
 //     * Helper method for user login on backend login screen
