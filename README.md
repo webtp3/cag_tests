@@ -58,7 +58,7 @@ erfordert folgende Pakete im composer.json und ggf. auch seitens des Servers ins
 }
 ```
 
-Vorgesehen sind die Tests auf einer Entwicklungsumgebung -> require-dev
+Vorgesehen sind die Tests auf einer Entwicklungsumgebung -> require-dev web-tp3/cag_tests
 
 
 [Tests-Erweiterung](https://bitbucket.org/web-tp3/cag_tests/) herunterladen.
@@ -75,7 +75,7 @@ cag_tests Framework Wrapper
 - 25 Acceptance Tests 
 
  mit 2 gundlegenden Funktionalitäten Resources/Core & Resources/Ext Tests. Start configs sind jeweils im Ordner Build zu finden, wie weiteres wie z.B. FunctionalHelhumTests.xml
- Sowie vorkonfigurierte standartisierte Parameter "Fixtures". 
+ Sowie vorkonfigurierte standardisierte Parameter "Fixtures". 
  
  Weitere Tests wie  
 ### PHPUnit Testing
@@ -118,7 +118,7 @@ TYPO3 >=8.7
 ###  Acceptance Testing 
 (codeception & chromedriver)
 
-https://wiki.typo3.org/Acceptance_testing
+https://docs.typo3.org/typo3cms/CoreApiReference/Testing/Index.html
 
 ####Acceptance Testing since TYPO3 v8
 Since the very early version of TYPO3 v8, the core ships with Acceptance tests based on Codeception, which are executed with chromedriver as headless Chrome browser.
@@ -127,7 +127,7 @@ As Fetch the TYPO3 sources and installed composer dependencies and start the chr
 
 
 ```bash
-mkdir -p ../web/typo3temp/var/tests 
+mkdir -p web/typo3temp/var/tests 
 ./bin/chromedriver --url-base=/wd/hub > /dev/null 2>&1 &
 php -S 0.0.0.0:8000 >/devclass_name: AcceptanceTester /null 2>&1 &
 sleep 3;
@@ -142,10 +142,12 @@ oder mit z.B. PHPStorm natürlich.
 Man kann Codeception zusammen mit Chrome/Firefow auch für eine kleine Vorführung nutzen, indem man chrome nicht headdless, sondern geöffnet starten lässt. Das kann auch zur Fehlersuche hilfreich sein...
 (config in Acceptance.suite.yml)
 
-####don't use Windows - works but...)
+######don't use Windows - works but... :-|
 
+Einfach den Ordner aus EXT:cag_tests/Resources/Private/Ext kopieren als euren eigenen Tests Ordner anlegen. Die Fixtures & Pfade in den xml Test Config Dateien auf eure Struktur anpassen...
+Danach können die Tests beginnen   
 
-clean after Tests
+Weiteres wie Beispiele für Tests in eigenen Extensions sind im cag_wurmloch versteckt :-)
 
-**TODO:** Beispiel Tests für eigene Extensions!
-in cag_wurmloch
+order unter 
+https://bitbucket.org/web-tp3/cag_tests/wiki/Home
