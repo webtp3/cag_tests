@@ -18,22 +18,20 @@
     "typo3/cms-core": "^8.7 || ^9.5",
     "mikey179/vfsstream": "~1.6.0",
     "typo3fluid/fluid": "^2.5",
-    "typo3/cms-backend": "^8.7 || ^9.5",
-    "typo3/cms-frontend": "^8.7 || ^9.5",
-    "typo3/cms-extbase": "^8.7 || ^9.5",
-    "typo3/cms-fluid": "^8.7 || ^9.5",
-    "typo3/cms-recordlist": "^8.7 || ^9.5",
+    "typo3/minimal": "^8.7 || ^9.5",
     "typo3/class-alias-loader": "^1.0"
   },
   "require-dev": {
     "phpunit/phpunit": "^7.5.6",
     "web-tp3/chromedriver": "^2",
-    "helhum/dotenv-connector": "^2.0"
+    "helhum/dotenv-connector": "^2.0",
+    "helhum/typo3-console": "^5",
+    "typo3/testing-framework": "*"
 
   },
   "suggest": {
     "codeception/codeception": "^2.4",
-    "typo3/cms-styleguide": "^9.0"
+    "typo3/cms-styleguide": "^8 || ^9.0"
   },
   "autoload": {
     "psr-4": {
@@ -48,7 +46,7 @@
   "scripts": {
     "test:php:unit": [
       "@php -v",
-      "@php bin/phpunit -c vendor/typo3/testing-framework/Resources/Core/Build/UnitTests.xml"
+      "@php .Build/bin/phpunit Tests/Unit"
     ],
     "cag:core-tests": [
       "@php bin/phpunit --configuration web/typo3conf/ext/cag_tests/Resources/Core/Build/UnitTests.xml  --log-junit UnitTests.log",
@@ -66,7 +64,6 @@
     "bin-dir": ".Build/bin"
   },
   "extra": {
-
     "typo3/class-alias-loader": {
       "always-add-alias-loader": true,
       "autoload-case-sensitivity": false,
