@@ -17,10 +17,10 @@ script:
     echo "Running unit tests";
     echo;
     echo;
-    php .Build/bin/phpunit --configuration ./Tests/Build/UnitTests.xml  --log-junit UnitTests.log;
+    php ./.Build/bin/phpunit --configuration ./Tests/Build/UnitTests.xml  --log-junit UnitTests.log;
   - >
     echo;
     echo "Running func tests";
     echo;
     echo;
-    php .Build/bin/phpunit --configuration ./Tests/Build/FunctionalTests.xml  --log-junit FunctionalTests.log;
+    php ./.Build/bin/phpunit --configuration ./Tests/Build/FunctionalTests.xml  --log-junit FunctionalTests.log;
