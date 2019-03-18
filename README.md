@@ -3,7 +3,7 @@
 [![Daily Downloads](https://poser.pugx.org/web-tp3/cag_tests/d/daily)](https://packagist.org/packages/web-tp3/cag_tests)
 [![Total Downloads](https://poser.pugx.org/web-tp3/cag_tests/downloads)](https://packagist.org/packages/web-tp3/cag_tests)
 [![License](https://poser.pugx.org/web-tp3/cag_tests/license)](https://packagist.org/packages/web-tp3/cag_tests)
-
+[![Build Status](https://travis-ci.org/webtp3/cag_tests.svg?branch=cag-testing)](https://travis-ci.org/webtp3/cag_tests)
 
 Dies ist die CAG Tests erlaubt euch Standard Unit-, Acceptance- und  Functional- Tests für Typo3 Installationen durchzuführen. [cag_tests](https://bitbucket.org/connecta-ag/cag_project) eingebettet sein.
 
@@ -42,7 +42,6 @@ erfordert folgende Pakete im composer.json und ggf. auch seitens des Servers ins
 }
  	
 "require-dev": {
-
  		"devlog/devlog": "dev-master",
  		"deployer/deployer": "^6",
  		"consolidation/robo": "^1",
