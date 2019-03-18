@@ -22,7 +22,7 @@
     "typo3/cms-frontend": "^8.7 || ^9.5",
     "typo3/cms-extbase": "^8.7 || ^9.5",
     "typo3/cms-fluid": "^8.7 || ^9.5",
-    "typo3/cms-recordlist": "^8.7 || ^9.5",
+    "typo3/cms-recordlist": "^8.7 || ^9.5"
   },
   "require-dev": {
     "web-tp3/chromedriver": "^2",
@@ -34,11 +34,11 @@
       "CAG\\CagTests\\": "Classes/"
     }
   },
-	"autoload-dev": {
-		"psr-4": {
-			"CAG\\CagTests\\": "Tests/"
-		}
-	},
+  "autoload-dev": {
+    "psr-4": {
+      "CAG\\CagTests\\": "Tests/"
+    }
+  },
   "scripts": {
     "test:php:unit": [
       "@php -v",
