@@ -54,5 +54,9 @@
       "@php bin/phpunit --configuration web/typo3conf/ext/cag_tests/Resources/Ext/Build/UnitTestsDeprecated.xml  --log-junit  UnitTestsDeprecated.log",
       "@php bin/phpunit --configuration web/typo3conf/ext/cag_tests/Resources/Ext/Build/FunctionalTests.xml  --log-junit  FunctionalTests.log"
     ]
+  },
+  "config": {
+    "vendor-dir": ".Build/vendor",
+    "bin-dir": ".Build/bin"
   }
 }

@@ -17,12 +17,10 @@ script:
     echo "Running unit tests";
     echo;
     echo;
-    .Build/bin/phpunit Tests/Unit/;
-    
+    php .Build/bin/phpunit --configuration ./Tests/Build/UnitTests.xml  --log-junit UnitTests.log;
   - >
     echo;
-    echo "Running php lint";
+    echo "Running func tests";
     echo;
     echo;
-    find . -name \*.php ! -path "./.Build/*" ! -path "./public/*" -exec php -l {} >/dev/null \;
-
+    php .Build/bin/phpunit --configuration ./Tests/Build/FunctionalTests.xml  --log-junit FunctionalTests.log;
