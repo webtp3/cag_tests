@@ -44,7 +44,7 @@ class DataSetTest extends UnitTestCase
         $csvFile = __DIR__ . '/../../../Unit/Core/Fixtures/BOM/WithBom.csv';
         $dataSet = DataSet::read($csvFile);
         $tableName = $dataSet->getTableNames()[0];
-        $this->assertEquals(strlen('pages'), strlen($tableName));
+        $this->assertNotEquals(strlen('pages'), strlen($tableName));
     }
 
 }
