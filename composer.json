@@ -44,7 +44,7 @@
   "scripts": {
     "test:php:unit": [
       "@php -v",
-      "@php .Build/bin/phpunit Tests/Unit"
+      "@php .Build/bin/phpunit -c Tests/Build/UnitTests.xml"
     ],
     "cag:core-tests": [
       "@php bin/phpunit --configuration web/typo3conf/ext/cag_tests/Resources/Core/Build/UnitTests.xml  --log-junit UnitTests.log",

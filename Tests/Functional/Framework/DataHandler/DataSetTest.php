@@ -30,7 +30,7 @@ class DataSetTest extends UnitTestCase
      */
     public function handlesUtf8WithoutBom()
     {
-        $csvFile = __DIR__ . '/../../../Fixtures/BOM/WithoutBom.csv';
+        $csvFile = __DIR__ . '/../../../Unit/Core/Fixtures/BOM/WithoutBom.csv';
         $dataSet = DataSet::read($csvFile);
         $tableName = $dataSet->getTableNames()[0];
         $this->assertEquals(strlen('pages'), strlen($tableName));
@@ -41,7 +41,7 @@ class DataSetTest extends UnitTestCase
      */
     public function handlesUtf8WithBom()
     {
-        $csvFile = __DIR__ . '/../../../Fixtures/BOM/WithBom.csv';
+        $csvFile = __DIR__ . '/../../../Unit/Core/Fixtures/BOM/WithBom.csv';
         $dataSet = DataSet::read($csvFile);
         $tableName = $dataSet->getTableNames()[0];
         $this->assertEquals(strlen('pages'), strlen($tableName));
