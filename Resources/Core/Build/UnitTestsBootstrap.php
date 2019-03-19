@@ -42,6 +42,7 @@ call_user_func(function () {
 
     // disable TYPO3_DLOG
     define('TYPO3_DLOG', false);
+
     // Retrieve an instance of class loader and inject to core bootstrap
     // first cag path
     if (file_exists($classLoaderFilepath = dirname(PATH_site). '/build/vendor/autoload.php')) {

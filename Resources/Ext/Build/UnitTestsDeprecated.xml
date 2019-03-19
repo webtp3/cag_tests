@@ -17,13 +17,13 @@
 >
 	<testsuites>
 		<testsuite name="Core UnitDeprecated">
-			<directory>../../../../../web/typo3/sysext/*/Tests/UnitDeprecated/</directory>
+			<directory>../../../../../../../web/typo3/sysext/*/Tests/UnitDeprecated/</directory>
 		</testsuite>
 
 	</testsuites>
     <filter>
         <whitelist>
-            <directory>../../../../../web/typo3/sysext/*/Classes/</directory>
+            <directory>../../../../../../../web/typo3/sysext/*/Classes/</directory>
         </whitelist>
     </filter>
 </phpunit>

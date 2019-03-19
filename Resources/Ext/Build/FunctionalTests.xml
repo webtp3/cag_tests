@@ -11,13 +11,12 @@
 		stopOnFailure="false"
 		stopOnIncomplete="false"
 		stopOnSkipped="false"
-		strict="false"
 		verbose="false"
 >
 	<testsuites>
 
 		<testsuite name="cag_ext_func_tests">
-			<directory>../../../../../web/typo3conf/ext/*/Tests/Functional/</directory>
+			<directory>../../../../*/Tests/Functional/</directory>
 		</testsuite>
 
 	</testsuites>

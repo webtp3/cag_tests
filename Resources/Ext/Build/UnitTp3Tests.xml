@@ -16,8 +16,8 @@
 	<testsuites>
 
 
-		<testsuite name="cag_ext_unit_tests">
-			<directory>../../../../../web/typo3conf/ext/tp3*/Tests/Unit/</directory>
+		<testsuite name="tp3_ext_unit_tests">
+			<directory>../../../../tp3*/Tests/Unit/</directory>
 		</testsuite>
 
 	</testsuites>

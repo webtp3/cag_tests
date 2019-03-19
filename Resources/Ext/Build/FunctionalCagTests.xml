@@ -11,14 +11,13 @@
 		stopOnFailure="false"
 		stopOnIncomplete="false"
 		stopOnSkipped="false"
-		strict="false"
 		verbose="false"
 >
 	<testsuites>
 
 
 		<testsuite name="cag_hessenfilm_func_tests">
-			<directory>../../../../../web/typo3conf/ext/cag*/Tests/Functional/</directory>
+			<directory>../../../../cag*/Tests/Functional/</directory>
 		</testsuite>
 	</testsuites>
 </phpunit>

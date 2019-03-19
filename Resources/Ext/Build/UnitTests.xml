@@ -10,18 +10,14 @@
 		 stopOnFailure="false"
 		 stopOnIncomplete="false"
 		 stopOnSkipped="false"
-		 strict="false"
 		 verbose="false">
 
 	<testsuites>
 
-
 		<testsuite name="cag_ext_unit_tests">
-			<directory>../../../../../web/typo3conf/ext/*/Tests/Unit/</directory>
+			<directory>../../../../*/Tests/Unit/</directory>
 		</testsuite>
-		<testsuite name="cag_console_core_tests">
-			<directory>../../../../../../current/current/build/vendor/helhum/typo3-console/Tests/Console/Unit/*/</directory>
-		</testsuite>
+
 	</testsuites>
 
 </phpunit>

@@ -1,6 +1,6 @@
 <?php
 declare(strict_types = 1);
-namespace TYPO3\TestingFramework\Core\Tests\Unit;
+namespace CAG\CagTests\Core\Tests\Unit;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -17,8 +17,8 @@ namespace TYPO3\TestingFramework\Core\Tests\Unit;
 
 use org\bovigo\vfs\vfsStream;
 use org\bovigo\vfs\visitor\vfsStreamStructureVisitor;
-use TYPO3\TestingFramework\Core\FileStreamWrapper;
-use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
+use CAG\CagTests\Core\FileStreamWrapper;
+use CAG\CagTests\Core\Unit\UnitTestCase;
 
 /**
  * Test case
@@ -28,7 +28,7 @@ class FileStreamWrapperTest extends UnitTestCase
     /**
      * @test
      */
-    public function pathsAreOverlaidAndFinalDirectoryStructureCanBeQueried(): void
+    public function pathsAreOverlaidAndFinalDirectoryStructureCanBeQueried()
     {
         $root = vfsStream::setup('root');
         $subfolder = vfsStream::newDirectory('fileadmin');
@@ -62,7 +62,7 @@ class FileStreamWrapperTest extends UnitTestCase
     /**
      * @test
      */
-    public function windowsPathsCanBeProcessed(): void
+    public function windowsPathsCanBeProcessed()
     {
         $cRoot = 'C:\\Windows\\Root\\Path\\';
         vfsStream::setup('root');

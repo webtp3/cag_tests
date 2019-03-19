@@ -81,12 +81,12 @@ cag_tests Framework Wrapper
 
 TYPO3 >=8.7
 ```bash
- php vendor/phpunit/phpunit/phpunit --configuration web/typo3conf/ext/cag_tests/Resources/Core/Build/UnitTests.xml --teamcity
+ php bin/phpunit --configuration web/typo3conf/ext/cag_tests/Resources/Core/Build/UnitTests.xml --log-junit UnitExtTests.log
 ```
 
 for Deprecated Units
 ```bash
- php vendor/phpunit/phpunit/phpunit --configuration web/typo3conf/ext/cag_tests/Resources/Core/Build/UnitTestsDeprecated.xml --teamcity
+ php bin/phpunit --configuration web/typo3conf/ext/cag_tests/Resources/Core/Build/UnitTestsDeprecated.xml --log-junit DeprecatedTests.log
 ``` 
 
 ###  Functional Testing 
@@ -109,8 +109,8 @@ Execute all  functional tests
 
 TYPO3 >=8.7
 ```bash
- php bin/phpunit --configuration ../web/typo3conf/ext/cag_tests/Resources/Core/Build/FunctionalTests.xml --teamcity
- php bin/phpunit --configuration ../web/typo3conf/ext/cag_tests/Resources/Ext/Build/FunctionalTests.xml --teamcity
+ php bin/phpunit --configuration ../web/typo3conf/ext/cag_tests/Resources/Core/Build/FunctionalTests.xml --log-junit FunctionalTests.log
+ php bin/phpunit --configuration ../web/typo3conf/ext/cag_tests/Resources/Ext/Build/FunctionalTests.xml --log-junit FunctionalExtTests.log
 
 ```
 

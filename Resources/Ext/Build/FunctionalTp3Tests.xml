@@ -15,8 +15,8 @@
 >
 	<testsuites>
 
-		<testsuite name="cag_core_func_tests">
-			<directory>../../Source/Functional/</directory>
+		<testsuite name="tp3_ext_func_tests">
+			<directory>../../../../tp3*/Tests/Functional/</directory>
 		</testsuite>
 
 	</testsuites>

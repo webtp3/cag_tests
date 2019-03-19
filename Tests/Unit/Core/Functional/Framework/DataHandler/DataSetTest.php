@@ -1,6 +1,6 @@
 <?php
 declare(strict_types = 1);
-namespace TYPO3\TestingFramework\Core\Tests\Unit\Functional\Framework\DataHandler;
+namespace CAG\CagTests\Core\Tests\Unit\Functional\Framework\DataHandler;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -15,8 +15,8 @@ namespace TYPO3\TestingFramework\Core\Tests\Unit\Functional\Framework\DataHandle
  * The TYPO3 project - inspiring people to share!
  */
 
-use TYPO3\TestingFramework\Core\Functional\Framework\DataHandling\DataSet;
-use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
+use CAG\CagTests\Core\Functional\Framework\DataHandling\DataSet;
+use CAG\CagTests\Core\Unit\UnitTestCase;
 
 
 /**
@@ -28,7 +28,7 @@ class DataSetTest extends UnitTestCase
     /**
      * @test
      */
-    public function handlesUtf8WithoutBom(): void
+    public function handlesUtf8WithoutBom()
     {
         $csvFile = __DIR__ . '/../../../Fixtures/BOM/WithoutBom.csv';
         $dataSet = DataSet::read($csvFile);
@@ -39,7 +39,7 @@ class DataSetTest extends UnitTestCase
     /**
      * @test
      */
-    public function handlesUtf8WithBom(): void
+    public function handlesUtf8WithBom()
     {
         $csvFile = __DIR__ . '/../../../Fixtures/BOM/WithBom.csv';
         $dataSet = DataSet::read($csvFile);

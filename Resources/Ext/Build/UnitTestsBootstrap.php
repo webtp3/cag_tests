@@ -44,14 +44,20 @@ call_user_func(function () {
     define('TYPO3_DLOG', false);
 
     // Retrieve an instance of class loader and inject to core bootstrap
-
-    if (file_exists($classLoaderFilepath = dirname(PATH_site). '/current/build/vendor/autoload.php')) {
+    // first cag path
+    if (file_exists($classLoaderFilepath = dirname(PATH_site). '/build/vendor/autoload.php')) {
+        // Console is root package, thus vendor folder is .Build/vendor
+        $classLoader = require $classLoaderFilepath;
+    } elseif (file_exists($classLoaderFilepath = dirname(PATH_site). '/Build/vendor/autoload.php')) {
         // Console is root package, thus vendor folder is .Build/vendor
         $classLoader = require $classLoaderFilepath;
     } elseif (file_exists($vendorAutoLoadFile = dirname(dirname(dirname(__DIR__))) . '/autoload.php')) {
         // Console is a dependency, thus located in vendor/helhum/typo3-console
         $classLoader = require $vendorAutoLoadFile;
-    } elseif (file_exists($typo3AutoLoadFile = $_SERVER["PWD"] . '/current/build/vendor/autoload.php')) {
+    } elseif (file_exists($typo3AutoLoadFile = $_SERVER["PWD"] . '/Build/vendor/autoload.php')) {
+        // Console is extension CAG
+        $classLoader = require $typo3AutoLoadFile;
+    } elseif (file_exists($typo3AutoLoadFile = $_SERVER["PWD"] . '/build/vendor/autoload.php')) {
         // Console is extension
         $classLoader = require $typo3AutoLoadFile;
     } else {
