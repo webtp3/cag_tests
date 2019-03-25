@@ -571,7 +571,30 @@ class Testbase
         $_SERVER['PWD'] = $instancePath;
         $_SERVER['argv'][0] = 'index.php';
 
-        $classLoader = require rtrim(realpath($instancePath . '/typo3'), '\\/') . '/../../build/vendor/autoload.php';
+       // $classLoader = require rtrim(realpath($instancePath . '/typo3'), '\\/') . '/../../Build/vendor/autoload.php';
+        if (file_exists($classLoaderFilepath = rtrim(realpath($instancePath . '/typo3'), '\\/') . '/../../Build/vendor/autoload.php')) {
+            // Console is root package, thus vendor folder is .Build/vendor
+            $classLoader = require $classLoaderFilepath;
+        } else if (file_exists($classLoaderFilepath = rtrim(realpath($instancePath . '/typo3'), '\\/') . '/../../build/vendor/autoload.php')) {
+            // Console is root package, thus vendor folder is .Build/vendor
+            $classLoader = require $classLoaderFilepath;
+        } else if (file_exists($classLoaderFilepath = rtrim(realpath($instancePath . '/typo3'), '\\/') . '/../../.Build/vendor/autoload.php')) {
+            // Console is root package, thus vendor folder is .Build/vendor
+            $classLoader = require $classLoaderFilepath;
+        } elseif (file_exists($vendorAutoLoadFile = dirname(dirname(dirname(__DIR__))) . '/autoload.php')) {
+            // Console is a dependency, thus located in vendor/helhum/typo3-console
+            $classLoader = require $vendorAutoLoadFile;
+        } elseif (file_exists($typo3AutoLoadFile = $_SERVER["PWD"] . '/.Build/vendor/autoload.php')) {
+            // Console is extension CAG
+            $classLoader = require $typo3AutoLoadFile;
+        } else {
+            echo 'Could not find autoload.php file. TYPO3 Console needs to be installed with composer' . PHP_EOL;
+            exit(1);
+        }
+        if (!file_exists($classLoaderFilepath)) {
+            die('ClassLoader can\'t be loaded. Please check your path or set an environment variable \'TYPO3_PATH_ROOT\' to your root path.');
+        }
+
         Bootstrap::getInstance()
             ->initializeClassLoader($classLoader)
             ->setRequestType(TYPO3_REQUESTTYPE_BE | TYPO3_REQUESTTYPE_CLI)
