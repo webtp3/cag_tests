@@ -575,7 +575,7 @@ class Testbase
          * Workarround for avoiding deprication
          * -> only 9++ have app
          */
-        if(getenv('TYPO3_PATH_APP')){
+        if(method_exists('GeneralUtility','purgeInstances') && method_exists('GeneralUtility','resetApplicationContext')){
             // Reset state from a possible previous run
             GeneralUtility::purgeInstances();
             GeneralUtility::resetApplicationContext();
