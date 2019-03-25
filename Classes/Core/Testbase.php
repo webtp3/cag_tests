@@ -571,39 +571,66 @@ class Testbase
         $_SERVER['PWD'] = $instancePath;
         $_SERVER['argv'][0] = 'index.php';
 
-       // $classLoader = require rtrim(realpath($instancePath . '/typo3'), '\\/') . '/../../Build/vendor/autoload.php';
-        if (file_exists($classLoaderFilepath = rtrim(realpath($instancePath . '/typo3'), '\\/') . '/../../Build/vendor/autoload.php')) {
-            // Console is root package, thus vendor folder is .Build/vendor
-            $classLoader = require $classLoaderFilepath;
-        } else if (file_exists($classLoaderFilepath = rtrim(realpath($instancePath . '/typo3'), '\\/') . '/../../build/vendor/autoload.php')) {
-            // Console is root package, thus vendor folder is .Build/vendor
-            $classLoader = require $classLoaderFilepath;
-        } else if (file_exists($classLoaderFilepath = rtrim(realpath($instancePath . '/typo3'), '\\/') . '/../../.Build/vendor/autoload.php')) {
-            // Console is root package, thus vendor folder is .Build/vendor
-            $classLoader = require $classLoaderFilepath;
-        } elseif (file_exists($vendorAutoLoadFile = dirname(dirname(dirname(__DIR__))) . '/autoload.php')) {
-            // Console is a dependency, thus located in vendor/helhum/typo3-console
-            $classLoader = require $vendorAutoLoadFile;
-        } elseif (file_exists($typo3AutoLoadFile = $_SERVER["PWD"] . '/.Build/vendor/autoload.php')) {
-            // Console is extension CAG
-            $classLoader = require $typo3AutoLoadFile;
-        } else {
-            echo 'Could not find autoload.php file. TYPO3 Console needs to be installed with composer' . PHP_EOL;
-            exit(1);
+        /*
+         * Workarround for avoiding deprication
+         * -> only 9++ have app
+         */
+        if(getenv('TYPO3_PATH_APP')){
+            // Reset state from a possible previous run
+            GeneralUtility::purgeInstances();
+            GeneralUtility::resetApplicationContext();
+            if (file_exists($GLOBALS['composerAutoload'])) {
+                $classLoader = require $GLOBALS['composerAutoload'];
+            }else if (file_exists($classLoaderFilepath = $_SERVER["PWD"] . '/.Build/vendor/autoload.php')) {
+                // Console is extension CAG
+                $classLoader = require $classLoaderFilepath;
+            } else {
+                echo 'Could not find autoload.php file. TYPO3 Console needs to be installed with composer' . PHP_EOL;
+                exit(1);
+            }
+            \TYPO3\CMS\Core\Core\SystemEnvironmentBuilder::run(0, \TYPO3\CMS\Core\Core\SystemEnvironmentBuilder::REQUESTTYPE_BE | \TYPO3\CMS\Core\Core\SystemEnvironmentBuilder::REQUESTTYPE_CLI);
+            Bootstrap::init($classLoader);
+            // Make sure output is not buffered, so command-line output can take place and
+            // phpunit does not whine about changed output bufferings in tests.
+            ob_end_clean();
+
+            $this->dumpClassLoadingInformation();
         }
-        if (!file_exists($classLoaderFilepath)) {
-            die('ClassLoader can\'t be loaded. Please check your path or set an environment variable \'TYPO3_PATH_ROOT\' to your root path.');
+        else{
+            // $classLoader = require rtrim(realpath($instancePath . '/typo3'), '\\/') . '/../../Build/vendor/autoload.php';
+            if (file_exists($classLoaderFilepath = rtrim(realpath($instancePath . '/typo3'), '\\/') . '/../../Build/vendor/autoload.php')) {
+                // Console is root package, thus vendor folder is .Build/vendor
+                $classLoader = require $classLoaderFilepath;
+            } else if (file_exists($classLoaderFilepath = rtrim(realpath($instancePath . '/typo3'), '\\/') . '/../../build/vendor/autoload.php')) {
+                // Console is root package, thus vendor folder is .Build/vendor
+                $classLoader = require $classLoaderFilepath;
+            } else if (file_exists($classLoaderFilepath = rtrim(realpath($instancePath . '/typo3'), '\\/') . '/../../.Build/vendor/autoload.php')) {
+                // Console is root package, thus vendor folder is .Build/vendor
+                $classLoader = require $classLoaderFilepath;
+            } elseif (file_exists($vendorAutoLoadFile = dirname(dirname(dirname(__DIR__))) . '/autoload.php')) {
+                // Console is a dependency, thus located in vendor/helhum/typo3-console
+                $classLoader = require $vendorAutoLoadFile;
+            } elseif (file_exists($typo3AutoLoadFile = $_SERVER["PWD"] . '/.Build/vendor/autoload.php')) {
+                // Console is extension CAG
+                $classLoader = require $typo3AutoLoadFile;
+            } else {
+                echo 'Could not find autoload.php file. TYPO3 Console needs to be installed with composer' . PHP_EOL;
+                exit(1);
+            }
+            if (!file_exists($classLoaderFilepath)) {
+                die('ClassLoader can\'t be loaded. Please check your path or set an environment variable \'TYPO3_PATH_ROOT\' to your root path.');
+            }
+            Bootstrap::getInstance()
+                ->initializeClassLoader($classLoader)
+                ->setRequestType(TYPO3_REQUESTTYPE_BE | TYPO3_REQUESTTYPE_CLI)
+                ->baseSetup()
+                ->loadConfigurationAndInitialize(true);
+            $this->dumpClassLoadingInformation();
+            Bootstrap::getInstance()->loadTypo3LoadedExtAndExtLocalconf(true)
+                ->setFinalCachingFrameworkCacheConfiguration()
+                ->unsetReservedGlobalVariables();
         }
 
-        Bootstrap::getInstance()
-            ->initializeClassLoader($classLoader)
-            ->setRequestType(TYPO3_REQUESTTYPE_BE | TYPO3_REQUESTTYPE_CLI)
-            ->baseSetup()
-            ->loadConfigurationAndInitialize(true);
-        $this->dumpClassLoadingInformation();
-        Bootstrap::getInstance()->loadTypo3LoadedExtAndExtLocalconf(true)
-            ->setFinalCachingFrameworkCacheConfiguration()
-            ->unsetReservedGlobalVariables();
     }
 
     /**
